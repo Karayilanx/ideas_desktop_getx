@@ -193,6 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.4"
+  dropdown_button2:
+    dependency: "direct main"
+    description:
+      name: dropdown_button2
+      sha256: "604b87283e251e0e4a0cb1d0fdfa91fd527702b06e80999c4054cecc603e10e7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.4"
   equatable:
     dependency: transitive
     description:
@@ -262,6 +270,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
+  flutter_switch:
+    dependency: "direct main"
+    description:
+      name: flutter_switch
+      sha256: b91477f926bba135d2d203d7b24367492662d8d9c3aa6adb960b14c1087d3c41
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -693,6 +709,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  styled_text:
+    dependency: "direct main"
+    description:
+      name: styled_text
+      sha256: f72928d1ebe8cb149e3b34a689cb1ddca696b808187cf40ac3a0bd183dff379c
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   term_glyph:
     dependency: transitive
     description:
@@ -781,6 +805,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  xmlstream:
+    dependency: transitive
+    description:
+      name: xmlstream
+      sha256: "2d10c69a9d5fc46f71798b80ee6db15bc0d5bf560fdbdd264776cbeee0c83631"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   yaml:
     dependency: transitive
     description:
@@ -791,4 +823,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.19.1 <3.0.0"
-  flutter: ">=3.0.0"
+  flutter: ">=3.7.0"

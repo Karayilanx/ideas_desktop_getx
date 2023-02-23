@@ -18,11 +18,13 @@ import 'package:ideas_desktop_getx/view/_utility/msg_dialog.dart';
 import 'package:ideas_desktop_getx/view/_utility/sync_dialog/sync_dialog_view.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
 import 'package:ideas_desktop_getx/view/home/component/new_check_dialog.dart';
+import 'package:ideas_desktop_getx/view/order-detail/navigation/table_detail_navigation_args.dart';
 import 'package:ideas_desktop_getx/view/requests/requests_store.dart';
 import 'package:signalr_core/signalr_core.dart';
 import '../../../locale_keys_enum.dart';
 import '../../../model/delivery_model.dart';
 import '../../../model/home_model.dart';
+import '../../order-detail/model/order_detail_model.dart';
 
 class HomeController extends BaseController {
   DeliveryStore deliveryStore = Get.find();
@@ -386,18 +388,15 @@ class HomeController extends BaseController {
 
   void navigateToTableDetail(int? tableId, int? checkId) {
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //         path: NavigationConstants.TABLE_DETAIL_VIEW,
-    //         data: TableDetailArguments(
-    //           tableId: tableId,
-    //           type: tableId != null && tableId > 0
-    //               ? OrderDetailPageType.TABLE
-    //               : OrderDetailPageType.ALIAS,
-    //           checkId: checkId,
-    //           isIntegration: false,
-    //         ))
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('order-detail',
+            arguments: TableDetailArguments(
+                tableId: tableId,
+                checkId: checkId,
+                type: tableId != null && tableId > 0
+                    ? OrderDetailPageType.TABLE
+                    : OrderDetailPageType.ALIAS,
+                isIntegration: false))!
+        .then((value) => createAutoLockTimer());
   }
 
   void navigateToDeliveryOrder() {

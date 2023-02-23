@@ -10,7 +10,9 @@ import 'package:ideas_desktop_getx/view/authentication/auth_store.dart';
 import 'package:ideas_desktop_getx/view/authentication/login/view/login_view.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
 import 'package:ideas_desktop_getx/view/home/view/home_view.dart';
+import 'package:ideas_desktop_getx/view/order-detail/view/order_detail_view.dart';
 import 'package:ideas_desktop_getx/view/requests/requests_store.dart';
+import 'package:ideas_desktop_getx/view/select-condiment/view/select_condiment_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'locale_manager.dart';
@@ -25,7 +27,7 @@ void main() async {
       // await windowManager.setTitleBarStyle('hidden');
       // await windowManager.setFullScreen(true);
       await windowManager.setTitle("IDEAS");
-      await windowManager.maximize();
+      // await windowManager.maximize();
     }
   });
   await SignalRManager.hubConnectionStart().catchError((_) => {});
@@ -41,26 +43,33 @@ class MyApp extends StatelessWidget {
     Get.put<DeliveryStore>(DeliveryStore(), permanent: true);
     Get.put<RequestsStore>(RequestsStore(), permanent: true);
     return GetMaterialApp(
-        scrollBehavior: MyCustomScrollBehavior(),
-        title: 'IDEAS',
-        builder: EasyLoading.init(),
-        theme: ideasTheme,
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        getPages: [
-          GetPage(
-            name: '/',
-            page: () => LoginPage(),
-            binding: LoginBindings(),
-            transitionDuration: Duration.zero,
-          ),
-          GetPage(
-            name: '/home',
-            page: () => HomePage(),
-            binding: HomeBindings(),
-            transitionDuration: Duration.zero,
-          ),
-        ]);
+      scrollBehavior: MyCustomScrollBehavior(),
+      title: 'IDEAS',
+      builder: EasyLoading.init(),
+      theme: ideasTheme,
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => LoginPage(),
+          binding: LoginBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/home',
+          page: () => HomePage(),
+          binding: HomeBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/order-detail',
+          page: () => OrderDetailView(),
+          binding: OrderDetailsBindings(),
+          transitionDuration: Duration.zero,
+        ),
+      ],
+    );
   }
 }
 

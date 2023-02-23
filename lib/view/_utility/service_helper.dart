@@ -155,18 +155,18 @@ abstract class ServiceHelper {
     return ret == true;
   }
 
-  Future<bool> openFisDialog(
-      BuildContext context, CheckPaymentTypeEnum type) async {
-    AlertDialog dialog = AlertDialog(
-      title: const Text("Fiş"),
+  Future<bool> openFisDialog(CheckPaymentTypeEnum type) async {
+    var ret = await Get.defaultDialog(
+      barrierDismissible: false,
+      title: "Fiş",
       content: const Text("Fiş kesmek istiyor musunuz?"),
-      actions: <Widget>[
+      actions: [
         SizedBox(
           height: 80,
           width: 120,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pop(context, true);
+              Get.back(result: true);
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue, foregroundColor: Colors.white),
@@ -183,7 +183,7 @@ abstract class ServiceHelper {
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red, foregroundColor: Colors.white),
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
             child: const Text(
               'Geç',
@@ -192,12 +192,6 @@ abstract class ServiceHelper {
           ),
         )
       ],
-    );
-
-    var ret = await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => dialog,
     );
     return ret == true;
   }
