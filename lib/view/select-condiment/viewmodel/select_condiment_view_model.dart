@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/base_controller.dart';
 import '../../../model/check_model.dart';
@@ -198,7 +197,7 @@ class SelectCondimentController extends BaseController {
           items.add(item);
         }
       }
-      Get.back(result: items, closeOverlays: true);
+      Get.back(result: items);
     } else {
       showSnackbarError('Lütfen zorunlu seçimleri yapınız!');
     }

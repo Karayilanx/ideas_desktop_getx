@@ -9,13 +9,13 @@ import '../../../model/menu_model.dart';
 import '../component/condiment_button.dart';
 
 class SelectCondimentPage extends StatelessWidget {
-  final SelectCondimentController controller =
-      Get.put(SelectCondimentController());
-  SelectCondimentPage({
+  const SelectCondimentPage({
     super.key,
   });
   @override
   Widget build(BuildContext context) {
+    final SelectCondimentController controller =
+        Get.put(SelectCondimentController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
       children: [
@@ -131,41 +131,37 @@ class SelectCondimentPage extends StatelessWidget {
                       });
                     },
                     itemBuilder: (context, index) {
-                      return Obx(
-                        () {
-                          CondimentGroup group =
-                              controller.menuItem.condimentGroups![index];
-                          if (controller.isPreRequisteSelected(group)) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 4),
-                                  child: Text(
-                                      group.nameTr! +
-                                          (group.isRequired! ? ' *' : ''),
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                      )),
-                                ),
-                                GridView.extent(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  childAspectRatio: 2.1,
-                                  maxCrossAxisExtent: getCondimentWidth(),
-                                  shrinkWrap: true,
-                                  mainAxisSpacing: 4,
-                                  crossAxisSpacing: 4,
-                                  children: createCondimentButtons(group),
-                                )
-                              ],
-                            );
-                          } else {
-                            return Container();
-                          }
-                        },
-                      );
+                      CondimentGroup group =
+                          controller.menuItem.condimentGroups![index];
+                      if (controller.isPreRequisteSelected(group)) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 4),
+                              child: Text(
+                                  group.nameTr! +
+                                      (group.isRequired! ? ' *' : ''),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  )),
+                            ),
+                            GridView.extent(
+                              physics: const NeverScrollableScrollPhysics(),
+                              childAspectRatio: 2.1,
+                              maxCrossAxisExtent: getCondimentWidth(),
+                              shrinkWrap: true,
+                              mainAxisSpacing: 4,
+                              crossAxisSpacing: 4,
+                              children: createCondimentButtons(group),
+                            )
+                          ],
+                        );
+                      } else {
+                        return Container();
+                      }
                     },
                     itemCount: controller.menuItem.condimentGroups!.length,
                   ),
@@ -179,29 +175,27 @@ class SelectCondimentPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Obx(() {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(vertical: 4),
-                          height: double.infinity,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color(0xffF1A159),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(6, 6, 6, 6),
-                            child: Text(
-                              controller.getTotalPrice().toStringAsFixed(2),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xffF1A159),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(6, 6, 6, 6),
+                          child: Text(
+                            controller.getTotalPrice().toStringAsFixed(2),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        );
-                      }),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -270,6 +264,7 @@ class SelectCondimentPage extends StatelessWidget {
   }
 
   double getCondimentWidth() {
+    final SelectCondimentController controller = Get.find();
     var widthStr = controller.localeManager
         .getStringValue(PreferencesKeys.MENU_ITEM_WIDTH);
     var res = double.tryParse(widthStr);
@@ -281,19 +276,18 @@ class SelectCondimentPage extends StatelessWidget {
   }
 
   List<Widget> createCondimentButtons(CondimentGroup group) {
+    final SelectCondimentController controller = Get.find();
     if (group.condiments!.isNotEmpty) {
       return List.generate(group.condiments!.length, (index) {
         CondimentModel condiment = group.condiments![index];
-        return Obx(() {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 4),
-            child: CondimentButton(
-              callback: () => controller.selectCondiment(condiment, group),
-              condiment: condiment,
-              isSelected: controller.isCondimentSelected(condiment, group),
-            ),
-          );
-        });
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 4),
+          child: CondimentButton(
+            callback: () => controller.selectCondiment(condiment, group),
+            condiment: condiment,
+            isSelected: controller.isCondimentSelected(condiment, group),
+          ),
+        );
       });
     } else {
       return [];
