@@ -33,7 +33,7 @@ class BaseGetConnect extends GetConnect {
   }
 
   handleError(Response? response) {
-    if (response != null) {
+    if (response != null && response.statusCode != 200) {
       Get.defaultDialog(
           title: "Bilgi",
           titleStyle: const TextStyle(color: Colors.black),

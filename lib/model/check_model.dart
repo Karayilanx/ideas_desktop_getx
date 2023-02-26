@@ -494,7 +494,7 @@ class CheckDetailCheckAccountTransaction {
   });
 
   factory CheckDetailCheckAccountTransaction.fromJson(
-      Map<String, Object> json) {
+      Map<String, dynamic> json) {
     return _$CheckDetailCheckAccountTransactionFromJson(json);
   }
 
@@ -516,7 +516,7 @@ class UpdateCheckNoteInput {
     required this.branchId,
   });
 
-  factory UpdateCheckNoteInput.fromJson(Map<String, Object> json) {
+  factory UpdateCheckNoteInput.fromJson(Map<String, dynamic> json) {
     return _$UpdateCheckNoteInputFromJson(json);
   }
 
@@ -534,7 +534,7 @@ class CancelRequestRow {
     this.checkMenuItemId,
   });
 
-  factory CancelRequestRow.fromJson(Map<String, Object> json) {
+  factory CancelRequestRow.fromJson(Map<String, dynamic> json) {
     return _$CancelRequestRowFromJson(json);
   }
 
@@ -567,7 +567,7 @@ class CancelRequest {
     this.name,
   });
 
-  factory CancelRequest.fromJson(Map<String, Object> json) {
+  factory CancelRequest.fromJson(Map<String, dynamic> json) {
     return _$CancelRequestFromJson(json);
   }
 
@@ -585,7 +585,7 @@ class RequestsModel {
     this.qrRequests,
   });
 
-  factory RequestsModel.fromJson(Map<String, Object> json) {
+  factory RequestsModel.fromJson(Map<String, dynamic> json) {
     return _$RequestsModelFromJson(json);
   }
 
@@ -670,7 +670,7 @@ class ChangePriceModel {
     this.terminalUserId,
   });
 
-  factory ChangePriceModel.fromJson(Map<String, Object> json) {
+  factory ChangePriceModel.fromJson(Map<String, dynamic> json) {
     return _$ChangePriceModelFromJson(json);
   }
 
@@ -732,7 +732,7 @@ class OrderLogModel {
     this.totalPrice,
   });
 
-  factory OrderLogModel.fromJson(Map<String, Object> json) {
+  factory OrderLogModel.fromJson(Map<String, dynamic> json) {
     return _$OrderLogModelFromJson(json);
   }
 

@@ -575,17 +575,14 @@ class HomeController extends BaseController {
     ));
     if (res != null && res.toString().trim().isNotEmpty) {
       cancelAutoLockTimer();
-      // navigation
-      //     .navigateToPage(
-      //         path: NavigationConstants.TABLE_DETAIL_VIEW,
-      //         data: TableDetailArguments(
-      //           alias: res,
-      //           type: OrderDetailPageType.ALIAS,
-      //           checkId: -1,
-      //           tableId: -1,
-      //           isIntegration: false,
-      //         ))
-      //     .then((value) => createAutoLockTimer());
+      Get.toNamed('order-detail',
+              arguments: TableDetailArguments(
+                  tableId: -1,
+                  checkId: -1,
+                  type: OrderDetailPageType.ALIAS,
+                  alias: res,
+                  isIntegration: false))!
+          .then((value) => createAutoLockTimer());
     } else {
       createAutoLockTimer();
     }

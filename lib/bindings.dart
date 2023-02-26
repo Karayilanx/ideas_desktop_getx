@@ -47,6 +47,7 @@ class OrderDetailsBindings implements Bindings {
   void dependencies() {
     Get.lazyPut<OrderDetailController>(() => OrderDetailController());
     Get.lazyPut<EftPosService>(() => EftPosService());
+    Get.lazyPut<LoginService>(() => LoginService());
     Get.lazyPut<MenuService>(() => MenuService());
     Get.lazyPut<PrinterService>(() => PrinterService());
     Get.lazyPut<TableService>(() => TableService());

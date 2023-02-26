@@ -1133,7 +1133,7 @@ class OrderDetailView extends StatelessWidget {
                               ),
                             );
                           }).toList(),
-                          value: controller.selectedTableGroup,
+                          value: controller.selectedTableGroup.value,
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
