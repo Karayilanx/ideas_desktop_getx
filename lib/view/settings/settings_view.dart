@@ -5,11 +5,10 @@ import '../_utility/screen_keyboard/screen_keyboard_view.dart';
 import 'setting_controller.dart';
 
 class SettingsPage extends StatelessWidget {
-  final SettingsController settingsController = Get.put(SettingsController());
-
-  SettingsPage({super.key});
+  const SettingsPage({super.key});
   @override
   Widget build(BuildContext context) {
+    final SettingsController settingsController = Get.put(SettingsController());
     return SimpleDialog(
       title:
           const Text('Ayarlar', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -17,12 +16,12 @@ class SettingsPage extends StatelessWidget {
         const Divider(),
         Row(
           mainAxisSize: MainAxisSize.max,
-          children: getTabButtons(),
+          children: getTabButtons(settingsController),
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
           child: Obx(() => Column(
-                children: buildBody(),
+                children: buildBody(settingsController),
               )),
         ),
         const SizedBox(height: 10),
@@ -58,22 +57,22 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  List<Widget> buildBody() {
+  List<Widget> buildBody(SettingsController settingsController) {
     if (settingsController.pageTab.value == SettingsPageTabEnum.Connection) {
-      return getConnectionWidgets();
+      return getConnectionWidgets(settingsController);
     } else if (settingsController.pageTab.value == SettingsPageTabEnum.Visual) {
-      return getVisualWidgets();
+      return getVisualWidgets(settingsController);
     } else if (settingsController.pageTab.value ==
         SettingsPageTabEnum.Integration) {
-      return getIntegrationWidgets();
+      return getIntegrationWidgets(settingsController);
     } else if (settingsController.pageTab.value == SettingsPageTabEnum.Other) {
-      return getOtherWidgets();
+      return getOtherWidgets(settingsController);
     }
 
     return [];
   }
 
-  List<Widget> getIntegrationWidgets() {
+  List<Widget> getIntegrationWidgets(SettingsController settingsController) {
     return [
       Obx(
         () {
@@ -105,7 +104,7 @@ class SettingsPage extends StatelessWidget {
     ];
   }
 
-  List<Widget> getVisualWidgets() {
+  List<Widget> getVisualWidgets(SettingsController settingsController) {
     return [
       Obx(
         () {
@@ -184,7 +183,7 @@ class SettingsPage extends StatelessWidget {
     ];
   }
 
-  List<Widget> getConnectionWidgets() {
+  List<Widget> getConnectionWidgets(SettingsController settingsController) {
     return [
       TextFormField(
         decoration: const InputDecoration(hintText: 'IP Adresi'),
@@ -234,7 +233,7 @@ class SettingsPage extends StatelessWidget {
     ];
   }
 
-  List<Widget> getOtherWidgets() {
+  List<Widget> getOtherWidgets(SettingsController settingsController) {
     return [
       TextFormField(
         decoration: const InputDecoration(hintText: 'Kasa Yazıcısı Adı'),
@@ -254,63 +253,68 @@ class SettingsPage extends StatelessWidget {
     ];
   }
 
-  List<Widget> getTabButtons() {
+  List<Widget> getTabButtons(SettingsController settingsController) {
     return [
       const SizedBox(width: 4),
       Expanded(child: Obx(() {
         return TextButton(
             style: TextButton.styleFrom(
-                backgroundColor:
-                    getTabButtonColor(SettingsPageTabEnum.Connection)),
+                backgroundColor: getTabButtonColor(
+                    SettingsPageTabEnum.Connection, settingsController)),
             onPressed: () =>
                 settingsController.changeTab(SettingsPageTabEnum.Connection),
             child: Text(
               'Bağlantı Ayarları',
               style: TextStyle(
-                  color: getTabButtonTextColor(SettingsPageTabEnum.Connection)),
+                  color: getTabButtonTextColor(
+                      SettingsPageTabEnum.Connection, settingsController)),
             ));
       })),
       const SizedBox(width: 4),
       Expanded(child: Obx(() {
         return TextButton(
             style: TextButton.styleFrom(
-                backgroundColor: getTabButtonColor(SettingsPageTabEnum.Visual)),
+                backgroundColor: getTabButtonColor(
+                    SettingsPageTabEnum.Visual, settingsController)),
             onPressed: () =>
                 settingsController.changeTab(SettingsPageTabEnum.Visual),
             child: Text('Görsel Ayarlar',
                 style: TextStyle(
-                    color: getTabButtonTextColor(SettingsPageTabEnum.Visual))));
+                    color: getTabButtonTextColor(
+                        SettingsPageTabEnum.Visual, settingsController))));
       })),
       const SizedBox(width: 4),
       Expanded(child: Obx(() {
         return TextButton(
             style: TextButton.styleFrom(
-                backgroundColor:
-                    getTabButtonColor(SettingsPageTabEnum.Integration)),
+                backgroundColor: getTabButtonColor(
+                    SettingsPageTabEnum.Integration, settingsController)),
             onPressed: () =>
                 settingsController.changeTab(SettingsPageTabEnum.Integration),
             child: Text('Entegrasyon',
                 style: TextStyle(
                     color: getTabButtonTextColor(
-                        SettingsPageTabEnum.Integration))));
+                        SettingsPageTabEnum.Integration, settingsController))));
       })),
       const SizedBox(width: 4),
       Expanded(child: Obx(() {
         return TextButton(
             style: TextButton.styleFrom(
-                backgroundColor: getTabButtonColor(SettingsPageTabEnum.Other)),
+                backgroundColor: getTabButtonColor(
+                    SettingsPageTabEnum.Other, settingsController)),
             onPressed: () =>
                 settingsController.changeTab(SettingsPageTabEnum.Other),
             child: Text('Diğer Ayarlar',
                 style: TextStyle(
                     color: getTabButtonTextColor(
-                        SettingsPageTabEnum.Integration))));
+                        SettingsPageTabEnum.Integration, settingsController))));
       })),
       const SizedBox(width: 4),
     ];
   }
 
-  Color getTabButtonColor(SettingsPageTabEnum type) {
+  Color getTabButtonColor(
+      SettingsPageTabEnum type, SettingsController settingsController) {
     if (type == settingsController.pageTab.value) {
       return const Color(0xff223540);
     } else {
@@ -318,7 +322,8 @@ class SettingsPage extends StatelessWidget {
     }
   }
 
-  Color getTabButtonTextColor(SettingsPageTabEnum type) {
+  Color getTabButtonTextColor(
+      SettingsPageTabEnum type, SettingsController settingsController) {
     if (type == settingsController.pageTab.value) {
       return Colors.white;
     } else {

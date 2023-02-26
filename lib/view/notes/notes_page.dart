@@ -7,12 +7,11 @@ import 'package:ideas_desktop_getx/view/notes/notes_page_view_model.dart';
 import '../_utility/screen_keyboard/screen_keyboard_view.dart';
 
 class NotesPages extends StatelessWidget {
-  final NotesPagesController controller = Get.put(NotesPagesController());
-
-  NotesPages({super.key});
+  const NotesPages({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final NotesPagesController controller = Get.put(NotesPagesController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
       children: [
@@ -96,7 +95,7 @@ class NotesPages extends StatelessWidget {
                       childAspectRatio: 3,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
-                      children: createNotes(),
+                      children: createNotes(controller),
                     ),
                   ),
                   Container(
@@ -167,7 +166,7 @@ class NotesPages extends StatelessWidget {
     );
   }
 
-  List<Widget> createNotes() {
+  List<Widget> createNotes(NotesPagesController controller) {
     List<Widget> ret = [];
 
     if (controller.notes.isNotEmpty) {

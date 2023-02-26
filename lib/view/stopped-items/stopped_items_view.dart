@@ -4,10 +4,11 @@ import 'package:ideas_desktop_getx/view/stopped-items/stopped_items_view_model.d
 import '../../model/check_model.dart';
 
 class StoppedItemsPage extends StatelessWidget {
-  StoppedItemsController controller = Get.put(StoppedItemsController());
+  const StoppedItemsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    StoppedItemsController controller = Get.put(StoppedItemsController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
       backgroundColor: const Color(0xffEDEAE6),

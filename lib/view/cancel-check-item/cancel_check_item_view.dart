@@ -7,11 +7,11 @@ import 'cancel_check_item_view_model.dart';
 import '../order-detail/component/edit_action_button.dart';
 
 class CancelCheckItemPage extends StatelessWidget {
-  final CancelCheckItemController controller = Get.find();
-
-  CancelCheckItemPage({super.key});
+  const CancelCheckItemPage({super.key});
   @override
   Widget build(BuildContext context) {
+    final CancelCheckItemController controller =
+        Get.put(CancelCheckItemController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
       children: [
@@ -31,36 +31,34 @@ class CancelCheckItemPage extends StatelessWidget {
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Obx(() {
-                  return TextFormField(
-                    controller: controller.cancelNoteController,
-                    onTap: () async {
-                      if (LocaleManager.instance
-                          .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
-                        var res = await showDialog(
-                          context: context,
-                          builder: (context) => const ScreenKeyboard(),
-                        );
-                        if (res != null) {
-                          controller.cancelNoteController.text = res;
-                        }
+                child: TextFormField(
+                  controller: controller.cancelNoteController,
+                  onTap: () async {
+                    if (LocaleManager.instance
+                        .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
+                      var res = await showDialog(
+                        context: context,
+                        builder: (context) => const ScreenKeyboard(),
+                      );
+                      if (res != null) {
+                        controller.cancelNoteController.text = res;
                       }
-                    },
-                    enabled: true,
-                    autofocus: true,
-                    style: const TextStyle(fontSize: 16),
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                        ),
+                    }
+                  },
+                  enabled: true,
+                  autofocus: true,
+                  style: const TextStyle(fontSize: 16),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Colors.black,
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
                     ),
-                  );
-                }),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
               ),
               Obx(() {
                 return CheckboxListTile(

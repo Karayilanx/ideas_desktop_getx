@@ -5,19 +5,18 @@ import 'package:ideas_desktop_getx/view/_utility/sync_dialog/sync_dialog_control
 import 'sync_state_enum.dart';
 
 class SyncDialog extends StatelessWidget {
-  final SyncDialogController syncDialogController =
-      Get.put(SyncDialogController());
-
-  SyncDialog({super.key});
+  const SyncDialog({super.key});
   @override
   Widget build(BuildContext context) {
+    final SyncDialogController syncDialogController =
+        Get.put(SyncDialogController());
     return Obx(
       () => AlertDialog(
         title: const Text('Güncelleme'),
         content: Row(
           children: [
-            buildContentIcon(),
-            Text(buildContextText()),
+            buildContentIcon(syncDialogController),
+            Text(buildContextText(syncDialogController)),
           ],
         ),
         actions: [
@@ -32,7 +31,7 @@ class SyncDialog extends StatelessWidget {
     );
   }
 
-  buildContextText() {
+  buildContextText(SyncDialogController syncDialogController) {
     switch (syncDialogController.state.value) {
       case SyncState.NEW:
         return 'Yeni bir güncelleme bulundu.Lütfen güncelle butonuna basınız!';
@@ -47,7 +46,7 @@ class SyncDialog extends StatelessWidget {
     }
   }
 
-  Widget buildContentIcon() {
+  Widget buildContentIcon(SyncDialogController syncDialogController) {
     switch (syncDialogController.state.value) {
       case SyncState.NEW:
         return const Icon(Icons.sync);

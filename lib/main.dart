@@ -12,7 +12,6 @@ import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
 import 'package:ideas_desktop_getx/view/home/view/home_view.dart';
 import 'package:ideas_desktop_getx/view/order-detail/view/order_detail_view.dart';
 import 'package:ideas_desktop_getx/view/requests/requests_store.dart';
-import 'package:ideas_desktop_getx/view/select-condiment/view/select_condiment_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'locale_manager.dart';

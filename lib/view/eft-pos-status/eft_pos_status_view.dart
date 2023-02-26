@@ -5,12 +5,11 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/view/eft-pos-status/eft_pos_status_view_model.dart';
 
 class EftPosStatusPage extends StatelessWidget {
-  final EftPosStatusController controller = Get.find();
-
-  EftPosStatusPage({super.key});
+  const EftPosStatusPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final EftPosStatusController controller = Get.find();
     return Dialog(
       child: Obx(
         () => Container(
@@ -71,7 +70,7 @@ class EftPosStatusPage extends StatelessWidget {
                             ),
                             const Divider(),
                             if (controller.departments != null)
-                              ...buildDepartments(),
+                              ...buildDepartments(controller),
                           ],
                         ),
                       ),
@@ -136,7 +135,7 @@ class EftPosStatusPage extends StatelessWidget {
     );
   }
 
-  buildDepartments() {
+  buildDepartments(EftPosStatusController controller) {
     List<Widget> ret = [];
     for (var i = 0; i < controller.departments.length; i++) {
       var element = controller.departments[i];

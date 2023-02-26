@@ -11,6 +11,7 @@ class CheckService extends BaseGetConnect {
     try {
       response = await get('check/getCheckDetails', query: {
         'branchId': branchId.toString(),
+        'checkId': checkId.toString(),
       });
       return CheckDetailsModel.fromJson(response.body);
     } catch (e) {

@@ -5,22 +5,21 @@ import '../_utility/screen_keyboard/screen_keyboard_view.dart';
 import 'fast_note_view_model.dart';
 
 class FastNotePage extends StatelessWidget {
-  final FastNoteController controller = Get.find();
-
   FastNotePage({super.key});
   @override
   Widget build(BuildContext context) {
+    final FastNoteController controller = Get.find();
     return Scaffold(
       // resizeToAvoidBottomPadding: false,
       body: Obx(() {
         return SafeArea(
-          child: buildBody(),
+          child: buildBody(controller),
         );
       }),
     );
   }
 
-  Widget buildBody() {
+  Widget buildBody(FastNoteController controller) {
     return Column(
       children: [
         Container(
@@ -86,7 +85,7 @@ class FastNotePage extends StatelessWidget {
                 childAspectRatio: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
-                children: createNotes(),
+                children: createNotes(controller),
               );
             }),
           ),
@@ -95,7 +94,7 @@ class FastNotePage extends StatelessWidget {
     );
   }
 
-  List<Widget> createNotes() {
+  List<Widget> createNotes(FastNoteController controller) {
     if (controller.filteredNotes.isNotEmpty) {
       return List.generate(
         controller.filteredNotes.length,

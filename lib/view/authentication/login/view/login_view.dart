@@ -8,11 +8,10 @@ import '../../../_utility/keyboard/numeric_keyboard.dart';
 import '../viewmodel/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  final LoginController loginController = Get.find();
-
-  LoginPage({super.key});
+  const LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
+    final LoginController loginController = Get.find();
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -88,7 +87,7 @@ class LoginPage extends StatelessWidget {
                               type: KeyboardType.INT,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0)),
-                              actionColumn: buildActionColumn(),
+                              actionColumn: buildActionColumn(loginController),
                               pinFieldController:
                                   loginController.pinFieldController,
                               buttonColor: Colors.white,
@@ -112,7 +111,8 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget buildUsernameField(bool showEmail, BuildContext context) {
+  Widget buildUsernameField(
+      bool showEmail, BuildContext context, LoginController loginController) {
     return showEmail
         ? SizedBox(
             width: context.width * 30 / 100,
@@ -137,7 +137,7 @@ class LoginPage extends StatelessWidget {
     return Center(child: Image.asset(ImageConstants.instance.user));
   }
 
-  Widget buildActionColumn() {
+  Widget buildActionColumn(LoginController loginController) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

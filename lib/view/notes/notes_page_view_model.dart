@@ -33,8 +33,8 @@ class NotesPagesController extends BaseController {
 
   openAddNote() async {
     await Get.dialog(
-      CreateNotePages(),
-      arguments: item,
+      const CreateNotePages(),
+      arguments: [item],
     );
   }
 }

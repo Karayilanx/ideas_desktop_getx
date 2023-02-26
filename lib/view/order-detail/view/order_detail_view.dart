@@ -26,45 +26,46 @@ import '../component/tab_button_position_enum.dart';
 import '../model/order_detail_model.dart';
 
 class OrderDetailView extends StatelessWidget {
-  final OrderDetailController controller = Get.find();
-
-  OrderDetailView({super.key});
+  const OrderDetailView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return SafeArea(
-        child: controller.checkDetail.value != null
-            ? buildBody()
-            : const LoadingPage(),
-      );
-    });
+    final OrderDetailController controller = Get.find();
+    return Scaffold(
+      body: Obx(() {
+        return SafeArea(
+          child: controller.checkDetail.value != null
+              ? buildBody(controller)
+              : const LoadingPage(),
+        );
+      }),
+    );
   }
 
-  Widget buildBody() {
+  Widget buildBody(OrderDetailController controller) {
     return Container(
       margin: const EdgeInsets.all(6),
       child: Row(
         children: [
           SizedBox(
             width: 350,
-            child: buildLeftSideColumn(),
+            child: buildLeftSideColumn(controller),
           ),
           const SizedBox(width: 6),
           Expanded(
-            child: buildRightSideColumn(),
+            child: buildRightSideColumn(controller),
           )
         ],
       ),
     );
   }
 
-  Column buildLeftSideColumn() {
+  Column buildLeftSideColumn(OrderDetailController controller) {
     return Column(
       children: [
         SizedBox(
           height: 45,
-          child: buildOrderInfoRow(),
+          child: buildOrderInfoRow(controller),
         ),
         SizedBox(
           height: 40,
@@ -124,38 +125,38 @@ class OrderDetailView extends StatelessWidget {
         const SizedBox(height: 10),
         Obx(() {
           return Expanded(
-            child: buildLeftSideItemsList(),
+            child: buildLeftSideItemsList(controller),
           );
         }),
         const SizedBox(height: 10),
         SizedBox(
           height: 35,
-          child: buildTotalPriceContainer(),
+          child: buildTotalPriceContainer(controller),
         ),
       ],
     );
   }
 
-  Widget buildLeftSideItemsList() {
+  Widget buildLeftSideItemsList(OrderDetailController controller) {
     if (controller.mainTabIndex.value == 0 ||
         controller.mainTabIndex.value == 3) {
       if (controller.checkActionsTabIndex.value == 0) {
-        return buildCheckItemsListView();
+        return buildCheckItemsListView(controller);
       } else if (controller.checkActionsTabIndex.value == 1) {
-        return buildSelectableCheckItemsListView();
+        return buildSelectableCheckItemsListView(controller);
       } else {
         if (controller.selectedMenuItems.isNotEmpty) {
-          return buildTransferItemsList();
+          return buildTransferItemsList(controller);
         } else {
-          return buildCheckItemsListView();
+          return buildCheckItemsListView(controller);
         }
       }
     } else {
-      return buildBasketItemsListView();
+      return buildBasketItemsListView(controller);
     }
   }
 
-  Widget buildSelectableCheckItemsListView() {
+  Widget buildSelectableCheckItemsListView(OrderDetailController controller) {
     return Obx(() {
       return Container(
         color: const Color(0xff2B393F),
@@ -184,7 +185,7 @@ class OrderDetailView extends StatelessWidget {
     });
   }
 
-  Row buildOrderInfoRow() {
+  Row buildOrderInfoRow(OrderDetailController controller) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,7 +195,7 @@ class OrderDetailView extends StatelessWidget {
           children: [
             Obx(() {
               return Text(
-                getCheckString(),
+                getCheckString(controller),
                 style: const TextStyle(
                   fontSize: 14,
                   color: Colors.white,
@@ -223,26 +224,26 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  String getCheckString() {
+  String getCheckString(OrderDetailController controller) {
     switch (controller.type) {
       case OrderDetailPageType.TABLE:
         if (controller.checkDetail.value != null &&
             controller.checkDetail.value!.alias != null &&
             controller.checkDetail.value!.alias != '') {
-          return getAliasInformationString();
+          return getAliasInformationString(controller);
         } else {
-          return getTableInformationString();
+          return getTableInformationString(controller);
         }
       case OrderDetailPageType.DELIVERY:
         return 'PAKET SİPARİŞ';
       case OrderDetailPageType.ALIAS:
-        return getAliasInformationString();
+        return getAliasInformationString(controller);
       default:
         return 'Error';
     }
   }
 
-  String getAliasInformationString() {
+  String getAliasInformationString(OrderDetailController controller) {
     if (controller.checkDetail.value == null) {
       return '';
     } else if (controller.checkDetail.value!.alias != null) {
@@ -252,7 +253,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  String getTableInformationString() {
+  String getTableInformationString(OrderDetailController controller) {
     if (controller.checkDetail.value == null) {
       return '';
     } else if (controller.checkDetail.value!.table!.status ==
@@ -265,7 +266,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  Widget buildCheckItemsListView() {
+  Widget buildCheckItemsListView(OrderDetailController controller) {
     return Container(
       color: const Color(0xff2B393F),
       child: ListView.builder(
@@ -296,7 +297,7 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Widget buildBasketItemsListView() {
+  Widget buildBasketItemsListView(OrderDetailController controller) {
     return Obx(() {
       return Container(
         color: const Color(0xff2B393F),
@@ -324,7 +325,7 @@ class OrderDetailView extends StatelessWidget {
     });
   }
 
-  Container buildTotalPriceContainer() {
+  Container buildTotalPriceContainer(OrderDetailController controller) {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xff2B393F),
@@ -350,21 +351,21 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Column buildRightSideColumn() {
+  Column buildRightSideColumn(OrderDetailController controller) {
     return Column(
       children: [
         SizedBox(
           height: 60,
-          child: buildRightTopButtonsRow(),
+          child: buildRightTopButtonsRow(controller),
         ),
         Expanded(
-          child: buildRightGreySide(),
+          child: buildRightGreySide(controller),
         ),
       ],
     );
   }
 
-  Widget buildRightTopButtonsRow() {
+  Widget buildRightTopButtonsRow(OrderDetailController controller) {
     return Obx(() {
       return Container(
         margin: const EdgeInsets.only(bottom: 4),
@@ -375,10 +376,10 @@ class OrderDetailView extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                buildCheckDetailsButton(),
-                getAddItemTabButton(),
-                getExtraItemTabButton(),
-                buildCheckActionsButton()
+                buildCheckDetailsButton(controller),
+                getAddItemTabButton(controller),
+                getExtraItemTabButton(controller),
+                buildCheckActionsButton(controller)
               ],
             ),
             Row(
@@ -444,7 +445,7 @@ class OrderDetailView extends StatelessWidget {
     });
   }
 
-  Widget getAddItemTabButton() {
+  Widget getAddItemTabButton(OrderDetailController controller) {
     if (controller.isIntegration) {
       return Container();
     } else {
@@ -466,7 +467,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  Widget getExtraItemTabButton() {
+  Widget getExtraItemTabButton(OrderDetailController controller) {
     if (controller.isIntegration) {
       return Container();
     } else {
@@ -488,7 +489,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  Widget buildCheckDetailsButton() {
+  Widget buildCheckDetailsButton(OrderDetailController controller) {
     bool showCheckDetailsButton = false;
     switch (controller.type) {
       case OrderDetailPageType.TABLE:
@@ -531,7 +532,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  Widget buildCheckActionsButton() {
+  Widget buildCheckActionsButton(OrderDetailController controller) {
     bool showCheckDetailsButton = false;
     switch (controller.type) {
       case OrderDetailPageType.TABLE:
@@ -588,7 +589,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  Widget buildRightGreySide() {
+  Widget buildRightGreySide(OrderDetailController controller) {
     return Obx(() {
       return Container(
         padding: const EdgeInsets.fromLTRB(8, 0, 8, 4),
@@ -597,17 +598,17 @@ class OrderDetailView extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: controller.mainTabIndex.value == 0
-            ? buildCheckActionsColumn()
+            ? buildCheckActionsColumn(controller)
             : controller.mainTabIndex.value == 1
-                ? buildMenuColumn()
+                ? buildMenuColumn(controller)
                 : controller.mainTabIndex.value == 4
-                    ? buildCloseTableActionsColumn()
-                    : buildActionsColumn(),
+                    ? buildCloseTableActionsColumn(controller)
+                    : buildActionsColumn(controller),
       );
     });
   }
 
-  Widget buildMenuColumn() {
+  Widget buildMenuColumn(OrderDetailController controller) {
     return Obx(() {
       return controller.selectedCategory.value != null
           ? Column(
@@ -767,13 +768,15 @@ class OrderDetailView extends StatelessWidget {
                                               if (res != null) {
                                                 controller.searchCtrl.text =
                                                     res;
-                                                createFilteredMenuItems();
+                                                createFilteredMenuItems(
+                                                    controller);
                                                 controller.filterMenuItems();
                                               }
                                             }
                                           },
                                           onChanged: (v) => {
-                                                createFilteredMenuItems(),
+                                                createFilteredMenuItems(
+                                                    controller),
                                                 controller.filterMenuItems(),
                                               }),
                                     ),
@@ -834,13 +837,13 @@ class OrderDetailView extends StatelessWidget {
                         child: Obx(() {
                           return GridView.extent(
                               childAspectRatio: 1.5,
-                              maxCrossAxisExtent: getMenuItemWidth(),
+                              maxCrossAxisExtent: getMenuItemWidth(controller),
                               mainAxisSpacing: 4,
                               crossAxisSpacing: 4,
                               controller: controller.controller,
                               children: controller.hideSearch.value
-                                  ? createMenuItems()
-                                  : createFilteredMenuItems());
+                                  ? createMenuItems(controller)
+                                  : createFilteredMenuItems(controller));
                         }),
                       ),
                     ],
@@ -858,7 +861,7 @@ class OrderDetailView extends StatelessWidget {
     });
   }
 
-  List<Widget> createFilteredMenuItems() {
+  List<Widget> createFilteredMenuItems(OrderDetailController controller) {
     List<Widget> ret = [];
     for (var cat in controller.menuItemCategories) {
       for (var subcat in cat!.menuItemSubCategories!) {
@@ -877,7 +880,7 @@ class OrderDetailView extends StatelessWidget {
     return ret;
   }
 
-  List<Widget> createSubCategories() {
+  List<Widget> createSubCategories(OrderDetailController controller) {
     List<Widget> ret = [];
     for (var cat in controller.menuItemCategories) {
       for (var subcat in cat!.menuItemSubCategories!) {
@@ -891,7 +894,7 @@ class OrderDetailView extends StatelessWidget {
     return ret;
   }
 
-  List<Widget> createMenuItems() {
+  List<Widget> createMenuItems(OrderDetailController controller) {
     if (controller.selectedSubCategory.value != null) {
       if (controller.selectedSubCategory.value!.menuItems!.isNotEmpty) {
         return List.generate(
@@ -910,7 +913,7 @@ class OrderDetailView extends StatelessWidget {
     return [];
   }
 
-  Widget buildCheckActionButtons() {
+  Widget buildCheckActionButtons(OrderDetailController controller) {
     return Obx(() {
       return Container(
         margin: const EdgeInsets.symmetric(vertical: 6),
@@ -969,12 +972,12 @@ class OrderDetailView extends StatelessWidget {
     });
   }
 
-  Column buildCheckActionsColumn() {
+  Column buildCheckActionsColumn(OrderDetailController controller) {
     return Column(
       children: [
         Expanded(
           flex: 10,
-          child: buildCheckActionButtons(),
+          child: buildCheckActionButtons(controller),
         ),
         const Divider(
           color: Colors.black,
@@ -984,17 +987,17 @@ class OrderDetailView extends StatelessWidget {
           return Expanded(
             flex: 90,
             child: controller.checkActionsTabIndex.value == 0
-                ? buildPaymentAndKeyboardRow(controller.type)
+                ? buildPaymentAndKeyboardRow(controller.type, controller)
                 : controller.checkActionsTabIndex.value == 1
-                    ? buildCheckTransferTab()
-                    : buildSelectTableTab(),
+                    ? buildCheckTransferTab(controller)
+                    : buildSelectTableTab(controller),
           );
         })
       ],
     );
   }
 
-  Widget buildCloseTableActionsColumn() {
+  Widget buildCloseTableActionsColumn(OrderDetailController controller) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1016,7 +1019,7 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Widget buildActionsColumn() {
+  Widget buildActionsColumn(OrderDetailController controller) {
     return SingleChildScrollView(
       controller: controller.actionsScrollController,
       child: Column(
@@ -1091,7 +1094,7 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Widget buildSelectTableTab() {
+  Widget buildSelectTableTab(OrderDetailController controller) {
     return controller.tableGroups != null
         ? Column(
             children: [
@@ -1161,15 +1164,16 @@ class OrderDetailView extends StatelessWidget {
                 child: Obx(
                   () {
                     return GridView.extent(
-                      maxCrossAxisExtent: getTableWidth(),
+                      maxCrossAxisExtent: getTableWidth(controller),
                       childAspectRatio: 2,
                       mainAxisSpacing: 4,
                       crossAxisSpacing: 4,
                       shrinkWrap: true,
                       children: controller.selectedTableGroup.value!.name !=
                               "Tümü"
-                          ? createTables(controller.selectedTableGroup.value!)
-                          : createFilteredTables(),
+                          ? createTables(
+                              controller.selectedTableGroup.value!, controller)
+                          : createFilteredTables(controller),
                     );
                   },
                 ),
@@ -1184,10 +1188,11 @@ class OrderDetailView extends StatelessWidget {
           );
   }
 
-  List<Widget> createTables(HomeGroupWithDetails group) {
+  List<Widget> createTables(
+      HomeGroupWithDetails group, OrderDetailController controller) {
     if (controller.selectedTableGroup.value != null) {
       if (controller.selectedTableGroup.value!.tables!.isNotEmpty) {
-        return createTableWidgets(group);
+        return createTableWidgets(group, controller);
       } else {
         return [];
       }
@@ -1195,7 +1200,7 @@ class OrderDetailView extends StatelessWidget {
     return [];
   }
 
-  double getTableWidth() {
+  double getTableWidth(OrderDetailController controller) {
     var widthStr =
         controller.localeManager.getStringValue(PreferencesKeys.TABLE_WIDTH);
     var res = double.tryParse(widthStr);
@@ -1206,7 +1211,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  double getMenuItemWidth() {
+  double getMenuItemWidth(OrderDetailController controller) {
     var widthStr = controller.localeManager
         .getStringValue(PreferencesKeys.MENU_ITEM_WIDTH);
     var res = double.tryParse(widthStr);
@@ -1217,7 +1222,7 @@ class OrderDetailView extends StatelessWidget {
     }
   }
 
-  List<Widget> createFilteredTables() {
+  List<Widget> createFilteredTables(OrderDetailController controller) {
     List<Widget> ret = [];
 
     for (var group in controller.tableGroups) {
@@ -1272,7 +1277,8 @@ class OrderDetailView extends StatelessWidget {
     return ret;
   }
 
-  List<Widget> createTableWidgets(HomeGroupWithDetails group) {
+  List<Widget> createTableWidgets(
+      HomeGroupWithDetails group, OrderDetailController controller) {
     if (group.name == 'Açık Hesaplar' &&
         controller.selectedTableGroup.value != null &&
         controller.selectedTableGroup.value!.name != 'Açık Hesaplar') return [];
@@ -1313,7 +1319,7 @@ class OrderDetailView extends StatelessWidget {
     });
   }
 
-  Widget buildCheckTransferTab() {
+  Widget buildCheckTransferTab(OrderDetailController controller) {
     return Column(
       children: [
         Expanded(
@@ -1322,29 +1328,29 @@ class OrderDetailView extends StatelessWidget {
         ),
         Expanded(
           flex: 90,
-          child: buildTransferListAndActionsRow(),
+          child: buildTransferListAndActionsRow(controller),
         ),
       ],
     );
   }
 
-  Row buildTransferListAndActionsRow() {
+  Row buildTransferListAndActionsRow(OrderDetailController controller) {
     return Row(
       children: [
         Expanded(
           flex: 60,
-          child: buildTransferItemsColumn(),
+          child: buildTransferItemsColumn(controller),
         ),
         const Spacer(flex: 2),
         Expanded(
           flex: 60,
-          child: buildTransferActionsColumn(),
+          child: buildTransferActionsColumn(controller),
         )
       ],
     );
   }
 
-  Column buildTransferActionsColumn() {
+  Column buildTransferActionsColumn(OrderDetailController controller) {
     return Column(
       children: [
         PaymentButtonRow(
@@ -1420,14 +1426,14 @@ class OrderDetailView extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: buildPaymentTextColumn(),
+            child: buildPaymentTextColumn(controller),
           ),
         )
       ],
     );
   }
 
-  Column buildTransferItemsColumn() {
+  Column buildTransferItemsColumn(OrderDetailController controller) {
     return Column(
       children: [
         Expanded(
@@ -1437,19 +1443,19 @@ class OrderDetailView extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: Colors.black54)),
-            child: buildTransferItemsList(),
+            child: buildTransferItemsList(controller),
           ),
         ),
         const Spacer(flex: 3),
         Expanded(
           flex: 15,
-          child: buildTransferItemsTotalPrice(),
+          child: buildTransferItemsTotalPrice(controller),
         )
       ],
     );
   }
 
-  Container buildTransferItemsTotalPrice() {
+  Container buildTransferItemsTotalPrice(OrderDetailController controller) {
     return Container(
         decoration: BoxDecoration(
             color: Colors.white,
@@ -1469,7 +1475,7 @@ class OrderDetailView extends StatelessWidget {
         ));
   }
 
-  Widget buildTransferItemsList() {
+  Widget buildTransferItemsList(OrderDetailController controller) {
     return Container(
       color: controller.checkActionsTabIndex.value == 1
           ? Colors.white
@@ -1516,35 +1522,36 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Row buildPaymentAndKeyboardRow(OrderDetailPageType type) {
+  Row buildPaymentAndKeyboardRow(
+      OrderDetailPageType type, OrderDetailController controller) {
     return Row(
       children: [
         Expanded(
           flex: 40,
-          child: buildKeyboardAndPrintColumn(),
+          child: buildKeyboardAndPrintColumn(controller),
         ),
         const Spacer(flex: 5),
         Expanded(
           flex: 40,
-          child: buildPaymentButtonsColumn(type),
+          child: buildPaymentButtonsColumn(type, controller),
         )
       ],
     );
   }
 
-  Column buildKeyboardAndPrintColumn() {
+  Column buildKeyboardAndPrintColumn(OrderDetailController controller) {
     return Column(
       children: [
-        buildPriceInput(),
+        buildPriceInput(controller),
         SizedBox(height: 5),
-        Expanded(flex: 88, child: buildKeyboard()),
+        Expanded(flex: 88, child: buildKeyboard(controller)),
         SizedBox(height: 10),
         Expanded(flex: 12, child: buildPrintButtonsRow())
       ],
     );
   }
 
-  TextFormField buildPriceInput() {
+  TextFormField buildPriceInput(OrderDetailController controller) {
     return TextFormField(
       controller: controller.priceCtrl,
       enabled: true,
@@ -1565,7 +1572,7 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  NumericKeyboard buildKeyboard() {
+  NumericKeyboard buildKeyboard(OrderDetailController controller) {
     return NumericKeyboard(
       buttonColor: Colors.white,
       pinFieldController: controller.priceCtrl,
@@ -1573,7 +1580,7 @@ class OrderDetailView extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
       ),
       type: KeyboardType.DOUBLE,
-      actionColumn: buildActionColumn(),
+      actionColumn: buildActionColumn(controller),
       style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
       clearCallback: () {
         controller.clearAddition();
@@ -1581,7 +1588,7 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Widget buildActionColumn() {
+  Widget buildActionColumn(OrderDetailController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -1668,7 +1675,8 @@ class OrderDetailView extends StatelessWidget {
     );
   }
 
-  Column buildPaymentButtonsColumn(OrderDetailPageType type) {
+  Column buildPaymentButtonsColumn(
+      OrderDetailPageType type, OrderDetailController controller) {
     return Column(
       children: [
         PaymentButtonRow(
@@ -1717,24 +1725,24 @@ class OrderDetailView extends StatelessWidget {
         const SizedBox(height: 8),
         Expanded(
           flex: 3,
-          child: buildPaymentTextContainer(),
+          child: buildPaymentTextContainer(controller),
         )
       ],
     );
   }
 
-  Widget buildPaymentTextContainer() {
+  Widget buildPaymentTextContainer(OrderDetailController controller) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: buildPaymentTextColumn(),
+      child: buildPaymentTextColumn(controller),
     );
   }
 
-  Widget buildPaymentTextColumn() {
+  Widget buildPaymentTextColumn(OrderDetailController controller) {
     return CustomScrollView(
       slivers: [
         SliverFillRemaining(

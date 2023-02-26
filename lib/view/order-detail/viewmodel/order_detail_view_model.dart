@@ -1031,6 +1031,8 @@ class OrderDetailController extends BaseController {
           Get.back(closeOverlays: true);
         } else {
           await getCheckDetails();
+          resetSelectedMenuItems();
+          resetSelectableMenuItems();
         }
       }
     }

@@ -53,12 +53,12 @@ final ThemeData ideasTheme = ThemeData(
         brightness: Brightness.light,
       ),
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       labelLarge: TextStyle(color: Colors.black, fontSize: 14),
       headlineSmall: TextStyle(color: Colors.black, fontSize: 16),
       headlineMedium: TextStyle(color: Colors.black, fontSize: 22),
     ),
-    inputDecorationTheme: const InputDecorationTheme(
+    inputDecorationTheme: InputDecorationTheme(
       errorStyle: TextStyle(
         fontSize: 14.0,
       ),
@@ -109,7 +109,7 @@ final ThemeData ideasTheme = ThemeData(
         return null;
       }),
     ),
-    bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
+    bottomAppBarTheme: BottomAppBarTheme(color: const Color(0xffffffff)),
     colorScheme: ColorScheme.fromSwatch(
             primarySwatch: const MaterialColor(4291009394, {
       50: Color(0xfff7f2ed),

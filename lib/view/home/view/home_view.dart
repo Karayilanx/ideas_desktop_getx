@@ -12,12 +12,12 @@ import '../component/table_widgets.dart';
 
 class HomePage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final HomeController homeController = Get.find();
 
   HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final HomeController homeController = Get.find();
     return SafeArea(
         child: Scaffold(
       key: _scaffoldKey,
@@ -189,7 +189,7 @@ class HomePage extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      buildMenuIcon(_scaffoldKey),
+                      buildMenuIcon(_scaffoldKey, homeController),
                       const VerticalDivider(
                         color: Colors.white,
                         thickness: 2,
@@ -245,7 +245,7 @@ class HomePage extends StatelessWidget {
                           }),
                         ),
                         homeController.hideSearch.value
-                            ? buildTableGroupsDropdown()
+                            ? buildTableGroupsDropdown(homeController)
                             : Center(
                                 child: SizedBox(
                                   width: 200,
@@ -262,7 +262,8 @@ class HomePage extends StatelessWidget {
                                           if (res != null) {
                                             homeController.searchCtrl.text =
                                                 res;
-                                            createFilteredTables();
+                                            createFilteredTables(
+                                                homeController);
                                             // homeController.filterTables();
                                           }
                                         }
@@ -275,7 +276,8 @@ class HomePage extends StatelessWidget {
                                       ),
                                       controller: homeController.searchCtrl,
                                       onChanged: (v) => {
-                                            createFilteredTables(),
+                                            createFilteredTables(
+                                                homeController),
                                             // homeController.filterTables(),
                                           }),
                                 ),
@@ -349,13 +351,14 @@ class HomePage extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 4),
-                          maxCrossAxisExtent: getTableWidth(),
+                          maxCrossAxisExtent: getTableWidth(homeController),
                           childAspectRatio: 2,
                           mainAxisSpacing: 8,
                           crossAxisSpacing: 8,
                           shrinkWrap: true,
                           children: createTableWidgets(
-                              homeController.tableGroups[index + 1]),
+                              homeController.tableGroups[index + 1],
+                              homeController),
                         );
                       },
                       itemCount: homeController.tableGroups != null &&
@@ -367,20 +370,21 @@ class HomePage extends StatelessWidget {
                     return GridView.extent(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 10),
-                        maxCrossAxisExtent: getTableWidth(),
+                        maxCrossAxisExtent: getTableWidth(homeController),
                         childAspectRatio: 2,
                         mainAxisSpacing: 8,
                         crossAxisSpacing: 8,
                         children: homeController.hideSearch.value
                             ? createTables(
-                                homeController.selectedTableGroup.value!)
-                            : createFilteredTables());
+                                homeController.selectedTableGroup.value!,
+                                homeController)
+                            : createFilteredTables(homeController));
                   }
                 } else {
                   return GridView.extent(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 10),
-                      maxCrossAxisExtent: getTableWidth(),
+                      maxCrossAxisExtent: getTableWidth(homeController),
                       childAspectRatio: 2,
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 8,
@@ -388,8 +392,9 @@ class HomePage extends StatelessWidget {
                               homeController.selectedTableGroup.value!.name !=
                                   "Tümü"
                           ? createTables(
-                              homeController.selectedTableGroup.value!)
-                          : createFilteredTables());
+                              homeController.selectedTableGroup.value!,
+                              homeController)
+                          : createFilteredTables(homeController));
                 }
               }
               return Container();
@@ -400,7 +405,7 @@ class HomePage extends StatelessWidget {
     ));
   }
 
-  double getTableWidth() {
+  double getTableWidth(HomeController homeController) {
     var tableWidthStr = homeController.localeManager
         .getStringValue(PreferencesKeys.TABLE_WIDTH);
     var res = double.tryParse(tableWidthStr);
@@ -411,10 +416,11 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  List<Widget> createTables(HomeGroupWithDetails group) {
+  List<Widget> createTables(
+      HomeGroupWithDetails group, HomeController homeController) {
     if (homeController.selectedTableGroup.value != null) {
       if (homeController.selectedTableGroup.value!.tables!.isNotEmpty) {
-        return createTableWidgets(group);
+        return createTableWidgets(group, homeController);
       } else {
         return [];
       }
@@ -422,7 +428,8 @@ class HomePage extends StatelessWidget {
     return [];
   }
 
-  List<Widget> createTableWidgets(HomeGroupWithDetails group) {
+  List<Widget> createTableWidgets(
+      HomeGroupWithDetails group, HomeController homeController) {
     if (group.name == 'Açık Hesaplar' &&
         homeController.selectedTableGroup.value != null &&
         homeController.selectedTableGroup.value!.name != 'Açık Hesaplar') {
@@ -455,7 +462,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  List<Widget> createFilteredTables() {
+  List<Widget> createFilteredTables(HomeController homeController) {
     List<Widget> ret = [];
 
     for (var group in homeController.tableGroups) {
@@ -493,7 +500,7 @@ class HomePage extends StatelessWidget {
     return ret;
   }
 
-  Widget buildTableGroupsDropdown() {
+  Widget buildTableGroupsDropdown(HomeController homeController) {
     return Obx(
       () => Container(
         decoration: const BoxDecoration(
@@ -539,7 +546,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildMenuIcon(GlobalKey<ScaffoldState> key) {
+  Widget buildMenuIcon(
+      GlobalKey<ScaffoldState> key, HomeController homeController) {
     return Obx(() {
       return GestureDetector(
         onTap: () => key.currentState!.openDrawer(),
