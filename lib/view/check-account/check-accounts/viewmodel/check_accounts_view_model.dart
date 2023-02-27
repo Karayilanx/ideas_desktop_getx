@@ -1,39 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import '../../../../core/base/model/base_view_model.dart';
-import '../../../../core/constants/navigation/navigation_constants.dart';
+import 'package:get/get.dart';
+import 'package:ideas_desktop_getx/base_controller.dart';
+import 'package:ideas_desktop_getx/extension/string_extension.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../../model/check_model.dart';
 import '../../../../service/check/check_service.dart';
 import '../../../../service/check_account/check_account_service.dart';
-import '../../../_utility/service_helper.dart';
-import '../../../authentication/auth_store.dart';
 import '../../check-account-detail/view/check_account_detail_view.dart';
-import '../../check-account-transactions/navigation/check_account_transactions_navigation_args.dart';
 import '../component/select_check_account_view.dart';
 import '../navigation/check_accounts_navigation_args.dart';
-import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
-import '../../../../core/extension/string_extension.dart';
 
-part 'check_accounts_view_model.g.dart';
+class CheckAccountsController extends BaseController {
+  final int? checkId = (Get.arguments as CheckAccountsArguments).checkId;
+  final bool? transferAll =
+      (Get.arguments as CheckAccountsArguments).transferAll;
+  final List<CheckMenuItemModel?>? menuItems =
+      (Get.arguments as CheckAccountsArguments).menuItems;
+  final CheckAccountsPageType type =
+      (Get.arguments as CheckAccountsArguments).type;
 
-class CheckAccountsViewModel = _CheckAccountsViewModelBase
-    with _$CheckAccountsViewModel;
-
-abstract class _CheckAccountsViewModelBase
-    with Store, BaseViewModel, ServiceHelper {
-  final int? checkId;
-  final bool? transferAll;
-  final List<CheckMenuItemModel?>? menuItems;
-  final CheckAccountsPageType type;
-  late CheckAccountService checkAccountService;
-  late CheckService checkService;
-  late AuthStore authStore;
+  CheckAccountService checkAccountService = Get.find();
+  CheckService checkService = Get.find();
   TextEditingController priceCtrl = TextEditingController();
   TextEditingController searchCtrl = TextEditingController();
 
-  final List<CheckAccountType> types = [
+  late final List<CheckAccountType> types = [
     CheckAccountType(name: 'Hepsi', value: 0),
     CheckAccountType(name: 'Müşteri', value: 1),
     CheckAccountType(name: 'Tedarikçi', value: 2),
@@ -42,35 +34,22 @@ abstract class _CheckAccountsViewModelBase
     CheckAccountType(name: 'Ödenmez', value: 8),
   ];
 
-  @observable
-  int selectedType = 1;
-  @observable
-  List<CheckAccountListItem>? checkAccounts = [];
-  @observable
-  List<CheckAccountListItem>? filteredCheckAccounts = [];
-  @observable
-  CheckAccountListItem? selectedCheckAccount;
-
-  @observable
-  CheckAccountSummaryModel? checkAccountSummary;
-
-  _CheckAccountsViewModelBase(
-      this.checkId, this.transferAll, this.menuItems, this.type);
+  RxInt selectedType = RxInt(1);
+  RxList<CheckAccountListItem> checkAccounts = RxList([]);
+  RxList<CheckAccountListItem> filteredCheckAccounts = RxList([]);
+  Rx<CheckAccountListItem?> selectedCheckAccount =
+      Rx<CheckAccountListItem?>(null);
+  Rx<CheckAccountSummaryModel?> checkAccountSummary =
+      Rx<CheckAccountSummaryModel?>(null);
 
   @override
-  void setContext(BuildContext buildContext) =>
-      this.buildContext = buildContext;
-  @override
-  void init() {
-    checkAccountService = CheckAccountService(networkManager!.networkManager);
-    checkService = CheckService(networkManager!.networkManager);
-    authStore = buildContext!.read<AuthStore>();
+  void onInit() {
+    super.onInit();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getCheckAccounts();
     });
   }
 
-  @action
   Future getCheckAccounts() async {
     EasyLoading.show(
       status: 'Lütfen bekleyin...',
@@ -78,127 +57,115 @@ abstract class _CheckAccountsViewModelBase
       maskType: EasyLoadingMaskType.black,
     );
     List<int> checkAccountTypeIds = [];
-    checkAccounts = await checkAccountService.getCheckAccounts(
+    checkAccounts(await checkAccountService.getCheckAccounts(
       GetCheckAccountsInput(
           branchId: authStore.user!.branchId,
           checkAccountTypeIds: checkAccountTypeIds),
-    );
+    ));
 
     if (checkId != null && checkId! > 0) {
       if (type == CheckAccountsPageType.Check) {
-        checkAccounts =
-            checkAccounts!.where((x) => x.checkAccountTypeId == 1).toList();
-        checkAccounts = checkAccounts;
-        filteredCheckAccounts = checkAccounts;
+        checkAccounts(
+            checkAccounts.where((x) => x.checkAccountTypeId == 1).toList());
+        filteredCheckAccounts(
+            checkAccounts.where((x) => x.checkAccountTypeId == 1).toList());
         changeSelectedType(1);
       } else if (type == CheckAccountsPageType.Unpayable) {
-        checkAccounts = checkAccounts!
+        checkAccounts(checkAccounts
             .where((x) =>
                 x.checkAccountTypeId == 8 ||
                 x.checkAccountTypeId == 9 ||
                 x.checkAccountTypeId == 10)
-            .toList();
-        checkAccounts = checkAccounts;
-        filteredCheckAccounts = checkAccounts;
+            .toList());
+        filteredCheckAccounts(checkAccounts);
         changeSelectedType(0);
       }
     } else {
-      checkAccounts = checkAccounts;
-      filteredCheckAccounts = checkAccounts;
+      checkAccounts.refresh();
+      filteredCheckAccounts(checkAccounts);
       changeSelectedType(1);
     }
 
     EasyLoading.dismiss();
-    if (checkAccounts == null) {
-      navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-    }
-
-    EasyLoading.dismiss();
   }
 
-  @action
   changeSelectedType(int val) {
-    selectedType = val;
+    selectedType(val);
     filterCheckAccounts(searchCtrl.text);
   }
 
-  @action
   void filterCheckAccounts(String text) {
-    if (selectedType != 0) {
-      filteredCheckAccounts = checkAccounts!
+    if (selectedType.value != 0) {
+      filteredCheckAccounts(checkAccounts
           .where((element) =>
               element.name!.toLowerCase().contains(text.toLowerCase()) &&
-              element.checkAccountTypeId == selectedType)
-          .toList();
+              element.checkAccountTypeId == selectedType.value)
+          .toList());
     } else {
-      filteredCheckAccounts = checkAccounts!
+      filteredCheckAccounts(checkAccounts
           .where((element) =>
               element.name!.toLowerCase().contains(text.toLowerCase()))
-          .toList();
+          .toList());
     }
   }
 
   Future showCheckAccountDetailsDialog(int checkAccountId) async {
-    int? res = await showDialog(
-        builder: (context) =>
-            CheckAccountDetailPage(type: type, checkAccountId: checkAccountId),
-        context: buildContext!,
-        barrierDismissible: false);
+    int? res = await Get.dialog(
+      CheckAccountDetailPage(),
+      barrierDismissible: false,
+      arguments: [
+        type,
+        checkAccountId,
+      ],
+    );
     if (res != null) {
       await getCheckAccounts();
       filterCheckAccounts(searchCtrl.text);
-      for (var item in checkAccounts!) {
+      for (var item in checkAccounts) {
         if (item.checkAccountId == res) selectCheckAccount(item);
       }
     }
   }
 
   bool isAccountSelected(CheckAccountListItem item) {
-    if (selectedCheckAccount != null &&
-        selectedCheckAccount!.checkAccountId == item.checkAccountId) {
+    if (selectedCheckAccount.value != null &&
+        selectedCheckAccount.value!.checkAccountId == item.checkAccountId) {
       return true;
     }
     return false;
   }
 
-  @action
   void selectCheckAccount(CheckAccountListItem item) {
     if (type == CheckAccountsPageType.Check ||
         type == CheckAccountsPageType.CheckCustomer ||
         type == CheckAccountsPageType.Unpayable) {
-      selectedCheckAccount = item;
+      selectedCheckAccount(item);
     } else if (type == CheckAccountsPageType.CheckAccount) {
-      selectedCheckAccount = item;
+      selectedCheckAccount(item);
       getCheckAccountSummary();
     }
   }
 
-  @action
   getCheckAccountSummary() async {
     EasyLoading.show(
       status: 'Lütfen Bekleyiniz...',
       dismissOnTap: false,
       maskType: EasyLoadingMaskType.black,
     );
-    checkAccountSummary = await checkAccountService
-        .getCheckAccountSummary(selectedCheckAccount!.checkAccountId);
+    checkAccountSummary(await checkAccountService
+        .getCheckAccountSummary(selectedCheckAccount.value!.checkAccountId));
     EasyLoading.dismiss();
   }
 
   void navigateToCheckAccountTransactions(int? checkAccountId) async {
-    await navigation.navigateToPage(
-        path: NavigationConstants.CHECK_ACCOUNT_TRANSACTIONS,
-        data: CheckAccountTransactionsArguments(
-          checkAccountId: checkAccountId,
-        ));
+    await Get.toNamed('check-acoount-transactions', arguments: checkAccountId);
     await getCheckAccounts();
-    if (selectedCheckAccount != null) getCheckAccountSummary();
+    if (selectedCheckAccount.value != null) getCheckAccountSummary();
   }
 
-  @action
   Future insertCheckAccountTransaction(
       int checkAccountTransactionTypeId) async {
-    if (selectedCheckAccount != null) {
+    if (selectedCheckAccount.value != null) {
       if (priceCtrl.text == '') {
         showDefaultDialog(
             'Hata', 'Önce ödeme yapmak istediğiniz tutarı giriniz!');
@@ -212,35 +179,33 @@ abstract class _CheckAccountsViewModelBase
       var tr = await checkAccountService
           .insertCheckAccountTransaction(CheckAccountTransactionModel(
         amount: priceCtrl.text.getDouble,
-        checkAccountId: selectedCheckAccount!.checkAccountId,
+        checkAccountId: selectedCheckAccount.value!.checkAccountId,
         checkAccountTransactionTypeId: checkAccountTransactionTypeId,
         terminalUserId: authStore.user!.terminalUserId!,
       ));
       EasyLoading.dismiss();
       if (tr!.value! > 0) {
         await getCheckAccountSummary();
-        updateCheckAccountBalance(
-            selectedCheckAccount!.checkAccountId, checkAccountSummary!.balance);
+        updateCheckAccountBalance(selectedCheckAccount.value!.checkAccountId,
+            checkAccountSummary.value!.balance);
         priceCtrl.text = '';
       }
     }
   }
 
-  @action
   void updateCheckAccountBalance(int? checkAccountId, double? newBalance) {
-    for (var acc in checkAccounts!) {
+    for (var acc in checkAccounts) {
       if (acc.checkAccountId == checkAccountId) {
         acc.balance = newBalance;
         break;
       }
     }
 
-    checkAccounts = checkAccounts;
+    checkAccounts.refresh();
   }
 
-  @action
   void getPercentage() {
-    priceCtrl.text = (selectedCheckAccount!.balance!.abs() *
+    priceCtrl.text = (selectedCheckAccount.value!.balance!.abs() *
             (double.parse(priceCtrl.text).abs()) /
             100)
         .abs()
@@ -248,35 +213,35 @@ abstract class _CheckAccountsViewModelBase
   }
 
   Future changeCheckCustomer() async {
-    if (selectedCheckAccount != null) {
+    if (selectedCheckAccount.value != null) {
       if (checkId! > 0) {
         EasyLoading.show(
           status: 'Lütfen Bekleyiniz...',
           dismissOnTap: false,
           maskType: EasyLoadingMaskType.black,
         );
-        var res = await checkService.changeCheckCustomer(checkId,
-            selectedCheckAccount!.checkAccountId, authStore.user!.branchId!);
+        var res = await checkService.changeCheckCustomer(
+            checkId,
+            selectedCheckAccount.value!.checkAccountId,
+            authStore.user!.branchId!);
         EasyLoading.dismiss();
         if (res != null) {
           if (authStore.settings!.autoLock!) {
-            await navigation.navigateToPage(
-                path: NavigationConstants.LOGIN_VIEW);
+            Get.offNamed('/');
           } else {
-            await navigation.navigateToPage(
-                path: NavigationConstants.HOME_VIEW);
+            Get.offNamed('/home');
           }
         }
       } else {
-        Navigator.pop(buildContext!, selectedCheckAccount!.checkAccountId);
+        Get.back(result: selectedCheckAccount.value!.checkAccountId);
       }
     }
   }
 
   Future transferCheckToCheckAccount() async {
-    if (selectedCheckAccount != null) {
+    if (selectedCheckAccount.value != null) {
       TransferCheckToCheckAccountInput inp = TransferCheckToCheckAccountInput(
-        checkAccountId: selectedCheckAccount!.checkAccountId,
+        checkAccountId: selectedCheckAccount.value!.checkAccountId,
         checkId: checkId,
         menuItems: menuItems,
         transferAll: transferAll,
@@ -292,16 +257,16 @@ abstract class _CheckAccountsViewModelBase
       EasyLoading.dismiss();
       if (res != null) {
         if (authStore.settings!.autoLock!) {
-          await navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);
+          Get.offNamed('/');
         } else {
-          await navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
+          Get.offNamed('/home');
         }
       }
     }
   }
 
   Future closeUnpayableCheck() async {
-    if (selectedCheckAccount != null) {
+    if (selectedCheckAccount.value != null) {
       EasyLoading.show(
         status: 'Lütfen Bekleyiniz...',
         dismissOnTap: false,
@@ -309,25 +274,24 @@ abstract class _CheckAccountsViewModelBase
       );
       var res = await checkService.closeUnpayableCheck(
         checkId,
-        selectedCheckAccount!.checkAccountId,
+        selectedCheckAccount.value!.checkAccountId,
         authStore.user!.branchId!,
         authStore.user!.terminalUserId!,
       );
       EasyLoading.dismiss();
       if (res != null) {
         if (authStore.settings!.autoLock!) {
-          await navigation.navigateToPage(path: NavigationConstants.LOGIN_VIEW);
+          Get.offNamed('/');
         } else {
-          await navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
+          Get.offNamed('/home');
         }
       }
     }
   }
 
-  @action
   Future removeCheckAccount() async {
-    var res = await openYesNoDialog(buildContext!,
-        '${selectedCheckAccount!.name} adlı cari hesap kaldırılacak. Onaylıyor musunuz?');
+    var res = await openYesNoDialog(
+        '${selectedCheckAccount.value!.name} adlı cari hesap kaldırılacak. Onaylıyor musunuz?');
     if (res) {
       EasyLoading.show(
         status: 'Lütfen Bekleyiniz...',
@@ -335,47 +299,42 @@ abstract class _CheckAccountsViewModelBase
         maskType: EasyLoadingMaskType.black,
       );
       var ress = await checkAccountService
-          .removeCheckAccount(selectedCheckAccount!.checkAccountId!);
+          .removeCheckAccount(selectedCheckAccount.value!.checkAccountId!);
       EasyLoading.dismiss();
       if (ress != null) {
         getCheckAccounts();
-        selectedCheckAccount = null;
+        selectedCheckAccount(null);
       }
     }
   }
 
   Future markCheckAccountUnpayable() async {
-    var res = await openYesNoDialog(buildContext!,
-        '${selectedCheckAccount!.name} adlı cari hesap ödenmeze atılacak. Onaylıyor musunuz?');
+    var res = await openYesNoDialog(
+        '${selectedCheckAccount.value!.name} adlı cari hesap ödenmeze atılacak. Onaylıyor musunuz?');
     if (res) {
       EasyLoading.show(
         status: 'Lütfen Bekleyiniz...',
         dismissOnTap: false,
         maskType: EasyLoadingMaskType.black,
       );
-      var ress = await checkAccountService
-          .markCheckAccountUnpayable(selectedCheckAccount!.checkAccountId!);
+      var ress = await checkAccountService.markCheckAccountUnpayable(
+          selectedCheckAccount.value!.checkAccountId!);
       EasyLoading.dismiss();
       if (ress != null) getCheckAccounts();
     }
   }
 
   Future transferCheckAccountToCheckAccount() async {
-    var res = await showDialog(
-      context: buildContext!,
-      builder: (context) => SelectCheckAccountPage(
-        checkAccountId: selectedCheckAccount!.checkAccountId!,
-        transferAll: true,
-      ),
-    );
+    var res = await Get.dialog(SelectCheckAccountPage(),
+        arguments: [selectedCheckAccount.value!.checkAccountId!, true, null]);
     if (res != null) {
       await getCheckAccounts();
-      selectedCheckAccount = null;
+      selectedCheckAccount(null);
     }
   }
 
   void closePage() {
-    Navigator.pop(buildContext!);
+    Get.back();
   }
 }
 

@@ -8,6 +8,9 @@ import 'package:ideas_desktop_getx/bindings.dart';
 import 'package:ideas_desktop_getx/theme/theme.dart';
 import 'package:ideas_desktop_getx/view/authentication/auth_store.dart';
 import 'package:ideas_desktop_getx/view/authentication/login/view/login_view.dart';
+import 'package:ideas_desktop_getx/view/check-account/check-account-transactions/view/check_account_transactions_view.dart';
+import 'package:ideas_desktop_getx/view/check-account/check-accounts/view/check_accounts_view.dart';
+import 'package:ideas_desktop_getx/view/check-detail/check_detail_view.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
 import 'package:ideas_desktop_getx/view/home/view/home_view.dart';
 import 'package:ideas_desktop_getx/view/order-detail/view/order_detail_view.dart';
@@ -65,6 +68,18 @@ class MyApp extends StatelessWidget {
           name: '/order-detail',
           page: () => OrderDetailView(),
           binding: OrderDetailsBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/check-accounts',
+          page: () => CheckAccountsPage(),
+          binding: CheckAccountsBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/check-acoount-transactions',
+          page: () => CheckAccountTransactionsPage(),
+          binding: CheckAccountTransactionBindings(),
           transitionDuration: Duration.zero,
         ),
       ],

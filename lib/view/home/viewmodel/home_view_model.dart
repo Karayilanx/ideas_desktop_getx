@@ -16,6 +16,7 @@ import 'package:ideas_desktop_getx/service/stock/stock_service.dart';
 import 'package:ideas_desktop_getx/service/yemeksepeti/yemeksepeti_service.dart';
 import 'package:ideas_desktop_getx/view/_utility/msg_dialog.dart';
 import 'package:ideas_desktop_getx/view/_utility/sync_dialog/sync_dialog_view.dart';
+import 'package:ideas_desktop_getx/view/check-account/check-accounts/navigation/check_accounts_navigation_args.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
 import 'package:ideas_desktop_getx/view/home/component/new_check_dialog.dart';
 import 'package:ideas_desktop_getx/view/order-detail/navigation/table_detail_navigation_args.dart';
@@ -409,16 +410,15 @@ class HomeController extends BaseController {
   void navigateToCheckAccounts() {
     if (authStore.user!.canSendCheckToCheckAccount!) {
       cancelAutoLockTimer();
-      // navigation
-      //     .navigateToPage(
-      //         path: NavigationConstants.CHECK_ACCOUNTS,
-      //         data: CheckAccountsArguments(
-      //           checkId: null,
-      //           type: CheckAccountsPageType.CheckAccount,
-      //           transferAll: null,
-      //           menuItems: null,
-      //         ))
-      //     .then((value) => createAutoLockTimer());
+      Get.toNamed(
+        'check-accounts',
+        arguments: CheckAccountsArguments(
+            checkId: null,
+            type: CheckAccountsPageType.CheckAccount,
+            transferAll: null,
+            menuItems: null),
+      )!
+          .then((value) => createAutoLockTimer());
     } else {
       showSnackbarError(
           '${authStore.user!.name!} adlı kullanıcının bu işlem için yetkisi yoktur.');

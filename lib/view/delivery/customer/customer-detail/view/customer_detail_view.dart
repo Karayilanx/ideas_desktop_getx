@@ -9,12 +9,9 @@ import '../model/customer_detail_page_enum.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CustomerDetailPage extends StatelessWidget {
-  final CustomerDetailPageTypeEnum type;
-  final String? phoneNumber;
-  final DeliveryCustomerModel? customer;
-  const CustomerDetailPage(
-      {Key? key, required this.type, this.customer, this.phoneNumber})
-      : super(key: key);
+  const CustomerDetailPage({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     CustomerDetailController customerDetailController =
@@ -31,7 +28,8 @@ class CustomerDetailPage extends StatelessWidget {
                   color: context.theme.primaryColor,
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    type == CustomerDetailPageTypeEnum.NEW
+                    customerDetailController.type ==
+                            CustomerDetailPageTypeEnum.NEW
                         ? 'Yeni Müşteri'
                         : 'Yeni Adres',
                     style: TextStyle(
@@ -46,14 +44,16 @@ class CustomerDetailPage extends StatelessWidget {
                     CustomerDetailInput(
                       ctrl: customerDetailController.nameCtrl,
                       hintText: 'Müşteri Adı',
-                      enabled: type != CustomerDetailPageTypeEnum.ADDRESS,
+                      enabled: customerDetailController.type !=
+                          CustomerDetailPageTypeEnum.ADDRESS,
                       focusNode: customerDetailController.customerNameFocusNode,
                     ),
                     SizedBox(height: 20),
                     CustomerDetailInput(
                       ctrl: customerDetailController.lastnameCtrl,
                       hintText: 'Müşteri Soyadı',
-                      enabled: type != CustomerDetailPageTypeEnum.ADDRESS,
+                      enabled: customerDetailController.type !=
+                          CustomerDetailPageTypeEnum.ADDRESS,
                     ),
                     SizedBox(height: 20),
                     // PhoneInput(
@@ -65,7 +65,8 @@ class CustomerDetailPage extends StatelessWidget {
                       ctrl: customerDetailController.phoneNumberCtrl,
                       hintText: 'Telefon numarası',
                       isRequired: true,
-                      enabled: type != CustomerDetailPageTypeEnum.ADDRESS,
+                      enabled: customerDetailController.type !=
+                          CustomerDetailPageTypeEnum.ADDRESS,
                     ),
                     SizedBox(height: 20),
                     CustomerDetailInput(

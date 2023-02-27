@@ -206,7 +206,7 @@ Widget buildTableGroupsDropdown(CheckAccountDetailController controller) {
                   ),
                 ),
               ],
-              value: controller.checkAccountTypeId,
+              value: controller.checkAccountTypeId.value,
               style: const TextStyle(color: Colors.black, fontSize: 22),
               onChanged: (dynamic newGroup) {
                 controller.changeCheckAccountType(newGroup);

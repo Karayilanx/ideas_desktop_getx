@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/constants/enums/locale_keys_enum.dart';
-import '../../../../core/theme/theme.dart';
+import 'package:get/get.dart';
+import 'package:ideas_desktop_getx/extension/string_extension.dart';
+import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../../model/check_model.dart';
+import '../../../../theme/theme.dart';
 import '../../../_utility/keyboard/button_type_enum.dart';
 import '../../../_utility/keyboard/keyboard_custom_button.dart';
 import '../../../_utility/keyboard/numeric_keyboard.dart';
@@ -15,99 +15,80 @@ import '../../../_utility/screen_keyboard/screen_keyboard_view.dart';
 import '../component/check_account_list_tile.dart';
 import '../navigation/check_accounts_navigation_args.dart';
 import '../viewmodel/check_accounts_view_model.dart';
-import '../../../../core/extension/string_extension.dart';
 
 class CheckAccountsPage extends StatelessWidget {
-  final int? checkId;
-  final CheckAccountsPageType type;
-  final List<CheckMenuItemModel?>? menuItems;
-  final bool? transferAll;
-  const CheckAccountsPage({
-    required this.checkId,
-    required this.type,
-    required this.transferAll,
-    this.menuItems,
-  });
+  const CheckAccountsPage();
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<CheckAccountsViewModel>(
-      viewModel: CheckAccountsViewModel(checkId, transferAll, menuItems, type),
-      onModelReady: (model) {
-        model.setContext(context);
-        model.init();
-      },
-      onPageBuilder: (context, value) => Scaffold(
-        // resizeToAvoidBottomPadding: false,
-        body: Observer(builder: (_) {
-          return SafeArea(
-            child: value.checkId != null ||
-                    value.type == CheckAccountsPageType.CheckAccount
-                ? buildBody(value)
-                : LoadingPage(),
-          );
-        }),
+    CheckAccountsController controller = Get.find();
+    return Scaffold(
+      body: SafeArea(
+        child: controller.checkId != null ||
+                controller.type == CheckAccountsPageType.CheckAccount
+            ? buildBody(controller)
+            : LoadingPage(),
       ),
     );
   }
 
-  Widget buildBody(CheckAccountsViewModel value) {
+  Widget buildBody(CheckAccountsController controller) {
     return Row(
       children: [
         Expanded(
           flex: 75,
-          child: buildLeftSideColumn(value),
+          child: buildLeftSideColumn(controller),
         ),
-        type == CheckAccountsPageType.CheckAccount
+        controller.type == CheckAccountsPageType.CheckAccount
             ? Expanded(
                 flex: 25,
-                child: buildRightSideColumn(value),
+                child: buildRightSideColumn(controller),
               )
             : Container()
       ],
     );
   }
 
-  Column buildLeftSideColumn(CheckAccountsViewModel value) {
+  Column buildLeftSideColumn(CheckAccountsController controller) {
     return Column(
       children: [
         SizedBox(
           height: 70,
-          child: buildTopRow(value),
+          child: buildTopRow(controller),
         ),
         Expanded(
-          child: buildCheckAccountsGrid(value),
+          child: buildCheckAccountsGrid(controller),
         ),
       ],
     );
   }
 
-  Row buildTopRow(CheckAccountsViewModel value) {
-    if (type == CheckAccountsPageType.CheckAccount) {
+  Row buildTopRow(CheckAccountsController controller) {
+    if (controller.type == CheckAccountsPageType.CheckAccount) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          buildSearchInput(value),
+          buildSearchInput(controller),
           SizedBox(width: 10),
-          buildTypeDropdown(value),
+          buildTypeDropdown(controller),
           SizedBox(width: 10),
-          buildNewCheckAccountButton(value),
+          buildNewCheckAccountButton(controller),
           SizedBox(width: 10),
-          buildCloseButton(value),
+          buildCloseButton(controller),
         ],
       );
     } else {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          buildSearchInput(value),
-          buildSaveButton(value),
+          buildSearchInput(controller),
+          buildSaveButton(controller),
           TopRowButton(
-            callback: () => value.showCheckAccountDetailsDialog(-1),
+            callback: () => controller.showCheckAccountDetailsDialog(-1),
             text: 'Yeni Hesap',
           ),
           TopRowButton(
-            callback: () => value.closePage(),
+            callback: () => controller.closePage(),
             text: 'Kapat',
           ),
           SizedBox(width: 10),
@@ -116,21 +97,21 @@ class CheckAccountsPage extends StatelessWidget {
     }
   }
 
-  Widget buildSaveButton(CheckAccountsViewModel value) {
-    switch (type) {
+  Widget buildSaveButton(CheckAccountsController controller) {
+    switch (controller.type) {
       case CheckAccountsPageType.Check:
         return TopRowButton(
-          callback: () => value.transferCheckToCheckAccount(),
+          callback: () => controller.transferCheckToCheckAccount(),
           text: 'Kaydet',
         );
       case CheckAccountsPageType.CheckCustomer:
         return TopRowButton(
-          callback: () => value.changeCheckCustomer(),
+          callback: () => controller.changeCheckCustomer(),
           text: 'Müşteri Seç',
         );
       case CheckAccountsPageType.Unpayable:
         return TopRowButton(
-          callback: () => value.closeUnpayableCheck(),
+          callback: () => controller.closeUnpayableCheck(),
           text: 'Ödenmeze At',
         );
       default:
@@ -138,22 +119,21 @@ class CheckAccountsPage extends StatelessWidget {
     }
   }
 
-  Expanded buildSearchInput(CheckAccountsViewModel value) {
+  Expanded buildSearchInput(CheckAccountsController controller) {
     return Expanded(
       child: Container(
         margin: EdgeInsets.only(left: 10),
         child: TextFormField(
-          controller: value.searchCtrl,
+          controller: controller.searchCtrl,
           onTap: () async {
-            if (value.localeManager
+            if (controller.localeManager
                 .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
-              var res = await showDialog(
-                context: value.buildContext!,
-                builder: (context) => ScreenKeyboard(),
+              var res = await Get.dialog(
+                ScreenKeyboard(),
               );
               if (res != null) {
-                value.searchCtrl.text = res;
-                value.filterCheckAccounts(value.searchCtrl.text);
+                controller.searchCtrl.text = res;
+                controller.filterCheckAccounts(controller.searchCtrl.text);
               }
             }
           },
@@ -175,13 +155,13 @@ class CheckAccountsPage extends StatelessWidget {
               color: ideasTheme.scaffoldBackgroundColor,
             ),
           ),
-          onChanged: (val) => value.filterCheckAccounts(val),
+          onChanged: (val) => controller.filterCheckAccounts(val),
         ),
       ),
     );
   }
 
-  Container buildTypeDropdown(CheckAccountsViewModel value) {
+  Container buildTypeDropdown(CheckAccountsController controller) {
     return Container(
       width: 150,
       height: 50,
@@ -190,20 +170,20 @@ class CheckAccountsPage extends StatelessWidget {
       ),
       child: DropdownSearch<CheckAccountType>(
           mode: Mode.MENU,
-          items: value.types,
+          items: controller.types,
           showSearchBox: false,
           itemAsString: (item) => item!.name,
           maxHeight: 200,
           onChanged: (val) {
-            value.changeSelectedType(val!.value);
+            controller.changeSelectedType(val!.value);
           },
-          selectedItem: value.types[1]),
+          selectedItem: controller.types[1]),
     );
   }
 
-  Widget buildNewCheckAccountButton(CheckAccountsViewModel value) {
+  Widget buildNewCheckAccountButton(CheckAccountsController controller) {
     return GestureDetector(
-      onTap: () => value.showCheckAccountDetailsDialog(-1),
+      onTap: () => controller.showCheckAccountDetailsDialog(-1),
       child: Container(
         width: 150,
         height: 50,
@@ -222,9 +202,9 @@ class CheckAccountsPage extends StatelessWidget {
     );
   }
 
-  Widget buildCloseButton(CheckAccountsViewModel value) {
+  Widget buildCloseButton(CheckAccountsController controller) {
     return GestureDetector(
-      onTap: () => value.closePage(),
+      onTap: () => controller.closePage(),
       child: Container(
         width: 150,
         height: 50,
@@ -243,40 +223,38 @@ class CheckAccountsPage extends StatelessWidget {
     );
   }
 
-  Container buildCheckAccountsGrid(CheckAccountsViewModel value) {
+  Container buildCheckAccountsGrid(CheckAccountsController controller) {
     return Container(
       color: Color(0xFFEEEAE7),
-      child: Observer(builder: (_) {
-        return GridView.count(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          crossAxisCount: 4,
-          childAspectRatio: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          children: createTables(value),
-        );
-      }),
+      child: Obx(() => GridView.count(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            crossAxisCount: 4,
+            childAspectRatio: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            children: createTables(controller),
+          )),
     );
   }
 
-  Widget buildRightSideColumn(CheckAccountsViewModel value) {
-    return Observer(
-      builder: (_) {
-        return value.checkAccountSummary != null &&
-                value.selectedCheckAccount != null
+  Widget buildRightSideColumn(CheckAccountsController controller) {
+    return Obx(
+      () {
+        return controller.checkAccountSummary.value != null &&
+                controller.selectedCheckAccount.value != null
             ? Column(
                 children: [
                   Container(
                     height: 70,
                   ),
-                  buildActionsRow(value),
-                  buildActionsRow2(value),
-                  buildInformationWidget(value),
+                  buildActionsRow(controller),
+                  buildActionsRow2(controller),
+                  buildInformationWidget(controller),
                   SizedBox(height: 4),
-                  buildPaymentButtonRow(value),
-                  buildOtherActionsRow(value),
-                  buildPriceInput(value),
-                  buildKeyboard(value)
+                  buildPaymentButtonRow(controller),
+                  buildOtherActionsRow(controller),
+                  buildPriceInput(controller),
+                  buildKeyboard(controller)
                 ],
               )
             : Text(
@@ -288,38 +266,38 @@ class CheckAccountsPage extends StatelessWidget {
     );
   }
 
-  Row buildActionsRow(CheckAccountsViewModel value) {
+  Row buildActionsRow(CheckAccountsController controller) {
     return Row(
       children: [
         CheckAccountActionWidget(
-          callback: () => value.removeCheckAccount(),
+          callback: () => controller.removeCheckAccount(),
           text: 'Hesabı Kaldır',
         ),
         CheckAccountActionWidget(
-          callback: () => value.transferCheckAccountToCheckAccount(),
+          callback: () => controller.transferCheckAccountToCheckAccount(),
           text: 'Hesabı Aktar',
         ),
       ],
     );
   }
 
-  Row buildActionsRow2(CheckAccountsViewModel value) {
+  Row buildActionsRow2(CheckAccountsController controller) {
     return Row(
       children: [
         CheckAccountActionWidget(
-          callback: () => value.navigateToCheckAccountTransactions(
-              value.selectedCheckAccount!.checkAccountId),
+          callback: () => controller.navigateToCheckAccountTransactions(
+              controller.selectedCheckAccount.value!.checkAccountId),
           text: 'Hesap Ekstre',
         ),
         CheckAccountActionWidget(
-          callback: () => value.markCheckAccountUnpayable(),
+          callback: () => controller.markCheckAccountUnpayable(),
           text: 'Ödenmeze At',
         ),
       ],
     );
   }
 
-  Container buildInformationWidget(CheckAccountsViewModel value) {
+  Container buildInformationWidget(CheckAccountsController controller) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 4),
       padding: EdgeInsets.symmetric(vertical: 10),
@@ -331,36 +309,39 @@ class CheckAccountsPage extends StatelessWidget {
         children: [
           PaymentTextRow(
             text1: 'Borçlar',
-            text2: value.checkAccountSummary!.totalDebtAmount!.getPriceString,
+            text2: controller
+                .checkAccountSummary.value!.totalDebtAmount!.getPriceString,
           ),
           PaymentTextRow(
             text1: 'Ödemeler',
-            text2:
-                value.checkAccountSummary!.totalPaymentAmount!.getPriceString,
+            text2: controller
+                .checkAccountSummary.value!.totalPaymentAmount!.getPriceString,
           ),
           PaymentTextRow(
             text1: 'İskontolar',
-            text2: value.checkAccountSummary!.discountAmount!.getPriceString,
+            text2: controller
+                .checkAccountSummary.value!.discountAmount!.getPriceString,
           ),
           PaymentTextRow(
             text1: 'Bakiye',
-            text2: value.checkAccountSummary!.balance!.getPriceString,
+            text2:
+                controller.checkAccountSummary.value!.balance!.getPriceString,
           )
         ],
       ),
     );
   }
 
-  Row buildPaymentButtonRow(CheckAccountsViewModel value) {
+  Row buildPaymentButtonRow(CheckAccountsController controller) {
     return Row(
       children: [
         CheckAccountActionWidget(
-          callback: () => value.insertCheckAccountTransaction(2),
+          callback: () => controller.insertCheckAccountTransaction(2),
           text: 'Nakit',
           height: 70,
         ),
         CheckAccountActionWidget(
-          callback: () => value.insertCheckAccountTransaction(3),
+          callback: () => controller.insertCheckAccountTransaction(3),
           text: 'Kredi',
           height: 70,
         ),
@@ -368,12 +349,12 @@ class CheckAccountsPage extends StatelessWidget {
     );
   }
 
-  Row buildOtherActionsRow(CheckAccountsViewModel value) {
+  Row buildOtherActionsRow(CheckAccountsController controller) {
     return Row(
       children: [
         CheckAccountActionWidget(
-          callback: () => value.showCheckAccountDetailsDialog(
-              value.selectedCheckAccount!.checkAccountId!),
+          callback: () => controller.showCheckAccountDetailsDialog(
+              controller.selectedCheckAccount.value!.checkAccountId!),
           text: 'Diğer Seçenekler',
           height: 50,
         ),
@@ -381,13 +362,13 @@ class CheckAccountsPage extends StatelessWidget {
     );
   }
 
-  Container buildPriceInput(CheckAccountsViewModel value) {
+  Container buildPriceInput(CheckAccountsController controller) {
     return Container(
       height: 50,
       margin: EdgeInsets.symmetric(horizontal: 4),
       child: TextFormField(
         textAlign: TextAlign.center,
-        controller: value.priceCtrl,
+        controller: controller.priceCtrl,
         style: TextStyle(fontSize: 18),
         decoration: InputDecoration(
           fillColor: Colors.white,
@@ -399,21 +380,21 @@ class CheckAccountsPage extends StatelessWidget {
     );
   }
 
-  Expanded buildKeyboard(CheckAccountsViewModel value) {
+  Expanded buildKeyboard(CheckAccountsController controller) {
     return Expanded(
       child: NumericKeyboard(
         buttonColor: Colors.white,
-        pinFieldController: value.priceCtrl,
+        pinFieldController: controller.priceCtrl,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
         type: KeyboardType.DOUBLE,
-        actionColumn: buildActionColumn(value),
+        actionColumn: buildActionColumn(controller),
       ),
     );
   }
 
-  Widget buildActionColumn(CheckAccountsViewModel value) {
+  Widget buildActionColumn(CheckAccountsController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -430,7 +411,7 @@ class CheckAccountsPage extends StatelessWidget {
               maxLines: 1,
               minFontSize: 0,
             ),
-            onPressed: () => value.insertCheckAccountTransaction(0),
+            onPressed: () => controller.insertCheckAccountTransaction(0),
           ),
         ),
         Expanded(
@@ -444,57 +425,23 @@ class CheckAccountsPage extends StatelessWidget {
               '%',
               style: TextStyle(fontSize: 24, color: Colors.black),
             ),
-            onPressed: () => value.getPercentage(),
+            onPressed: () => controller.getPercentage(),
           ),
         )
       ],
     );
   }
 
-// Widget buildPaymentTextColumn(CheckAccountsViewModel value) {
-//   return SingleChildScrollView(
-//     child: Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       mainAxisAlignment: MainAxisAlignment.start,
-//       children: [
-//         PaymentText(
-//           firstText: 'BORÇLAR',
-//           fontSize: 19,
-//           secondText:
-//               value.checkAccountSummary!.totalDebtAmount!.toStringAsFixed(2),
-//         ),
-//         PaymentText(
-//           firstText: 'ÖDEMELER',
-//           fontSize: 19,
-//           secondText:
-//               value.checkAccountSummary!.totalPaymentAmount!.toStringAsFixed(2),
-//         ),
-//         PaymentText(
-//           firstText: 'CARİ İSKONTO',
-//           fontSize: 19,
-//           secondText:
-//               value.checkAccountSummary!.discountAmount!.toStringAsFixed(2),
-//         ),
-//         Divider(),
-//         PaymentText(
-//           firstText: 'BAKİYE',
-//           fontSize: 19,
-//           secondText: value.checkAccountSummary!.balance!.toStringAsFixed(2),
-//         ),
-//       ],
-//     ),
-//   );
-// }
-
-  List<Widget> createTables(CheckAccountsViewModel value) {
-    if (value.filteredCheckAccounts != null) {
-      if (value.filteredCheckAccounts!.isNotEmpty) {
-        return List.generate(value.filteredCheckAccounts!.length, (index) {
-          CheckAccountListItem checkAcc = value.filteredCheckAccounts![index];
+  List<Widget> createTables(CheckAccountsController controller) {
+    if (controller.filteredCheckAccounts != null) {
+      if (controller.filteredCheckAccounts.isNotEmpty) {
+        return List.generate(controller.filteredCheckAccounts.length, (index) {
+          CheckAccountListItem checkAcc =
+              controller.filteredCheckAccounts[index];
           return CheckAccountListTile(
             checkAcc: checkAcc,
-            isSelected: value.isAccountSelected(checkAcc),
-            callback: () => value.selectCheckAccount(checkAcc),
+            isSelected: controller.isAccountSelected(checkAcc),
+            callback: () => controller.selectCheckAccount(checkAcc),
           );
         });
       } else {

@@ -143,12 +143,14 @@ class CheckAccountService extends BaseGetConnect {
   }
 
   Future<IntegerModel?> transferCheckAccountTransaction(
-      int checkAccountId, int targetCheckAccountId, int? endOfDayId) async {
+      int checkAccountTransactionId,
+      int targetCheckAccountId,
+      int? endOfDayId) async {
     Response? response;
     try {
       response =
           await get('checkAccount/transferCheckAccountTransaction', query: {
-        'checkAccountId': checkAccountId.toString(),
+        'checkAccountTransactionId': checkAccountTransactionId.toString(),
         'targetCheckAccountId': targetCheckAccountId.toString(),
         'endOfDayId': endOfDayId.toString(),
       });

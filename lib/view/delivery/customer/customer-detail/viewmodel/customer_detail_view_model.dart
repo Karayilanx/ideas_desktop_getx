@@ -8,9 +8,9 @@ import '../../../../authentication/auth_store.dart';
 import '../model/customer_detail_page_enum.dart';
 
 class CustomerDetailController extends BaseController {
-  final CustomerDetailPageTypeEnum type = Get.arguments;
-  final DeliveryCustomerModel? customer = Get.arguments;
-  final String? phoneNumber = Get.arguments;
+  final CustomerDetailPageTypeEnum type = Get.arguments[0];
+  final DeliveryCustomerModel? customer = Get.arguments[1];
+  final String? phoneNumber = Get.arguments[2];
 
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController lastnameCtrl = TextEditingController();

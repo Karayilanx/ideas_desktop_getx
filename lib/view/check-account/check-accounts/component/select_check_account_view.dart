@@ -1,83 +1,69 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../../core/base/view/base_widget.dart';
-import '../../../../core/constants/enums/locale_keys_enum.dart';
-import '../../../../core/theme/theme.dart';
+import 'package:get/get.dart';
+import 'package:ideas_desktop_getx/view/check-account/check-accounts/component/select_check_account_view_model.dart';
+import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_account_model.dart';
+import '../../../../theme/theme.dart';
 import '../../../_utility/screen_keyboard/screen_keyboard_view.dart';
 import 'check_account_list_tile.dart';
-import 'select_check_account_view_model.dart';
 import '../viewmodel/check_accounts_view_model.dart';
 
 class SelectCheckAccountPage extends StatelessWidget {
-  final int checkAccountId;
-  final int? endOfDayId;
-  final bool transferAll;
-  const SelectCheckAccountPage(
-      {required this.checkAccountId,
-      required this.transferAll,
-      this.endOfDayId});
+  const SelectCheckAccountPage();
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<SelectCheckAccountViewModel>(
-      viewModel: SelectCheckAccountViewModel(
-          checkAccountId: checkAccountId,
-          transferAll: transferAll,
-          endOfDayId: endOfDayId),
-      onModelReady: (model) {
-        model.setContext(context);
-        model.init();
-      },
-      onPageBuilder: (context, value) => SimpleDialog(
-        title: const Text('Aktarılacak hesap seçimi'),
-        children: [
-          SizedBox(
-            height: MediaQuery.of(value.buildContext!).size.height,
-            width: MediaQuery.of(value.buildContext!).size.width,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 70,
-                  child: buildTopRow(value),
-                ),
-                Expanded(
-                  child: buildCheckAccountsGrid(value),
-                ),
-              ],
-            ),
+    SelectCheckAccountController controller =
+        Get.put(SelectCheckAccountController());
+    return SimpleDialog(
+      title: const Text('Aktarılacak hesap seçimi'),
+      children: [
+        SizedBox(
+          height: context.height,
+          width: context.width,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 70,
+                child: buildTopRow(controller),
+              ),
+              Expanded(
+                child: buildCheckAccountsGrid(controller),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
-  Container buildCheckAccountsGrid(SelectCheckAccountViewModel value) {
+  Container buildCheckAccountsGrid(SelectCheckAccountController controller) {
     return Container(
       color: Color(0xFFEEEAE7),
-      child: Observer(builder: (_) {
+      child: Obx(() {
         return GridView.count(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           crossAxisCount: 4,
           childAspectRatio: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
-          children: createTables(value),
+          children: createTables(controller),
         );
       }),
     );
   }
 
-  List<Widget> createTables(SelectCheckAccountViewModel value) {
-    if (value.filteredCheckAccounts != null) {
-      if (value.filteredCheckAccounts!.isNotEmpty) {
-        return List.generate(value.filteredCheckAccounts!.length, (index) {
-          CheckAccountListItem checkAcc = value.filteredCheckAccounts![index];
+  List<Widget> createTables(SelectCheckAccountController controller) {
+    if (controller.filteredCheckAccounts != null) {
+      if (controller.filteredCheckAccounts.isNotEmpty) {
+        return List.generate(controller.filteredCheckAccounts.length, (index) {
+          CheckAccountListItem checkAcc =
+              controller.filteredCheckAccounts[index];
           return CheckAccountListTile(
             checkAcc: checkAcc,
-            isSelected: value.isAccountSelected(checkAcc),
-            callback: () => value.selectCheckAccount(checkAcc),
+            isSelected: controller.isAccountSelected(checkAcc),
+            callback: () => controller.selectCheckAccount(checkAcc),
           );
         });
       } else {
@@ -88,25 +74,25 @@ class SelectCheckAccountPage extends StatelessWidget {
   }
 }
 
-Row buildTopRow(SelectCheckAccountViewModel value) {
+Row buildTopRow(SelectCheckAccountController controller) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      buildSearchInput(value),
+      buildSearchInput(controller),
       SizedBox(width: 10),
-      buildTypeDropdown(value),
+      buildTypeDropdown(controller),
       SizedBox(width: 10),
-      buildSaveButton(value),
+      buildSaveButton(controller),
       SizedBox(width: 10),
-      buildCloseButton(value),
+      buildCloseButton(controller),
       SizedBox(width: 10),
     ],
   );
 }
 
-Widget buildCloseButton(SelectCheckAccountViewModel value) {
+Widget buildCloseButton(SelectCheckAccountController controller) {
   return GestureDetector(
-    onTap: () => value.closePage(),
+    onTap: () => controller.closePage(),
     child: Container(
       width: 150,
       height: 50,
@@ -125,10 +111,10 @@ Widget buildCloseButton(SelectCheckAccountViewModel value) {
   );
 }
 
-Widget buildSaveButton(SelectCheckAccountViewModel value) {
+Widget buildSaveButton(SelectCheckAccountController controller) {
   return GestureDetector(
     onTap: () {
-      value.save();
+      controller.save();
     },
     child: Container(
       width: 200,
@@ -148,22 +134,21 @@ Widget buildSaveButton(SelectCheckAccountViewModel value) {
   );
 }
 
-Expanded buildSearchInput(SelectCheckAccountViewModel value) {
+Expanded buildSearchInput(SelectCheckAccountController controller) {
   return Expanded(
     child: Container(
       margin: EdgeInsets.only(left: 10),
       child: TextFormField(
-        controller: value.searchCtrl,
+        controller: controller.searchCtrl,
         onTap: () async {
-          if (value.localeManager
+          if (controller.localeManager
               .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
-            var res = await showDialog(
-              context: value.buildContext!,
-              builder: (context) => ScreenKeyboard(),
+            var res = await Get.dialog(
+              ScreenKeyboard(),
             );
             if (res != null) {
-              value.searchCtrl.text = res;
-              value.filterCheckAccounts(value.searchCtrl.text);
+              controller.searchCtrl.text = res;
+              controller.filterCheckAccounts(controller.searchCtrl.text);
             }
           }
         },
@@ -185,13 +170,13 @@ Expanded buildSearchInput(SelectCheckAccountViewModel value) {
             color: ideasTheme.scaffoldBackgroundColor,
           ),
         ),
-        onChanged: (val) => value.filterCheckAccounts(val),
+        onChanged: (val) => controller.filterCheckAccounts(val),
       ),
     ),
   );
 }
 
-Container buildTypeDropdown(SelectCheckAccountViewModel value) {
+Container buildTypeDropdown(SelectCheckAccountController value) {
   return Container(
     width: 150,
     height: 50,

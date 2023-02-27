@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ideas_desktop_getx/extension/string_extension.dart';
+import 'package:ideas_desktop_getx/view/check-account/check-account-transactions/viewmodel/check_account_transactions_view_model.dart';
+import 'package:ideas_desktop_getx/view/delivery/integration-delivery/component/button/status_base_button.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../_utility/service_helper.dart';
-import '../viewmodel/check_account_transactions_view_model.dart';
 import '../../../check-detail/check_detail_view.dart';
-import '../../../delivery/integration-delivery/component/button/status_base_button.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import '../../../../core/extension/string_extension.dart';
 
 class CheckAccountTransactionsTable extends StatelessWidget {
   final CheckAccountTransactionsDataSource source;
@@ -26,10 +26,7 @@ class CheckAccountTransactionsTable extends StatelessWidget {
           var checkId = addedRows[0].getCells()[1].value;
           if (checkId != null) {
             var endOfDayId = addedRows[0].getCells()[7].value;
-            Get.dialog(CheckDetailPage(
-              checkId: checkId,
-              endOfDayId: endOfDayId,
-            ));
+            Get.dialog(CheckDetailPage(), arguments: [checkId, endOfDayId]);
           }
         },
         columns: [
@@ -143,11 +140,9 @@ class CheckAccountTransactionsTable extends StatelessWidget {
 
 class CheckAccountTransactionsDataSource extends DataGridSource
     with ServiceHelper {
-  final CheckAccountTransactionsViewModel model;
-
+  CheckAccountTransactionsController controller = Get.find();
   CheckAccountTransactionsDataSource(
-      {required GetCheckAccountTransactionsOutput account,
-      required this.model}) {
+      {required GetCheckAccountTransactionsOutput account}) {
     dataGridRows = account.checkAccountTransactions!
         .map<DataGridRow>(
           (dataGridRow) => DataGridRow(
@@ -214,21 +209,21 @@ class CheckAccountTransactionsDataSource extends DataGridSource
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               StatusButton(
-                callback: () => model.printCheckAccountCheck(
+                callback: () => controller.printCheckAccountCheck(
                     row.getCells()[1].value, row.getCells()[7].value),
                 color: const Color(0xFFF29106),
                 text: 'Yazdır',
               ),
               if (endOfDayId == null && checkId == null)
                 StatusButton(
-                  callback: () => model
+                  callback: () => controller
                       .removeCheckAccountTransaction(row.getCells()[8].value),
                   color: Colors.red,
                   text: 'Sil',
                 )
               else
                 StatusButton(
-                  callback: () => model.transferCheckAccountTransaction(
+                  callback: () => controller.transferCheckAccountTransaction(
                       row.getCells()[8].value, row.getCells()[7].value),
                   color: const Color(0xFFF29106),
                   text: 'Aktar',

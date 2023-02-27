@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import '../../../../core/base/model/base_view_model.dart';
-import '../../../../core/constants/navigation/navigation_constants.dart';
+import 'package:get/get.dart';
+import 'package:ideas_desktop_getx/base_controller.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../../service/check/check_service.dart';
 import '../../../../service/check_account/check_account_service.dart';
-import '../../../authentication/auth_store.dart';
 import '../viewmodel/check_accounts_view_model.dart';
-import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
-part 'select_check_account_view_model.g.dart';
 
-class SelectCheckAccountViewModel = _SelectCheckAccountViewModelBase
-    with _$SelectCheckAccountViewModel;
+class SelectCheckAccountController extends BaseController {
+  final bool transferAll = Get.arguments[1];
+  int? endOfDayId = Get.arguments[2];
+  int checkAccountId = Get.arguments[0];
 
-abstract class _SelectCheckAccountViewModelBase with Store, BaseViewModel {
-  final bool transferAll;
-  late CheckAccountService checkAccountService;
-  late CheckService checkService;
-  late AuthStore authStore;
-  int checkAccountId;
-  int? endOfDayId;
+  CheckAccountService checkAccountService = Get.find();
+  CheckService checkService = Get.find();
   TextEditingController searchCtrl = TextEditingController();
-
-  @observable
-  int selectedType = 1;
-  @observable
-  List<CheckAccountListItem>? checkAccounts = [];
-  @observable
-  List<CheckAccountListItem>? filteredCheckAccounts = [];
-  @observable
-  CheckAccountListItem? selectedCheckAccount;
+  RxInt selectedType = RxInt(1);
+  RxList<CheckAccountListItem> checkAccounts = RxList([]);
+  RxList<CheckAccountListItem> filteredCheckAccounts = RxList([]);
+  Rx<CheckAccountListItem?> selectedCheckAccount =
+      Rx<CheckAccountListItem?>(null);
 
   final List<CheckAccountType> types = [
     CheckAccountType(name: 'Hepsi', value: 0),
@@ -41,27 +30,14 @@ abstract class _SelectCheckAccountViewModelBase with Store, BaseViewModel {
     CheckAccountType(name: 'Ödenmez', value: 8),
   ];
 
-  _SelectCheckAccountViewModelBase({
-    required this.checkAccountId,
-    required this.transferAll,
-    // ignore: unused_element
-    this.endOfDayId,
-  });
-
   @override
-  void setContext(BuildContext buildContext) =>
-      this.buildContext = buildContext;
-  @override
-  void init() {
-    checkAccountService = CheckAccountService(networkManager!.networkManager);
-    checkService = CheckService(networkManager!.networkManager);
-    authStore = buildContext!.read<AuthStore>();
+  void onInit() {
+    super.onInit();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getCheckAccounts();
     });
   }
 
-  @action
   Future getCheckAccounts() async {
     EasyLoading.show(
       status: 'Lütfen Bekleyiniz...',
@@ -69,56 +45,49 @@ abstract class _SelectCheckAccountViewModelBase with Store, BaseViewModel {
       maskType: EasyLoadingMaskType.black,
     );
     List<int> checkAccountTypeIds = [];
-    checkAccounts = await checkAccountService.getCheckAccounts(
+    checkAccounts(await checkAccountService.getCheckAccounts(
       GetCheckAccountsInput(
           branchId: authStore.user!.branchId,
           checkAccountTypeIds: checkAccountTypeIds),
-    );
-    checkAccounts = checkAccounts;
-    filteredCheckAccounts = checkAccounts;
+    ));
+    filteredCheckAccounts(checkAccounts);
     EasyLoading.dismiss();
-    if (checkAccounts == null) {
-      navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-    }
   }
 
-  @action
   changeSelectedType(int val) {
-    selectedType = val;
+    selectedType(val);
     filterCheckAccounts(searchCtrl.text);
   }
 
-  @action
   void filterCheckAccounts(String text) {
-    if (selectedType != 0) {
-      filteredCheckAccounts = checkAccounts!
+    if (selectedType.value != 0) {
+      filteredCheckAccounts(checkAccounts
           .where((element) =>
               element.name!.toLowerCase().contains(text.toLowerCase()) &&
-              element.checkAccountTypeId == selectedType)
-          .toList();
+              element.checkAccountTypeId == selectedType.value)
+          .toList());
     } else {
-      filteredCheckAccounts = checkAccounts!
+      filteredCheckAccounts(checkAccounts
           .where((element) =>
               element.name!.toLowerCase().contains(text.toLowerCase()))
-          .toList();
+          .toList());
     }
   }
 
   bool isAccountSelected(CheckAccountListItem item) {
-    if (selectedCheckAccount != null &&
-        selectedCheckAccount!.checkAccountId == item.checkAccountId) {
+    if (selectedCheckAccount.value != null &&
+        selectedCheckAccount.value!.checkAccountId == item.checkAccountId) {
       return true;
     }
     return false;
   }
 
-  @action
   void selectCheckAccount(CheckAccountListItem item) {
-    selectedCheckAccount = item;
+    selectedCheckAccount(item);
   }
 
   void save() async {
-    if (selectedCheckAccount != null) {
+    if (selectedCheckAccount.value != null) {
       if (transferAll) {
         EasyLoading.show(
           status: 'Lütfen Bekleyiniz...',
@@ -126,9 +95,9 @@ abstract class _SelectCheckAccountViewModelBase with Store, BaseViewModel {
           maskType: EasyLoadingMaskType.black,
         );
         var res = await checkAccountService.transferCheckAccount(
-            checkAccountId, selectedCheckAccount!.checkAccountId!);
+            checkAccountId, selectedCheckAccount.value!.checkAccountId!);
         EasyLoading.dismiss();
-        if (res != null) Navigator.pop(buildContext!, true);
+        if (res != null) Get.back(result: true);
       } else {
         EasyLoading.show(
           status: 'Lütfen Bekleyiniz...',
@@ -136,14 +105,16 @@ abstract class _SelectCheckAccountViewModelBase with Store, BaseViewModel {
           maskType: EasyLoadingMaskType.black,
         );
         var res = await checkAccountService.transferCheckAccountTransaction(
-            checkAccountId, selectedCheckAccount!.checkAccountId!, endOfDayId);
+            checkAccountId,
+            selectedCheckAccount.value!.checkAccountId!,
+            endOfDayId);
         EasyLoading.dismiss();
-        if (res != null) Navigator.pop(buildContext!, true);
+        if (res != null) Get.back(result: true);
       }
     }
   }
 
   void closePage() {
-    Navigator.pop(buildContext!);
+    Get.back();
   }
 }

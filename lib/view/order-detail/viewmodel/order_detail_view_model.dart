@@ -8,6 +8,8 @@ import 'package:ideas_desktop_getx/service/eft_pos/eft_pos_service.dart';
 import 'package:ideas_desktop_getx/service/menu/menu_service.dart';
 import 'package:ideas_desktop_getx/service/printer/printer_service.dart';
 import 'package:ideas_desktop_getx/service/table/table_service.dart';
+import 'package:ideas_desktop_getx/view/check-account/check-accounts/navigation/check_accounts_navigation_args.dart';
+import 'package:ideas_desktop_getx/view/check-detail/check_detail_view.dart';
 import 'package:ideas_desktop_getx/view/notes/notes_page.dart';
 import '../../../locale_keys_enum.dart';
 import '../../../model/check_account_model.dart';
@@ -1098,14 +1100,12 @@ class OrderDetailController extends BaseController {
   Future navigateToCheckAccounts(bool transferAll, bool isSeperated) async {
     if (authStore.user!.canSendCheckToCheckAccount!) {
       if (checkDetail.value!.checkAccountId == null || isSeperated) {
-        // navigation.navigateToPage(
-        //     path: NavigationConstants.CHECK_ACCOUNTS,
-        //     data: CheckAccountsArguments(
-        //       checkId: checkId,
-        //       type: CheckAccountsPageType.Check,
-        //       transferAll: transferAll,
-        //       menuItems: transferAll ? null : selectedMenuItems,
-        //     ));
+        Get.toNamed('check-accounts',
+            arguments: CheckAccountsArguments(
+                checkId: checkId,
+                type: CheckAccountsPageType.Check,
+                transferAll: transferAll,
+                menuItems: transferAll ? null : selectedMenuItems));
       } else {
         bool confirm = await openYesNoDialog(
             'Adisyonu ${checkDetail.value!.checkAccountName!} adlı cari hesaba aktarmak istediğinizden emin misiniz?');
@@ -1310,15 +1310,13 @@ class OrderDetailController extends BaseController {
           'Adisyonu ödenmez olarak kapatmak istediğinizden emin misiniz?');
 
       if (confirm) {
-        ///////// if (checkDetail!.checkAccountId == null)
-        // navigation.navigateToPage(
-        //     path: NavigationConstants.CHECK_ACCOUNTS,
-        //     data: CheckAccountsArguments(
-        //       checkId: checkId,
-        //       type: CheckAccountsPageType.Unpayable,
-        //       transferAll: true,
-        //       menuItems: null,
-        //     ));
+        /////// if (checkDetail!.checkAccountId == null)
+        Get.toNamed('check-accounts',
+            arguments: CheckAccountsArguments(
+                checkId: checkId,
+                type: CheckAccountsPageType.Unpayable,
+                transferAll: true,
+                menuItems: null));
       }
     } else {
       showSnackbarError(
@@ -1330,17 +1328,12 @@ class OrderDetailController extends BaseController {
     if (checkDetail.value!.checkStatusTypeId == 1) {
       showSnackbarError('Değişiklik yapmak için yazdırmayı geri alın.');
     } else {
-      // var res = await Navigator.pushNamed(
-      //     buildContext!, NavigationConstants.CHECK_ACCOUNTS,
-      //     arguments: CheckAccountsArguments(
-      //       checkId: checkId,
-      //       type: CheckAccountsPageType.CheckCustomer,
-      //       transferAll: false,
-      //       menuItems: null,
-      //     ));
-      // if (res != null && res is int) {
-      //   basket.checkAccountId = res;
-      // }
+      Get.toNamed('check-accounts',
+          arguments: CheckAccountsArguments(
+              checkId: checkId,
+              type: CheckAccountsPageType.CheckCustomer,
+              transferAll: false,
+              menuItems: null));
     }
   }
 
@@ -1565,10 +1558,7 @@ class OrderDetailController extends BaseController {
 
   void seeLogs() {
     if (checkId != null) {
-      // Get.dialog(CheckDetailPage(
-      //   checkId: checkId!,
-      //   endOfDayId: null,
-      // ));
+      Get.dialog(CheckDetailPage(), arguments: [checkId, null]);
     } else {
       showSnackbarError('Adisyon bulunamadı!');
     }
