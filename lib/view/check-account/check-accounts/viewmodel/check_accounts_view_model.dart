@@ -227,9 +227,9 @@ class CheckAccountsController extends BaseController {
         EasyLoading.dismiss();
         if (res != null) {
           if (authStore.settings!.autoLock!) {
-            Get.offNamed('/');
+            Get.offAllNamed('/');
           } else {
-            Get.offNamed('/home');
+            Get.offAllNamed('/home');
           }
         }
       } else {
@@ -257,9 +257,9 @@ class CheckAccountsController extends BaseController {
       EasyLoading.dismiss();
       if (res != null) {
         if (authStore.settings!.autoLock!) {
-          Get.offNamed('/');
+          Get.offAllNamed('/');
         } else {
-          Get.offNamed('/home');
+          Get.offAllNamed('/home');
         }
       }
     }
@@ -281,9 +281,9 @@ class CheckAccountsController extends BaseController {
       EasyLoading.dismiss();
       if (res != null) {
         if (authStore.settings!.autoLock!) {
-          Get.offNamed('/');
+          Get.offAllNamed('/');
         } else {
-          Get.offNamed('/home');
+          Get.offAllNamed('/home');
         }
       }
     }

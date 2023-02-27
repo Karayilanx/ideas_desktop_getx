@@ -30,59 +30,54 @@ class StoppedItemsPage extends StatelessWidget {
                   )),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Obx(
-                  () {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        GroupedCheckItem item = controller.originalItems[index];
-                        return Obx(() {
-                          return ListTile(
-                            title: Text(
-                              item.name!,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    GroupedCheckItem item = controller.originalItems[index];
+                    return Obx(() {
+                      return ListTile(
+                        title: Text(
+                          item.name!,
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                        leading: Checkbox(
+                          value: controller.isItemSelected(item),
+                          onChanged: (_) {
+                            if (controller.isItemSelected(item)) {
+                              controller.removeItem(item);
+                            } else {
+                              controller.selectItem(item);
+                            }
+                          },
+                        ),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                                onPressed: () =>
+                                    controller.removeQuantity(item),
+                                icon: const Icon(Icons.remove)),
+                            Text(
+                              controller.getQuantity(item),
                               style: const TextStyle(fontSize: 20),
                             ),
-                            leading: Checkbox(
-                              value: controller.isItemSelected(item),
-                              onChanged: (_) {
-                                if (controller.isItemSelected(item)) {
-                                  controller.removeItem(item);
-                                } else {
-                                  controller.selectItem(item);
-                                }
-                              },
-                            ),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                    onPressed: () =>
-                                        controller.removeQuantity(item),
-                                    icon: const Icon(Icons.remove)),
-                                Text(
-                                  controller.getQuantity(item),
-                                  style: const TextStyle(fontSize: 20),
-                                ),
-                                IconButton(
-                                    onPressed: () =>
-                                        controller.addQuantity(item),
-                                    icon: const Icon(Icons.add))
-                              ],
-                            ),
-                            selected: controller.isItemSelected(item),
-                            onTap: () {
-                              if (controller.isItemSelected(item)) {
-                                controller.removeItem(item);
-                              } else {
-                                controller.selectItem(item);
-                              }
-                            },
-                          );
-                        });
-                      },
-                      itemCount: controller.originalItems.length,
-                    );
+                            IconButton(
+                                onPressed: () => controller.addQuantity(item),
+                                icon: const Icon(Icons.add))
+                          ],
+                        ),
+                        selected: controller.isItemSelected(item),
+                        onTap: () {
+                          if (controller.isItemSelected(item)) {
+                            controller.removeItem(item);
+                          } else {
+                            controller.selectItem(item);
+                          }
+                        },
+                      );
+                    });
                   },
+                  itemCount: controller.originalItems.length,
                 ),
               ),
               Container(

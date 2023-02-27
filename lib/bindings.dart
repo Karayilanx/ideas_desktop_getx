@@ -42,6 +42,7 @@ class HomeBindings implements Bindings {
     Get.lazyPut<EndOfDayService>(() => EndOfDayService());
     Get.lazyPut<StockService>(() => StockService());
     Get.lazyPut<CheckService>(() => CheckService());
+    Get.lazyPut<ServerService>(() => ServerService());
   }
 }
 
