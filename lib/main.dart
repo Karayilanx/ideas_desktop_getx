@@ -11,10 +11,21 @@ import 'package:ideas_desktop_getx/view/authentication/login/view/login_view.dar
 import 'package:ideas_desktop_getx/view/check-account/check-account-transactions/view/check_account_transactions_view.dart';
 import 'package:ideas_desktop_getx/view/check-account/check-accounts/view/check_accounts_view.dart';
 import 'package:ideas_desktop_getx/view/check-detail/check_detail_view.dart';
+import 'package:ideas_desktop_getx/view/closed-check/closed-checks/view/closed_checks_view.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
+import 'package:ideas_desktop_getx/view/end-of-day/end_of_day_view.dart';
+import 'package:ideas_desktop_getx/view/fast-sell/view/fast_sell_view.dart';
 import 'package:ideas_desktop_getx/view/home/view/home_view.dart';
+import 'package:ideas_desktop_getx/view/menu/condiment-groups/condiment_groups_view.dart';
+import 'package:ideas_desktop_getx/view/menu/condiments/condiments_view.dart';
+import 'package:ideas_desktop_getx/view/menu/create-menu-item/create_menu_item_view.dart';
+import 'package:ideas_desktop_getx/view/menu/menu_view.dart';
 import 'package:ideas_desktop_getx/view/order-detail/view/order_detail_view.dart';
+import 'package:ideas_desktop_getx/view/pos-integration/pos_integration_view.dart';
+import 'package:ideas_desktop_getx/view/price-change/price_change_view.dart';
 import 'package:ideas_desktop_getx/view/requests/requests_store.dart';
+import 'package:ideas_desktop_getx/view/requests/requests_view.dart';
+import 'package:ideas_desktop_getx/view/terminal-users/terminal_users_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'locale_manager.dart';
@@ -54,7 +65,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/',
-          page: () => LoginPage(),
+          page: () => const LoginPage(),
           binding: LoginBindings(),
           transitionDuration: Duration.zero,
         ),
@@ -66,13 +77,13 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/order-detail',
-          page: () => OrderDetailView(),
+          page: () => const OrderDetailView(),
           binding: OrderDetailsBindings(),
           transitionDuration: Duration.zero,
         ),
         GetPage(
           name: '/check-accounts',
-          page: () => CheckAccountsPage(),
+          page: () => const CheckAccountsPage(),
           binding: CheckAccountsBindings(),
           transitionDuration: Duration.zero,
         ),
@@ -80,6 +91,72 @@ class MyApp extends StatelessWidget {
           name: '/check-acoount-transactions',
           page: () => CheckAccountTransactionsPage(),
           binding: CheckAccountTransactionBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/closed-checks',
+          page: () => ClosedChecksPage(),
+          binding: ClosedChecksBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/fast-sell',
+          page: () => FastSellPage(),
+          binding: FastSellBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/menu',
+          page: () => const MenuPage(),
+          binding: MenuBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/create-menu-item',
+          page: () => const CreateMenuItemPage(),
+          binding: CreateMenuItemBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/condiments',
+          page: () => CondimentsPage(),
+          binding: CondimentsBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/condiment-groups',
+          page: () => CondimentGroupsPage(),
+          binding: CondimentGorupsBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/pos-integration',
+          page: () => PosIntegrationView(),
+          binding: PosIntegrationBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/price-change',
+          page: () => PriceChangePage(),
+          binding: PriceChangeBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/requests',
+          page: () => RequestsPage(),
+          binding: RequestBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/terminal-users',
+          page: () => TerminalUsersPage(),
+          binding: TerminalUsersBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/end-of-day',
+          page: () => EndOfDayPage(),
+          binding: EndOfDayBindings(),
           transitionDuration: Duration.zero,
         ),
       ],

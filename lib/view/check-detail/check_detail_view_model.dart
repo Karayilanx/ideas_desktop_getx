@@ -16,7 +16,7 @@ class CheckDetailController extends BaseController {
   final int checkId = Get.arguments[0];
   final int? endOfDayId = Get.arguments[1];
   CheckService checkService = Get.find();
-  PrinterService printerService = Get.find();
+  PrinterService printerService = Get.put(PrinterService());
   RxInt selectedTab = RxInt(0);
   Rx<CheckDetailsModel?> checkDetail = Rx<CheckDetailsModel?>(null);
   RxList<GroupedCheckItem> groupedItems = RxList<GroupedCheckItem>([]);

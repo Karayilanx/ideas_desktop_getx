@@ -184,6 +184,6 @@ class ClosedChecksController extends BaseController {
   }
 
   void filterTables() {
-    checks(checks);
+    checks.refresh();
   }
 }

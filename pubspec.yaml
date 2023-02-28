@@ -28,6 +28,8 @@ dependencies:
   mask_text_input_formatter: ^2.4.0
   syncfusion_flutter_datagrid: ^20.4.51
   dropdown_search: ^2.0.0
+  syncfusion_flutter_datepicker: ^20.4.52
+  syncfusion_flutter_charts: ^20.4.52
 
 dev_dependencies:
   flutter_test:

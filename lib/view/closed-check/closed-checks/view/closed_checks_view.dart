@@ -15,13 +15,9 @@ class ClosedChecksPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ClosedChecksController controller = Get.find();
     return SafeArea(
-      child: Obx(() {
-        return Scaffold(
-          body:
-              controller.checks != null ? buildBody(controller) : LoadingPage(),
-        );
-      }),
-    );
+        child: Scaffold(
+      body: buildBody(controller),
+    ));
   }
 
   Widget buildBody(ClosedChecksController controller) {

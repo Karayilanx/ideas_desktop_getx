@@ -165,7 +165,7 @@ class SelectCondimentController extends BaseController {
         }
       }
     }
-    condimentGroupMaps(condimentGroupMaps);
+    condimentGroupMaps.refresh();
   }
 
   handleOk() {

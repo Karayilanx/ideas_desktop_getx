@@ -428,11 +428,10 @@ class HomeController extends BaseController {
   void navigateToClosedChecks() {
     if (authStore.user!.canRestoreCheck!) {
       cancelAutoLockTimer();
-      // navigation
-      //     .navigateToPage(
-      //       path: NavigationConstants.CLOSED_CHECKS,
-      //     )
-      //     .then((value) => createAutoLockTimer());
+      Get.toNamed(
+        'closed-checks',
+      )!
+          .then((value) => createAutoLockTimer());
     } else {
       showSnackbarError(
           '${authStore.user!.name!} adlı kullanıcının bu işlem için yetkisi yoktur.');
@@ -442,11 +441,7 @@ class HomeController extends BaseController {
   void navigateToEndOfDay() {
     if (authStore.user!.canEndDay!) {
       cancelAutoLockTimer();
-      // navigation
-      //     .navigateToPage(
-      //       path: NavigationConstants.END_OF_DAY_VIEW,
-      //     )
-      //     .then((value) => createAutoLockTimer());
+      Get.toNamed('end-of-day')!.then((value) => createAutoLockTimer());
     } else {
       showSnackbarError(
           '${authStore.user!.name!} adlı kullanıcının bu işlem için yetkisi yoktur.');
@@ -455,11 +450,7 @@ class HomeController extends BaseController {
 
   void navigateToRequests() {
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.REQUESTS_VIEW,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('requests')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToMenuPage() {
@@ -470,11 +461,7 @@ class HomeController extends BaseController {
     }
 
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.MENU_VIEW,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('menu')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToCondimentsPage() {
@@ -485,11 +472,7 @@ class HomeController extends BaseController {
     }
 
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.CONDIMENTS,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('condiments')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToCondimentGroupsPage() {
@@ -500,20 +483,12 @@ class HomeController extends BaseController {
     }
 
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.CONDIMENT_GROUPS,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('condiment-groups')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToPosIntegrationPage() {
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.POS_INTEGRATION,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('pos-integration')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToPriceChangePage() {
@@ -524,11 +499,7 @@ class HomeController extends BaseController {
     }
 
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.PRICE_CHANGE,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('price-change')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToTerminalUsersPage() {
@@ -539,11 +510,7 @@ class HomeController extends BaseController {
     }
 
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(
-    //       path: NavigationConstants.TERMINAL_USERS,
-    //     )
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('terminal-users')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToNetworkInfoPage() {
@@ -557,9 +524,7 @@ class HomeController extends BaseController {
 
   void navigateToFastSell() {
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(path: NavigationConstants.FAST_SELL_VIEW)
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('fast-sell')!.then((value) => createAutoLockTimer());
   }
 
   void lockScreen() {

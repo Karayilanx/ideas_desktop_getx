@@ -120,15 +120,13 @@ class SelectCondimentPage extends StatelessWidget {
                     shrinkWrap: true,
                     padding: const EdgeInsets.all(4),
                     separatorBuilder: (context, index) {
-                      return Obx(() {
-                        CondimentGroup group =
-                            controller.menuItem.condimentGroups![index];
-                        if (controller.isPreRequisteSelected(group)) {
-                          return const Divider(thickness: 2);
-                        } else {
-                          return Container();
-                        }
-                      });
+                      CondimentGroup group =
+                          controller.menuItem.condimentGroups![index];
+                      if (controller.isPreRequisteSelected(group)) {
+                        return const Divider(thickness: 2);
+                      } else {
+                        return Container();
+                      }
                     },
                     itemBuilder: (context, index) {
                       CondimentGroup group =
@@ -186,14 +184,14 @@ class SelectCondimentPage extends StatelessWidget {
                         padding: const EdgeInsets.all(4),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(6, 6, 6, 6),
-                          child: Text(
-                            controller.getTotalPrice().toStringAsFixed(2),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          child: Obx(() => Text(
+                                controller.getTotalPrice().toStringAsFixed(2),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                         ),
                       ),
                       Padding(
@@ -282,11 +280,11 @@ class SelectCondimentPage extends StatelessWidget {
         CondimentModel condiment = group.condiments![index];
         return Padding(
           padding: const EdgeInsets.only(bottom: 4),
-          child: CondimentButton(
-            callback: () => controller.selectCondiment(condiment, group),
-            condiment: condiment,
-            isSelected: controller.isCondimentSelected(condiment, group),
-          ),
+          child: Obx(() => CondimentButton(
+                callback: () => controller.selectCondiment(condiment, group),
+                condiment: condiment,
+                isSelected: controller.isCondimentSelected(condiment, group),
+              )),
         );
       });
     } else {
