@@ -74,50 +74,53 @@ class FastSellPage extends StatelessWidget {
                 ),
                 if (controller.showMenu.value)
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        controller.hideSearch.value
-                            ? Container()
-                            : Expanded(
-                                child: TextFormField(
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                    controller: controller.searchCtrl,
-                                    focusNode: controller.myFocusNode,
-                                    onTap: () async {
-                                      if (controller.localeManager.getBoolValue(
-                                          PreferencesKeys.SCREEN_KEYBOARD)) {
-                                        var res = await Get.dialog(
-                                          ScreenKeyboard(),
-                                        );
-                                        if (res != null) {
-                                          controller.searchCtrl.text = res;
-                                          createFilteredMenuItems(controller);
-                                          controller.filterMenuItems();
-                                        }
-                                      }
-                                    },
-                                    onChanged: (v) => {
-                                          createFilteredMenuItems(controller),
-                                          controller.filterMenuItems(),
-                                        }),
-                              ),
-                        GestureDetector(
-                          onTap: () => controller.changeShowSearch(),
-                          child: Icon(
+                    child: Obx(() => Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
                             controller.hideSearch.value
-                                ? Icons.search
-                                : Icons.search_off,
-                            size: 34,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                                ? Container()
+                                : Expanded(
+                                    child: TextFormField(
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                        ),
+                                        controller: controller.searchCtrl,
+                                        focusNode: controller.myFocusNode,
+                                        onTap: () async {
+                                          if (controller.localeManager
+                                              .getBoolValue(PreferencesKeys
+                                                  .SCREEN_KEYBOARD)) {
+                                            var res = await Get.dialog(
+                                              ScreenKeyboard(),
+                                            );
+                                            if (res != null) {
+                                              controller.searchCtrl.text = res;
+                                              createFilteredMenuItems(
+                                                  controller);
+                                              controller.filterMenuItems();
+                                            }
+                                          }
+                                        },
+                                        onChanged: (v) => {
+                                              createFilteredMenuItems(
+                                                  controller),
+                                              controller.filterMenuItems(),
+                                            }),
+                                  ),
+                            GestureDetector(
+                              onTap: () => controller.changeShowSearch(),
+                              child: Icon(
+                                controller.hideSearch.value
+                                    ? Icons.search
+                                    : Icons.search_off,
+                                size: 34,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )),
                   ),
               ],
             ),
