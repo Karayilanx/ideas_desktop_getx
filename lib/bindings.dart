@@ -93,8 +93,6 @@ class CheckAccountTransactionBindings implements Bindings {
 class CheckDetailBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<CheckAccountDetailController>(
-        () => CheckAccountDetailController());
     Get.lazyPut<PrinterService>(() => PrinterService());
     Get.lazyPut<CheckService>(() => CheckService());
   }

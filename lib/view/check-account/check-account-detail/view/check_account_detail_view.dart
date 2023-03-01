@@ -10,7 +10,8 @@ class CheckAccountDetailPage extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    CheckAccountDetailController checkAccountDetailController = Get.find();
+    CheckAccountDetailController checkAccountDetailController =
+        Get.put(CheckAccountDetailController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
       backgroundColor: const Color(0xffEDEAE6),
