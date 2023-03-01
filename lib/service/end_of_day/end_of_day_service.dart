@@ -256,7 +256,7 @@ class EndOfDayService extends BaseGetConnect {
     try {
       response = await get('endOfDay/printEndOfDaySummaryReport', query: {
         'branchId': branchId.toString(),
-        'endOfDayDate': endOfDayDate.toString(),
+        'endOfDayDate': endOfDayDate?.toString(),
       });
 
       return IntegerModel.fromJson(response.body);
@@ -272,7 +272,7 @@ class EndOfDayService extends BaseGetConnect {
     try {
       response = await get('endOfDay/printEndOfDayCheckReport', query: {
         'branchId': branchId.toString(),
-        'endOfDayDate': endOfDayDate.toString(),
+        'endOfDayDate': endOfDayDate?.toString(),
       });
 
       return IntegerModel.fromJson(response.body);
@@ -288,7 +288,7 @@ class EndOfDayService extends BaseGetConnect {
     try {
       response = await get('endOfDay/printEndOfDaySaleReport', query: {
         'branchId': branchId.toString(),
-        'endOfDayDate': endOfDayDate.toString(),
+        'endOfDayDate': endOfDayDate?.toString(),
       });
 
       return IntegerModel.fromJson(response.body);
@@ -304,7 +304,7 @@ class EndOfDayService extends BaseGetConnect {
     try {
       response = await get('endOfDay/printEndOfDayCategoryReport', query: {
         'branchId': branchId.toString(),
-        'endOfDayDate': endOfDayDate.toString(),
+        'endOfDayDate': endOfDayDate?.toString(),
       });
 
       return IntegerModel.fromJson(response.body);

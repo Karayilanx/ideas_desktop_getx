@@ -152,7 +152,7 @@ class CheckAccountService extends BaseGetConnect {
           await get('checkAccount/transferCheckAccountTransaction', query: {
         'checkAccountTransactionId': checkAccountTransactionId.toString(),
         'targetCheckAccountId': targetCheckAccountId.toString(),
-        'endOfDayId': endOfDayId.toString(),
+        'endOfDayId': endOfDayId?.toString(),
       });
       return IntegerModel.fromJson(response.body);
     } catch (e) {
