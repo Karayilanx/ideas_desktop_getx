@@ -163,16 +163,6 @@ class HomePage extends StatelessWidget {
                 homeController.navigateToEndOfDay();
               },
             ),
-            const Divider(),
-            ListTile(
-              title: const Text(
-                'Ağ Bilgileri',
-                style: TextStyle(fontSize: 16),
-              ),
-              onTap: () {
-                homeController.navigateToNetworkInfoPage();
-              },
-            ),
           ],
         ),
       ),
