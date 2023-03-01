@@ -10,7 +10,7 @@ import '../../../check-detail/check_detail_view.dart';
 
 class CheckAccountTransactionsTable extends StatelessWidget {
   final CheckAccountTransactionsDataSource source;
-  const CheckAccountTransactionsTable({required this.source});
+  const CheckAccountTransactionsTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -138,33 +138,25 @@ class CheckAccountTransactionsTable extends StatelessWidget {
   }
 }
 
-class CheckAccountTransactionsDataSource extends DataGridSource
-    with ServiceHelper {
+class CheckAccountTransactionsDataSource extends DataGridSource with ServiceHelper {
   CheckAccountTransactionsController controller = Get.find();
-  CheckAccountTransactionsDataSource(
-      {required GetCheckAccountTransactionsOutput account}) {
+  CheckAccountTransactionsDataSource({required GetCheckAccountTransactionsOutput account}) {
     dataGridRows = account.checkAccountTransactions!
         .map<DataGridRow>(
           (dataGridRow) => DataGridRow(
             cells: [
               DataGridCell(columnName: 'Tarih', value: dataGridRow.createDate),
-              DataGridCell<int>(
-                  columnName: 'Çek/Fiş No', value: dataGridRow.checkId),
+              DataGridCell<int>(columnName: 'Çek/Fiş No', value: dataGridRow.checkId),
               DataGridCell<String>(
                   columnName: 'İşlem Tipi',
-                  value: getTransactionTypeString(
-                      dataGridRow.checkAccountTransactionTypeId!)),
-              DataGridCell<String>(
-                  columnName: 'Alt Bilgi', value: dataGridRow.info),
+                  value: getTransactionTypeString(dataGridRow.checkAccountTransactionTypeId!)),
+              DataGridCell<String>(columnName: 'Alt Bilgi', value: dataGridRow.info),
               const DataGridCell<String>(columnName: 'Açıklamalar', value: ''),
-              DataGridCell<double>(
-                  columnName: 'Tutar', value: dataGridRow.amount),
+              DataGridCell<double>(columnName: 'Tutar', value: dataGridRow.amount),
               DataGridCell<dynamic>(columnName: 'action', value: dataGridRow),
+              DataGridCell<dynamic>(columnName: 'endOfDayId', value: dataGridRow.endOfDayId),
               DataGridCell<dynamic>(
-                  columnName: 'endOfDayId', value: dataGridRow.endOfDayId),
-              DataGridCell<dynamic>(
-                  columnName: 'checkAccountTransactionId',
-                  value: dataGridRow.checkAccountTransactionId),
+                  columnName: 'checkAccountTransactionId', value: dataGridRow.checkAccountTransactionId),
             ],
           ),
         )
@@ -209,22 +201,20 @@ class CheckAccountTransactionsDataSource extends DataGridSource
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               StatusButton(
-                callback: () => controller.printCheckAccountCheck(
-                    row.getCells()[1].value, row.getCells()[7].value),
+                callback: () => controller.printCheckAccountCheck(row.getCells()[1].value, row.getCells()[7].value),
                 color: const Color(0xFFF29106),
                 text: 'Yazdır',
               ),
               if (endOfDayId == null && checkId == null)
                 StatusButton(
-                  callback: () => controller
-                      .removeCheckAccountTransaction(row.getCells()[8].value),
+                  callback: () => controller.removeCheckAccountTransaction(row.getCells()[8].value),
                   color: Colors.red,
                   text: 'Sil',
                 )
               else
                 StatusButton(
-                  callback: () => controller.transferCheckAccountTransaction(
-                      row.getCells()[8].value, row.getCells()[7].value),
+                  callback: () =>
+                      controller.transferCheckAccountTransaction(row.getCells()[8].value, row.getCells()[7].value),
                   color: const Color(0xFFF29106),
                   text: 'Aktar',
                 ),

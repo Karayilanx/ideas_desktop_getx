@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
                         onPressed: () async {
                           await showDialog(
                             context: context,
-                            builder: (context) => SettingsPage(),
+                            builder: (context) => const SettingsPage(),
                           );
                           loginController.openSettingsPage();
                         },
@@ -74,8 +74,7 @@ class LoginPage extends StatelessWidget {
                               border: OutlineInputBorder(),
                               filled: true,
                               hintText: 'Şifrenizi giriniz',
-                              hintStyle:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                              hintStyle: TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             style: const TextStyle(color: Colors.white),
                             textAlign: TextAlign.center,
@@ -85,11 +84,9 @@ class LoginPage extends StatelessWidget {
                             height: 400,
                             child: NumericKeyboard(
                               type: KeyboardType.INT,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
                               actionColumn: buildActionColumn(loginController),
-                              pinFieldController:
-                                  loginController.pinFieldController,
+                              pinFieldController: loginController.pinFieldController,
                               buttonColor: Colors.white,
                               callback: () {
                                 loginController.loginTerminal();
@@ -111,8 +108,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget buildUsernameField(
-      bool showEmail, BuildContext context, LoginController loginController) {
+  Widget buildUsernameField(bool showEmail, BuildContext context, LoginController loginController) {
     return showEmail
         ? SizedBox(
             width: context.width * 30 / 100,
@@ -144,8 +140,7 @@ class LoginPage extends StatelessWidget {
         Expanded(
           child: KeyboardCustomButton(
             buttonColor: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
             child: const Icon(
               Icons.check,
               size: 50,

@@ -10,7 +10,6 @@ import 'package:ideas_desktop_getx/view/authentication/auth_store.dart';
 import 'package:ideas_desktop_getx/view/authentication/login/view/login_view.dart';
 import 'package:ideas_desktop_getx/view/check-account/check-account-transactions/view/check_account_transactions_view.dart';
 import 'package:ideas_desktop_getx/view/check-account/check-accounts/view/check_accounts_view.dart';
-import 'package:ideas_desktop_getx/view/check-detail/check_detail_view.dart';
 import 'package:ideas_desktop_getx/view/closed-check/closed-checks/view/closed_checks_view.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
 import 'package:ideas_desktop_getx/view/end-of-day/end_of_day_view.dart';
@@ -89,7 +88,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/check-acoount-transactions',
-          page: () => CheckAccountTransactionsPage(),
+          page: () => const CheckAccountTransactionsPage(),
           binding: CheckAccountTransactionBindings(),
           transitionDuration: Duration.zero,
         ),

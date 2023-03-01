@@ -53,19 +53,18 @@ final ThemeData ideasTheme = ThemeData(
         brightness: Brightness.light,
       ),
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       labelLarge: TextStyle(color: Colors.black, fontSize: 14),
       headlineSmall: TextStyle(color: Colors.black, fontSize: 16),
       headlineMedium: TextStyle(color: Colors.black, fontSize: 22),
     ),
-    inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: const InputDecorationTheme(
       errorStyle: TextStyle(
         fontSize: 14.0,
       ),
     ),
     switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
+      thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
           return null;
         }
@@ -74,8 +73,7 @@ final ThemeData ideasTheme = ThemeData(
         }
         return null;
       }),
-      trackColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
+      trackColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
           return null;
         }
@@ -86,8 +84,7 @@ final ThemeData ideasTheme = ThemeData(
       }),
     ),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
+      fillColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
           return null;
         }
@@ -98,8 +95,7 @@ final ThemeData ideasTheme = ThemeData(
       }),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
+      fillColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
           return null;
         }
@@ -109,7 +105,7 @@ final ThemeData ideasTheme = ThemeData(
         return null;
       }),
     ),
-    bottomAppBarTheme: BottomAppBarTheme(color: const Color(0xffffffff)),
+    bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
     colorScheme: ColorScheme.fromSwatch(
             primarySwatch: const MaterialColor(4291009394, {
       50: Color(0xfff7f2ed),

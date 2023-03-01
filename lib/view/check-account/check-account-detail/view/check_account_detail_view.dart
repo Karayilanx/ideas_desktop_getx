@@ -10,8 +10,7 @@ class CheckAccountDetailPage extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    CheckAccountDetailController checkAccountDetailController =
-        Get.put(CheckAccountDetailController());
+    CheckAccountDetailController checkAccountDetailController = Get.put(CheckAccountDetailController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
       backgroundColor: const Color(0xffEDEAE6),
@@ -20,13 +19,8 @@ class CheckAccountDetailPage extends StatelessWidget {
             color: context.theme.primaryColor,
             padding: const EdgeInsets.all(10),
             child: Text(
-              checkAccountDetailController.checkAccountId > 0
-                  ? 'Düzenle'
-                  : 'Yeni Cari Hesap',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 24),
+              checkAccountDetailController.checkAccountId > 0 ? 'Düzenle' : 'Yeni Cari Hesap',
+              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 24),
             )),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -86,14 +80,11 @@ class CheckAccountDetailPage extends StatelessWidget {
                     checkAccountDetailController.createCheckAccount();
                   },
                   style: ButtonStyle(
-                      padding:
-                          MaterialStateProperty.all(const EdgeInsets.symmetric(
+                      padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
                         vertical: 8,
                       )),
-                      backgroundColor:
-                          MaterialStateProperty.all(const Color(0xffF1A159)),
-                      shape: MaterialStateProperty.all(
-                          const RoundedRectangleBorder(
+                      backgroundColor: MaterialStateProperty.all(const Color(0xffF1A159)),
+                      shape: MaterialStateProperty.all(const RoundedRectangleBorder(
                         side: BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
@@ -116,15 +107,13 @@ class CheckAccountDetailPage extends StatelessWidget {
                   },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.red),
-                      shape: MaterialStateProperty.all(
-                          const RoundedRectangleBorder(
+                      shape: MaterialStateProperty.all(const RoundedRectangleBorder(
                         side: BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
                       )),
-                      padding:
-                          MaterialStateProperty.all(const EdgeInsets.symmetric(
+                      padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
                         vertical: 8,
                       ))),
                   child: const Text(
@@ -158,7 +147,7 @@ Widget buildTableGroupsDropdown(CheckAccountDetailController controller) {
           child: Container(
             margin: const EdgeInsets.only(left: 16),
             child: DropdownButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_downward,
                 size: 36,
                 color: Colors.black,

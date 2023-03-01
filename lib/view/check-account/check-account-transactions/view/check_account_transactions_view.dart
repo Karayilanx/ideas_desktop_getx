@@ -7,15 +7,15 @@ import '../table/check_account_transactions_table.dart';
 import '../viewmodel/check_account_transactions_view_model.dart';
 
 class CheckAccountTransactionsPage extends StatelessWidget {
+  const CheckAccountTransactionsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     CheckAccountTransactionsController controller = Get.find();
     return Scaffold(
       body: Obx(() {
         return SafeArea(
-          child: controller.source.value != null
-              ? buildBody(controller)
-              : const LoadingPage(),
+          child: controller.source.value != null ? buildBody(controller) : const LoadingPage(),
         );
       }),
     );
@@ -33,8 +33,7 @@ class CheckAccountTransactionsPage extends StatelessWidget {
               ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: 200),
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   decoration: BoxDecoration(
                     color: const Color(0xFFE1E5E6),
                     borderRadius: BorderRadius.circular(10),
@@ -46,19 +45,13 @@ class CheckAccountTransactionsPage extends StatelessWidget {
                         child: Text(
                           controller.checkAccount.value!.name!,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: ideasTheme.scaffoldBackgroundColor),
+                              fontWeight: FontWeight.bold, fontSize: 20, color: ideasTheme.scaffoldBackgroundColor),
                         ),
                       ),
                       Expanded(
                         child: Text(
-                          controller
-                              .checkAccount.value!.balance!.getPriceString,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Color(0xFFF29106)),
+                          controller.checkAccount.value!.balance!.getPriceString,
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFFF29106)),
                         ),
                       )
                     ],
@@ -79,9 +72,7 @@ class CheckAccountTransactionsPage extends StatelessWidget {
                     child: Text(
                       'Kapat',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: ideasTheme.scaffoldBackgroundColor),
+                          fontWeight: FontWeight.bold, fontSize: 20, color: ideasTheme.scaffoldBackgroundColor),
                     ),
                   ),
                 ),
