@@ -12,14 +12,14 @@ class EditActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 8),
+      margin: const EdgeInsets.only(bottom: 8),
       height: 70,
       child: ElevatedButton(
         onPressed: () {
           callback!();
         },
         style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             side: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.all(
               Radius.circular(10),
@@ -29,7 +29,7 @@ class EditActionButton extends StatelessWidget {
         ),
         child: Text(
           text!,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             color: Colors.white,
           ),

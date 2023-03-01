@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/view/end-of-day/select-report/select_report_view_model.dart';
 
 class SelectReportPage extends StatelessWidget {
-  SelectReportPage();
+  const SelectReportPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,11 @@ class SelectReportPage extends StatelessWidget {
   Widget buildBody(SelectReportController controller) {
     return Column(
       children: [
-        Text(
+        const Text(
           'Yazdırılacak Raporları Seçiniz',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Expanded(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,18 +76,18 @@ class SelectReportPage extends StatelessWidget {
             ElevatedButton(
               onPressed:
                   controller.loading.value ? null : () => controller.print(),
-              child: Text("Yazdır"),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue, foregroundColor: Colors.white),
+              child: const Text("Yazdır"),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             ElevatedButton(
               onPressed: () => Get.back(),
-              child: Text("Vazgeç"),
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red, foregroundColor: Colors.white),
+              child: const Text("Vazgeç"),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
           ],
         )
       ],

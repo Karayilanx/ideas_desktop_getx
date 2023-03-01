@@ -23,23 +23,23 @@ class CreateMenuItemPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  color: Color(0xff223540),
+                  color: const Color(0xff223540),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       GestureDetector(
                         onTap: () => controller.createMenuItem(),
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 10),
                           width: 120,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          child: Text(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: const Text(
                             'Kaydet',
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 24),
@@ -49,15 +49,15 @@ class CreateMenuItemPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () => controller.closePage(),
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 10),
                           width: 120,
                           decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          child: Text(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: const Text(
                             'Kapat',
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 24, color: Colors.white),
@@ -81,7 +81,7 @@ class CreateMenuItemPage extends StatelessWidget {
               ],
             ),
           )
-        : LoadingPage();
+        : const LoadingPage();
   }
 
   Widget buildCondimentTab(CreateMenuItemController controller) {
@@ -107,7 +107,7 @@ class CreateMenuItemPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 buildSelectCondimentButton(controller),
-                Divider(),
+                const Divider(),
                 ...getSelectedCondimentGroups(controller),
               ],
             ),
@@ -130,11 +130,11 @@ class CreateMenuItemPage extends StatelessWidget {
           children: [
             Text(
               condimentGroup.nameTr!,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
             IconButton(
               onPressed: () => controller.removeCondimentGroupSelection(id),
-              icon: Icon(
+              icon: const Icon(
                 Icons.delete,
                 color: Colors.red,
               ),
@@ -151,7 +151,7 @@ class CreateMenuItemPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "Ek Seçimler: ",
@@ -163,7 +163,7 @@ class CreateMenuItemPage extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () => controller.openSelectCondimentPage(),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              child: Text(
+              child: const Text(
                 "Ekseçim Seç",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -197,23 +197,23 @@ class CreateMenuItemPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildCategoryDropdown(controller),
-              SizedBox(width: 460, child: Divider()),
+              const SizedBox(width: 460, child: Divider()),
               buildMenuItemNameInput(controller),
-              SizedBox(width: 460, child: Divider()),
+              const SizedBox(width: 460, child: Divider()),
               buildPortionCheckbox(controller),
               if (!controller.menuItemModel.value.hasPortion!)
-                SizedBox(width: 460, child: Divider()),
+                const SizedBox(width: 460, child: Divider()),
               if (!controller.menuItemModel.value.hasPortion!)
                 buildPriceInput(controller),
               if (controller.menuItemModel.value.hasPortion!)
                 ...buildPortions(controller),
-              SizedBox(width: 460, child: Divider()),
+              const SizedBox(width: 460, child: Divider()),
               buildKdvInput(controller),
-              SizedBox(width: 460, child: Divider()),
+              const SizedBox(width: 460, child: Divider()),
               buildBarcodeInput(controller),
-              SizedBox(width: 460, child: Divider()),
+              const SizedBox(width: 460, child: Divider()),
               buildPrinterDropdown(controller),
-              SizedBox(width: 460, child: Divider()),
+              const SizedBox(width: 460, child: Divider()),
             ],
           ),
         ),
@@ -242,12 +242,12 @@ class CreateMenuItemPage extends StatelessWidget {
               width: 200,
               height: 30,
               child: TextFormField(
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
                 controller: b,
                 onChanged: (name) {
                   portion.portionName = name;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Porsiyon Adı",
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -255,12 +255,12 @@ class CreateMenuItemPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             SizedBox(
               width: 100,
               height: 30,
               child: TextFormField(
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
                 controller: a,
                 onChanged: (price) {
                   var pr = double.tryParse(price);
@@ -268,7 +268,7 @@ class CreateMenuItemPage extends StatelessWidget {
                     portion.price = pr;
                   }
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Fiyat",
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -278,7 +278,7 @@ class CreateMenuItemPage extends StatelessWidget {
             ),
             IconButton(
               onPressed: () => controller.removePortion(i),
-              icon: Icon(
+              icon: const Icon(
                 Icons.delete,
                 color: Colors.red,
               ),
@@ -290,9 +290,9 @@ class CreateMenuItemPage extends StatelessWidget {
 
     ret.add(TextButton.icon(
         onPressed: () => controller.addPortion(),
-        style: TextButton.styleFrom(padding: EdgeInsets.all(4)),
-        icon: Icon(Icons.add, color: Color.fromARGB(255, 6, 89, 156)),
-        label: Text(
+        style: TextButton.styleFrom(padding: const EdgeInsets.all(4)),
+        icon: const Icon(Icons.add, color: Color.fromARGB(255, 6, 89, 156)),
+        label: const Text(
           "Yeni Porsiyon",
           style: TextStyle(
               color: Color.fromARGB(255, 6, 89, 156),
@@ -305,7 +305,7 @@ class CreateMenuItemPage extends StatelessWidget {
   Row buildPrinterDropdown(CreateMenuItemController controller) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "Yazıcı: ",
@@ -316,7 +316,7 @@ class CreateMenuItemPage extends StatelessWidget {
           child: Obx(() {
             return DropdownButton2(
               isExpanded: true,
-              hint: Align(
+              hint: const Align(
                 alignment: AlignmentDirectional.centerStart,
                 child: Text(
                   'Yazıcı Seçiniz',
@@ -398,7 +398,7 @@ class CreateMenuItemPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "Barkod: ",
@@ -410,9 +410,9 @@ class CreateMenuItemPage extends StatelessWidget {
           height: 30,
           child: TextFormField(
             controller: controller.barcodeCtrl,
-            style: TextStyle(fontSize: 16),
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            decoration: InputDecoration(
+            style: const TextStyle(fontSize: 16),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: const InputDecoration(
               hintText: "Barkod",
               contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
               border: OutlineInputBorder(),
@@ -427,7 +427,7 @@ class CreateMenuItemPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "KDV: ",
@@ -439,9 +439,9 @@ class CreateMenuItemPage extends StatelessWidget {
           height: 30,
           child: TextFormField(
             controller: controller.kdvCtrl,
-            style: TextStyle(fontSize: 16),
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            decoration: InputDecoration(
+            style: const TextStyle(fontSize: 16),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: const InputDecoration(
               hintText: "KDV",
               contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
               border: OutlineInputBorder(),
@@ -456,7 +456,7 @@ class CreateMenuItemPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 145,
           child: Text(
             "Porsiyon var mı?: ",
@@ -488,7 +488,7 @@ class CreateMenuItemPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "Satış Fiyatı(Kdv Dahil): ",
@@ -500,9 +500,9 @@ class CreateMenuItemPage extends StatelessWidget {
           height: 30,
           child: TextFormField(
             controller: controller.priceCtrl,
-            style: TextStyle(fontSize: 16),
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            decoration: InputDecoration(
+            style: const TextStyle(fontSize: 16),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: const InputDecoration(
               hintText: "Fiyat",
               contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
               border: OutlineInputBorder(),
@@ -517,7 +517,7 @@ class CreateMenuItemPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "Ürün Adı: ",
@@ -529,8 +529,8 @@ class CreateMenuItemPage extends StatelessWidget {
           height: 30,
           child: TextFormField(
             controller: controller.nameCtrl,
-            style: TextStyle(fontSize: 16),
-            decoration: InputDecoration(
+            style: const TextStyle(fontSize: 16),
+            decoration: const InputDecoration(
               hintText: "Ürün Adı",
               contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
               border: OutlineInputBorder(),
@@ -544,7 +544,7 @@ class CreateMenuItemPage extends StatelessWidget {
   Widget buildCategoryDropdown(CreateMenuItemController controller) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 150,
           child: Text(
             "Kategori Seçimi: ",
@@ -554,7 +554,7 @@ class CreateMenuItemPage extends StatelessWidget {
         DropdownButtonHideUnderline(
           child: DropdownButton2(
             isExpanded: true,
-            hint: Text(
+            hint: const Text(
               'Kategori Seçiniz',
               style: TextStyle(
                 fontSize: 14,
@@ -611,7 +611,7 @@ class CreateMenuItemPage extends StatelessWidget {
         ),
         IconButton(
           onPressed: () => controller.openAddCategoryDialog(),
-          icon: Icon(Icons.add, color: Colors.blue),
+          icon: const Icon(Icons.add, color: Colors.blue),
         )
       ],
     );
@@ -627,7 +627,7 @@ class CreateMenuItemPage extends StatelessWidget {
           DropdownMenuItem(
             value: subcat.menuItemSubCategoryId,
             child: Text(
-              cat.nameTr! + ' - ' + subcat.nameTr!,
+              '${cat.nameTr!} - ${subcat.nameTr!}',
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -642,6 +642,6 @@ class CreateMenuItemPage extends StatelessWidget {
   }
 
   Widget buildCondimentsTab() {
-    return Text("condiment");
+    return const Text("condiment");
   }
 }

@@ -228,7 +228,7 @@ class TerminalUsersController extends BaseController {
 
   showCreateTerminalUserDialog() async {
     await Get.dialog(
-      CreateTerminalUserPage(),
+      const CreateTerminalUserPage(),
       barrierDismissible: true,
     );
     await getTerminalUsers();

@@ -3,20 +3,22 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/view/terminal-users/create-terminal-user/viewmodel/create_terminal_user_view_model.dart';
 
 class CreateTerminalUserPage extends StatelessWidget {
+  const CreateTerminalUserPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     CreateTerminalUserController controller =
         Get.put(CreateTerminalUserController());
     return SimpleDialog(
       contentPadding: EdgeInsets.zero,
-      backgroundColor: Color(0xffEDEAE6),
+      backgroundColor: const Color(0xffEDEAE6),
       children: [
         SizedBox(
           width: 600,
           child: Column(
             children: [
               Container(
-                color: Color(0xff223540),
+                color: const Color(0xff223540),
                 child: Row(
                   children: const [
                     Expanded(
@@ -39,10 +41,10 @@ class CreateTerminalUserPage extends StatelessWidget {
                   Expanded(
                     child: TextFormField(
                       controller: controller.nameCtrl,
-                      decoration: InputDecoration(hintText: 'Kullanıcı Adı'),
+                      decoration: const InputDecoration(hintText: 'Kullanıcı Adı'),
                     ),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: Obx(() {
                       return CheckboxListTile(
@@ -62,15 +64,15 @@ class CreateTerminalUserPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         controller: controller.pinCtrl,
-                        decoration: InputDecoration(hintText: '4 Haneli Şifre'),
+                        decoration: const InputDecoration(hintText: '4 Haneli Şifre'),
                       ),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: TextFormField(
                         controller: controller.maxDiscountPercentageCtrl,
                         decoration:
-                            InputDecoration(hintText: 'Max. İskonto(%)'),
+                            const InputDecoration(hintText: 'Max. İskonto(%)'),
                       ),
                     )
                   ],
@@ -90,7 +92,7 @@ class CreateTerminalUserPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Obx(() {
                         return CheckboxListTile(
@@ -119,7 +121,7 @@ class CreateTerminalUserPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Obx(() {
                         return CheckboxListTile(
@@ -148,7 +150,7 @@ class CreateTerminalUserPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Obx(() {
                         return CheckboxListTile(
@@ -178,7 +180,7 @@ class CreateTerminalUserPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Obx(() {
                         return CheckboxListTile(
@@ -205,7 +207,7 @@ class CreateTerminalUserPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Obx(() {
                         return CheckboxListTile(
@@ -226,28 +228,28 @@ class CreateTerminalUserPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        child: Text(
-                          'Kaydet',
-                          style: TextStyle(color: Colors.black),
-                        ),
                         onPressed: () => controller.createTerminalUser(),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                         ),
+                        child: const Text(
+                          'Kaydet',
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: ElevatedButton(
-                        child: Text(
-                          'Vazgeç',
-                          style: TextStyle(color: Colors.white),
-                        ),
                         onPressed: () {
                           Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
+                        ),
+                        child: const Text(
+                          'Vazgeç',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),

@@ -8,7 +8,7 @@ class UnpayableCheckReportTable extends StatelessWidget {
   final UnpayableCheckReportDataSource source;
   final double totalAmount;
   const UnpayableCheckReportTable(
-      {required this.source, required this.totalAmount});
+      {super.key, required this.source, required this.totalAmount});
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +26,17 @@ class UnpayableCheckReportTable extends StatelessWidget {
       footer: Center(
           child: Text(
         'Toplam Tutar: ${totalAmount.getPriceString}',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       )),
       columns: [
         GridColumn(
           columnName: 'id',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Id',
               overflow: TextOverflow.ellipsis,
             ),
@@ -45,11 +45,11 @@ class UnpayableCheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'name',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(20),
+          autoFitPadding: const EdgeInsets.all(20),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Hesap Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -58,11 +58,11 @@ class UnpayableCheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'checkAmount',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.visible,
             ),
@@ -100,7 +100,7 @@ class UnpayableCheckReportDataSource extends DataGridSource with ServiceHelper {
     return DataGridRowAdapter(
       cells: row.getCells().map<Widget>((dataGridCell) {
         return Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             alignment: Alignment.centerLeft,
             child: Text(
               dataGridCell.value.toString(),

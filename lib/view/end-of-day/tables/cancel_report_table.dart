@@ -5,7 +5,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class CancelReportTable extends StatelessWidget {
   final CancelReportTableDataSource source;
-  const CancelReportTable({required this.source});
+  const CancelReportTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'checkName',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Hesap Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -34,7 +34,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'checkMenuItemName',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Ürün Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -44,7 +44,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'quantity',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Adet',
               overflow: TextOverflow.ellipsis,
             ),
@@ -54,7 +54,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'amount',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -64,7 +64,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'orderDate',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Sipariş Zamanı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -74,7 +74,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'cancelDate',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'İptal Zamanı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -84,7 +84,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'cancelType',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'İşlem Tipi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -94,7 +94,7 @@ class CancelReportTable extends StatelessWidget {
           columnName: 'cancelNote',
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Açıklama',
               overflow: TextOverflow.ellipsis,
             ),

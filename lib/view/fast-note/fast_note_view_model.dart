@@ -20,11 +20,8 @@ class FastNoteController extends BaseController {
 
   Future getNotes() async {
     notes(await checkService.getCancelNotes(authStore.user!.branchId!));
-    if (notes == null) {
-      // navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-    } else {
-      filteredNotes(notes);
-    }
+
+    filteredNotes(notes);
   }
 
   void filterNotes(String text) {

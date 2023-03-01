@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/fuudy_model.dart';
 import 'package:ideas_desktop_getx/service/getir_service.dart';
 import 'package:ideas_desktop_getx/view/select-multi-printer/select_multi_printer_view.dart';
 import '../../../../../model/getir_model.dart';
@@ -11,7 +10,6 @@ import '../../../../../model/yemeksepeti_model.dart';
 import '../../../../../service/check/check_service.dart';
 import '../../../../../service/printer/printer_service.dart';
 import '../../../../../service/yemeksepeti/yemeksepeti_service.dart';
-import '../../../../authentication/auth_store.dart';
 import '../button/status_helper.dart';
 
 class UpdateStatusDialogController extends BaseController with StatusHelper {
@@ -202,7 +200,7 @@ class UpdateStatusDialogController extends BaseController with StatusHelper {
   }
 
   Future openPrinterDialog(String? getirId, String? yemeksepetiId) async {
-    var res = await Get.dialog(SelectMultiPrinter(), arguments: [[]]);
+    var res = await Get.dialog(const SelectMultiPrinter(), arguments: [[]]);
     if (res != null) {
       EasyLoading.show(
         status: 'Lütfen Bekleyiniz...',

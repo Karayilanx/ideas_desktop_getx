@@ -22,7 +22,6 @@ class GetirOrderController extends BaseController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getGetirOrderDetails();
@@ -105,12 +104,12 @@ class GetirOrderController extends BaseController {
         if (condimentsAndNotes.isNotEmpty) {
           condimentsAndNotes =
               condimentsAndNotes.substring(0, condimentsAndNotes.length - 2);
-          condimentsAndNotes += '\n      ' + groupName + ': ';
+          condimentsAndNotes += '\n      $groupName: ';
         } else {
-          condimentsAndNotes += '      ' + groupName + ': ';
+          condimentsAndNotes += '      $groupName: ';
         }
       }
-      condimentsAndNotes += con.nameTr! + ', ';
+      condimentsAndNotes += '${con.nameTr!}, ';
     }
 
     if (condimentsAndNotes.length > 2) {
@@ -126,7 +125,7 @@ class GetirOrderController extends BaseController {
 
   Future openPrinterDialog() async {
     var res = await Get.dialog(
-      SelectMultiPrinter(),
+      const SelectMultiPrinter(),
     );
     if (res != null) {
       EasyLoading.show(

@@ -4,7 +4,7 @@ import '../component/end_of_day_table_widgets.dart';
 
 class SummaryReport extends StatelessWidget {
   final EndOfDaySummaryReportModel report;
-  const SummaryReport({required this.report});
+  const SummaryReport({super.key, required this.report});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class SummaryReport extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EndOfDayReportHeader(
+              const EndOfDayReportHeader(
                 header: 'Toplam Satışlar',
               ),
               EndOfDayReportInformation(
@@ -36,8 +36,8 @@ class SummaryReport extends StatelessWidget {
                 leftText: 'Toplam',
                 rightText: report.totalSales!.total,
               ),
-              SizedBox(height: 10),
-              EndOfDayReportHeader(
+              const SizedBox(height: 10),
+              const EndOfDayReportHeader(
                 header: 'Cari Tahsilatlar',
               ),
               EndOfDayReportInformation(
@@ -52,8 +52,8 @@ class SummaryReport extends StatelessWidget {
                 leftText: 'Toplam',
                 rightText: report.checkAccountReceivings!.total,
               ),
-              SizedBox(height: 10),
-              EndOfDayReportHeader(
+              const SizedBox(height: 10),
+              const EndOfDayReportHeader(
                 header: 'Toplam Hasılat',
               ),
               EndOfDayReportInformation(
@@ -69,9 +69,9 @@ class SummaryReport extends StatelessWidget {
                 leftText: 'Toplam',
                 rightText: report.totalIncome!.total,
               ),
-              SizedBox(height: 10),
-              Text('--------------------------------------------'),
-              EndOfDayReportHeader(
+              const SizedBox(height: 10),
+              const Text('--------------------------------------------'),
+              const EndOfDayReportHeader(
                 header: 'Ciro Dağılımı',
               ),
               EndOfDayReportInformation(
@@ -115,7 +115,7 @@ class SummaryReport extends StatelessWidget {
                 leftText: 'Toplam',
                 rightText: report.endorsementDistribution!.total,
               ),
-              Text('--------------------------------------------'),
+              const Text('--------------------------------------------'),
             ],
           ),
         ),
@@ -183,7 +183,7 @@ class SummaryReport extends StatelessWidget {
   List<Widget> buildRightColumn(EndOfDaySummaryReportModel report) {
     List<Widget> ret = [];
     ret.add(
-      EndOfDayReportHeader(
+      const EndOfDayReportHeader(
         header: 'CARİ SATIŞLAR',
       ),
     );
@@ -206,17 +206,14 @@ class SummaryReport extends StatelessWidget {
 
   List<Widget> buildMidColumn(EndOfDaySummaryReportModel report) {
     List<Widget> ret = [];
-    ret.add(EndOfDayReportHeader(
+    ret.add(const EndOfDayReportHeader(
       header: 'SATIŞ DAĞILIMI',
     ));
 
     for (var item in report.sellDistribution!.categorySales) {
       ret.add(
         EndOfDayReportInformation(
-          leftText: item.categoryName +
-              " (" +
-              item.quantity.toStringAsFixed(0) +
-              " Adet)",
+          leftText: "${item.categoryName} (${item.quantity.toStringAsFixed(0)} Adet)",
           rightText: item.amount,
         ),
       );
@@ -257,8 +254,8 @@ class SummaryReport extends StatelessWidget {
       ),
     );
 
-    ret.add(SizedBox(height: 10));
-    ret.add(EndOfDayReportHeader(header: 'BEKLENEN HASILAT'));
+    ret.add(const SizedBox(height: 10));
+    ret.add(const EndOfDayReportHeader(header: 'BEKLENEN HASILAT'));
     ret.add(
       EndOfDayReportInformation(
         leftText: 'Satışlar',

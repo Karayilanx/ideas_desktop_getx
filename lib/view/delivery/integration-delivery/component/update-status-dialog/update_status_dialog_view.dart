@@ -5,7 +5,7 @@ import '../../../../_utility/service_helper.dart';
 import 'update_status_dialog_view_model.dart';
 
 class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
-  UpdateStatusDialog();
+  UpdateStatusDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
               controller.yemeksepetiCheck.value != null
           // controller.fuudyCheck != null
           ? buildBody(controller)
-          : LoadingPage(),
+          : const LoadingPage(),
     );
   }
 
   Widget buildBody(UpdateStatusDialogController controller) {
     return SimpleDialog(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       children: [
         Container(
           width: Get.context!.width * 70 / 100,
@@ -32,7 +32,7 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
             children: [
               Container(
                 color: Colors.green,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Text(
                   controller.getirCheck.value != null
                       ? controller.getTitleTextForDialogGetir(
@@ -44,12 +44,12 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
                           //     ? value
                           //         .getTitleTextForDialogFuudy(value.fuudyCheck!)
                           : 'HATA',
-                  style: TextStyle(fontSize: 24, color: Colors.white),
+                  style: const TextStyle(fontSize: 24, color: Colors.white),
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(),
                   color: Colors.white,
@@ -58,28 +58,28 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     buildCustomerName(controller),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     buildAddress(controller),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     buildTotalPriceText(controller),
                   ],
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(10, 0, 0, 4),
-                padding: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.fromLTRB(10, 0, 0, 4),
+                padding: const EdgeInsets.only(left: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     buildPaymentString(controller),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     buildDeliveryType(controller),
                   ],
                 ),
               ),
               Container(
                 height: 60,
-                margin: EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(right: 10),
                 child: buildButtons(controller),
               ),
             ],
@@ -152,7 +152,7 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
         controller.getirCheck.value!.getirGetirsin!
             ? 'Getir Getirsin'
             : 'Restoran Getirsin',
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
           color: Colors.red,
@@ -161,7 +161,7 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
     } else if (controller.yemeksepetiCheck.value != null) {
       return Text(
         controller.yemeksepetiCheck.value!.vale! ? 'Vale' : 'Restoran Getirsin',
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
           color: Colors.red,
@@ -189,7 +189,7 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
     if (controller.getirCheck.value != null) {
       return Text(
         controller.getirCheck.value!.paymentTypeString!,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
@@ -197,7 +197,7 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
     } else if (controller.yemeksepetiCheck.value != null) {
       return Text(
         controller.yemeksepetiCheck.value!.paymentTypeString!,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
@@ -220,20 +220,16 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
   Widget buildAddress(UpdateStatusDialogController controller) {
     if (controller.getirCheck.value != null) {
       return Text(
-        controller.getirCheck.value!.customerAddress! +
-            ' - ' +
-            controller.getirCheck.value!.customerAddressDefinition!,
-        style: TextStyle(
+        '${controller.getirCheck.value!.customerAddress!} - ${controller.getirCheck.value!.customerAddressDefinition!}',
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
       );
     } else if (controller.yemeksepetiCheck.value != null) {
       return Text(
-        controller.yemeksepetiCheck.value!.customerAddress! +
-            ' - ' +
-            controller.yemeksepetiCheck.value!.customerAddressDefinition!,
-        style: TextStyle(
+        '${controller.yemeksepetiCheck.value!.customerAddress!} - ${controller.yemeksepetiCheck.value!.customerAddressDefinition!}',
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
@@ -258,20 +254,16 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
   Widget buildCustomerName(UpdateStatusDialogController controller) {
     if (controller.getirCheck.value != null) {
       return Text(
-        controller.getirCheck.value!.customerName! +
-            ' - ' +
-            controller.getirCheck.value!.customerPhoneNumber!,
-        style: TextStyle(
+        '${controller.getirCheck.value!.customerName!} - ${controller.getirCheck.value!.customerPhoneNumber!}',
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
       );
     } else if (controller.yemeksepetiCheck.value != null) {
       return Text(
-        controller.yemeksepetiCheck.value!.customerName! +
-            ' - ' +
-            controller.yemeksepetiCheck.value!.customerPhoneNumber!,
-        style: TextStyle(
+        '${controller.yemeksepetiCheck.value!.customerName!} - ${controller.yemeksepetiCheck.value!.customerPhoneNumber!}',
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
@@ -301,10 +293,9 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:' +
-                controller.getirCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2),
-            style: TextStyle(
+            'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!
+                    .toStringAsFixed(2)}',
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 decoration: TextDecoration.lineThrough),
@@ -312,16 +303,15 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
           Text(
             controller.getirCheck.value!.payments!.remainingAmount!
                 .toStringAsFixed(2),
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ],
       );
     } else {
       return Text(
-        'Toplam Tutar:' +
-            controller.getirCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!
+                .toStringAsFixed(2)}',
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }
   } else if (controller.yemeksepetiCheck.value != null) {
@@ -330,10 +320,9 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:' +
-                controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2),
-            style: TextStyle(
+            'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
+                    .toStringAsFixed(2)}',
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 decoration: TextDecoration.lineThrough),
@@ -341,16 +330,15 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
           Text(
             controller.yemeksepetiCheck.value!.payments!.remainingAmount!
                 .toStringAsFixed(2),
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ],
       );
     } else {
       return Text(
-        'Toplam Tutar:' +
-            controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
+                .toStringAsFixed(2)}',
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }
   }

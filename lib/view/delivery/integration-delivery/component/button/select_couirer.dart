@@ -9,6 +9,7 @@ class SelectCouirerButton extends StatelessWidget {
   final int checkId;
   final CourierModel? courierModel;
   const SelectCouirerButton({
+    super.key,
     required this.checkId,
     required this.courierModel,
   });
@@ -20,7 +21,7 @@ class SelectCouirerButton extends StatelessWidget {
       callback: () async {
         var res = await showDialog(
           context: context,
-          builder: (context) => CouirerPage(),
+          builder: (context) => const CouirerPage(),
         );
         if (res != null) {
           controller.setCourier(checkId, res);

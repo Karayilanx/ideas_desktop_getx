@@ -11,7 +11,7 @@ class OrderPrepareButton extends StatelessWidget {
   final String? yemeksepetiId;
   final bool getirGetirsin;
 
-  const OrderPrepareButton({
+  const OrderPrepareButton({super.key, 
     this.getirId,
     this.yemeksepetiId,
     required this.getirStatus,

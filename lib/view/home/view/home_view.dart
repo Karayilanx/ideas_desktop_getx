@@ -352,8 +352,7 @@ class HomePage extends StatelessWidget {
                               homeController),
                         );
                       },
-                      itemCount: homeController.tableGroups != null &&
-                              homeController.tableGroups.isNotEmpty
+                      itemCount: homeController.tableGroups.isNotEmpty
                           ? homeController.tableGroups.length - 1
                           : 0,
                     );

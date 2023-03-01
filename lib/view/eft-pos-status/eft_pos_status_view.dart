@@ -13,7 +13,7 @@ class EftPosStatusPage extends StatelessWidget {
     return Dialog(
       child: Obx(
         () => Container(
-          height: !controller.total && controller.departments != null
+          height: !controller.total
               ? 120 + controller.departments.length * 40
               : 240,
           padding: const EdgeInsets.all(8),
@@ -69,8 +69,7 @@ class EftPosStatusPage extends StatelessWidget {
                               style: TextStyle(fontSize: 20),
                             ),
                             const Divider(),
-                            if (controller.departments != null)
-                              ...buildDepartments(controller),
+                            ...buildDepartments(controller),
                           ],
                         ),
                       ),

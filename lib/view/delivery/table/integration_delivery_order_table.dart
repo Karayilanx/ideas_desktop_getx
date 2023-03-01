@@ -9,7 +9,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class IntegrationDeliveryOrderTable extends StatelessWidget {
   final IntegrationDeliveryOrderDataSource source;
-  IntegrationDeliveryOrderTable({required this.source});
+  const IntegrationDeliveryOrderTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Müşteri',
               overflow: TextOverflow.ellipsis,
             ),
@@ -49,7 +49,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Teslimat Zamanı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -60,7 +60,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Semt/Adres',
               overflow: TextOverflow.ellipsis,
             ),
@@ -71,7 +71,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -82,7 +82,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Sipariş Tarihi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -93,7 +93,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Ödeme Yöntemi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -104,7 +104,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Durum',
               overflow: TextOverflow.ellipsis,
             ),
@@ -116,7 +116,7 @@ class IntegrationDeliveryOrderTable extends StatelessWidget {
           minimumWidth: 320,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'İşlemler',
               overflow: TextOverflow.ellipsis,
             ),
@@ -324,7 +324,7 @@ class IntegrationDeliveryOrderDataSource extends DataGridSource
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
       if (dataGridCell.columnName == 'actions') {
-        return IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz));
+        return IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz));
       } else if (dataGridCell.columnName == 'Teslimat Zamanı') {
         return Container(
             alignment: Alignment.center,
@@ -362,7 +362,7 @@ class IntegrationDeliveryOrderDataSource extends DataGridSource
             child: Text(
               getStatusString(),
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
             ));
       } else if (dataGridCell.columnName == 'İşlemler') {

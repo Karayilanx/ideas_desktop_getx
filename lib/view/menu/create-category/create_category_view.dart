@@ -5,6 +5,8 @@ import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
 import 'package:ideas_desktop_getx/view/menu/create-category/create_category_view_model.dart';
 
 class CreateCategoryPage extends StatelessWidget {
+  const CreateCategoryPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     CreateCategoryController controller = Get.put(CreateCategoryController());

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -14,8 +16,6 @@ import '../../../service/check/check_service.dart';
 import '../../../service/check_account/check_account_service.dart';
 import '../../../service/menu/menu_service.dart';
 import '../../../service/printer/printer_service.dart';
-import '../../_utility/service_helper.dart';
-import '../../authentication/auth_store.dart';
 import '../../cancel-check-item/cancel_check_item_view.dart';
 import '../../check-account/check-accounts/navigation/check_accounts_navigation_args.dart';
 import '../../order-detail/component/customer_count_dialog.dart';
@@ -80,9 +80,6 @@ class FastSellController extends BaseController {
     );
     checkDetail(await checkService.getFastSellCheck(authStore.user!.branchId!));
 
-    if (checkDetail.value == null) {
-      // navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-    }
     checkDetail.update((val) {
       val!.terminalUserId = authStore.user!.terminalUserId;
     });
@@ -289,7 +286,7 @@ class FastSellController extends BaseController {
             itemCount,
             sellUnitQnt,
           ],
-          SelectCondimentPage());
+          const SelectCondimentPage());
 
       if (list != null && list.isNotEmpty) {
         for (var listItem in list) {
@@ -439,7 +436,7 @@ class FastSellController extends BaseController {
     TextEditingController noteController =
         TextEditingController(text: item.originalItem!.note ?? '');
     var result = await Get.dialog(
-      NotesPages(),
+      const NotesPages(),
       arguments: [
         item,
         noteController,
@@ -474,7 +471,7 @@ class FastSellController extends BaseController {
           updateAction: (quantity) async {
             if (quantity != '' && quantity != '0') {
               var closePage = await Get.dialog(
-                CancelCheckItemPage(),
+                const CancelCheckItemPage(),
                 arguments: [
                   int.parse(quantity),
                   item,
@@ -490,7 +487,7 @@ class FastSellController extends BaseController {
       return result;
     } else {
       var closePage = await Get.dialog(
-        CancelCheckItemPage(),
+        const CancelCheckItemPage(),
         arguments: [
           1,
           item,
@@ -557,7 +554,7 @@ class FastSellController extends BaseController {
   }
 
   Future openQuantityDialog() async {
-    var res = await Get.dialog(PortionQuantityDialog());
+    var res = await Get.dialog(const PortionQuantityDialog());
     if (res != null) {
       quantity(res.toString().getDouble!);
     }
@@ -707,9 +704,8 @@ class FastSellController extends BaseController {
                 transferAll: true,
                 menuItems: null));
       } else {
-        bool confirm = await openYesNoDialog('Adisyonu ' +
-            checkDetail.value.checkAccountName! +
-            ' adlı cari hesaba aktarmak istediğinizden emin misiniz?');
+        bool confirm = await openYesNoDialog(
+            'Adisyonu ${checkDetail.value.checkAccountName!} adlı cari hesaba aktarmak istediğinizden emin misiniz?');
 
         if (confirm) {
           TransferCheckToCheckAccountInput inp =

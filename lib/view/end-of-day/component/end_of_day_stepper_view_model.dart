@@ -7,8 +7,6 @@ import '../../../locale_keys_enum.dart';
 import '../../../model/check_model.dart';
 import '../../../model/end_of_day_model.dart';
 import '../../../service/end_of_day/end_of_day_service.dart';
-import '../../_utility/service_helper.dart';
-import '../../authentication/auth_store.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EndOfDayStepperController extends BaseController {
@@ -143,8 +141,7 @@ class EndOfDayStepperController extends BaseController {
           "Gün sonu almak için Yemeksepeti ve Getir siparişlerini tamamlayın.\nYemeksepeti Açık Sipariş:${checkCount.value!.yemeksepeti!}\nGetir Açık Sipariş:${checkCount.value!.getir!}");
     } else {
       var confirm = await openYesNoDialog(
-          DateFormat('dd-MMMM-yyyy').format(dateCtrl.selectedDate!) +
-              ' gününe gün sonu almak istediğinize emin misiniz?');
+          '${DateFormat('dd-MMMM-yyyy').format(dateCtrl.selectedDate!)} gününe gün sonu almak istediğinize emin misiniz?');
       if (confirm) {
         EasyLoading.show(
           status: 'Lütfen Bekleyiniz...',

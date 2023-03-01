@@ -9,7 +9,7 @@ class OrderMakePaymentButton extends StatelessWidget with ServiceHelper {
   final String? yemeksepetiId;
   final int? checkId;
 
-  OrderMakePaymentButton({
+  OrderMakePaymentButton({super.key, 
     this.getirId,
     this.yemeksepetiId,
     required this.checkId,

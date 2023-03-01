@@ -12,9 +12,8 @@ class MultiSelectController<T> extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    if (initialSelectedValues != null) {
-      selectedValues.addAll(initialSelectedValues);
-    }
+
+    selectedValues.addAll(initialSelectedValues);
   }
 
   void onItemCheckedChange(T itemValue, bool checked) {

@@ -99,7 +99,7 @@ class MenuController extends BaseController {
         menuDataSource.value!.sort();
 
         // update dialog
-        Get.dialog(SyncDialog());
+        Get.dialog(const SyncDialog());
       }
       EasyLoading.dismiss();
     } on Exception {
@@ -110,7 +110,7 @@ class MenuController extends BaseController {
   openSelectPrinter(
       int menuItemId, List<MenuItemLocalPrinterMappingModel> m) async {
     var res = await Get.dialog(
-      SelectPrinterMapping(),
+      const SelectPrinterMapping(),
       arguments: m,
     );
     if (res != null) {
@@ -144,7 +144,7 @@ class MenuController extends BaseController {
 
   deleteMenuItem(MenuItemLocalEditModel item) async {
     var confirm = await openYesNoDialog(
-        item.nameTr! + " ürünün silmek istediğinize emin misiniz?");
+        "${item.nameTr!} ürünün silmek istediğinize emin misiniz?");
 
     if (confirm) {
       var res = await menuService.deleteMenuItem(

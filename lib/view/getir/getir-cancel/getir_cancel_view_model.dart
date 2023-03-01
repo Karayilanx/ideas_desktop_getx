@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/base_controller.dart';
 import 'package:ideas_desktop_getx/service/getir_service.dart';
 import '../../../model/getir_model.dart';
-import '../../authentication/auth_store.dart';
 
 class GetirCancelController extends BaseController {
   final String? getirId = Get.arguments;

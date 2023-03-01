@@ -7,7 +7,7 @@ class CondimentButton extends StatelessWidget {
   final VoidCallback callback;
   final bool isSelected;
   const CondimentButton(
-      {required this.condiment,
+      {super.key, required this.condiment,
       required this.callback,
       required this.isSelected});
   @override
@@ -19,7 +19,7 @@ class CondimentButton extends StatelessWidget {
           border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(10),
           color: isSelected && !condiment.isIngredient!
-              ? Color(0xffF1A159)
+              ? const Color(0xffF1A159)
               : Colors.white,
         ),
         child: Column(
@@ -57,7 +57,7 @@ class CondimentButton extends StatelessWidget {
                         : TextDecoration.none,
                     color: isSelected && !condiment.isIngredient!
                         ? Colors.white
-                        : Color(0xffF1A159),
+                        : const Color(0xffF1A159),
                   ),
                 ),
               ),

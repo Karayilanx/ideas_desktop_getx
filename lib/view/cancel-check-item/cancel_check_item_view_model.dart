@@ -42,7 +42,7 @@ class CancelCheckItemController extends BaseController {
 
   Future openFastNotesDialog() async {
     var res = await Get.dialog(
-      FastNotePage(),
+      const FastNotePage(),
     );
     if (res != null) cancelNoteController.text = res;
   }

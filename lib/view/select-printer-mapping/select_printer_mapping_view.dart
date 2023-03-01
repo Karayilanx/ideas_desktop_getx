@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/view/select-printer-mapping/select_printer_mapping_view_model.dart';
-import '../../model/menu_model.dart';
 import '../../theme/theme.dart';
-import '../_utility/loading/loading_screen.dart';
 
 class SelectPrinterMapping extends StatelessWidget {
   const SelectPrinterMapping({
@@ -15,7 +13,7 @@ class SelectPrinterMapping extends StatelessWidget {
     SelectPrinterMappingController controller =
         Get.put(SelectPrinterMappingController());
     return SimpleDialog(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       children: [
         SizedBox(
           width: 600,
@@ -33,7 +31,7 @@ class SelectPrinterMapping extends StatelessWidget {
         Container(
           color: ideasTheme.scaffoldBackgroundColor,
           height: 60,
-          child: Center(
+          child: const Center(
             child: Text(
               'Yazıcı Seçimi',
               style: TextStyle(color: Colors.white, fontSize: 20),
@@ -57,7 +55,7 @@ class SelectPrinterMapping extends StatelessWidget {
         ),
         Container(
             height: 60,
-            margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
+            margin: const EdgeInsets.fromLTRB(0, 0, 10, 10),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -69,7 +67,7 @@ class SelectPrinterMapping extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: ideasTheme.scaffoldBackgroundColor),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'KAYDET',
                         textAlign: TextAlign.center,
@@ -78,7 +76,7 @@ class SelectPrinterMapping extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 GestureDetector(
                   onTap: () => Get.back(),
                   child: Container(
@@ -86,7 +84,7 @@ class SelectPrinterMapping extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.red),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'VAZGEÇ',
                         textAlign: TextAlign.center,

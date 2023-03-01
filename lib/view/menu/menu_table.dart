@@ -1,14 +1,17 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart' hide MenuController;
 import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/model/menu_model.dart';
 import 'package:ideas_desktop_getx/view/menu/menu_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+// ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
 
 class MenuTable extends StatelessWidget {
   final MenuDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  MenuTable({required this.source});
+  MenuTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,7 @@ class MenuTable extends StatelessWidget {
             visible: false,
             label: Container(
               alignment: Alignment.center,
-              child: Text(
+              child: const Text(
                 'menuItemId',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -43,8 +46,8 @@ class MenuTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.auto,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              child: const Text(
                 'Kategori',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -55,8 +58,8 @@ class MenuTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.auto,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Alt Kategori',
               ),
             ),
@@ -66,8 +69,8 @@ class MenuTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.auto,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Ürün Adı',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -78,8 +81,8 @@ class MenuTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Yazıcılar',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -90,8 +93,8 @@ class MenuTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.auto,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Fiyat',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -103,8 +106,8 @@ class MenuTable extends StatelessWidget {
             width: 80,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Göster',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -116,8 +119,8 @@ class MenuTable extends StatelessWidget {
             width: 90,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Top List',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -129,8 +132,8 @@ class MenuTable extends StatelessWidget {
             width: 150,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'İşlemler',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -233,11 +236,11 @@ class MenuDataSource extends DataGridSource {
               child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   alignment: Alignment.centerLeft,
                   child: Text(
                     selectedPrinterNames.toString(),
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -248,22 +251,22 @@ class MenuDataSource extends DataGridSource {
                 TextButton(
                   onPressed: () => controller.navigateToCreateMenuItemPage(
                       dataGridCell.value.serverMenuItemId),
-                  child: Text(
+                  child: const Text(
                     "Düzenle",
                     style: TextStyle(color: Colors.blue),
                   ),
                 ),
-                VerticalDivider(),
+                const VerticalDivider(),
                 TextButton(
                   onPressed: () =>
                       controller.deleteMenuItem(dataGridCell.value),
-                  child: Text("Sil", style: TextStyle(color: Colors.red)),
+                  child: const Text("Sil", style: TextStyle(color: Colors.red)),
                 ),
               ],
             );
           }
           return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value.toString(),
@@ -290,12 +293,12 @@ class CustomColumnSizer extends ColumnSizer {
         if (i == 0) {
           selectedPrinterNames += value[i].printerName!;
         } else {
-          selectedPrinterNames += ' - ' + value[i].printerName!;
+          selectedPrinterNames += ' - ${value[i].printerName!}';
         }
       }
 
       cellValue = selectedPrinterNames;
-      textStyle = TextStyle(fontWeight: FontWeight.bold);
+      textStyle = const TextStyle(fontWeight: FontWeight.bold);
     }
 
     return super.computeCellWidth(column, row, cellValue, textStyle);

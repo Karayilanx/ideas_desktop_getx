@@ -9,7 +9,7 @@ class FastSellInput extends StatelessWidget {
   final TextInputType type;
   final bool isSelected;
   final VoidCallback callback;
-  const FastSellInput({
+  const FastSellInput({super.key, 
     this.ctrl,
     this.hintText,
     this.enabled,
@@ -30,7 +30,7 @@ class FastSellInput extends StatelessWidget {
           focusColor: selectedColor,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.black,
             ),
           ),
@@ -40,7 +40,7 @@ class FastSellInput extends StatelessWidget {
       enabled: enabled,
       showCursor: isSelected,
       readOnly: true,
-      style: TextStyle(),
+      style: const TextStyle(),
     );
   }
 }

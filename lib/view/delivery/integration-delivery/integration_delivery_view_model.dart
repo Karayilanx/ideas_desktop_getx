@@ -363,7 +363,7 @@ class IntegrationDeliveryController extends BaseController {
   }
 
   Future openGetirCancelDialog(String id) async {
-    var res = await Get.dialog(GetirCancelPage(), arguments: id);
+    var res = await Get.dialog(const GetirCancelPage(), arguments: id);
     if (res != null) {
       await cancelGetiriOrder(id, res[0], res[1]);
     }
@@ -383,7 +383,7 @@ class IntegrationDeliveryController extends BaseController {
   }
 
   Future openYemeksepetiCancelDialog(String id) async {
-    var res = await Get.dialog(YemeksepetiCancelPage(), arguments: id);
+    var res = await Get.dialog(const YemeksepetiCancelPage(), arguments: id);
     if (res != null) {
       if (restaurantModel != null) {
         if (restaurantModel!.isVale!) {
@@ -423,7 +423,7 @@ class IntegrationDeliveryController extends BaseController {
 
   void navigateToDeliveryOrder(int? checkId, bool isIntegration) async {
     if (isIntegration) {
-      await Get.dialog(OrderDetailView(),
+      await Get.dialog(const OrderDetailView(),
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
@@ -431,7 +431,7 @@ class IntegrationDeliveryController extends BaseController {
               isIntegration: true,
               alias: null));
     } else {
-      await Get.dialog(OrderDetailView(),
+      await Get.dialog(const OrderDetailView(),
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
@@ -443,13 +443,13 @@ class IntegrationDeliveryController extends BaseController {
   }
 
   Future openGetirDialog(String getirId) async {
-    await Get.dialog(GetirOrderPage(), arguments: getirId);
+    await Get.dialog(const GetirOrderPage(), arguments: getirId);
     await getTodaysDeliverys();
   }
 
   Future openYemeksepetiDialog(String yemeksepetiId) async {
     await Get.dialog(
-      YemeksepetiOrderPage(),
+      const YemeksepetiOrderPage(),
       arguments: yemeksepetiId,
     );
     await getTodaysDeliverys();

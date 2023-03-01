@@ -9,7 +9,7 @@ class EndOfDayReportInformation extends StatelessWidget {
   final double rightText;
   final bool isSubInfo;
   const EndOfDayReportInformation(
-      {required this.leftText,
+      {super.key, required this.leftText,
       required this.rightText,
       this.isSubInfo = false});
 
@@ -28,7 +28,7 @@ class EndOfDayReportInformation extends StatelessWidget {
         ),
         Text(
           rightText.getPriceString,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
       ],
     );
@@ -44,21 +44,21 @@ class EndOfDayReportHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       header,
-      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     );
   }
 }
 
 class EndOfDayReportColumn extends StatelessWidget {
   final Widget child;
-  const EndOfDayReportColumn(this.child);
+  const EndOfDayReportColumn(this.child, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.only(right: 2),
-        padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+        margin: const EdgeInsets.only(right: 2),
+        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.black, width: 1),
@@ -77,7 +77,7 @@ class EndOfDayTabButton extends StatelessWidget {
   final bool selected;
   final Color color;
   const EndOfDayTabButton(
-      {required this.callback,
+      {super.key, required this.callback,
       required this.text,
       this.selected = false,
       this.color = defaultTabColor});
@@ -92,7 +92,7 @@ class EndOfDayTabButton extends StatelessWidget {
         onPressed: () => callback(),
         child: AutoSizeText(
           text,
-          style: TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18),
         ),
       ),
     );
@@ -103,7 +103,7 @@ class EndOfDayLeftSideButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
   final Color color;
-  const EndOfDayLeftSideButton({
+  const EndOfDayLeftSideButton({super.key, 
     required this.callback,
     required this.text,
     this.color = defaultColor,
@@ -113,7 +113,7 @@ class EndOfDayLeftSideButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 14),
+        margin: const EdgeInsets.symmetric(horizontal: 14),
         child: ElevatedButton(
           onPressed: () => callback(),
           style: ElevatedButton.styleFrom(backgroundColor: color),

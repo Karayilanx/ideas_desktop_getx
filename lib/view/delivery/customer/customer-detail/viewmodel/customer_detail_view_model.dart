@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/base_controller.dart';
 import '../../../../../model/delivery_model.dart';
 import '../../../../../service/delivery/delivery_service.dart';
-import '../../../../authentication/auth_store.dart';
 import '../model/customer_detail_page_enum.dart';
 
 class CustomerDetailController extends BaseController {

@@ -11,7 +11,7 @@ class OrderVerifyButton extends StatelessWidget {
   final String? yemeksepetiId;
 
   final bool isVale;
-  const OrderVerifyButton({
+  const OrderVerifyButton({super.key, 
     this.getirId,
     this.yemeksepetiId,
     this.getirStatus,

@@ -15,15 +15,15 @@ class SelectMultiPrinter extends StatelessWidget {
   Widget build(BuildContext context) {
     SelectMultiPrinterController controller = Get.find();
     return SimpleDialog(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       children: [
         Obx(() {
           return SizedBox(
             width: 600,
             height: 400,
-            child: controller.printers != null
+            child: controller.printers.isNotEmpty
                 ? buildBody(controller)
-                : LoadingPage(),
+                : const LoadingPage(),
           );
         })
       ],
@@ -37,7 +37,7 @@ class SelectMultiPrinter extends StatelessWidget {
         Container(
           color: ideasTheme.scaffoldBackgroundColor,
           height: 60,
-          child: Center(
+          child: const Center(
             child: Text(
               'Yazıcı Seçimi',
               style: TextStyle(color: Colors.white, fontSize: 20),
@@ -61,7 +61,7 @@ class SelectMultiPrinter extends StatelessWidget {
         ),
         Container(
             height: 60,
-            margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
+            margin: const EdgeInsets.fromLTRB(0, 0, 10, 10),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -81,7 +81,7 @@ class SelectMultiPrinter extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: ideasTheme.scaffoldBackgroundColor),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'YAZDIR',
                         textAlign: TextAlign.center,
@@ -90,7 +90,7 @@ class SelectMultiPrinter extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 GestureDetector(
                   onTap: () => Get.back(),
                   child: Container(
@@ -98,7 +98,7 @@ class SelectMultiPrinter extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.red),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'VAZGEÇ',
                         textAlign: TextAlign.center,

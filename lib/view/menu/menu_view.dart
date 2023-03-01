@@ -18,7 +18,7 @@ class MenuPage extends StatelessWidget {
         return Scaffold(
           body: controller.menuDataSource.value != null
               ? buildBody(controller)
-              : LoadingPage(),
+              : const LoadingPage(),
         );
       }),
     );
@@ -33,9 +33,9 @@ class MenuPage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       fillColor: Colors.white,
                       filled: true,
@@ -50,7 +50,7 @@ class MenuPage extends StatelessWidget {
                       if (controller.localeManager
                           .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
                         var res = await Get.dialog(
-                          ScreenKeyboard(),
+                          const ScreenKeyboard(),
                         );
                         if (res != null) {
                           controller.searchCtrl.text = res;
@@ -66,14 +66,14 @@ class MenuPage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.navigateToCreateMenuItemPage(null),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Yeni Ürün',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24),
@@ -83,14 +83,14 @@ class MenuPage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.updateLocalMenu(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kaydet',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24),
@@ -100,14 +100,14 @@ class MenuPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kapat',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, color: Colors.white),

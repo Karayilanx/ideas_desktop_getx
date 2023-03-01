@@ -5,14 +5,14 @@ import '../../../../model/delivery_model.dart';
 import '../viewmodel/yemeksepeti_order_view_model.dart';
 
 class YemeksepetiOrderPage extends StatelessWidget {
-  const YemeksepetiOrderPage();
+  const YemeksepetiOrderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     YemeksepetiOrderController controller = Get.find();
     return SimpleDialog(
         contentPadding: EdgeInsets.zero,
-        backgroundColor: Color(0xffEDEAE6),
+        backgroundColor: const Color(0xffEDEAE6),
         children: [
           Obx(() {
             if (controller.yemeksepetiCheck.value != null) {
@@ -23,11 +23,11 @@ class YemeksepetiOrderPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 80),
+                      constraints: const BoxConstraints(maxHeight: 80),
                       child: Container(
                         color: Colors.red,
                         child: Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -36,7 +36,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                                 alignment: Alignment.center,
                                 child: Text(
                                   controller.getTitleText(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 25,
                                   ),
@@ -47,12 +47,12 @@ class YemeksepetiOrderPage extends StatelessWidget {
                                 children: [
                                   ElevatedButton.icon(
                                     onPressed: () => Navigator.pop(context),
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.arrow_back,
                                     ),
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.grey[300]),
-                                    label: Text('Geri Dön',
+                                    label: const Text('Geri Dön',
                                         style: TextStyle(fontSize: 18)),
                                   ),
                                 ],
@@ -63,7 +63,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(8, 16, 12, 0),
+                      padding: const EdgeInsets.fromLTRB(8, 16, 12, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -74,8 +74,8 @@ class YemeksepetiOrderPage extends StatelessWidget {
                                 size: 30,
                                 color: Colors.red[900],
                               ),
-                              SizedBox(width: 4),
-                              Text(
+                              const SizedBox(width: 4),
+                              const Text(
                                 'Müşteri Bilgileri',
                                 style: TextStyle(
                                     fontSize: 21, fontWeight: FontWeight.bold),
@@ -86,7 +86,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                             controller.yemeksepetiCheck.value!.vale!
                                 ? 'Getir Getirsin'
                                 : 'Restoran Getirsin',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold),
@@ -94,9 +94,9 @@ class YemeksepetiOrderPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(color: Colors.black),
+                    const Divider(color: Colors.black),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(8, 0, 20, 0),
+                      padding: const EdgeInsets.fromLTRB(8, 0, 20, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,12 +107,12 @@ class YemeksepetiOrderPage extends StatelessWidget {
                               Text(
                                 controller
                                     .yemeksepetiCheck.value!.customerName!,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               Text(
                                   'Müşteri İletişim: ${controller.yemeksepetiCheck.value!.customerPhoneNumber}',
-                                  style: TextStyle(fontSize: 16))
+                                  style: const TextStyle(fontSize: 16))
                             ],
                           ),
                           Row(
@@ -131,7 +131,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               GestureDetector(
                                 onTap: () => controller.openPrinterDialog(),
                                 child: Column(
@@ -151,7 +151,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                       child: Row(
                         children: [
                           Icon(
@@ -159,8 +159,8 @@ class YemeksepetiOrderPage extends StatelessWidget {
                             size: 30,
                             color: Colors.red[900],
                           ),
-                          SizedBox(width: 4),
-                          Text(
+                          const SizedBox(width: 4),
+                          const Text(
                             'Adres ve Konum',
                             style: TextStyle(
                                 fontSize: 21, fontWeight: FontWeight.bold),
@@ -168,34 +168,32 @@ class YemeksepetiOrderPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(color: Colors.black),
+                    const Divider(color: Colors.black),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                      padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            controller
-                                    .yemeksepetiCheck.value!.customerAddress! +
-                                '\n' +
-                                controller.yemeksepetiCheck.value!
-                                    .customerAddressDefinition!,
-                            style: TextStyle(fontSize: 16),
+                            '${controller
+                                    .yemeksepetiCheck.value!.customerAddress!}\n${controller.yemeksepetiCheck.value!
+                                    .customerAddressDefinition!}',
+                            style: const TextStyle(fontSize: 16),
                           ),
-                          Text('Ödeme Şekli: ' + controller.getPaymentText(),
-                              style: TextStyle(
+                          Text('Ödeme Şekli: ${controller.getPaymentText()}',
+                              style: const TextStyle(
                                   fontSize: 21,
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold))
                         ],
                       ),
                     ),
-                    Divider(color: Colors.black),
+                    const Divider(color: Colors.black),
                     Expanded(
                       flex: 85,
                       child: Obx(() {
                         return Padding(
-                          padding: EdgeInsets.fromLTRB(8, 0, 12, 0),
+                          padding: const EdgeInsets.fromLTRB(8, 0, 12, 0),
                           child: Container(
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black)),
@@ -223,10 +221,9 @@ class YemeksepetiOrderPage extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          Text(item.itemCount!
-                                                  .toStringAsFixed(0) +
-                                              ' ADET'),
-                                          SizedBox(
+                                          Text('${item.itemCount!
+                                                  .toStringAsFixed(0)} ADET'),
+                                          const SizedBox(
                                             width: 20,
                                           ),
                                           Text(item.totalPrice
@@ -239,7 +236,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                               },
                               itemCount: controller.groupedItems.length,
                               separatorBuilder: (context, index) {
-                                return Divider(
+                                return const Divider(
                                   color: Colors.grey,
                                   height: 1,
                                 );
@@ -249,25 +246,25 @@ class YemeksepetiOrderPage extends StatelessWidget {
                         );
                       }),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Expanded(
                       flex: 22,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(right: 8),
+                            padding: const EdgeInsets.only(right: 8),
                             child: buildTotalPriceText(controller),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 16)
+                    const SizedBox(height: 16)
                   ],
                 ),
               );
             } else {
-              return Text(
+              return const Text(
                 'Yükleniyor',
                 style: TextStyle(fontSize: 26, color: Colors.white),
               );
@@ -282,10 +279,9 @@ class YemeksepetiOrderPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:' +
-                controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2),
-            style: TextStyle(
+            'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
+                    .toStringAsFixed(2)}',
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 decoration: TextDecoration.lineThrough),
@@ -293,23 +289,22 @@ class YemeksepetiOrderPage extends StatelessWidget {
           Text(
             controller.yemeksepetiCheck.value!.payments!.remainingAmount!
                 .toStringAsFixed(2),
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ],
       );
     } else {
       return Text(
-        'Toplam Tutar:' +
-            controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
+                .toStringAsFixed(2)}',
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }
   }
 
   String getItemNoteString(CheckMenuItemModel item) {
     if (item.note != null && item.note!.isNotEmpty) {
-      return '        ' + item.note!;
+      return '        ${item.note!}';
     } else {
       return '';
     }
@@ -380,7 +375,7 @@ class GetirConfirmButton extends StatelessWidget {
   final IconData? icon;
   final VoidCallback? callback;
 
-  const GetirConfirmButton({this.text, this.callback, required this.icon});
+  const GetirConfirmButton({super.key, this.text, this.callback, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -391,7 +386,7 @@ class GetirConfirmButton extends StatelessWidget {
       icon: Icon(icon),
       label: Text(
         text!,
-        style: TextStyle(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
       ),
       style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[300]),
     );

@@ -132,11 +132,10 @@ class EftPosStatusController extends BaseController {
 
   getDepartments() async {
     departments(await eftPosService.getDepartments(eftPosId));
-    if (departments != null) {
-      controllers = [];
-      for (var i = 0; i < departments.length; i++) {
-        controllers.add(TextEditingController());
-      }
+
+    controllers = [];
+    for (var i = 0; i < departments.length; i++) {
+      controllers.add(TextEditingController());
     }
   }
 

@@ -1095,97 +1095,85 @@ class OrderDetailView extends StatelessWidget {
   }
 
   Widget buildSelectTableTab(OrderDetailController controller) {
-    return controller.tableGroups != null
-        ? Column(
+    return Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 4),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    const Text(
-                      'Aktarmak istediğiniz hesaba tıklayınız.',
-                      style: TextStyle(fontSize: 16),
+              const Text(
+                'Aktarmak istediğiniz hesaba tıklayınız.',
+                style: TextStyle(fontSize: 16),
+              ),
+              Obx(
+                () => DropdownButton(
+                    icon: Container(
+                      margin: const EdgeInsets.only(bottom: 4),
+                      child: const Icon(
+                        Icons.arrow_downward,
+                        size: 24,
+                        color: Colors.black,
+                      ),
                     ),
-                    Obx(
-                      () => DropdownButton(
-                          icon: Container(
-                            margin: const EdgeInsets.only(bottom: 4),
-                            child: const Icon(
-                              Icons.arrow_downward,
-                              size: 24,
-                              color: Colors.black,
-                            ),
-                          ),
-                          items: controller.tableGroups.map<DropdownMenuItem>(
-                              (HomeGroupWithDetails? value) {
-                            return DropdownMenuItem(
-                              value: value,
-                              child: Text(
-                                value!.tableGroupId != -1
-                                    ? value.name!
-                                    : value.name!,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                          value: controller.selectedTableGroup.value,
+                    items: controller.tableGroups
+                        .map<DropdownMenuItem>((HomeGroupWithDetails? value) {
+                      return DropdownMenuItem(
+                        value: value,
+                        child: Text(
+                          value!.tableGroupId != -1 ? value.name! : value.name!,
                           style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
-                          onChanged: (dynamic newGroup) {
-                            controller.changeTableGroup(newGroup);
-                          },
-                          selectedItemBuilder: (context) {
-                            return controller.tableGroups
-                                .map((HomeGroupWithDetails? value) {
-                              return Text(
-                                value!.tableGroupId != -1
-                                    ? value.name!
-                                    : value.name!,
-                                style: const TextStyle(
-                                  color: Color(0xffF1A159),
-                                  fontSize: 18,
-                                ),
-                              );
-                            }).toList();
-                          }),
+                        ),
+                      );
+                    }).toList(),
+                    value: controller.selectedTableGroup.value,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Obx(
-                  () {
-                    return GridView.extent(
-                      maxCrossAxisExtent: getTableWidth(controller),
-                      childAspectRatio: 2,
-                      mainAxisSpacing: 4,
-                      crossAxisSpacing: 4,
-                      shrinkWrap: true,
-                      children: controller.selectedTableGroup.value!.name !=
-                              "Tümü"
-                          ? createTables(
-                              controller.selectedTableGroup.value!, controller)
-                          : createFilteredTables(controller),
-                    );
-                  },
-                ),
+                    onChanged: (dynamic newGroup) {
+                      controller.changeTableGroup(newGroup);
+                    },
+                    selectedItemBuilder: (context) {
+                      return controller.tableGroups
+                          .map((HomeGroupWithDetails? value) {
+                        return Text(
+                          value!.tableGroupId != -1 ? value.name! : value.name!,
+                          style: const TextStyle(
+                            color: Color(0xffF1A159),
+                            fontSize: 18,
+                          ),
+                        );
+                      }).toList();
+                    }),
               ),
             ],
-          )
-        : const Center(
-            child: Spinner(
-              'Masalar yükleniyor...',
-              color: Colors.black,
-            ),
-          );
+          ),
+        ),
+        Expanded(
+          child: Obx(
+            () {
+              return GridView.extent(
+                maxCrossAxisExtent: getTableWidth(controller),
+                childAspectRatio: 2,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
+                shrinkWrap: true,
+                children: controller.selectedTableGroup.value!.name != "Tümü"
+                    ? createTables(
+                        controller.selectedTableGroup.value!, controller)
+                    : createFilteredTables(controller),
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 
   List<Widget> createTables(
@@ -1543,9 +1531,9 @@ class OrderDetailView extends StatelessWidget {
     return Column(
       children: [
         buildPriceInput(controller),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Expanded(flex: 88, child: buildKeyboard(controller)),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Expanded(flex: 12, child: buildPrintButtonsRow())
       ],
     );

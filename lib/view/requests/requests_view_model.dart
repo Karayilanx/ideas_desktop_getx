@@ -5,8 +5,6 @@ import 'package:ideas_desktop_getx/base_controller.dart';
 import 'package:ideas_desktop_getx/service/printer/printer_service.dart';
 import '../../model/check_model.dart';
 import '../../service/check/check_service.dart';
-import '../_utility/service_helper.dart';
-import '../authentication/auth_store.dart';
 import 'requests_store.dart';
 import 'table/cancel_requests_table.dart';
 

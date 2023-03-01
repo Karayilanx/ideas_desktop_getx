@@ -7,7 +7,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class TerminalUsersTable extends StatelessWidget {
   final TerminalUsersDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  TerminalUsersTable({required this.source});
+  TerminalUsersTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class TerminalUsersTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'terminalUserId',
               overflow: TextOverflow.ellipsis,
             ),
@@ -37,11 +37,11 @@ class TerminalUsersTable extends StatelessWidget {
         GridColumn(
           columnName: 'name',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -52,8 +52,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Pin',
               overflow: TextOverflow.ellipsis,
             ),
@@ -64,8 +64,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Max İskonto(%)',
               overflow: TextOverflow.ellipsis,
             ),
@@ -76,8 +76,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Admin',
               overflow: TextOverflow.ellipsis,
             ),
@@ -88,8 +88,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İkram',
               overflow: TextOverflow.ellipsis,
             ),
@@ -100,8 +100,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Ödenmez',
               overflow: TextOverflow.ellipsis,
             ),
@@ -112,8 +112,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İskonto',
               overflow: TextOverflow.ellipsis,
             ),
@@ -124,8 +124,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Aktarma',
               overflow: TextOverflow.ellipsis,
             ),
@@ -136,8 +136,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Geri Yükleme',
               overflow: TextOverflow.ellipsis,
             ),
@@ -148,8 +148,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Cari',
               overflow: TextOverflow.ellipsis,
             ),
@@ -160,8 +160,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Ödeme',
               overflow: TextOverflow.ellipsis,
             ),
@@ -172,8 +172,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İptal',
               overflow: TextOverflow.ellipsis,
             ),
@@ -184,8 +184,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Gün Sonu',
               overflow: TextOverflow.ellipsis,
             ),
@@ -196,8 +196,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İşlemler',
               overflow: TextOverflow.ellipsis,
             ),
@@ -208,8 +208,8 @@ class TerminalUsersTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Aktif',
               overflow: TextOverflow.ellipsis,
             ),
@@ -299,7 +299,7 @@ class TerminalUsersDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: nameCtrl,
-            decoration: InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (newName) =>
                 controller.changeName(terminalUserId, newName),
           ),
@@ -309,7 +309,7 @@ class TerminalUsersDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: pinCtrl,
-            decoration: InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (newPin) => controller.changePin(terminalUserId, newPin),
           ),
         );
@@ -318,7 +318,7 @@ class TerminalUsersDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: maxDiscountController,
-            decoration: InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (newDiscountPercentage) =>
                 controller.changeMaxDiscountPercentage(
                     terminalUserId, newDiscountPercentage),
@@ -423,7 +423,7 @@ class TerminalUsersDataSource extends DataGridSource {
       }
 
       return Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.centerLeft,
           child: Text(
             dataGridCell.value.toString(),

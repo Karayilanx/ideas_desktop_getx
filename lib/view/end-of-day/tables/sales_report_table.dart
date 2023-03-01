@@ -6,7 +6,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class SalesReportTable extends StatelessWidget {
   final SaleReportDataSource source;
 
-  const SalesReportTable({required this.source});
+  const SalesReportTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,11 @@ class SalesReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'categoryName',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Kategori',
               overflow: TextOverflow.ellipsis,
             ),
@@ -39,8 +39,8 @@ class SalesReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Alt Kategori',
               overflow: TextOverflow.ellipsis,
             ),
@@ -51,8 +51,8 @@ class SalesReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Ürün Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -61,11 +61,11 @@ class SalesReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'quantity',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Satış Miktarı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -74,11 +74,11 @@ class SalesReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'price',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -131,7 +131,7 @@ class SaleReportDataSource extends DataGridSource with ServiceHelper {
         color: getRowBackgroundColor(),
         cells: row.getCells().map<Widget>((dataGridCell) {
           return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value.toString(),

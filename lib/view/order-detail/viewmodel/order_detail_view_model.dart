@@ -224,17 +224,14 @@ class OrderDetailController extends BaseController {
     tableGroups(
         await homeService.getHomeGroupsWithDetails(authStore.user!.branchId!));
 
-    if (tableGroups != null) {
-      if (tableGroups.isNotEmpty) {
-        if (selectedTableGroup.value != null) {
-          selectedTableGroup(tableGroups
-              .where((element) =>
-                  element!.tableGroupId ==
-                  selectedTableGroup.value!.tableGroupId)
-              .first);
-        } else {
-          selectedTableGroup(tableGroups[0]);
-        }
+    if (tableGroups.isNotEmpty) {
+      if (selectedTableGroup.value != null) {
+        selectedTableGroup(tableGroups
+            .where((element) =>
+                element!.tableGroupId == selectedTableGroup.value!.tableGroupId)
+            .first);
+      } else {
+        selectedTableGroup(tableGroups[0]);
       }
     }
   }
@@ -288,7 +285,7 @@ class OrderDetailController extends BaseController {
           itemCount,
           sellUnitQnt,
         ],
-        SelectCondimentPage(),
+        const SelectCondimentPage(),
       );
 
       if (list != null && list.isNotEmpty) {
@@ -439,7 +436,7 @@ class OrderDetailController extends BaseController {
               }
             },
             stopSendAction: () async {
-              var res = await Get.dialog(StoppedItemsPage(), arguments: [
+              var res = await Get.dialog(const StoppedItemsPage(), arguments: [
                 checkId!,
                 groupedCheckItems
                     .where((element) => element.originalItem!.isStopped == true)
@@ -615,7 +612,7 @@ class OrderDetailController extends BaseController {
   dynamic showNoteDialog(GroupedCheckItem item) async {
     TextEditingController noteController =
         TextEditingController(text: item.originalItem!.note ?? '');
-    var result = await Get.dialog(NotesPages(), arguments: [
+    var result = await Get.dialog(const NotesPages(), arguments: [
       item,
       noteController,
       (note) {
@@ -648,7 +645,7 @@ class OrderDetailController extends BaseController {
           updateAction: (quantity) async {
             if (quantity != '' && quantity != '0') {
               var closePage =
-                  await Get.dialog(CancelCheckItemPage(), arguments: [
+                  await Get.dialog(const CancelCheckItemPage(), arguments: [
                 int.parse(quantity),
                 item,
                 checkId!,
@@ -661,7 +658,7 @@ class OrderDetailController extends BaseController {
 
       return result;
     } else {
-      var closePage = await Get.dialog(CancelCheckItemPage(), arguments: [
+      var closePage = await Get.dialog(const CancelCheckItemPage(), arguments: [
         int.parse("1"),
         item,
         checkId!,
@@ -926,7 +923,7 @@ class OrderDetailController extends BaseController {
             }
             var status = await Get.dialog(
                 barrierDismissible: false,
-                EftPosStatusPage(),
+                const EftPosStatusPage(),
                 arguments: [
                   selectedAcc.eftPosId!,
                   input.checkId!,

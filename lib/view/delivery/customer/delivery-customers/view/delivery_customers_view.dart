@@ -16,9 +16,9 @@ class DeliveryCustomersPage extends StatelessWidget {
     return SafeArea(
       child: Obx(() {
         return Scaffold(
-          body: controller.deliveryCustomersDataSource != null
+          body: controller.deliveryCustomersDataSource.value != null
               ? buildBody(controller)
-              : LoadingPage(),
+              : const LoadingPage(),
         );
       }),
     );
@@ -32,9 +32,10 @@ class DeliveryCustomersPage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       fillColor: Colors.white,
                       filled: true,
@@ -49,7 +50,7 @@ class DeliveryCustomersPage extends StatelessWidget {
                       if (controller.localeManager
                           .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
                         var res = await Get.dialog(
-                          ScreenKeyboard(),
+                          const ScreenKeyboard(),
                         );
                         if (res != null) {
                           controller.searchCtrl.text = res;
@@ -67,14 +68,15 @@ class DeliveryCustomersPage extends StatelessWidget {
                 await controller.addCustomer();
               },
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 150,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Yeni Müşteri',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, color: Colors.black),
@@ -84,14 +86,15 @@ class DeliveryCustomersPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kapat',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, color: Colors.white),
@@ -103,7 +106,7 @@ class DeliveryCustomersPage extends StatelessWidget {
         Expanded(
           child: Container(
             color: Colors.grey[200],
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: buildCancelReportTable(controller),
           ),
         ),

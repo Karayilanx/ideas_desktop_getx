@@ -11,7 +11,6 @@ import 'order_prepare_button.dart';
 import 'order_verify_button.dart';
 import 'waiting_for_courier_button.dart';
 import '../update-status-dialog/update_status_dialog_view_model.dart';
-import '../../integration_delivery_view_model.dart';
 
 import 'cancel_order_button.dart';
 
@@ -131,22 +130,22 @@ abstract class StatusHelper {
 
     ret.add(
       ConstrainedBox(
-        constraints: BoxConstraints(minWidth: 150),
+        constraints: const BoxConstraints(minWidth: 150),
         child: Container(
-          margin: EdgeInsets.fromLTRB(4, 4, 0, 4),
+          margin: const EdgeInsets.fromLTRB(4, 4, 0, 4),
           child: ElevatedButton(
             onPressed: () => value.openPrinterDialog(getirId, yemeksepetiId),
-            child: Text(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[800],
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            child: const Text(
               'Yazdır',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.grey[800],
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
             ),
           ),
         ),
@@ -155,22 +154,22 @@ abstract class StatusHelper {
 
     ret.add(
       ConstrainedBox(
-        constraints: BoxConstraints(minWidth: 150),
+        constraints: const BoxConstraints(minWidth: 150),
         child: Container(
-          margin: EdgeInsets.fromLTRB(4, 4, 0, 4),
+          margin: const EdgeInsets.fromLTRB(4, 4, 0, 4),
           child: ElevatedButton(
             onPressed: () => Get.back(),
-            child: Text(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red[700]!,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            child: const Text(
               'Vazgeç',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red[700]!,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
             ),
           ),
         ),

@@ -5,7 +5,7 @@ import '../_utility/screen_keyboard/screen_keyboard_view.dart';
 import 'fast_note_view_model.dart';
 
 class FastNotePage extends StatelessWidget {
-  FastNotePage({super.key});
+  const FastNotePage({super.key});
   @override
   Widget build(BuildContext context) {
     final FastNoteController controller = Get.find();

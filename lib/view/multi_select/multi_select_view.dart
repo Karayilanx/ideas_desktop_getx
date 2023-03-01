@@ -3,17 +3,17 @@ import 'package:get/get.dart';
 import 'multi_select_view_model.dart';
 
 class MultiSelectDialog<T> extends StatelessWidget {
-  const MultiSelectDialog();
+  const MultiSelectDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
     MultiSelectController controller = Get.put(MultiSelectController());
     return AlertDialog(
-      title: Text('Filtre'),
-      contentPadding: EdgeInsets.only(top: 12.0),
+      title: const Text('Filtre'),
+      contentPadding: const EdgeInsets.only(top: 12.0),
       content: SingleChildScrollView(
         child: ListTileTheme(
-          contentPadding: EdgeInsets.fromLTRB(14.0, 0.0, 24.0, 0.0),
+          contentPadding: const EdgeInsets.fromLTRB(14.0, 0.0, 24.0, 0.0),
           child: Obx(() {
             return ListBody(
               children: controller.items
@@ -26,11 +26,11 @@ class MultiSelectDialog<T> extends StatelessWidget {
       ),
       actions: <Widget>[
         ElevatedButton(
-          child: Text('Vazgeç'),
+          child: const Text('Vazgeç'),
           onPressed: () => controller.onCancelTap(),
         ),
         ElevatedButton(
-          child: Text('Onayla'),
+          child: const Text('Onayla'),
           onPressed: () => controller.onSubmitTap(),
         )
       ],

@@ -8,7 +8,7 @@ class CheckAccountReceivingReportTable extends StatelessWidget {
   final CheckAccountReceivingReportDataSource source;
   final double totalAmount;
   const CheckAccountReceivingReportTable(
-      {required this.source, required this.totalAmount});
+      {super.key, required this.source, required this.totalAmount});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CheckAccountReceivingReportTable extends StatelessWidget {
       footer: Center(
           child: Text(
         'Toplam Tutar: ${totalAmount.getPriceString}',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       )),
       columns: [
         GridColumn(
@@ -34,7 +34,7 @@ class CheckAccountReceivingReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Hesap Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -45,7 +45,7 @@ class CheckAccountReceivingReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tarih',
               overflow: TextOverflow.ellipsis,
             ),
@@ -56,7 +56,7 @@ class CheckAccountReceivingReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tipi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -67,7 +67,7 @@ class CheckAccountReceivingReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -110,7 +110,7 @@ class CheckAccountReceivingReportDataSource extends DataGridSource
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
       return Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.center,
           child: Text(
             dataGridCell.value.toString(),

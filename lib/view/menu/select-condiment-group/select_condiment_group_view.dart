@@ -4,7 +4,6 @@ import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
 import 'package:ideas_desktop_getx/view/_utility/screen_keyboard/screen_keyboard_view.dart';
 import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_group_view_model.dart';
 import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_table.dart';
-import 'package:ideas_desktop_getx/view/select-condiment/viewmodel/select_condiment_view_model.dart';
 
 import '../../../locale_keys_enum.dart';
 
@@ -19,7 +18,7 @@ class SelectCondimentGroupPage extends StatelessWidget {
         return !controller.showLoading.value &&
                 controller.selectCondimentDataSource.value != null
             ? buildBody(controller)
-            : LoadingPage();
+            : const LoadingPage();
       }),
     );
   }
@@ -40,14 +39,14 @@ class SelectCondimentGroupPage extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(12, 0, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                     child: TextFormField(
                       controller: controller.searchCtrl,
                       onTap: () async {
                         if (controller.localeManager
                             .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
                           var res = await Get.dialog(
-                            ScreenKeyboard(),
+                            const ScreenKeyboard(),
                           );
                           if (res != null) {
                             controller.searchCtrl.text = res;
@@ -78,13 +77,14 @@ class SelectCondimentGroupPage extends StatelessWidget {
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                      child: Text(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 8),
+                      child: const Text(
                         'Kaydet',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 16, color: Colors.white),
@@ -97,13 +97,14 @@ class SelectCondimentGroupPage extends StatelessWidget {
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                      child: Text(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 8),
+                      child: const Text(
                         'Yeni Ekseçim Grubu',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 16, color: Colors.white),
@@ -116,13 +117,15 @@ class SelectCondimentGroupPage extends StatelessWidget {
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 10),
                       decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                      child: Text(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 8),
+                      child: const Text(
                         'Kapat',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 16, color: Colors.white),

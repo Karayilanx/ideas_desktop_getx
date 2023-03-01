@@ -6,7 +6,7 @@ import '../../../locale_manager.dart';
 import 'edit_item_actions_dialog.dart';
 
 class ServiceChargeDialog extends StatelessWidget {
-  const ServiceChargeDialog();
+  const ServiceChargeDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

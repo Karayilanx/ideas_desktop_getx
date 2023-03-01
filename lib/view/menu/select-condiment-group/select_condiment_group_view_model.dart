@@ -89,7 +89,7 @@ class SelectCondimentGroupController extends BaseController {
 
   openNewCondimentGroupDialog() async {
     await Get.dialog(
-      CreateCondimentGroupPage(),
+      const CreateCondimentGroupPage(),
     ).then((value) async {
       if (value != null) {
         changeLoading(true);

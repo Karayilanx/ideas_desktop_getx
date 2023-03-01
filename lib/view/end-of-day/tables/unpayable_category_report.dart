@@ -4,7 +4,7 @@ import '../component/end_of_day_table_widgets.dart';
 
 class UnpayableCategoryReportTable extends StatelessWidget {
   final EndOfDayUnpayableReportModel report;
-  const UnpayableCategoryReportTable({required this.report});
+  const UnpayableCategoryReportTable({super.key, required this.report});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class UnpayableCategoryReportTable extends StatelessWidget {
       EndOfDayUnpayableReportModel report) {
     List<Widget> ret = [];
     ret.add(
-      EndOfDayReportHeader(
+      const EndOfDayReportHeader(
         header: 'Ana Kategoriler',
       ),
     );
@@ -29,9 +29,9 @@ class UnpayableCategoryReportTable extends StatelessWidget {
         ),
       );
     }
-    ret.add(SizedBox(height: 10));
+    ret.add(const SizedBox(height: 10));
     ret.add(
-      EndOfDayReportHeader(
+      const EndOfDayReportHeader(
         header: 'Alt Kategoriler',
       ),
     );
@@ -43,7 +43,7 @@ class UnpayableCategoryReportTable extends StatelessWidget {
         ),
       );
     }
-    ret.add(SizedBox(height: 10));
+    ret.add(const SizedBox(height: 10));
     ret.add(
       EndOfDayReportInformation(
         leftText: 'Toplam Tutar',

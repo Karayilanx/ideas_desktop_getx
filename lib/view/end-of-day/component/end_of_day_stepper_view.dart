@@ -8,19 +8,21 @@ import '../../_utility/service_helper.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
+  EndOfDayStepperPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     EndOfDayStepperController controller = Get.put(EndOfDayStepperController());
     return Obx(() => controller.firstCheck.value != null &&
             controller.checkCount.value != null
         ? buildBody(context, controller)
-        : LoadingPage());
+        : const LoadingPage());
   }
 
   SimpleDialog buildBody(
       BuildContext context, EndOfDayStepperController controller) {
     return SimpleDialog(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       children: [
         SizedBox(
           height: 500,
@@ -93,7 +95,7 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
     List<Step> ret = [];
     Step dateStep = Step(
       isActive: controller.stepIndex.value == 0,
-      title: Text(
+      title: const Text(
         'Tarih Seçimi',
         style: TextStyle(color: Colors.white),
       ),
@@ -101,7 +103,7 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
     );
     Step reportStep = Step(
       isActive: controller.stepIndex.value == 1,
-      title: Text(
+      title: const Text(
         'Rapor Seçimi',
         style: TextStyle(color: Colors.white),
       ),
@@ -109,7 +111,7 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
     );
     Step informationStep = Step(
       isActive: controller.stepIndex.value == 2,
-      title: Text(
+      title: const Text(
         'Gün Sonu',
         style: TextStyle(color: Colors.white),
       ),
@@ -117,7 +119,7 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
     );
     Step serverStep = Step(
       isActive: controller.stepIndex.value == 3,
-      title: Text(
+      title: const Text(
         'Sunucu Bİlgileri',
         style: TextStyle(color: Colors.white),
       ),
@@ -146,16 +148,16 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
         height: 330,
         child: Column(
           children: [
-            Text(
+            const Text(
               'Yazdırılacak Raporları Seçiniz',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                     flex: 3,
                     child: Obx(() {
@@ -188,7 +190,7 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
                       );
                     }),
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ),
@@ -202,11 +204,11 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Gün Sonu Bilgileri',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               SizedBox(
@@ -232,21 +234,21 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
                   ],
                 ),
               ),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     getDateString(controller.firstCheck.value!.createDate!),
-                    style: TextStyle(fontSize: 18, fontFamily: 'Arial'),
+                    style: const TextStyle(fontSize: 18, fontFamily: 'Arial'),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     controller.dateCtrl.selectedDate != null
                         ? DateFormat('dd-MMMM-yyyy')
                             .format(controller.dateCtrl.selectedDate!)
                         : 'Gün sonu tarihi seçiniz.',
-                    style: TextStyle(fontSize: 18, fontFamily: 'Arial'),
+                    style: const TextStyle(fontSize: 18, fontFamily: 'Arial'),
                   )
                 ],
               ),
@@ -254,11 +256,11 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
           ),
           Text(
             openChecksString(controller),
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 18, color: Colors.red, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             "Gün sonunu tamamlamak için 'Gün Sonu Al' butonuna tıklayınız ve bekleyiniz.\n İşlem bitene kadar bilgisayarınızı kapatmayınız.",
             style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
           ),
@@ -270,26 +272,22 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
   String openChecksString(EndOfDayStepperController controller) {
     String res = '';
     if (controller.checkCount.value!.table != 0) {
-      res += '\nAçık Masa: ' + controller.checkCount.value!.table.toString();
+      res += '\nAçık Masa: ${controller.checkCount.value!.table}';
     }
     if (controller.checkCount.value!.alias != 0) {
-      res +=
-          '\nAçık İsme Hesap: ' + controller.checkCount.value!.alias.toString();
+      res += '\nAçık İsme Hesap: ${controller.checkCount.value!.alias}';
     }
     if (controller.checkCount.value!.fastSell != 0) {
-      res += '\nAçık Hızlı Satış: ' +
-          controller.checkCount.value!.fastSell.toString();
+      res += '\nAçık Hızlı Satış: ${controller.checkCount.value!.fastSell}';
     }
     if (controller.checkCount.value!.delivery != 0) {
-      res += '\nAçık Paket Servis: ' +
-          controller.checkCount.value!.delivery.toString();
+      res += '\nAçık Paket Servis: ${controller.checkCount.value!.delivery}';
     }
     if (controller.checkCount.value!.getir != 0) {
-      res += '\nAçık Getir: ' + controller.checkCount.value!.getir.toString();
+      res += '\nAçık Getir: ${controller.checkCount.value!.getir}';
     }
     if (controller.checkCount.value!.yemeksepeti != 0) {
-      res += '\nAçık Yemeksepeti: ' +
-          controller.checkCount.value!.yemeksepeti.toString();
+      res += '\nAçık Yemeksepeti: ${controller.checkCount.value!.yemeksepeti}';
     }
 
     return res;
@@ -301,11 +299,11 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
       child: Column(
         children: [
           controller.serverConnectionSuccess.value == false
-              ? Text(
+              ? const Text(
                   "Gün sonu başarıyla alındı.\n\nGün sonu bilgilerini merkez bilgisayara atmak için önce 'Bağlantıyı Kontrol Et' tuşuna basınız.\n\nArdından veriler otomatik olarak atılacaktır.",
                   style: TextStyle(fontSize: 20, fontFamily: 'Arial'),
                 )
-              : Text("Veriler sunucuya aktarılıyor...",
+              : const Text("Veriler sunucuya aktarılıyor...",
                   style: TextStyle(fontSize: 20, fontFamily: 'Arial')),
         ],
       ),
@@ -315,14 +313,14 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
   Widget buildCalender(EndOfDayStepperController controller) {
     return Obx(() {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
         child: SfDateRangePicker(
           backgroundColor: Colors.white,
           showNavigationArrow: true,
           initialSelectedDate: controller.firstCheck.value!.createDate,
           controller: controller.dateCtrl,
           initialDisplayDate: controller.firstCheck.value!.createDate,
-          monthCellStyle: DateRangePickerMonthCellStyle(
+          monthCellStyle: const DateRangePickerMonthCellStyle(
             specialDatesTextStyle:
                 TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             textStyle:
@@ -337,7 +335,7 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
           headerStyle: DateRangePickerHeaderStyle(
             backgroundColor: ideasTheme.scaffoldBackgroundColor,
             textAlign: TextAlign.center,
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -351,14 +349,14 @@ class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
 class StepperButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
-  const StepperButton({required this.text, required this.callback});
+  const StepperButton({super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => callback(),
       child: Container(
-        margin: EdgeInsets.only(left: 10),
+        margin: const EdgeInsets.only(left: 10),
         width: 150,
         height: 50,
         decoration: BoxDecoration(
@@ -369,7 +367,7 @@ class StepperButton extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
       ),

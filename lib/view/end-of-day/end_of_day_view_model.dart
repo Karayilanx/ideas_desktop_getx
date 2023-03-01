@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -19,7 +21,6 @@ import '../../model/end_of_day_summary_model.dart';
 import '../../model/end_of_day_unpayable_report_model.dart';
 import '../../service/end_of_day/end_of_day_service.dart';
 import '../_utility/sync_dialog/sync_dialog_view.dart';
-import '../authentication/auth_store.dart';
 import 'component/end_of_day_stepper_view.dart';
 import 'tables/cancel_report_table.dart';
 import 'tables/check_account_receiving_table.dart';
@@ -395,7 +396,8 @@ class EndOfDayController extends BaseController {
       items.add(MultiSelectDialogItem(item, item));
     }
 
-    final selectedValues = await Get.dialog(MultiSelectDialog(), arguments: [
+    final selectedValues =
+        await Get.dialog(const MultiSelectDialog(), arguments: [
       items,
       selectedCategories,
     ]);
@@ -426,7 +428,7 @@ class EndOfDayController extends BaseController {
     if (res != null && res.changeCount! > 0) {
       await Get.dialog(
         barrierDismissible: false,
-        SyncDialog(),
+        const SyncDialog(),
       );
     }
   }
@@ -453,8 +455,8 @@ class EndOfDayController extends BaseController {
         await calculateStocks();
       }
     } else {
-      showSnackbarError(checkId.toString() +
-          ' numaralı adisyon hatalı durumda. Lütfen adisyonlar kısmından kontrol ediniz!');
+      showSnackbarError(
+          '$checkId numaralı adisyon hatalı durumda. Lütfen adisyonlar kısmından kontrol ediniz!');
     }
   }
 
@@ -485,8 +487,8 @@ class EndOfDayController extends BaseController {
 
       if (result != null) {
         if (result.value! > 0) {
-          showSnackbarError(result.value.toString() +
-              ' adet gün sonu, sunucuya başarıyla aktarıldı.');
+          showSnackbarError(
+              '${result.value} adet gün sonu, sunucuya başarıyla aktarıldı.');
         } else {
           showSnackbarError('Sunucuya aktarılmamış bir gün sonu bulunamadı.');
         }
@@ -531,7 +533,7 @@ class EndOfDayController extends BaseController {
 
   openSelectReportDialog() {
     Get.dialog(
-      SelectReportPage(),
+      const SelectReportPage(),
       arguments: dateCtrl.selectedDate,
     );
   }

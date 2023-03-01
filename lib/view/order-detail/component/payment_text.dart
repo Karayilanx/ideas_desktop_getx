@@ -12,7 +12,7 @@ class PaymentText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Spacer(
+        const Spacer(
           flex: 3,
         ),
         Expanded(
@@ -27,10 +27,10 @@ class PaymentText extends StatelessWidget {
               textAlign: TextAlign.end,
               style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  color: Color(0xffF1A159),
+                  color: const Color(0xffF1A159),
                   fontSize: fontSize)),
         ),
-        Spacer(
+        const Spacer(
           flex: 3,
         )
       ],

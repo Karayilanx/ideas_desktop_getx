@@ -6,7 +6,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class UnpableProductReport extends StatelessWidget {
   final UnpayableProductReportDataSource source;
 
-  const UnpableProductReport({required this.source});
+  const UnpableProductReport({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,11 @@ class UnpableProductReport extends StatelessWidget {
         GridColumn(
           columnName: 'name',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Ürün Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -37,11 +37,11 @@ class UnpableProductReport extends StatelessWidget {
         GridColumn(
           columnName: 'quantity',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(20),
+          autoFitPadding: const EdgeInsets.all(20),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Satış Miktarı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -50,11 +50,11 @@ class UnpableProductReport extends StatelessWidget {
         GridColumn(
           columnName: 'price',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.visible,
             ),
@@ -94,7 +94,7 @@ class UnpayableProductReportDataSource extends DataGridSource
     return DataGridRowAdapter(
       cells: row.getCells().map<Widget>((dataGridCell) {
         return Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             alignment: Alignment.centerLeft,
             child: Text(
               dataGridCell.value.toString(),

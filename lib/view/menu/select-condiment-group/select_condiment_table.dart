@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/model/menu_model.dart';
 import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_group_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+// ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
 
 class SelectCondimentTable extends StatelessWidget {
   final SelectCondimentDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  SelectCondimentTable({required this.source});
+  SelectCondimentTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              child: const Text(
                 'Seç',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -42,8 +43,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              child: const Text(
                 'Grup Adı',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -54,8 +55,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Ekseçim Sayısı',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -66,8 +67,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Zorunlu',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -78,8 +79,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Çoklu',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -90,8 +91,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Önkoşul',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -102,8 +103,8 @@ class SelectCondimentTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fill,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              child: const Text(
                 '',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -184,7 +185,7 @@ class SelectCondimentDataSource extends DataGridSource {
           } else if (dataGridCell.columnName == 'isRequired' ||
               dataGridCell.columnName == 'isMultiple') {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value ? 'EVET' : 'HAYIR',
@@ -193,7 +194,7 @@ class SelectCondimentDataSource extends DataGridSource {
             );
           } else if (dataGridCell.columnName == 'isPrerequiste') {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value ? 'VAR' : 'YOK',
@@ -207,20 +208,20 @@ class SelectCondimentDataSource extends DataGridSource {
             }
             return Tooltip(
               message: text.join("\n"),
-              child: Icon(
+              showDuration: Duration.zero,
+              waitDuration: const Duration(milliseconds: 100),
+              child: const Icon(
                 Icons.info,
                 color: Colors.blue,
               ),
-              showDuration: Duration.zero,
-              waitDuration: Duration(milliseconds: 100),
             );
           } else {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value.toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             );
           }
@@ -249,7 +250,7 @@ class CustomColumnSizer extends ColumnSizer {
       cellValue = "asd";
     }
     if (column.columnName == 'condimentGroupName') {
-      textStyle = TextStyle(fontWeight: FontWeight.bold);
+      textStyle = const TextStyle(fontWeight: FontWeight.bold);
     }
     if (column.columnName == 'select') {
       cellValue = "Seç ";

@@ -8,6 +8,8 @@ import '../../_utility/loading/loading_screen.dart';
 import '../table/integration_delivery_order_table.dart';
 
 class IntegrationDeliveryPage extends StatelessWidget {
+  const IntegrationDeliveryPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     IntegrationDeliveryController controller = Get.find();
@@ -18,7 +20,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
           return SafeArea(
             child: !controller.isLoading.value
                 ? buildBody(controller)
-                : LoadingPage(),
+                : const LoadingPage(),
           );
         },
       ),
@@ -30,14 +32,14 @@ class IntegrationDeliveryPage extends StatelessWidget {
       children: [
         Container(
           height: 60,
-          color: Color(0xff253139),
+          color: const Color(0xff253139),
           child: Obx(() {
             return buildTopButtons(controller);
           }),
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.fromLTRB(20, 8, 20, 8),
+            margin: const EdgeInsets.fromLTRB(20, 8, 20, 8),
             decoration:
                 BoxDecoration(border: Border.all(color: Colors.grey[300]!)),
             child: Column(
@@ -45,14 +47,14 @@ class IntegrationDeliveryPage extends StatelessWidget {
               children: [
                 Container(
                   height: 65,
-                  padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
                   decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           color: Colors.grey[300]!,
                         ),
                       ),
-                      color: Color(0xFFF8F9FB)),
+                      color: const Color(0xFFF8F9FB)),
                   child: buildMiddleRow(controller),
                 ),
                 Expanded(
@@ -76,7 +78,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
             ? IntegrationDeliveryTopButton(
                 callback: () => controller.changeSelectedIntegration(0),
                 image: Image.asset(ImageConstants.instance.yemeksepetiLogo),
-                color: Color(0xFFFC0151),
+                color: const Color(0xFFFC0151),
                 isActive: controller.selectedIntegration.value == 0,
               )
             : Container(),
@@ -84,7 +86,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
             ? IntegrationDeliveryTopButton(
                 callback: () => controller.changeSelectedIntegration(1),
                 image: Image.asset(ImageConstants.instance.getirLogo),
-                color: Color(0xFF5D3EBD),
+                color: const Color(0xFF5D3EBD),
                 isActive: controller.selectedIntegration.value == 1,
               )
             : controller.localeManager.getBoolValue(PreferencesKeys.USE_FUUDY)
@@ -93,14 +95,14 @@ class IntegrationDeliveryPage extends StatelessWidget {
                     image: Image.asset(
                       ImageConstants.instance.fuudy,
                     ),
-                    color: Color(0xFFefca88),
+                    color: const Color(0xFFefca88),
                     isActive: controller.selectedIntegration.value == 3,
                   )
                 : Container(),
         IntegrationDeliveryTopButton(
           callback: () => controller.changeSelectedIntegration(2),
           image: Image.asset(ImageConstants.instance.paket),
-          color: Color.fromARGB(255, 109, 60, 255),
+          color: const Color.fromARGB(255, 109, 60, 255),
           isActive: controller.selectedIntegration.value == 2,
         ),
         Expanded(child: Container()),
@@ -115,7 +117,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
                 onPressed: () {
                   Get.toNamed('delivery-customer-page', arguments: false);
                 },
-                child: Text('Müşteriler')),
+                child: const Text('Müşteriler')),
           ),
         Container(
           padding: const EdgeInsets.all(8.0),
@@ -127,7 +129,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
               onPressed: () {
                 Get.offNamed('/home');
               },
-              child: Text(
+              child: const Text(
                 'Kapat',
                 style: TextStyle(color: Colors.white),
               )),
@@ -151,19 +153,19 @@ class IntegrationDeliveryPage extends StatelessWidget {
                 child: Container(
                   height: 40,
                   width: 120,
-                  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   alignment: Alignment.center,
-                  child: Text(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.green,
+                  ),
+                  child: const Text(
                     "Yeni Sipariş",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.green,
                   ),
                 ),
               ),
@@ -176,13 +178,13 @@ class IntegrationDeliveryPage extends StatelessWidget {
             //     return buildCourierSwitch(value);
             //   },
             // ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Obx(
               () {
                 return buildRestaurantSwitch(controller);
               },
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             buildDeliveryStatusDropdown(controller),
           ],
         ),
@@ -193,7 +195,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
   Widget buildOrderText(IntegrationDeliveryController controller) {
     return Text(
       'Aktif Siparişler(${controller.source.value!.rows.length})',
-      style: TextStyle(fontSize: 20),
+      style: const TextStyle(fontSize: 20),
     );
   }
 
@@ -202,7 +204,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
         ? Container()
         : Column(
             children: [
-              Text(
+              const Text(
                 'Kurye',
                 style: TextStyle(fontSize: 18),
               ),
@@ -232,7 +234,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
     return controller.selectedIntegration.value == 0
         ? Column(
             children: [
-              Text(
+              const Text(
                 'Restoran Durumu',
                 style: TextStyle(fontSize: 18),
               ),
@@ -290,13 +292,13 @@ class IntegrationDeliveryPage extends StatelessWidget {
           color: Colors.white,
           border: Border.all(),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
         child: DropdownButtonHideUnderline(
           child: DropdownButton(
             iconSize: 30,
             items: getDeliveryStatusDropdownItems(),
             value: controller.selectedDeliveryStatusType.value,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black, fontWeight: FontWeight.w400, fontSize: 20),
             onChanged: (dynamic newGroup) {
               controller.changeDeliveryStatus(newGroup);
@@ -310,7 +312,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
   List<DropdownMenuItem> getDeliveryStatusDropdownItems() {
     List<DropdownMenuItem> ret = [];
     ret.add(
-      DropdownMenuItem(
+      const DropdownMenuItem(
         value: 0,
         child: Text(
           'Gelen Siparişler',
@@ -319,7 +321,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
       ),
     );
     ret.add(
-      DropdownMenuItem(
+      const DropdownMenuItem(
         value: 1,
         child: Text(
           'Tamamlanan Siparişler',
@@ -328,7 +330,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
       ),
     );
     ret.add(
-      DropdownMenuItem(
+      const DropdownMenuItem(
         value: 2,
         child: Text(
           'İptal Edilen Siparişler',
@@ -337,7 +339,7 @@ class IntegrationDeliveryPage extends StatelessWidget {
       ),
     );
     ret.add(
-      DropdownMenuItem(
+      const DropdownMenuItem(
         value: 3,
         child: Text(
           'İleri Zamanlı Siparişler',
@@ -354,7 +356,7 @@ class IntegrationDeliveryTopButton extends StatelessWidget {
   final Image image;
   final Color color;
   final bool isActive;
-  const IntegrationDeliveryTopButton({
+  const IntegrationDeliveryTopButton({super.key, 
     required this.callback,
     required this.image,
     required this.color,
@@ -364,7 +366,7 @@ class IntegrationDeliveryTopButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(minWidth: 200),
+      constraints: const BoxConstraints(minWidth: 200),
       child: GestureDetector(
         onTap: () => callback(),
         child: Container(
@@ -377,8 +379,8 @@ class IntegrationDeliveryTopButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: color,
           ),
-          margin: EdgeInsets.fromLTRB(8, 10, 4, 10),
-          padding: EdgeInsets.all(8),
+          margin: const EdgeInsets.fromLTRB(8, 10, 4, 10),
+          padding: const EdgeInsets.all(8),
           child: image,
         ),
       ),

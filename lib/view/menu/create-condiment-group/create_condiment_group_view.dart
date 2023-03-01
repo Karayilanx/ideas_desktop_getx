@@ -6,6 +6,8 @@ import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
 import 'package:ideas_desktop_getx/view/menu/create-condiment-group/create_condiment_group_view_model.dart';
 
 class CreateCondimentGroupPage extends StatelessWidget {
+  const CreateCondimentGroupPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     CreateCondimentGroupController controller =
@@ -14,7 +16,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
       child: Obx(() {
         return !controller.isLoading.value
             ? buildBody(controller)
-            : LoadingPage();
+            : const LoadingPage();
       }),
     );
   }
@@ -23,14 +25,14 @@ class CreateCondimentGroupPage extends StatelessWidget {
     return Dialog(
       child: Container(
         width: 520,
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 40,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -45,18 +47,18 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () => Get.back(),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.close,
                       color: Colors.red,
                       size: 28,
                     ))
               ],
             ),
-            Divider(),
+            const Divider(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ekseçim Grup Adı (Türkçe): ",
@@ -68,8 +70,8 @@ class CreateCondimentGroupPage extends StatelessWidget {
                   height: 30,
                   child: TextFormField(
                     controller: controller.nameTrController,
-                    style: TextStyle(fontSize: 16),
-                    decoration: InputDecoration(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
                       hintText: "",
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -79,11 +81,11 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ekseçim Grup Adı (İngilizce): ",
@@ -95,8 +97,8 @@ class CreateCondimentGroupPage extends StatelessWidget {
                   height: 30,
                   child: TextFormField(
                     controller: controller.nameEnController,
-                    style: TextStyle(fontSize: 16),
-                    decoration: InputDecoration(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
                       hintText: "",
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -106,10 +108,10 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ekseçimler: ",
@@ -121,7 +123,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                     return DropdownButton2(
                       searchInnerWidgetHeight: 40,
                       isExpanded: true,
-                      hint: Align(
+                      hint: const Align(
                         alignment: AlignmentDirectional.centerStart,
                         child: Text(
                           'Ekseçim Seçiniz',
@@ -196,18 +198,18 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () => controller.openNewCondimentDialog(),
-                    child: Text(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey[50]),
+                    child: const Text(
                       "Yeni Ekseçim",
                       style: TextStyle(color: Colors.blue),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[50]))
+                    ))
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ürünler: ",
@@ -218,7 +220,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                   child: Obx(() {
                     return DropdownButton2(
                       isExpanded: true,
-                      hint: Align(
+                      hint: const Align(
                         alignment: AlignmentDirectional.centerStart,
                         child: Text(
                           'Ürün Seçiniz',
@@ -293,11 +295,11 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 174,
                   child: Text(
                     "Zorunlu: ",
@@ -323,11 +325,11 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 174,
                   child: Text(
                     "Çoklu Seçim: ",
@@ -353,12 +355,12 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             if (controller.input.value.isMultiple!) ...[
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 180,
                     child: Text(
                       "Minumum Seçim Sayısı: ",
@@ -371,8 +373,8 @@ class CreateCondimentGroupPage extends StatelessWidget {
                     height: 30,
                     child: TextFormField(
                       controller: controller.minCountController,
-                      style: TextStyle(fontSize: 16),
-                      decoration: InputDecoration(
+                      style: const TextStyle(fontSize: 16),
+                      decoration: const InputDecoration(
                         hintText: "",
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -382,11 +384,11 @@ class CreateCondimentGroupPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 6),
+              const SizedBox(height: 6),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 180,
                     child: Text(
                       "Maximum Seçim Sayısı: ",
@@ -399,8 +401,8 @@ class CreateCondimentGroupPage extends StatelessWidget {
                     height: 30,
                     child: TextFormField(
                       controller: controller.maxCountController,
-                      style: TextStyle(fontSize: 16),
-                      decoration: InputDecoration(
+                      style: const TextStyle(fontSize: 16),
+                      decoration: const InputDecoration(
                         hintText: "",
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -414,7 +416,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 174,
                   child: Text(
                     "Önkoşul: ",
@@ -439,10 +441,10 @@ class CreateCondimentGroupPage extends StatelessWidget {
               ],
             ),
             if (controller.hasPrerequisite.value) ...[
-              SizedBox(height: 6),
+              const SizedBox(height: 6),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 180,
                     child: Text(
                       "Önkoşul Ekseçimler: ",
@@ -455,7 +457,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                       return DropdownButton2(
                         isExpanded: true,
                         searchInnerWidgetHeight: 40,
-                        hint: Align(
+                        hint: const Align(
                           alignment: AlignmentDirectional.centerStart,
                           child: Text(
                             '',
@@ -530,14 +532,14 @@ class CreateCondimentGroupPage extends StatelessWidget {
                 ],
               ),
             ],
-            Divider(),
+            const Divider(),
             Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 ElevatedButton(
                   onPressed: () => controller.createCondimentGroup(),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: Text(
+                  child: const Text(
                     "Kaydet",
                     style: TextStyle(
                       color: Colors.white,
@@ -558,15 +560,15 @@ class CreateCondimentGroupPage extends StatelessWidget {
     List<DropdownMenuItem<CondimentForEditOutput>> ret = [];
     ret.add(
       DropdownMenuItem(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 4),
+        enabled: false,
+        value: CondimentForEditOutput(nameTr: ""),
+        child: const Padding(
+          padding: EdgeInsets.only(left: 4),
           child: Text(
             "Ekseçimler",
             style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
           ),
         ),
-        enabled: false,
-        value: CondimentForEditOutput(nameTr: ""),
       ),
     );
     for (var con in controller.condiments) {
@@ -590,11 +592,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                       : const Icon(Icons.check_box_outline_blank),
                   const SizedBox(width: 16),
                   Text(
-                    con.nameTr! +
-                        ' ' +
-                        '(' +
-                        con.price!.toStringAsFixed(2) +
-                        ' TL)',
+                    '${con.nameTr!} (${con.price!.toStringAsFixed(2)} TL)',
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 13,
@@ -618,15 +616,15 @@ class CreateCondimentGroupPage extends StatelessWidget {
       for (var subcat in cat.menuItemSubCategories!) {
         ret.add(
           DropdownMenuItem(
+            enabled: false,
+            value: GetCategoriesMenuItemOutput(nameTr: subcat.nameTr),
             child: Padding(
               padding: const EdgeInsets.only(left: 4),
               child: Text(
                 subcat.nameTr!,
-                style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
               ),
             ),
-            enabled: false,
-            value: GetCategoriesMenuItemOutput(nameTr: subcat.nameTr),
           ),
         );
         for (var menuItem in subcat.menuItems!) {
@@ -650,11 +648,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                           : const Icon(Icons.check_box_outline_blank),
                       const SizedBox(width: 16),
                       Text(
-                        menuItem.nameTr! +
-                            ' ' +
-                            '(' +
-                            menuItem.price!.toStringAsFixed(2) +
-                            ' TL)',
+                        '${menuItem.nameTr!} (${menuItem.price!.toStringAsFixed(2)} TL)',
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 13,
@@ -678,15 +672,15 @@ class CreateCondimentGroupPage extends StatelessWidget {
     List<DropdownMenuItem<dynamic>> ret = [];
     ret.add(
       DropdownMenuItem(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 4),
+        enabled: false,
+        value: CondimentForEditOutput(nameTr: "Ekseçimler"),
+        child: const Padding(
+          padding: EdgeInsets.only(left: 4),
           child: Text(
             "Ekseçimler",
             style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
           ),
         ),
-        enabled: false,
-        value: CondimentForEditOutput(nameTr: "Ekseçimler"),
       ),
     );
     for (var con in controller.condiments) {
@@ -710,11 +704,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                       : const Icon(Icons.check_box_outline_blank),
                   const SizedBox(width: 16),
                   Text(
-                    con.nameTr! +
-                        ' ' +
-                        '(' +
-                        con.price!.toStringAsFixed(2) +
-                        ' TL)',
+                    '${con.nameTr!} (${con.price!.toStringAsFixed(2)} TL)',
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 13,
@@ -732,15 +722,15 @@ class CreateCondimentGroupPage extends StatelessWidget {
       for (var subcat in cat.menuItemSubCategories!) {
         ret.add(
           DropdownMenuItem(
+            enabled: false,
+            value: subcat,
             child: Padding(
               padding: const EdgeInsets.only(left: 4),
               child: Text(
                 subcat.nameTr!,
-                style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
               ),
             ),
-            enabled: false,
-            value: subcat,
           ),
         );
         for (var menuItem in subcat.menuItems!) {
@@ -765,11 +755,7 @@ class CreateCondimentGroupPage extends StatelessWidget {
                           : const Icon(Icons.check_box_outline_blank),
                       const SizedBox(width: 16),
                       Text(
-                        menuItem.nameTr! +
-                            ' ' +
-                            '(' +
-                            menuItem.price!.toStringAsFixed(2) +
-                            ' TL)',
+                        '${menuItem.nameTr!} (${menuItem.price!.toStringAsFixed(2)} TL)',
                         overflow: TextOverflow.clip,
                         style: const TextStyle(
                           fontSize: 13,

@@ -15,6 +15,8 @@ import '../../order-detail/component/menu_item_widget.dart';
 import '../../order-detail/component/order_list_tile.dart';
 
 class FastSellPage extends StatelessWidget {
+  const FastSellPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     FastSellController controller = Get.find();
@@ -42,7 +44,7 @@ class FastSellPage extends StatelessWidget {
 
   Widget buildLeftSideColumn(FastSellController controller) {
     return Container(
-      margin: EdgeInsets.fromLTRB(10, 4, 4, 10),
+      margin: const EdgeInsets.fromLTRB(10, 4, 4, 10),
       child: Column(
         children: [
           SizedBox(
@@ -56,14 +58,14 @@ class FastSellPage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () => Get.back(),
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
                         color: Colors.white,
                         size: 34,
                       ),
                     ),
-                    SizedBox(width: 10),
-                    Align(
+                    const SizedBox(width: 10),
+                    const Align(
                       alignment: Alignment.center,
                       child: Text(
                         'Hızlı Satış',
@@ -81,7 +83,7 @@ class FastSellPage extends StatelessWidget {
                                 ? Container()
                                 : Expanded(
                                     child: TextFormField(
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           fillColor: Colors.white,
                                           filled: true,
@@ -93,7 +95,7 @@ class FastSellPage extends StatelessWidget {
                                               .getBoolValue(PreferencesKeys
                                                   .SCREEN_KEYBOARD)) {
                                             var res = await Get.dialog(
-                                              ScreenKeyboard(),
+                                              const ScreenKeyboard(),
                                             );
                                             if (res != null) {
                                               controller.searchCtrl.text = res;
@@ -131,9 +133,9 @@ class FastSellPage extends StatelessWidget {
               child: buildCheckItemsListView(controller),
             );
           }),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           buildTotalPriceContainer(controller),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           SizedBox(
             height: 50,
             child: Row(
@@ -149,7 +151,7 @@ class FastSellPage extends StatelessWidget {
                         }
                       }),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16,
                 ),
                 Expanded(
@@ -163,7 +165,7 @@ class FastSellPage extends StatelessWidget {
                         }
                       }),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16,
                 ),
                 Expanded(
@@ -183,7 +185,7 @@ class FastSellPage extends StatelessWidget {
 
   Widget buildCheckItemsListView(FastSellController controller) {
     return Container(
-      color: Color(0xff2B393F),
+      color: const Color(0xff2B393F),
       child: ListView.builder(
         itemBuilder: (context, index) {
           return Obx(
@@ -196,8 +198,8 @@ class FastSellPage extends StatelessWidget {
                     ? controller.checkItemClick(groupedItem)
                     : controller.basketItemClick(groupedItem),
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  color: index % 2 == 0 ? Color(0xff2B393F) : Color(0xff253139),
+                  padding: const EdgeInsets.all(8.0),
+                  color: index % 2 == 0 ? const Color(0xff2B393F) : const Color(0xff253139),
                   child: OrderListTile(
                     groupedItem: groupedItem,
                   ),
@@ -224,10 +226,10 @@ class FastSellPage extends StatelessWidget {
   Widget buildRightGreySide(FastSellController controller) {
     return Obx(() {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
         decoration: BoxDecoration(
-          color: Color(0xffEDEAE6),
+          color: const Color(0xffEDEAE6),
           borderRadius: BorderRadius.circular(15),
         ),
         child: controller.showMenu.value
@@ -239,7 +241,7 @@ class FastSellPage extends StatelessWidget {
 
   Widget buildPaymentColumn(FastSellController controller) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           Expanded(
@@ -250,10 +252,10 @@ class FastSellPage extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFormField(
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 26, fontWeight: FontWeight.bold),
                         controller: controller.priceCtrl,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           fillColor: Colors.white,
                           filled: true,
@@ -264,7 +266,7 @@ class FastSellPage extends StatelessWidget {
                           children: [
                             Container(
                               width: 100,
-                              margin: EdgeInsets.only(top: 10),
+                              margin: const EdgeInsets.only(top: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
@@ -291,7 +293,7 @@ class FastSellPage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Expanded(
                               child: buildKeyboard(controller),
                             )
@@ -301,7 +303,7 @@ class FastSellPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   flex: 30,
                   child: Column(
@@ -334,7 +336,7 @@ class FastSellPage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           SizedBox(
             height: 240,
             child: Row(
@@ -376,7 +378,7 @@ class FastSellPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     children: [
@@ -388,7 +390,7 @@ class FastSellPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: ideasTheme.scaffoldBackgroundColor,
                           ),
-                          child: Center(
+                          child: const Center(
                               child: Text(
                             'Hesap Yazdır',
                             style: TextStyle(
@@ -398,7 +400,7 @@ class FastSellPage extends StatelessWidget {
                           )),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       GestureDetector(
                         onTap: () => controller.cancelBillSent(),
                         child: Container(
@@ -407,7 +409,7 @@ class FastSellPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: ideasTheme.scaffoldBackgroundColor,
                           ),
-                          child: Center(
+                          child: const Center(
                               child: Text(
                             'Yazdırmayı Geri Al',
                             style: TextStyle(
@@ -432,22 +434,22 @@ class FastSellPage extends StatelessWidget {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        color: Color(0xff2B393F),
+        color: const Color(0xff2B393F),
         borderRadius: BorderRadius.circular(15),
       ),
-      padding: EdgeInsets.only(right: 4),
+      padding: const EdgeInsets.only(right: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             '   Toplam ',
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
           ),
           Obx(() => Text(
                 '${controller.checkDetail.value.checkId != null && controller.checkDetail.value.checkId! > 0 ? controller.checkDetail.value.payments!.checkAmount!.getPriceString : controller.getBasketTotalPrice().toStringAsFixed(2)} TL  ',
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
@@ -466,7 +468,7 @@ class FastSellPage extends StatelessWidget {
       ),
       type: KeyboardType.DOUBLE,
       actionColumn: null,
-      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
       clearCallback: () {},
     );
   }
@@ -480,7 +482,7 @@ class FastSellPage extends StatelessWidget {
                     ? SizedBox(
                         height: 120,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Row(
                             children: [
                               Expanded(
@@ -507,7 +509,7 @@ class FastSellPage extends StatelessWidget {
                                             .menuItemCategories.length,
                                       ),
                                     ),
-                                    Spacer(flex: 2),
+                                    const Spacer(flex: 2),
                                     Expanded(
                                       flex: 16,
                                       child: ListView.builder(
@@ -575,21 +577,21 @@ class FastSellPage extends StatelessWidget {
                                                     controller.checkDetail.value
                                                         .personCount
                                                         .toString(),
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontSize: 26,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
                                                 ),
                                               )
-                                            : Icon(
+                                            : const Icon(
                                                 Icons.person_add_alt_outlined,
                                                 size: 40,
                                                 color: Color(0xffF1A159),
                                               ),
                                       ),
                                     ),
-                                    SizedBox(height: 4),
+                                    const SizedBox(height: 4),
                                     Expanded(
                                       child: GestureDetector(
                                         onTap: () =>
@@ -605,7 +607,7 @@ class FastSellPage extends StatelessWidget {
                                             child: Obx(() {
                                               return Text(
                                                 controller.quantity.toString(),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 26,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -623,7 +625,7 @@ class FastSellPage extends StatelessWidget {
                         ),
                       )
                     : Container(),
-                Divider(),
+                const Divider(),
                 Expanded(
                   flex: 8,
                   child: Obx(() {
@@ -638,10 +640,10 @@ class FastSellPage extends StatelessWidget {
                             : createFilteredMenuItems(controller));
                   }),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
               ],
             )
-          : Center(
+          : const Center(
               child: Spinner(
                 'Ürünler getiriliyor...',
                 color: Colors.black,
@@ -692,14 +694,14 @@ class FastSellPage extends StatelessWidget {
 class PaymentTextContainer extends StatelessWidget {
   final String text1;
   final String text2;
-  const PaymentTextContainer({required this.text1, required this.text2});
+  const PaymentTextContainer({super.key, required this.text1, required this.text2});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      margin: EdgeInsets.only(bottom: 8),
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
@@ -733,7 +735,7 @@ class PartialPaymentButton extends StatelessWidget {
   final Color color;
   final VoidCallback callback;
   const PartialPaymentButton(
-      {required this.text, this.color = Colors.orange, required this.callback});
+      {super.key, required this.text, this.color = Colors.orange, required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -741,20 +743,20 @@ class PartialPaymentButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () => callback(),
         child: Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24),
-            ),
-          ),
+          margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: color,
             border: Border.all(color: Colors.black),
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24),
+            ),
           ),
         ),
       ),
@@ -765,7 +767,7 @@ class PartialPaymentButton extends StatelessWidget {
 class FixedPriceButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
-  const FixedPriceButton({required this.text, required this.callback});
+  const FixedPriceButton({super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -773,7 +775,7 @@ class FixedPriceButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () => callback(),
         child: Container(
-          margin: EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: ideasTheme.scaffoldBackgroundColor,
@@ -781,7 +783,7 @@ class FixedPriceButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
@@ -797,7 +799,7 @@ class FastSellPaymentButton extends StatelessWidget {
   final VoidCallback callback;
   final String text;
   final bool selected;
-  const FastSellPaymentButton({
+  const FastSellPaymentButton({super.key, 
     required this.callback,
     required this.text,
     this.selected = false,
@@ -819,7 +821,7 @@ class FastSellPaymentButton extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             text,
-            style: TextStyle(color: Colors.black, fontSize: 24),
+            style: const TextStyle(color: Colors.black, fontSize: 24),
           ),
         ),
       ),

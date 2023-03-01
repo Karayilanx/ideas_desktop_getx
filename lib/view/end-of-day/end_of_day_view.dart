@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:ideas_desktop_getx/extension/string_extension.dart';
 import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../_utility/loading/loading_screen.dart';
 import '../_utility/service_helper.dart';
@@ -23,6 +22,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'component/end_of_day_table_widgets.dart';
 
 class EndOfDayPage extends StatelessWidget with ServiceHelper {
+  EndOfDayPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     EndOfDayController controller = Get.find();
@@ -33,7 +34,7 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
                   controller.summaryReport.value != null
               ? buildNewBody(context, controller)
               // ? buildBody(context, value)
-              : LoadingPage();
+              : const LoadingPage();
         },
       ),
       backgroundColor: Colors.white,
@@ -72,14 +73,14 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
                     Container(
                       height: 56,
                       alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: const Text(
                         "Gün Sonu İşlemleri",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Icon(Icons.arrow_downward_outlined)
+                    const Icon(Icons.arrow_downward_outlined)
                   ],
                 ),
               ),
@@ -108,7 +109,7 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
               ],
             ),
           ),
-          Divider(),
+          const Divider(),
           ReportButton(
             onTap: () =>
                 controller.changeSelectedReport(EndOfDayReportEnum.SUMMARY),
@@ -162,13 +163,13 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
                 controller.changeSelectedReport(EndOfDayReportEnum.OKC_POS),
             title: "OKC Pos İşlemleri",
           ),
-          Divider(),
+          const Divider(),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: Text('Çıkış'),
+            child: const Text('Çıkış'),
           ),
         ],
       ),
@@ -180,9 +181,9 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
       onTap: () => controller.changeShowCalender(),
       child: Container(
         height: 50,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               color: Color.fromARGB(255, 175, 175, 175),
               blurRadius: 6,
@@ -196,13 +197,13 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
           children: [
             Text(
               controller.showCalender.value ? "Bugüne Dön" : 'Takvimi Aç',
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
-            SizedBox(width: 4),
-            Icon(Icons.calendar_month_outlined)
+            const SizedBox(width: 4),
+            const Icon(Icons.calendar_month_outlined)
           ],
         ),
       ),
@@ -243,39 +244,39 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                VerticalDivider(),
+                const VerticalDivider(),
                 SizedBox(
                   width: 200,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       buildTypeDropdown(controller),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       OkcPosActionButton(
                           callback: () => controller.xReport(),
                           color: Colors.blueGrey,
                           text: "X Raporu Al"),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       OkcPosActionButton(
                           callback: () => controller.zReport(),
                           color: Colors.blueGrey,
                           text: "Z Raporu Al"),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       OkcPosActionButton(
                           callback: () => controller.ekuReport(),
                           color: Colors.blueGrey,
                           text: "EKU Detay Rapor"),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       OkcPosActionButton(
                           callback: () => controller.voidEftPayment(),
                           color: Colors.blueGrey,
                           text: "Eft Ödeme İptal"),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       OkcPosActionButton(
                           callback: () => controller.voidReceipt(),
                           color: Colors.blueGrey,
                           text: "Fiş İptal"),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       OkcPosActionButton(
                           callback: () => controller.closeDoc(),
                           color: Colors.blueGrey,
@@ -283,20 +284,19 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
                     ],
                   ),
                 ),
-                VerticalDivider(),
+                const VerticalDivider(),
                 SizedBox(
                   width: 400,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         "Departmanlar",
                         style: TextStyle(fontSize: 20),
                       ),
-                      Divider(),
-                      if (controller.departments != null)
-                        ...buildDepartments(controller),
-                      Divider(),
+                      const Divider(),
+                      ...buildDepartments(controller),
+                      const Divider(),
                       OkcPosActionButton(
                         callback: () => controller.paymentStart.value
                             ? null
@@ -308,7 +308,7 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
                     ],
                   ),
                 ),
-                VerticalDivider(),
+                const VerticalDivider(),
               ],
             ),
           );
@@ -326,16 +326,15 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
         Row(
           children: [
             Expanded(
-              child: Text(
-                  element.deptName! + " (%" + element.kdv.toString() + ")"),
+              child: Text("${element.deptName!} (%${element.kdv})"),
             ),
             SizedBox(
               width: 138,
               height: 30,
               child: TextFormField(
                 controller: controller.controllers[i],
-                style: TextStyle(fontSize: 16),
-                decoration: InputDecoration(
+                style: const TextStyle(fontSize: 16),
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 4, horizontal: 4),
@@ -345,7 +344,7 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
           ],
         ),
       );
-      ret.add(SizedBox(height: 4));
+      ret.add(const SizedBox(height: 4));
     }
     return ret;
   }
@@ -355,7 +354,7 @@ Container buildTypeDropdown(EndOfDayController controller) {
   return Container(
     width: 150,
     height: 50,
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.white,
     ),
     child: DropdownSearch<EftPosModel>(
@@ -373,16 +372,16 @@ Container buildTypeDropdown(EndOfDayController controller) {
 
 Widget buildSummaryReport(EndOfDayController controller) {
   return Container(
-    color: Color(0xFFD1D9E3),
-    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+    color: const Color(0xFFD1D9E3),
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
     child: Column(
       children: [
         buildCards(controller),
         Expanded(
           child: Row(
             children: [
-              Expanded(child: buildLeftInfoContainer(controller), flex: 30),
-              SizedBox(width: 8),
+              Expanded(flex: 30, child: buildLeftInfoContainer(controller)),
+              const SizedBox(width: 8),
               Expanded(
                 flex: 70,
                 child: Column(
@@ -394,7 +393,7 @@ Widget buildSummaryReport(EndOfDayController controller) {
                           Expanded(
                             child: buildDetailsContainer(controller),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Expanded(
                             child: Container(
                               color: Colors.white,
@@ -410,7 +409,7 @@ Widget buildSummaryReport(EndOfDayController controller) {
                                     yValueMapper: (ChartData data, _) => data.y,
                                     dataLabelMapper: (ChartData data, _) =>
                                         data.x,
-                                    dataLabelSettings: DataLabelSettings(
+                                    dataLabelSettings: const DataLabelSettings(
                                       isVisible: true,
                                       labelIntersectAction:
                                           LabelIntersectAction.shift,
@@ -426,7 +425,7 @@ Widget buildSummaryReport(EndOfDayController controller) {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Expanded(
                       flex: 30,
                       child: Container(
@@ -435,7 +434,7 @@ Widget buildSummaryReport(EndOfDayController controller) {
                           title: ChartTitle(
                             text: 'Saatlik Satış Dağılımı',
                             alignment: ChartAlignment.near,
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
@@ -471,9 +470,9 @@ List<ChartData> getHourlySellDistributionChartData(
   for (var element in controller.hourlySaleModel) {
     var hourString = element.hour.toString();
     if (hourString.length == 1) {
-      hourString = '0' + hourString + ':00';
+      hourString = '0$hourString:00';
     } else {
-      hourString = hourString + ':00';
+      hourString = '$hourString:00';
     }
 
     ret.add(ChartData(hourString, element.saleAmount!));
@@ -492,9 +491,7 @@ List<ChartData> getSellDistributionChartData(EndOfDayController controller) {
       in controller.summaryReport.value!.sellDistribution!.categorySales) {
     if (element.amount > 0) {
       ret.add(ChartData(
-          element.categoryName +
-              '\n%' +
-              ((element.amount / total) * 100).toStringAsFixed(2),
+          '${element.categoryName}\n%${((element.amount / total) * 100).toStringAsFixed(2)}',
           element.amount));
     }
   }
@@ -505,11 +502,11 @@ List<ChartData> getSellDistributionChartData(EndOfDayController controller) {
 Container buildLeftInfoContainer(EndOfDayController controller) {
   return Container(
     color: Colors.white,
-    padding: EdgeInsets.symmetric(horizontal: 12),
+    padding: const EdgeInsets.symmetric(horizontal: 12),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeaderText(title: "Satışlar"),
+        const HeaderText(title: "Satışlar"),
         InfoText(
           title: "Nakit",
           info: controller.summaryReport.value!.totalSales!.cash.getPriceString,
@@ -525,7 +522,7 @@ Container buildLeftInfoContainer(EndOfDayController controller) {
               controller.summaryReport.value!.totalSales!.total.getPriceString,
           isLast: true,
         ),
-        HeaderText(title: "Tahsilatlar"),
+        const HeaderText(title: "Tahsilatlar"),
         InfoText(
           title: "Nakit",
           info: controller
@@ -542,7 +539,7 @@ Container buildLeftInfoContainer(EndOfDayController controller) {
               .getPriceString,
           isLast: true,
         ),
-        HeaderText(title: "Dağılım"),
+        const HeaderText(title: "Dağılım"),
         InfoText(
           title: "Restoran Satış",
           info: controller.summaryReport.value!.endorsementDistribution!
@@ -603,11 +600,11 @@ Container buildLeftInfoContainer(EndOfDayController controller) {
 Container buildDetailsContainer(EndOfDayController controller) {
   return Container(
     color: Colors.white,
-    padding: EdgeInsets.symmetric(horizontal: 12),
+    padding: const EdgeInsets.symmetric(horizontal: 12),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeaderText(title: "Detaylar"),
+        const HeaderText(title: "Detaylar"),
         InfoText(
           title: "Satışlar",
           info: controller
@@ -664,7 +661,7 @@ Container buildDetailsContainer(EndOfDayController controller) {
 Container buildCards(EndOfDayController controller) {
   return Container(
     height: 90,
-    margin: EdgeInsets.only(bottom: 8),
+    margin: const EdgeInsets.only(bottom: 8),
     child: Row(
       children: [
         EndOfDayInfoCard(
@@ -700,21 +697,21 @@ Container buildCards(EndOfDayController controller) {
 
 Widget buildHeaderContainer(EndOfDayController controller) {
   return Container(
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       gradient: LinearGradient(
-        colors: const [
+        colors: [
           Color(0xFF393A3E),
           Color(0xFF233541),
         ],
-        stops: const [0.0, 0.6],
+        stops: [0.0, 0.6],
       ),
     ),
     alignment: Alignment.centerLeft,
-    padding: EdgeInsets.only(left: 16),
+    padding: const EdgeInsets.only(left: 16),
     height: 50,
     child: Text(
       controller.header.value,
-      style: TextStyle(
+      style: const TextStyle(
           fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
     ),
   );
@@ -734,7 +731,7 @@ Widget buildCalender(EndOfDayController controller) {
         controller.changeTabIndex(controller.tabIndex.value);
       }
     },
-    headerStyle: DateRangePickerHeaderStyle(
+    headerStyle: const DateRangePickerHeaderStyle(
       backgroundColor: Colors.blueAccent,
       textAlign: TextAlign.center,
     ),
@@ -770,7 +767,7 @@ Widget buildUnpaybleReport(EndOfDayController controller) {
               text: "Ürünler",
               selected: controller.unpayableTabIndex.value == 0,
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             EndOfDayTabButton(
                 callback: () => controller.unpayableTabIndex.value = 1,
                 text: "Hesaplar",
@@ -786,12 +783,12 @@ Widget buildUnpaybleReport(EndOfDayController controller) {
               flex: 1,
               child: Container(
                 color: Colors.white,
-                padding: EdgeInsets.fromLTRB(2, 6, 8, 4),
+                padding: const EdgeInsets.fromLTRB(2, 6, 8, 4),
                 child: UnpayableCategoryReportTable(
                     report: controller.unpayableReport.value!),
               ),
             ),
-            VerticalDivider(
+            const VerticalDivider(
               color: Colors.black,
             ),
             Expanded(
@@ -819,7 +816,7 @@ Widget buildUCheckAccountReports(EndOfDayController controller) {
               text: "Veresiyeler",
               selected: controller.checkAccountTabIndex.value == 0,
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             EndOfDayTabButton(
                 callback: () => controller.checkAccountTabIndex.value = 1,
                 text: "Tahsilatlar",
@@ -934,11 +931,11 @@ class HeaderText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 12, 0, 6),
+      padding: const EdgeInsets.fromLTRB(0, 12, 0, 6),
       child: Text(
         title,
         textAlign: TextAlign.start,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
     );
   }
@@ -958,17 +955,17 @@ class InfoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: isLast ? EdgeInsets.zero : EdgeInsets.only(bottom: 4),
+      padding: isLast ? EdgeInsets.zero : const EdgeInsets.only(bottom: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
           Text(
             info,
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           )
         ],
       ),
@@ -991,8 +988,8 @@ class EndOfDayInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        margin: isFirst ? EdgeInsets.zero : EdgeInsets.only(left: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        margin: isFirst ? EdgeInsets.zero : const EdgeInsets.only(left: 8),
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1000,14 +997,14 @@ class EndOfDayInfoCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
             ),
             Text(
               info,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
                 color: Color(0xFFFB6226),
@@ -1023,7 +1020,7 @@ class EndOfDayInfoCard extends StatelessWidget {
 class ReportButton extends StatelessWidget {
   final Callback onTap;
   final String title;
-  const ReportButton({required this.onTap, this.title = ""});
+  const ReportButton({super.key, required this.onTap, this.title = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -1034,10 +1031,10 @@ class ReportButton extends StatelessWidget {
         child: Container(
           height: 56,
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
       ),

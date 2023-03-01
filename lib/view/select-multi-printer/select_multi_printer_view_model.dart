@@ -12,7 +12,6 @@ class SelectMultiPrinterController extends BaseController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await getPrinters();

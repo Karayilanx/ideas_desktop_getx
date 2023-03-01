@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/view/delivery/customer/customer-detail/viewmodel/customer_detail_view_model.dart';
 import '../../../../../locale_keys_enum.dart';
 import '../../../../../locale_manager.dart';
-import '../../../../../model/delivery_model.dart';
 import '../../../../_utility/screen_keyboard/screen_keyboard_view.dart';
 import '../model/customer_detail_page_enum.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -26,13 +25,13 @@ class CustomerDetailPage extends StatelessWidget {
             children: [
               Container(
                   color: context.theme.primaryColor,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
                     customerDetailController.type ==
                             CustomerDetailPageTypeEnum.NEW
                         ? 'Yeni Müşteri'
                         : 'Yeni Adres',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontSize: 24),
@@ -48,14 +47,14 @@ class CustomerDetailPage extends StatelessWidget {
                           CustomerDetailPageTypeEnum.ADDRESS,
                       focusNode: customerDetailController.customerNameFocusNode,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomerDetailInput(
                       ctrl: customerDetailController.lastnameCtrl,
                       hintText: 'Müşteri Soyadı',
                       enabled: customerDetailController.type !=
                           CustomerDetailPageTypeEnum.ADDRESS,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     // PhoneInput(
                     //   controller: value.phoneNumberCtrl,
                     //   // maskFormatter: value.maskFormatter,
@@ -68,20 +67,20 @@ class CustomerDetailPage extends StatelessWidget {
                       enabled: customerDetailController.type !=
                           CustomerDetailPageTypeEnum.ADDRESS,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomerDetailInput(
                       ctrl: customerDetailController.addressTitleCtrl,
                       hintText: 'Adres Başlığı',
                       enabled: true,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomerDetailInput(
                       ctrl: customerDetailController.addressCtrl,
                       hintText: 'Adres',
                       enabled: true,
                       isAddress: true,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomerDetailInput(
                       ctrl: customerDetailController.addressDefinitionCtrl,
                       hintText: 'Adres Tarifi',
@@ -94,7 +93,7 @@ class CustomerDetailPage extends StatelessWidget {
               ),
               Container(
                 height: 80,
-                margin: EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -105,17 +104,17 @@ class CustomerDetailPage extends StatelessWidget {
                         },
                         style: ButtonStyle(
                             padding: MaterialStateProperty.all(
-                                EdgeInsets.symmetric(vertical: 8)),
-                            backgroundColor:
-                                MaterialStateProperty.all(Color(0xffF1A159)),
+                                const EdgeInsets.symmetric(vertical: 8)),
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color(0xffF1A159)),
                             shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
+                                const RoundedRectangleBorder(
                               side: BorderSide(color: Colors.black),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
                               ),
                             ))),
-                        child: Text(
+                        child: const Text(
                           'Kaydet',
                           style: TextStyle(
                             fontSize: 24,
@@ -124,7 +123,7 @@ class CustomerDetailPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
@@ -132,17 +131,17 @@ class CustomerDetailPage extends StatelessWidget {
                         },
                         style: ButtonStyle(
                             padding: MaterialStateProperty.all(
-                                EdgeInsets.symmetric(vertical: 8)),
+                                const EdgeInsets.symmetric(vertical: 8)),
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.red),
                             shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
+                                const RoundedRectangleBorder(
                               side: BorderSide(color: Colors.black),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
                               ),
                             ))),
-                        child: Text(
+                        child: const Text(
                           'Vazgeç',
                           style: TextStyle(
                             fontSize: 24,
@@ -154,7 +153,7 @@ class CustomerDetailPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -181,7 +180,7 @@ class PhoneInput extends StatelessWidget {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.black,
           ),
         ),
@@ -191,7 +190,7 @@ class PhoneInput extends StatelessWidget {
       enabled: enabled,
       inputFormatters: [maskFormatter],
       keyboardType: TextInputType.number,
-      style: TextStyle(),
+      style: const TextStyle(),
     );
   }
 }
@@ -205,6 +204,7 @@ class CustomerDetailInput extends StatelessWidget {
   final TextInputType type;
   final bool isAddress;
   const CustomerDetailInput({
+    super.key,
     this.ctrl,
     this.hintText,
     this.isRequired,
@@ -224,7 +224,7 @@ class CustomerDetailInput extends StatelessWidget {
             .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
           var res = await showDialog(
             context: context,
-            builder: (context) => ScreenKeyboard(),
+            builder: (context) => const ScreenKeyboard(),
           );
           if (res != null) {
             ctrl!.text = res;
@@ -234,7 +234,7 @@ class CustomerDetailInput extends StatelessWidget {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.black,
           ),
         ),
@@ -244,7 +244,7 @@ class CustomerDetailInput extends StatelessWidget {
       enabled: enabled,
       minLines: isAddress ? 3 : 1,
       maxLines: isAddress ? 3 : 1,
-      style: TextStyle(),
+      style: const TextStyle(),
       validator: (value) {
         if (value!.isEmpty && isRequired == null) {
           return "required";

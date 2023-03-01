@@ -36,14 +36,11 @@ class DeliveryCustomersController extends BaseController {
     );
     customers(await deliveryService
         .getDeliveryCustomersForTable(authStore.user!.branchId!));
-    if (customers == null) {
-      // navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-    } else {
-      filteredCustomers(customers);
-      deliveryCustomersDataSource(DeliveryCustomersDataSource(
-        customers: filteredCustomers,
-      ));
-    }
+
+    filteredCustomers(customers);
+    deliveryCustomersDataSource(DeliveryCustomersDataSource(
+      customers: filteredCustomers,
+    ));
     EasyLoading.dismiss();
   }
 
@@ -64,7 +61,7 @@ class DeliveryCustomersController extends BaseController {
       int deliveryCustomerAddressId) async {
     var customer = await deliveryService.getDeliveryCustomerFromId(
         deliveryCustomerId, deliveryCustomerAddressId);
-    DeliveryCustomerModel? res = await Get.dialog(CustomerDetailPage(),
+    DeliveryCustomerModel? res = await Get.dialog(const CustomerDetailPage(),
         barrierDismissible: false,
         arguments: [CustomerDetailPageTypeEnum.EDIT, customer, phoneNumber]);
     if (res != null) {
@@ -75,7 +72,7 @@ class DeliveryCustomersController extends BaseController {
   addAddress(int deliveryCustomerId, String phoneNumber) async {
     var customer = await deliveryService.getDeliveryCustomerFromId(
         deliveryCustomerId, null);
-    DeliveryCustomerModel? res = await Get.dialog(CustomerDetailPage(),
+    DeliveryCustomerModel? res = await Get.dialog(const CustomerDetailPage(),
         barrierDismissible: false,
         arguments: [CustomerDetailPageTypeEnum.ADDRESS, customer, phoneNumber]);
     if (res != null) {
@@ -84,7 +81,7 @@ class DeliveryCustomersController extends BaseController {
   }
 
   addCustomer() async {
-    DeliveryCustomerModel? res = await Get.dialog(CustomerDetailPage(),
+    DeliveryCustomerModel? res = await Get.dialog(const CustomerDetailPage(),
         arguments: [CustomerDetailPageTypeEnum.NEW, null, null]);
     if (res != null) {
       await getDeliveryCustomersForTable();

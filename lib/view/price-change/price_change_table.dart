@@ -7,7 +7,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class PriceChangeTable extends StatelessWidget {
   final PriceChangeDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  PriceChangeTable({required this.source});
+  PriceChangeTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class PriceChangeTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'menuItemId',
               overflow: TextOverflow.ellipsis,
             ),
@@ -41,7 +41,7 @@ class PriceChangeTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'condimentId',
               overflow: TextOverflow.ellipsis,
             ),
@@ -52,8 +52,8 @@ class PriceChangeTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Kategori',
               overflow: TextOverflow.ellipsis,
             ),
@@ -64,8 +64,8 @@ class PriceChangeTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Alt Kategori',
               overflow: TextOverflow.ellipsis,
             ),
@@ -76,8 +76,8 @@ class PriceChangeTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Ürün Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -86,11 +86,11 @@ class PriceChangeTable extends StatelessWidget {
         GridColumn(
           columnName: 'price',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Fiyat',
               overflow: TextOverflow.ellipsis,
             ),
@@ -155,8 +155,8 @@ class PriceChangeDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: ctrl,
-            style: TextStyle(fontWeight: FontWeight.bold),
-            decoration: InputDecoration(border: InputBorder.none),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (newPrice) =>
                 controller.changePrice(menuItemId, condimentId, newPrice),
             onTap: () {
@@ -168,12 +168,12 @@ class PriceChangeDataSource extends DataGridSource {
         );
       }
       return Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.centerLeft,
           child: Text(
             dataGridCell.value.toString(),
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ));
     }).toList());
   }
@@ -183,7 +183,7 @@ class CustomColumnSizer extends ColumnSizer {
   @override
   double computeCellWidth(GridColumn column, DataGridRow row, Object? cellValue,
       TextStyle textStyle) {
-    textStyle = TextStyle(fontWeight: FontWeight.bold);
+    textStyle = const TextStyle(fontWeight: FontWeight.bold);
     return super.computeCellWidth(column, row, cellValue, textStyle);
   }
 }

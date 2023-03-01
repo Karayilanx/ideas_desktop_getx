@@ -6,13 +6,15 @@ import 'requests_view_model.dart';
 import 'table/cancel_requests_table.dart';
 
 class RequestsPage extends StatelessWidget {
+  const RequestsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     RequestsController controller = Get.find();
     return Obx(
       () => controller.source.value != null
           ? buildBody(controller)
-          : LoadingPage(),
+          : const LoadingPage(),
     );
   }
 
@@ -26,7 +28,7 @@ class RequestsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Center(
                     child: Text(
@@ -39,9 +41,9 @@ class RequestsPage extends StatelessWidget {
                   onTap: () => Get.back(),
                   child: Container(
                     width: 130,
-                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                     decoration: BoxDecoration(
-                      color: Color(0xFFE1E5E6),
+                      color: const Color(0xFFE1E5E6),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Align(

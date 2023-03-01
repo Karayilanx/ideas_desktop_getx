@@ -3,14 +3,16 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/view/delivery/couirer/couirer_view_model.dart';
 
 class CouirerPage extends StatelessWidget {
+  const CouirerPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     CouirerController controller = Get.find();
     return Dialog(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               "Kurye Seçimi",
               style: TextStyle(fontSize: 20),
@@ -18,7 +20,7 @@ class CouirerPage extends StatelessWidget {
           ),
           Container(
             height: 60,
-            color: Color(0xff2B393F),
+            color: const Color(0xff2B393F),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -28,7 +30,7 @@ class CouirerPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         fillColor: Colors.white,
                         contentPadding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 4),
@@ -36,59 +38,59 @@ class CouirerPage extends StatelessWidget {
                         hintText: 'Kurye Adı',
                       ),
                       controller: controller.nameCtrl,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   width: 160,
                   child: ElevatedButton(
                     onPressed: () => controller.addCourier(),
-                    child: Text("Kaydet"),
                     style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           side: BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
                         ),
-                        backgroundColor: Color(0xffF1A159),
-                        padding: EdgeInsets.symmetric(vertical: 8)),
+                        backgroundColor: const Color(0xffF1A159),
+                        padding: const EdgeInsets.symmetric(vertical: 8)),
+                    child: const Text("Kaydet"),
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 SizedBox(
                   width: 160,
                   child: ElevatedButton(
                     onPressed: () => controller.deleteCourier(),
-                    child: Text("Sil"),
                     style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           side: BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
                         ),
                         backgroundColor: Colors.red,
-                        padding: EdgeInsets.symmetric(vertical: 8)),
+                        padding: const EdgeInsets.symmetric(vertical: 8)),
+                    child: const Text("Sil"),
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 SizedBox(
                   width: 160,
                   child: ElevatedButton(
                     onPressed: () => Navigator.pop(context),
-                    child: Text("Vazgeç"),
                     style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                           side: BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
                         ),
                         backgroundColor: Colors.red,
-                        padding: EdgeInsets.symmetric(vertical: 8)),
+                        padding: const EdgeInsets.symmetric(vertical: 8)),
+                    child: const Text("Vazgeç"),
                   ),
                 )
               ],
@@ -97,7 +99,8 @@ class CouirerPage extends StatelessWidget {
           Expanded(
             child: Obx(() {
               return GridView.count(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 crossAxisCount: 4,
                 childAspectRatio: 3,
                 mainAxisSpacing: 10,
@@ -121,13 +124,13 @@ class CouirerPage extends StatelessWidget {
           return ElevatedButton(
             onPressed: () =>
                 controller.selectCourier(controller.couriers[index].courierId!),
-            child: Text(controller.couriers[index].courierName!),
             style: ElevatedButton.styleFrom(
               backgroundColor: controller.couriers[index].courierId! ==
                       controller.selectedCourierId.value
                   ? Colors.blue
                   : Colors.green,
             ),
+            child: Text(controller.couriers[index].courierName!),
           );
         },
       ));

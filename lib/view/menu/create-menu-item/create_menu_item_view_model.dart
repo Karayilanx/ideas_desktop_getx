@@ -231,7 +231,7 @@ class CreateMenuItemController extends BaseController {
           "Başarılı",
           "Ürün başarıyla eklendi.",
           backgroundColor: Colors.green,
-          margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           colorText: Colors.white,
         );
       } else {
@@ -243,7 +243,7 @@ class CreateMenuItemController extends BaseController {
 
   openAddCategoryDialog() async {
     await Get.dialog(
-      CreateCategoryPage(),
+      const CreateCategoryPage(),
     ).then((value) async {
       showLoading(true);
       await serverService.syncChanges(authStore.user!.branchId!);
@@ -253,7 +253,7 @@ class CreateMenuItemController extends BaseController {
   }
 
   openSelectCondimentPage() async {
-    await Get.dialog(SelectCondimentGroupPage(),
+    await Get.dialog(const SelectCondimentGroupPage(),
             arguments: menuItemModel.value.condimentGroupIds!)
         .then((value) async {
       if (value != null) {

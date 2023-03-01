@@ -8,7 +8,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class CheckReportTable extends StatelessWidget {
   final CheckReportDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  CheckReportTable({required this.source});
+  CheckReportTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CheckReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Detay',
               overflow: TextOverflow.ellipsis,
             ),
@@ -40,7 +40,7 @@ class CheckReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fitByCellValue,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'ID',
               overflow: TextOverflow.ellipsis,
             ),
@@ -49,10 +49,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'closeDate',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(4),
+          autoFitPadding: const EdgeInsets.all(4),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Kapanış',
               overflow: TextOverflow.ellipsis,
             ),
@@ -61,10 +61,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'name',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'İsim',
               overflow: TextOverflow.ellipsis,
             ),
@@ -73,10 +73,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'Nakit',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Nakit',
               overflow: TextOverflow.ellipsis,
             ),
@@ -85,10 +85,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'Kredi',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Kredi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -97,10 +97,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'Cari',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Cari',
               overflow: TextOverflow.ellipsis,
             ),
@@ -109,10 +109,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'Toplam',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Toplam',
               overflow: TextOverflow.ellipsis,
             ),
@@ -121,10 +121,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'İskonto',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'İskonto',
               overflow: TextOverflow.ellipsis,
             ),
@@ -133,10 +133,10 @@ class CheckReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'Garsoniye',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Garsoniye',
               overflow: TextOverflow.ellipsis,
             ),
@@ -147,7 +147,7 @@ class CheckReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Hesap',
               overflow: TextOverflow.ellipsis,
             ),
@@ -158,7 +158,7 @@ class CheckReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Kalan',
               overflow: TextOverflow.ellipsis,
             ),
@@ -170,7 +170,7 @@ class CheckReportTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Ödenmez',
               overflow: TextOverflow.ellipsis,
             ),
@@ -182,7 +182,7 @@ class CheckReportTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Ödenmez',
               overflow: TextOverflow.ellipsis,
             ),
@@ -266,7 +266,7 @@ class CheckReportDataSource extends DataGridSource with ServiceHelper {
                     row.getCells()[13].value,
                   ]);
                 },
-                icon: Icon(Icons.more_horiz));
+                icon: const Icon(Icons.more_horiz));
           }
           return Container(
               alignment: Alignment.center,
@@ -282,7 +282,7 @@ class CheckReportDataSource extends DataGridSource with ServiceHelper {
 class LogReportTable extends StatelessWidget {
   final LogReportDataSource source;
 
-  const LogReportTable({required this.source});
+  const LogReportTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -303,7 +303,7 @@ class LogReportTable extends StatelessWidget {
           allowSorting: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               '',
               overflow: TextOverflow.ellipsis,
             ),
@@ -312,10 +312,10 @@ class LogReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'createDate',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(4),
+          autoFitPadding: const EdgeInsets.all(4),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tarih',
               overflow: TextOverflow.ellipsis,
             ),
@@ -324,10 +324,10 @@ class LogReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'logType',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Tipi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -336,10 +336,10 @@ class LogReportTable extends StatelessWidget {
         GridColumn(
           columnName: 'info',
           columnWidthMode: ColumnWidthMode.fitByCellValue,
-          autoFitPadding: EdgeInsets.all(0),
+          autoFitPadding: const EdgeInsets.all(0),
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Bilgi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -350,7 +350,7 @@ class LogReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Kullanıcı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -361,7 +361,7 @@ class LogReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Fiş No',
               overflow: TextOverflow.ellipsis,
             ),
@@ -373,7 +373,7 @@ class LogReportTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Kullanıcı No',
               overflow: TextOverflow.ellipsis,
             ),
@@ -385,7 +385,7 @@ class LogReportTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Gün Sonu No',
               overflow: TextOverflow.ellipsis,
             ),
@@ -443,7 +443,7 @@ class LogReportDataSource extends DataGridSource with ServiceHelper {
                 row.getCells()[7].value,
               ]);
             },
-            icon: Icon(Icons.more_horiz));
+            icon: const Icon(Icons.more_horiz));
       }
       return Container(
           alignment: Alignment.center,
@@ -465,7 +465,7 @@ class CustomColumnSizer extends ColumnSizer {
     }
     if (column.columnName == 'cashAmount') {
       cellValue = "Nakit ";
-      textStyle = TextStyle(fontWeight: FontWeight.bold);
+      textStyle = const TextStyle(fontWeight: FontWeight.bold);
     }
     if (column.columnName == 'serviceChargeAmount') {
       cellValue = "asd ";
@@ -474,7 +474,7 @@ class CustomColumnSizer extends ColumnSizer {
       cellValue = "Çıkarılcak Malzeme ";
     }
     if (column.columnName == 'condimentName') {
-      textStyle = TextStyle(fontWeight: FontWeight.bold);
+      textStyle = const TextStyle(fontWeight: FontWeight.bold);
     }
 
     return super.computeCellWidth(column, row, cellValue, textStyle);

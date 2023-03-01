@@ -26,7 +26,7 @@ class DeliveryDetailSelectionController extends BaseController {
   void onInit() {
     super.onInit();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (selectedCustomer != null) {
+      if (selectedCustomer.value != null) {
         await getDeliveryCustomersAddresses(
             selectedCustomer.value!.deliveryCustomerId!);
 
@@ -141,7 +141,7 @@ class DeliveryDetailSelectionController extends BaseController {
   addAddress(int deliveryCustomerId, String phoneNumber) async {
     var customer = await deliveryService.getDeliveryCustomerFromId(
         deliveryCustomerId, null);
-    DeliveryCustomerModel? res = await Get.dialog(CustomerDetailPage(),
+    DeliveryCustomerModel? res = await Get.dialog(const CustomerDetailPage(),
         arguments: [CustomerDetailPageTypeEnum.ADDRESS, customer, phoneNumber],
         barrierDismissible: false);
     if (res != null) {

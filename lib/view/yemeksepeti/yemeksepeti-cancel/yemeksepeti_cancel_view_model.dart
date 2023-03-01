@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/base_controller.dart';
 import '../../../model/yemeksepeti_model.dart';
 import '../../../service/yemeksepeti/yemeksepeti_service.dart';
-import '../../authentication/auth_store.dart';
 
 class YemeksepetiCancelController extends BaseController {
   final String? yemeksepetiId = Get.arguments;

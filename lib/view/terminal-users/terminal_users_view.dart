@@ -8,6 +8,8 @@ import 'package:ideas_desktop_getx/view/terminal-users/terminal_users_view_model
 import '../../locale_keys_enum.dart';
 
 class TerminalUsersPage extends StatelessWidget {
+  const TerminalUsersPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     TerminalUsersController controller = Get.find();
@@ -16,7 +18,7 @@ class TerminalUsersPage extends StatelessWidget {
         return Scaffold(
           body: controller.terminalUsersDataSource.value != null
               ? buildBody(controller)
-              : LoadingPage(),
+              : const LoadingPage(),
         );
       }),
     );
@@ -30,9 +32,9 @@ class TerminalUsersPage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       fillColor: Colors.white,
                       filled: true,
@@ -47,7 +49,7 @@ class TerminalUsersPage extends StatelessWidget {
                       if (controller.localeManager
                           .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
                         var res = await Get.dialog(
-                          ScreenKeyboard(),
+                          const ScreenKeyboard(),
                         );
                         if (res != null) {
                           controller.searchCtrl.text = res;
@@ -63,14 +65,14 @@ class TerminalUsersPage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.showCreateTerminalUserDialog(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 150,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Yeni Kullanıcı',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24),
@@ -80,14 +82,14 @@ class TerminalUsersPage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.updateTerminalUsers(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kaydet',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24),
@@ -97,14 +99,14 @@ class TerminalUsersPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kapat',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, color: Colors.white),

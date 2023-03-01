@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ideas_desktop_getx/model/menu_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+// ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
 
 class CondimentsTable extends StatelessWidget {
   final CondimentsTableDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  CondimentsTable({required this.source});
+  CondimentsTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,8 @@ class CondimentsTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              child: const Text(
                 'Grup Adı',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -41,8 +42,8 @@ class CondimentsTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.auto,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Fiyat',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -53,8 +54,8 @@ class CondimentsTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Bağlı Grup Sayısı',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -65,8 +66,8 @@ class CondimentsTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Önkoşul Sayısı',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -77,8 +78,8 @@ class CondimentsTable extends StatelessWidget {
             columnWidthMode: ColumnWidthMode.fitByCellValue,
             label: Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Text(
                 'Çıkarılcak Malzeme',
                 overflow: TextOverflow.ellipsis,
               ),
@@ -137,7 +138,7 @@ class CondimentsTableDataSource extends DataGridSource {
         cells: row.getCells().map<Widget>((dataGridCell) {
           if (dataGridCell.columnName == 'isIndigriend') {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value ? 'EVET' : 'HAYIR',
@@ -152,24 +153,24 @@ class CondimentsTableDataSource extends DataGridSource {
             }
             return Tooltip(
               message: text.join("\n"),
+              showDuration: Duration.zero,
+              waitDuration: const Duration(milliseconds: 100),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 alignment: Alignment.centerLeft,
                 child: Text(
                   dataGridCell.value.length.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              showDuration: Duration.zero,
-              waitDuration: Duration(milliseconds: 100),
             );
           } else {
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.centerLeft,
               child: Text(
                 dataGridCell.value.toString(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             );
           }
@@ -194,7 +195,7 @@ class CustomColumnSizer extends ColumnSizer {
       cellValue = "Çıkarılcak Malzeme ";
     }
     if (column.columnName == 'condimentName') {
-      textStyle = TextStyle(fontWeight: FontWeight.bold);
+      textStyle = const TextStyle(fontWeight: FontWeight.bold);
     }
 
     return super.computeCellWidth(column, row, cellValue, textStyle);

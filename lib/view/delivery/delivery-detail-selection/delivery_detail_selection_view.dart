@@ -39,14 +39,15 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                 controller.save();
               },
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 150,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kaydet',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, color: Colors.black),
@@ -56,14 +57,15 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kapat',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, color: Colors.white),
@@ -75,7 +77,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
         Expanded(
           child: Container(
             color: Colors.grey[200],
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: buildPageDetails(controller),
           ),
         ),
@@ -88,7 +90,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
       return Column(
         children: [
           buildCustomerDetailsRow(controller),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           buildCustomerAddressDetails(controller),
           buildPaymentInformationRow(controller),
           Padding(
@@ -96,14 +98,14 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Servis Zamanı',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
-                    Divider(color: Colors.black),
+                    const Divider(color: Colors.black),
                     SizedBox(
                       height: 40,
                       child: ListView(
@@ -115,21 +117,21 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                             selected:
                                 controller.selectedDeliveryTimeType.value == 0,
                             text: 'Hemen',
-                            margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
                           ),
                           MenuItemCategoryButton(
                             callback: () => controller.changeDeliveryType(1),
                             selected:
                                 controller.selectedDeliveryTimeType.value == 1,
                             text: 'İleri Zamanlı',
-                            margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
                           ),
                         ],
                       ),
                     ),
                     if (controller.selectedDeliveryTimeType.value == 1)
                       Container(
-                        margin: EdgeInsets.only(top: 4),
+                        margin: const EdgeInsets.only(top: 4),
                         child: Row(
                           children: [
                             buildDateInput(controller),
@@ -150,14 +152,14 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Ödeme Şekli',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
           ),
-          Divider(color: Colors.black),
+          const Divider(color: Colors.black),
           SizedBox(
             height: 40,
             child: ListView(
@@ -170,7 +172,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                   selected: controller.isPaymentTypeSelected(
                       DeliveryPaymentTypeEnum.Cash.index),
                   text: 'Nakit',
-                  margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
                 ),
                 MenuItemCategoryButton(
                   callback: () => controller.changeDeliveryPaymentType(
@@ -178,7 +180,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                   selected: controller.isPaymentTypeSelected(
                       DeliveryPaymentTypeEnum.CreditCard.index),
                   text: 'Kredi Kartı',
-                  margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
                 ),
                 MenuItemCategoryButton(
                   callback: () => controller.changeDeliveryPaymentType(
@@ -186,7 +188,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                   selected: controller.isPaymentTypeSelected(
                       DeliveryPaymentTypeEnum.Account.index),
                   text: 'Cari',
-                  margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
                 ),
                 MenuItemCategoryButton(
                   callback: () => controller.changeDeliveryPaymentType(
@@ -194,7 +196,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                   selected: controller.isPaymentTypeSelected(
                       DeliveryPaymentTypeEnum.Other.index),
                   text: 'Diğer',
-                  margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
                 ),
               ],
             ),
@@ -209,12 +211,12 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
+        const Icon(
           Icons.location_on,
           size: 40,
           color: Colors.black,
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -251,7 +253,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                   ),
                 ],
               ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             SizedBox(
               width: Get.context!.width * 40 / 100,
               child: Obx(() {
@@ -259,7 +261,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
                   controller.selectedCustomer.value != null
                       ? '${controller.selectedAddress.value!.address!}\n${controller.selectedAddress.value!.addressDefinition!}'
                       : 'Müşteri Seçiniz',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -286,7 +288,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
             selected: controller
                 .isAddressSelected(element.deliveryCustomerAddressId!),
             text: element.addressTitle,
-            margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+            margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
           ),
         );
       }));
@@ -299,7 +301,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
             controller.selectedCustomer.value!.phoneNumber!),
         selected: false,
         text: "Adres Ekle",
-        margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+        margin: const EdgeInsets.fromLTRB(0, 0, 4, 4),
       ),
     ));
     return ret;
@@ -308,25 +310,22 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
   Row buildCustomerDetailsRow(DeliveryDetailSelectionController controller) {
     return Row(
       children: [
-        Icon(
+        const Icon(
           Icons.person,
           color: Colors.black,
           size: 40,
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         if (controller.selectedCustomer.value != null)
           Text(
-            controller.selectedCustomer.value!.name! +
-                ' ' +
-                controller.selectedCustomer.value!.lastName! +
-                '\n' +
-                controller.selectedCustomer.value!.phoneNumber!,
-            style: TextStyle(
+            '${controller.selectedCustomer.value!.name!} ${controller.selectedCustomer.value!.lastName!}\n${controller.selectedCustomer.value!.phoneNumber!}',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
           ),
-        if (controller.selectedCustomer.value != null) SizedBox(width: 20),
+        if (controller.selectedCustomer.value != null)
+          const SizedBox(width: 20),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
@@ -337,7 +336,7 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
 
               controller.selectCustomer(res);
             },
-            child: Text(
+            child: const Text(
               'Müşteri Seç/Ekle',
             ))
       ],
@@ -348,18 +347,18 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => controller.selectTime(),
       child: ConstrainedBox(
-        constraints: BoxConstraints(minWidth: 80),
+        constraints: const BoxConstraints(minWidth: 80),
         child: Container(
-          padding: EdgeInsets.all(4),
-          margin: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-          child: Center(
-              child: Text(
-                  '${controller.selectedDeliveryTime.value.hour} : ${controller.selectedDeliveryTime.value.minute}',
-                  style: TextStyle(fontSize: 22))),
+          padding: const EdgeInsets.all(4),
+          margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(10)),
+          child: Center(
+              child: Text(
+                  '${controller.selectedDeliveryTime.value.hour} : ${controller.selectedDeliveryTime.value.minute}',
+                  style: const TextStyle(fontSize: 22))),
         ),
       ),
     );
@@ -371,18 +370,18 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
         controller.selectDate();
       },
       child: ConstrainedBox(
-        constraints: BoxConstraints(minWidth: 130),
+        constraints: const BoxConstraints(minWidth: 130),
         child: Container(
-          padding: EdgeInsets.all(4),
-          child: Center(
-              child: Text(
-                  DateFormat('dd.MM.yyyy')
-                      .format(controller.selectedDate.value),
-                  style: TextStyle(fontSize: 22))),
+          padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(10)),
+          child: Center(
+              child: Text(
+                  DateFormat('dd.MM.yyyy')
+                      .format(controller.selectedDate.value),
+                  style: const TextStyle(fontSize: 22))),
         ),
       ),
     );
@@ -401,13 +400,13 @@ class DeliveryDetailSelectionPage extends StatelessWidget {
         var add =
             controller.selectedCustomer.value!.deliveryCustomerAddresses![i];
         ret.add(DropdownMenuItem(
+          value: add.deliveryCustomerAddressId,
           child: Text(
             add.addressTitle!,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
             ),
           ),
-          value: add.deliveryCustomerAddressId,
         ));
       }
     }

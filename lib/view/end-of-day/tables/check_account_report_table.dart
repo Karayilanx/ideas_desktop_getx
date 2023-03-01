@@ -8,7 +8,7 @@ class CheckAccountReportTable extends StatelessWidget {
   final CheckAccountReportDataSource source;
   final double totalAmount;
   const CheckAccountReportTable(
-      {required this.source, required this.totalAmount});
+      {super.key, required this.source, required this.totalAmount});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CheckAccountReportTable extends StatelessWidget {
       footer: Center(
           child: Text(
         'Toplam Tutar: ${totalAmount.getPriceString}',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       )),
       columns: [
         GridColumn(
@@ -34,7 +34,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Fiş No',
               overflow: TextOverflow.ellipsis,
             ),
@@ -45,7 +45,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Hesap Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -56,7 +56,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Nakit',
               overflow: TextOverflow.ellipsis,
             ),
@@ -67,7 +67,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Kredi Kartı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -78,7 +78,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'İskonto',
               overflow: TextOverflow.ellipsis,
             ),
@@ -89,7 +89,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Cari',
               overflow: TextOverflow.ellipsis,
             ),
@@ -100,7 +100,7 @@ class CheckAccountReportTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Toplam',
               overflow: TextOverflow.ellipsis,
             ),
@@ -149,7 +149,7 @@ class CheckAccountReportDataSource extends DataGridSource with ServiceHelper {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
       return Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.center,
           child: Text(
             dataGridCell.value.toString(),

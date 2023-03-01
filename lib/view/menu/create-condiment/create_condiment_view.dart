@@ -6,6 +6,8 @@ import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
 import 'package:ideas_desktop_getx/view/menu/create-condiment/create_condiment_view_model.dart';
 
 class CreateCondimentPage extends StatelessWidget {
+  const CreateCondimentPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     CreateCondimentController controller = Get.put(CreateCondimentController());
@@ -13,7 +15,7 @@ class CreateCondimentPage extends StatelessWidget {
       child: Obx(() {
         return !controller.isLoading.value
             ? buildBody(controller)
-            : LoadingPage();
+            : const LoadingPage();
       }),
     );
   }
@@ -22,14 +24,14 @@ class CreateCondimentPage extends StatelessWidget {
     return Dialog(
       child: Container(
         width: 480,
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 40,
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -44,18 +46,18 @@ class CreateCondimentPage extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () => Get.back(),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.close,
                       color: Colors.red,
                       size: 28,
                     ))
               ],
             ),
-            Divider(),
+            const Divider(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ekseçim Adı (Türkçe): ",
@@ -67,8 +69,8 @@ class CreateCondimentPage extends StatelessWidget {
                   height: 30,
                   child: TextFormField(
                     controller: controller.nameTrController,
-                    style: TextStyle(fontSize: 16),
-                    decoration: InputDecoration(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
                       hintText: "",
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -78,11 +80,11 @@ class CreateCondimentPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ekseçim Adı (İngilizce): ",
@@ -94,8 +96,8 @@ class CreateCondimentPage extends StatelessWidget {
                   height: 30,
                   child: TextFormField(
                     controller: controller.nameEnController,
-                    style: TextStyle(fontSize: 16),
-                    decoration: InputDecoration(
+                    style: const TextStyle(fontSize: 16),
+                    decoration: const InputDecoration(
                       hintText: "",
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -105,11 +107,11 @@ class CreateCondimentPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Satış Fiyatı(Kdv Dahil): ",
@@ -121,10 +123,10 @@ class CreateCondimentPage extends StatelessWidget {
                   height: 30,
                   child: TextFormField(
                     controller: controller.priceCtrl,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     keyboardType:
-                        TextInputType.numberWithOptions(decimal: true),
-                    decoration: InputDecoration(
+                        const TextInputType.numberWithOptions(decimal: true),
+                    decoration: const InputDecoration(
                       hintText: "Fiyat",
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 0),
@@ -134,10 +136,10 @@ class CreateCondimentPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 180,
                   child: Text(
                     "Ekseçim Grupları: ",
@@ -149,7 +151,7 @@ class CreateCondimentPage extends StatelessWidget {
                     return DropdownButton2(
                       searchInnerWidgetHeight: 40,
                       isExpanded: true,
-                      hint: Align(
+                      hint: const Align(
                         alignment: AlignmentDirectional.centerStart,
                         child: Text(
                           'Ekseçim grubu seçimi',
@@ -223,14 +225,14 @@ class CreateCondimentPage extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(),
+            const Divider(),
             Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 ElevatedButton(
                   onPressed: () => controller.createCondiment(),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: Text(
+                  child: const Text(
                     "Kaydet",
                     style: TextStyle(
                       color: Colors.white,
@@ -251,15 +253,15 @@ class CreateCondimentPage extends StatelessWidget {
     List<DropdownMenuItem<CondimentGroupForEditOutput>> ret = [];
     ret.add(
       DropdownMenuItem(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 4),
+        enabled: false,
+        value: CondimentGroupForEditOutput(nameTr: ""),
+        child: const Padding(
+          padding: EdgeInsets.only(left: 4),
           child: Text(
             "Ekseçim Grupları",
             style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
           ),
         ),
-        enabled: false,
-        value: CondimentGroupForEditOutput(nameTr: ""),
       ),
     );
     for (var congr in controller.condimentGroups) {

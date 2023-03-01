@@ -10,8 +10,6 @@ import '../../../../model/yemeksepeti_model.dart';
 import '../../../../service/check/check_service.dart';
 import '../../../../service/printer/printer_service.dart';
 import '../../../../service/yemeksepeti/yemeksepeti_service.dart';
-import '../../../_utility/service_helper.dart';
-import '../../../authentication/auth_store.dart';
 import '../../../order-detail/model/order_detail_model.dart';
 import '../../../order-detail/view/order_detail_view.dart';
 import '../../../select-multi-printer/select_multi_printer_view.dart';
@@ -64,14 +62,14 @@ class YemeksepetiOrderController extends BaseController {
 
   void navigateToDeliveryOrder(int? checkId, bool isIntegration) async {
     if (isIntegration) {
-      await Get.dialog(OrderDetailView(),
+      await Get.dialog(const OrderDetailView(),
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
               type: OrderDetailPageType.DELIVERY,
               isIntegration: true));
     } else {
-      await Get.dialog(OrderDetailView(),
+      await Get.dialog(const OrderDetailView(),
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
@@ -105,10 +103,10 @@ class YemeksepetiOrderController extends BaseController {
   Future openPaymentTypePopup() async {
     await Get.dialog(SimpleDialog(
       contentPadding: EdgeInsets.zero,
-      backgroundColor: Color(0xffEDEAE6),
+      backgroundColor: const Color(0xffEDEAE6),
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
           child: ElevatedButton(
             onPressed: () {
               makeCheckPayment();
@@ -116,7 +114,7 @@ class YemeksepetiOrderController extends BaseController {
             style: ElevatedButton.styleFrom(
               backgroundColor: Get.context!.theme.primaryColor,
             ),
-            child: Text('Siparişi Tamamla',
+            child: const Text('Siparişi Tamamla',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 36,
@@ -124,10 +122,10 @@ class YemeksepetiOrderController extends BaseController {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
           child: ElevatedButton(
             onPressed: () async {
-              await Get.dialog(OrderDetailView(),
+              await Get.dialog(const OrderDetailView(),
                   arguments: TableDetailArguments(
                       tableId: -1,
                       checkId: yemeksepetiCheck.value!.checkId,
@@ -137,7 +135,7 @@ class YemeksepetiOrderController extends BaseController {
             style: ElevatedButton.styleFrom(
               backgroundColor: Get.context!.theme.primaryColor,
             ),
-            child: Text('Ödeme Şeklini Değiştir',
+            child: const Text('Ödeme Şeklini Değiştir',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 36,
@@ -199,12 +197,12 @@ class YemeksepetiOrderController extends BaseController {
         if (condimentsAndNotes.isNotEmpty) {
           condimentsAndNotes =
               condimentsAndNotes.substring(0, condimentsAndNotes.length - 2);
-          condimentsAndNotes += '\n      ' + groupName + ': ';
+          condimentsAndNotes += '\n      $groupName: ';
         } else {
-          condimentsAndNotes += '      ' + groupName + ': ';
+          condimentsAndNotes += '      $groupName: ';
         }
       }
-      condimentsAndNotes += con.nameTr! + ', ';
+      condimentsAndNotes += '${con.nameTr!}, ';
     }
 
     if (condimentsAndNotes.length > 2) {
@@ -240,7 +238,7 @@ class YemeksepetiOrderController extends BaseController {
 
   Future openPrinterDialog() async {
     var res = await Get.dialog(
-      SelectMultiPrinter(),
+      const SelectMultiPrinter(),
     );
     if (res != null) {
       EasyLoading.show(

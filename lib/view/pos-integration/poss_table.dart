@@ -8,7 +8,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class PossTable extends StatelessWidget {
   final PossDataSource source;
   final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  PossTable({required this.source});
+  PossTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class PossTable extends StatelessWidget {
           visible: false,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'ID',
               overflow: TextOverflow.ellipsis,
             ),
@@ -42,7 +42,7 @@ class PossTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Cihaz Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -53,8 +53,8 @@ class PossTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'IP Adresi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -65,8 +65,8 @@ class PossTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Fiscal Kodu',
               overflow: TextOverflow.ellipsis,
             ),
@@ -77,8 +77,8 @@ class PossTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Banka Kodu',
               overflow: TextOverflow.ellipsis,
             ),
@@ -89,8 +89,8 @@ class PossTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.fill,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Cari Hesap',
               overflow: TextOverflow.ellipsis,
             ),
@@ -102,8 +102,8 @@ class PossTable extends StatelessWidget {
           width: 260,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İşlemler',
               overflow: TextOverflow.ellipsis,
             ),
@@ -112,12 +112,12 @@ class PossTable extends StatelessWidget {
         GridColumn(
           columnName: 'checkAccountIds',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           visible: false,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               '',
               overflow: TextOverflow.ellipsis,
             ),
@@ -126,12 +126,12 @@ class PossTable extends StatelessWidget {
         GridColumn(
           columnName: 'branchId',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           visible: false,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               '',
               overflow: TextOverflow.ellipsis,
             ),
@@ -208,8 +208,8 @@ class PossDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: nameCtrl,
-            style: TextStyle(fontWeight: FontWeight.bold),
-            decoration: InputDecoration(border: InputBorder.none),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (name) => controller.changeName(eftPosId, name),
             onTap: () {
               nameCtrl.selection = TextSelection(
@@ -223,8 +223,8 @@ class PossDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: ipCtrl,
-            style: TextStyle(fontWeight: FontWeight.bold),
-            decoration: InputDecoration(border: InputBorder.none),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (name) => controller.changeIp(eftPosId, name),
             onTap: () {
               ipCtrl.selection = TextSelection(
@@ -237,8 +237,8 @@ class PossDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: fiscalCtrl,
-            style: TextStyle(fontWeight: FontWeight.bold),
-            decoration: InputDecoration(border: InputBorder.none),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (name) => controller.changeFiscal(eftPosId, name),
             onTap: () {
               fiscalCtrl.selection = TextSelection(
@@ -251,8 +251,8 @@ class PossDataSource extends DataGridSource {
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 8),
           child: TextFormField(
             controller: acquirerCtrl,
-            style: TextStyle(fontWeight: FontWeight.bold),
-            decoration: InputDecoration(border: InputBorder.none),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            decoration: const InputDecoration(border: InputBorder.none),
             onChanged: (name) => controller.changeacquirer(eftPosId, name),
             onTap: () {
               acquirerCtrl.selection = TextSelection(
@@ -267,7 +267,7 @@ class PossDataSource extends DataGridSource {
             child: Obx(() {
               return DropdownButton2(
                 isExpanded: true,
-                hint: Align(
+                hint: const Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: Text(
                     'Cari Hesap Seçiniz',
@@ -292,7 +292,7 @@ class PossDataSource extends DataGridSource {
                     return Container(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
-                        checkAccountIds.length.toString() + " tane seçildi",
+                        "${checkAccountIds.length} tane seçildi",
                         style: const TextStyle(
                           overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.bold,
@@ -312,23 +312,23 @@ class PossDataSource extends DataGridSource {
           children: [
             TextButton(
               onPressed: () => controller.removeEftPos(eftPosId!),
-              child: Text(
+              child: const Text(
                 "Sil",
                 style: TextStyle(color: Colors.red),
               ),
             ),
-            VerticalDivider(),
+            const VerticalDivider(),
             TextButton(
               onPressed: () => controller.voidReceipt(eftPosId!),
-              child: Text(
+              child: const Text(
                 "Fiş İptal",
                 style: TextStyle(color: Colors.redAccent),
               ),
             ),
-            VerticalDivider(),
+            const VerticalDivider(),
             TextButton(
               onPressed: () => controller.closeReceipt(eftPosId!),
-              child: Text(
+              child: const Text(
                 "Belge Kapat",
                 style: TextStyle(color: Colors.redAccent),
               ),
@@ -338,12 +338,12 @@ class PossDataSource extends DataGridSource {
       }
 
       return Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.centerLeft,
           child: Text(
             dataGridCell.value.toString(),
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ));
     }).toList());
   }
@@ -375,8 +375,8 @@ List<DropdownMenuItem<Object>> buildCondimentDropdownItems(
                 Text(
                   con.name!,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: controller.checkAccounts == null ? 13 : 13,
+                  style: const TextStyle(
+                    fontSize: 13,
                   ),
                 ),
               ],
@@ -393,7 +393,7 @@ class CustomColumnSizer extends ColumnSizer {
   @override
   double computeCellWidth(GridColumn column, DataGridRow row, Object? cellValue,
       TextStyle textStyle) {
-    textStyle = TextStyle(fontWeight: FontWeight.bold);
+    textStyle = const TextStyle(fontWeight: FontWeight.bold);
     return super.computeCellWidth(column, row, cellValue, textStyle);
   }
 }

@@ -9,7 +9,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class CancelRequestsTable extends StatelessWidget {
   final CancelRequestsDataSource source;
-  const CancelRequestsTable({required this.source});
+  const CancelRequestsTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +43,11 @@ class CancelRequestsTable extends StatelessWidget {
         GridColumn(
           columnName: 'Tarih',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tarih',
               overflow: TextOverflow.ellipsis,
             ),
@@ -56,11 +56,11 @@ class CancelRequestsTable extends StatelessWidget {
         GridColumn(
           columnName: 'Kullanıcı Adı',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Kullanıcı Adı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -69,11 +69,11 @@ class CancelRequestsTable extends StatelessWidget {
         GridColumn(
           columnName: 'İşlem Tipi',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İşlem Tipi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -82,11 +82,11 @@ class CancelRequestsTable extends StatelessWidget {
         GridColumn(
           columnName: 'Adet/Ürün',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(16),
+          autoFitPadding: const EdgeInsets.all(16),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Adet/Ürün',
               overflow: TextOverflow.ellipsis,
             ),
@@ -95,11 +95,11 @@ class CancelRequestsTable extends StatelessWidget {
         GridColumn(
           columnName: 'Açıklamalar',
           columnWidthMode: ColumnWidthMode.fill,
-          autoFitPadding: EdgeInsets.all(20),
+          autoFitPadding: const EdgeInsets.all(20),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 14),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: const Text(
               'Açıklamalar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -112,8 +112,8 @@ class CancelRequestsTable extends StatelessWidget {
           maximumWidth: 320,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'İşlemler',
               overflow: TextOverflow.ellipsis,
             ),
@@ -146,9 +146,7 @@ class CancelRequestsDataSource extends DataGridSource with ServiceHelper {
                   columnName: 'İşlem Tipi', value: dataGridRow.cancelTypeId),
               DataGridCell<String>(
                   columnName: 'Adet/Ürün',
-                  value: dataGridRow.rows!.length.toString() +
-                      ' X ' +
-                      dataGridRow.name!),
+                  value: '${dataGridRow.rows!.length} X ${dataGridRow.name!}'),
               DataGridCell<String>(
                   columnName: 'Açıklamalar', value: dataGridRow.note),
               DataGridCell<CancelRequest>(
@@ -177,7 +175,7 @@ class CancelRequestsDataSource extends DataGridSource with ServiceHelper {
               child: Text(
                 getDateString(dataGridCell.value),
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ));
         } else if (dataGridCell.columnName == 'İşlem Tipi') {
@@ -186,7 +184,7 @@ class CancelRequestsDataSource extends DataGridSource with ServiceHelper {
               child: Text(
                 getCancelType(dataGridCell.value),
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ));
         } else if (dataGridCell.columnName == 'action') {
@@ -198,7 +196,7 @@ class CancelRequestsDataSource extends DataGridSource with ServiceHelper {
                 callback: () => controller.confirmCancelRequest(
                     (dataGridCell.value as CancelRequest)
                         .checkMenuItemCancelRequestId!),
-                color: Color(0xFFF29106),
+                color: const Color(0xFFF29106),
                 text: 'Onayla',
               ),
               StatusButton(
@@ -216,7 +214,7 @@ class CancelRequestsDataSource extends DataGridSource with ServiceHelper {
               child: Text(
                 dataGridCell.value.toString(),
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ));
         }

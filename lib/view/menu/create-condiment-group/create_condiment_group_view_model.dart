@@ -189,7 +189,7 @@ class CreateCondimentGroupController extends BaseController {
 
   openNewCondimentDialog() async {
     await Get.dialog(
-      CreateCondimentPage(),
+      const CreateCondimentPage(),
     ).then((value) async {
       if (value != null) {
         changeLoading(true);

@@ -83,9 +83,7 @@ class HomeController extends BaseController {
     signalRManager.hubConnection.on('YeniBaglanti', (asd) async {
       tableGroups(await tableService
           .getHomeGroupsWithDetails(authStore.user!.branchId!));
-      if (tableGroups == null) {
-        // navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-      } else if (tableGroups.isNotEmpty) {
+      if (tableGroups.isNotEmpty) {
         if (selectedTableGroup.value != null) {
           selectedTableGroup(tableGroups
               .where((element) =>
@@ -138,7 +136,7 @@ class HomeController extends BaseController {
       }
       if (res != null && res.changeCount! > 0) {
         Get.dialog(
-          SyncDialog(),
+          const SyncDialog(),
           barrierDismissible: false,
         );
       }
@@ -219,7 +217,7 @@ class HomeController extends BaseController {
       }
       if (res != null && res.changeCount! > 0) {
         Get.dialog(
-          SyncDialog(),
+          const SyncDialog(),
           barrierDismissible: false,
         );
       } else if (res != null && res.unsendEndOfDaysCount! > 0) {
@@ -365,9 +363,7 @@ class HomeController extends BaseController {
 
     EasyLoading.dismiss();
 
-    if (tableGroups == null) {
-      // navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
-    } else if (tableGroups.isNotEmpty) {
+    if (tableGroups.isNotEmpty) {
       tableGroups(tableGroups
           .where(
               (element) => element.tables!.isNotEmpty || element.name == "Tümü")
