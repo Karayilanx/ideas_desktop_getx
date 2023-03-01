@@ -35,9 +35,7 @@ CheckDetailsModel _$CheckDetailsModelFromJson(Map<String, dynamic> json) =>
       checkAccountTransaction: json['checkAccountTransaction'] == null
           ? null
           : CheckDetailCheckAccountTransaction.fromJson(
-              (json['checkAccountTransaction'] as Map<String, dynamic>).map(
-              (k, e) => MapEntry(k, e as Object),
-            )),
+              json['checkAccountTransaction'] as Map<String, dynamic>),
       checkNote: json['checkNote'] as String?,
       constantDiscountPercentage:
           (json['constantDiscountPercentage'] as num?)?.toDouble(),
@@ -409,10 +407,7 @@ CancelRequest _$CancelRequestFromJson(Map<String, dynamic> json) =>
       checkMenuItemCancelRequestId:
           json['checkMenuItemCancelRequestId'] as int?,
       rows: (json['rows'] as List<dynamic>?)
-          ?.map(
-              (e) => CancelRequestRow.fromJson((e as Map<String, dynamic>).map(
-                    (k, e) => MapEntry(k, e as Object),
-                  )))
+          ?.map((e) => CancelRequestRow.fromJson(e as Map<String, dynamic>))
           .toList(),
       terminalUserId: json['terminalUserId'] as int?,
       terminalUserName: json['terminalUserName'] as String?,
@@ -441,9 +436,7 @@ Map<String, dynamic> _$CancelRequestToJson(CancelRequest instance) =>
 RequestsModel _$RequestsModelFromJson(Map<String, dynamic> json) =>
     RequestsModel(
       cancelRequests: (json['cancelRequests'] as List<dynamic>?)
-          ?.map((e) => CancelRequest.fromJson((e as Map<String, dynamic>).map(
-                (k, e) => MapEntry(k, e as Object),
-              )))
+          ?.map((e) => CancelRequest.fromJson(e as Map<String, dynamic>))
           .toList(),
       qrRequests: (json['qrRequests'] as List<dynamic>?)
           ?.map((e) => QrRequestModel.fromJson(e as Map<String, dynamic>))
