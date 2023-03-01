@@ -62,7 +62,6 @@ class CheckAccountsController extends BaseController {
           branchId: authStore.user!.branchId,
           checkAccountTypeIds: checkAccountTypeIds),
     ));
-
     if (checkId != null && checkId! > 0) {
       if (type == CheckAccountsPageType.Check) {
         checkAccounts(
@@ -79,6 +78,10 @@ class CheckAccountsController extends BaseController {
             .toList());
         filteredCheckAccounts(checkAccounts);
         changeSelectedType(0);
+      } else if (type == CheckAccountsPageType.CheckCustomer) {
+        checkAccounts.refresh();
+        filteredCheckAccounts(checkAccounts);
+        changeSelectedType(1);
       }
     } else {
       checkAccounts.refresh();
@@ -101,6 +104,7 @@ class CheckAccountsController extends BaseController {
               element.name!.toLowerCase().contains(text.toLowerCase()) &&
               element.checkAccountTypeId == selectedType.value)
           .toList());
+      print(filteredCheckAccounts.length);
     } else {
       filteredCheckAccounts(checkAccounts
           .where((element) =>

@@ -784,9 +784,9 @@ class OrderDetailController extends BaseController {
   void closePage(int? checkId) {
     // Navigator.pop(buildContext!, checkId);
     if (authStore.settings!.autoLock!) {
-      Get.offNamed('/');
+      Get.offAllNamed('/');
     } else {
-      Get.offNamed('/home');
+      Get.offAllNamed('/home');
     }
   }
 

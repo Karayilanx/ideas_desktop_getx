@@ -264,7 +264,8 @@ class HomePage extends StatelessWidget {
                                                 res;
                                             createFilteredTables(
                                                 homeController);
-                                            // homeController.filterTables();
+                                            homeController.tableGroups
+                                                .refresh();
                                           }
                                         }
                                       },
@@ -278,7 +279,7 @@ class HomePage extends StatelessWidget {
                                       onChanged: (v) => {
                                             createFilteredTables(
                                                 homeController),
-                                            // homeController.filterTables(),
+                                            homeController.tableGroups.refresh()
                                           }),
                                 ),
                               ),

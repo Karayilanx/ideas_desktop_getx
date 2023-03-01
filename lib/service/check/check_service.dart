@@ -231,7 +231,7 @@ class CheckService extends BaseGetConnect {
       response = await get('check/changeWaiter', query: {
         'checkId': checkId.toString(),
         'branchId': branchId.toString(),
-        'terminalUserId': terminalUserId,
+        'terminalUserId': terminalUserId.toString(),
       });
 
       return IntegerModel.fromJson(response.body);
@@ -408,7 +408,7 @@ class CheckService extends BaseGetConnect {
   Future<IntegerModel?> changeCheckMenuItemPrice(ChangePriceModel input) async {
     Response? response;
     try {
-      response = await post('check/changeCheckMenuItemPrice', input);
+      response = await post('check/changeCheckMenuItemPrice', input.toJson());
 
       return IntegerModel.fromJson(response.body);
     } catch (e) {
