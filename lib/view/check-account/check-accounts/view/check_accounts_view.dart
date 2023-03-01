@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:ideas_desktop_getx/extension/string_extension.dart';
 import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_account_model.dart';
-import '../../../../model/check_model.dart';
 import '../../../../theme/theme.dart';
 import '../../../_utility/keyboard/button_type_enum.dart';
 import '../../../_utility/keyboard/keyboard_custom_button.dart';
@@ -17,7 +16,7 @@ import '../navigation/check_accounts_navigation_args.dart';
 import '../viewmodel/check_accounts_view_model.dart';
 
 class CheckAccountsPage extends StatelessWidget {
-  const CheckAccountsPage();
+  const CheckAccountsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class CheckAccountsPage extends StatelessWidget {
         child: controller.checkId != null ||
                 controller.type == CheckAccountsPageType.CheckAccount
             ? buildBody(controller)
-            : LoadingPage(),
+            : const LoadingPage(),
       ),
     );
   }
@@ -69,11 +68,11 @@ class CheckAccountsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           buildSearchInput(controller),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           buildTypeDropdown(controller),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           buildNewCheckAccountButton(controller),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           buildCloseButton(controller),
         ],
       );
@@ -91,7 +90,7 @@ class CheckAccountsPage extends StatelessWidget {
             callback: () => controller.closePage(),
             text: 'Kapat',
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
         ],
       );
     }
@@ -122,14 +121,14 @@ class CheckAccountsPage extends StatelessWidget {
   Expanded buildSearchInput(CheckAccountsController controller) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.only(left: 10),
+        margin: const EdgeInsets.only(left: 10),
         child: TextFormField(
           controller: controller.searchCtrl,
           onTap: () async {
             if (controller.localeManager
                 .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
               var res = await Get.dialog(
-                ScreenKeyboard(),
+                const ScreenKeyboard(),
               );
               if (res != null) {
                 controller.searchCtrl.text = res;
@@ -165,7 +164,7 @@ class CheckAccountsPage extends StatelessWidget {
     return Container(
       width: 150,
       height: 50,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: DropdownSearch<CheckAccountType>(
@@ -191,7 +190,7 @@ class CheckAccountsPage extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Align(
+        child: const Align(
           alignment: Alignment.center,
           child: Text(
             'Yeni Hesap',
@@ -212,7 +211,7 @@ class CheckAccountsPage extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Align(
+        child: const Align(
           alignment: Alignment.center,
           child: Text(
             'Kapat',
@@ -225,9 +224,9 @@ class CheckAccountsPage extends StatelessWidget {
 
   Container buildCheckAccountsGrid(CheckAccountsController controller) {
     return Container(
-      color: Color(0xFFEEEAE7),
+      color: const Color(0xFFEEEAE7),
       child: Obx(() => GridView.count(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             crossAxisCount: 4,
             childAspectRatio: 2,
             mainAxisSpacing: 10,
@@ -250,14 +249,14 @@ class CheckAccountsPage extends StatelessWidget {
                   buildActionsRow(controller),
                   buildActionsRow2(controller),
                   buildInformationWidget(controller),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   buildPaymentButtonRow(controller),
                   buildOtherActionsRow(controller),
                   buildPriceInput(controller),
                   buildKeyboard(controller)
                 ],
               )
-            : Text(
+            : const Text(
                 'Detay görmek için cari hesap seçiniz.',
                 style: TextStyle(fontSize: 20, color: Colors.white),
                 textAlign: TextAlign.center,
@@ -299,10 +298,10 @@ class CheckAccountsPage extends StatelessWidget {
 
   Container buildInformationWidget(CheckAccountsController controller) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4),
-      padding: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: Color(0xFFEEEAE7),
+        color: const Color(0xFFEEEAE7),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -365,12 +364,12 @@ class CheckAccountsPage extends StatelessWidget {
   Container buildPriceInput(CheckAccountsController controller) {
     return Container(
       height: 50,
-      margin: EdgeInsets.symmetric(horizontal: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
       child: TextFormField(
         textAlign: TextAlign.center,
         controller: controller.priceCtrl,
-        style: TextStyle(fontSize: 18),
-        decoration: InputDecoration(
+        style: const TextStyle(fontSize: 18),
+        decoration: const InputDecoration(
           fillColor: Colors.white,
           filled: true,
           contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -405,7 +404,7 @@ class CheckAccountsPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
-            child: AutoSizeText(
+            child: const AutoSizeText(
               'İSKONTO',
               style: TextStyle(color: Colors.black, fontSize: 26),
               maxLines: 1,
@@ -421,7 +420,7 @@ class CheckAccountsPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
-            child: Text(
+            child: const Text(
               '%',
               style: TextStyle(fontSize: 24, color: Colors.black),
             ),
@@ -433,40 +432,36 @@ class CheckAccountsPage extends StatelessWidget {
   }
 
   List<Widget> createTables(CheckAccountsController controller) {
-    if (controller.filteredCheckAccounts != null) {
-      if (controller.filteredCheckAccounts.isNotEmpty) {
-        return List.generate(controller.filteredCheckAccounts.length, (index) {
-          CheckAccountListItem checkAcc =
-              controller.filteredCheckAccounts[index];
-          return CheckAccountListTile(
-            checkAcc: checkAcc,
-            isSelected: controller.isAccountSelected(checkAcc),
-            callback: () => controller.selectCheckAccount(checkAcc),
-          );
-        });
-      } else {
-        return [];
-      }
+    if (controller.filteredCheckAccounts.isNotEmpty) {
+      return List.generate(controller.filteredCheckAccounts.length, (index) {
+        CheckAccountListItem checkAcc = controller.filteredCheckAccounts[index];
+        return CheckAccountListTile(
+          checkAcc: checkAcc,
+          isSelected: controller.isAccountSelected(checkAcc),
+          callback: () => controller.selectCheckAccount(checkAcc),
+        );
+      });
+    } else {
+      return [];
     }
-    return [];
   }
 }
 
 class TopRowButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
-  const TopRowButton({required this.callback, required this.text});
+  const TopRowButton({super.key, required this.callback, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => callback(),
       child: Container(
-        margin: EdgeInsets.only(left: 10),
+        margin: const EdgeInsets.only(left: 10),
         height: 50,
         width: 180,
         decoration: BoxDecoration(
-          color: Color(0xFFF9FDFE),
+          color: const Color(0xFFF9FDFE),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Align(
@@ -474,7 +469,7 @@ class TopRowButton extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -485,13 +480,14 @@ class TopRowButton extends StatelessWidget {
 class PaymentTextRow extends StatelessWidget {
   final String text1;
   final String text2;
-  final TextStyle style = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
-  PaymentTextRow({required this.text1, required this.text2});
+  final TextStyle style =
+      const TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+  const PaymentTextRow({super.key, required this.text1, required this.text2});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -514,7 +510,10 @@ class CheckAccountActionWidget extends StatelessWidget {
   final VoidCallback callback;
   final double height;
   const CheckAccountActionWidget(
-      {required this.callback, required this.text, this.height = 50});
+      {super.key,
+      required this.callback,
+      required this.text,
+      this.height = 50});
 
   @override
   Widget build(BuildContext context) {
@@ -524,15 +523,15 @@ class CheckAccountActionWidget extends StatelessWidget {
         child: Container(
           height: height,
           decoration: BoxDecoration(
-            color: Color(0xFFEEEAE7),
+            color: const Color(0xFFEEEAE7),
             borderRadius: BorderRadius.circular(10),
           ),
-          margin: EdgeInsets.fromLTRB(4, 0, 4, 4),
+          margin: const EdgeInsets.fromLTRB(4, 0, 4, 4),
           child: Align(
             alignment: Alignment.center,
             child: Text(
               text,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ),
         ),

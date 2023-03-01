@@ -5,12 +5,13 @@ import 'package:ideas_desktop_getx/view/closed-check/closed-checks/viewmodel/clo
 import 'package:styled_text/styled_text.dart';
 import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_model.dart';
-import '../../../_utility/loading/loading_screen.dart';
 import '../../../_utility/screen_keyboard/screen_keyboard_view.dart';
 import '../../../_utility/service_helper.dart';
-import '../../component/closed-check-list-tile.dart';
+import '../../component/closed_check_list_tile.dart';
 
 class ClosedChecksPage extends StatelessWidget {
+  const ClosedChecksPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     ClosedChecksController controller = Get.find();
@@ -28,9 +29,10 @@ class ClosedChecksPage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       fillColor: Colors.white,
                       filled: true,
@@ -45,7 +47,7 @@ class ClosedChecksPage extends StatelessWidget {
                       if (controller.localeManager
                           .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
                         var res = await Get.dialog(
-                          ScreenKeyboard(),
+                          const ScreenKeyboard(),
                         );
                         if (res != null) {
                           controller.searchCtrl.text = res;
@@ -63,14 +65,15 @@ class ClosedChecksPage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.closePage(),
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child: Text(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const Text(
                   'Kapat',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24),
@@ -81,7 +84,7 @@ class ClosedChecksPage extends StatelessWidget {
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.fromLTRB(12, 0, 12, 12),
+            margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
             child: Row(
               children: [
                 Expanded(
@@ -97,7 +100,7 @@ class ClosedChecksPage extends StatelessWidget {
                           child: Obx(() {
                             return GridView.extent(
                               maxCrossAxisExtent: 300,
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 8),
                               childAspectRatio: 2,
                               mainAxisSpacing: 8,
@@ -110,7 +113,7 @@ class ClosedChecksPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Obx(() {
                   return Expanded(
                     flex: 25,
@@ -123,7 +126,7 @@ class ClosedChecksPage extends StatelessWidget {
                           ? Column(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 0, vertical: 0),
                                   height: 100,
                                   child: Column(
@@ -141,7 +144,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                     color: Colors.blueGrey[300],
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                             topLeft:
                                                                 Radius.circular(
                                                                     10)),
@@ -176,7 +179,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                     color: Colors.blueGrey[500],
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                             topRight:
                                                                 Radius.circular(
                                                                     10)),
@@ -287,22 +290,22 @@ class ClosedChecksPage extends StatelessWidget {
                                             groupedItem: groupedItem);
                                       },
                                       separatorBuilder: (context, index) {
-                                        return Divider();
+                                        return const Divider();
                                       },
                                       itemCount:
                                           controller.groupedCheckItems.length),
                                 ),
-                                Divider(),
+                                const Divider(),
                                 Container(
                                   height: 210,
                                   color: Colors.grey[200],
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 4, vertical: 6),
                                   child: Row(
                                     children: [
                                       Expanded(
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 4),
                                           decoration: BoxDecoration(
                                             borderRadius:
@@ -317,12 +320,8 @@ class ClosedChecksPage extends StatelessWidget {
                                                 controller.checkDetail.value!
                                                             .checkAccountTransaction !=
                                                         null
-                                                    ? Text('Cari: ' +
-                                                        controller
-                                                            .checkDetail
-                                                            .value!
-                                                            .checkAccountTransaction!
-                                                            .checkAccountName!)
+                                                    ? Text(
+                                                        'Cari: ${controller.checkDetail.value!.checkAccountTransaction!.checkAccountName!}')
                                                     : Container(),
                                                 ClosedCheckPaymentTextRow(
                                                     text1: 'Toplam: ',
@@ -332,7 +331,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                         .payments!
                                                         .checkAmount!
                                                         .getPriceString),
-                                                Divider(),
+                                                const Divider(),
                                                 ClosedCheckPaymentTextRow(
                                                     text1: 'Nakit: ',
                                                     text2: controller
@@ -360,7 +359,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                               .checkPaymentTypeId ==
                                                           0)
                                                       .toList()),
-                                                Divider(),
+                                                const Divider(),
                                                 ClosedCheckPaymentTextRow(
                                                     text1: 'Kredi: ',
                                                     text2: controller
@@ -388,7 +387,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                               .checkPaymentTypeId ==
                                                           1)
                                                       .toList()),
-                                                Divider(),
+                                                const Divider(),
                                                 ClosedCheckPaymentTextRow(
                                                     text1: 'İskonto: ',
                                                     text2: controller
@@ -397,7 +396,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                         .payments!
                                                         .discountAmount!
                                                         .getPriceString),
-                                                Divider(),
+                                                const Divider(),
                                                 ClosedCheckPaymentTextRow(
                                                     text1: 'Ödenmez: ',
                                                     text2: controller
@@ -406,7 +405,7 @@ class ClosedChecksPage extends StatelessWidget {
                                                         .payments!
                                                         .unpayableAmount!
                                                         .getPriceString),
-                                                Divider(),
+                                                const Divider(),
                                                 ClosedCheckPaymentTextRow(
                                                     text1: 'Kalan: ',
                                                     text2: controller
@@ -458,12 +457,12 @@ class ClosedChecksPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "   " + e.checkAcccountName!,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+            "   ${e.checkAcccountName!}",
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           ),
           Text(
-            e.amount!.getPriceString + ' TL',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+            '${e.amount!.getPriceString} TL',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           )
         ],
       ));
@@ -486,11 +485,11 @@ class ClosedCheckPaymentTextRow extends StatelessWidget {
       children: [
         Text(
           text1,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
         ),
         Text(
-          text2 + ' TL',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          '$text2 TL',
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
         )
       ],
     );
@@ -509,21 +508,21 @@ class ClosedOrderListTile extends StatelessWidget with ServiceHelper {
   Widget build(BuildContext context) {
     String condimentStr = groupedItem.getCondimentNames();
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey[400]!, width: 0.8),
             ),
             child: Text(
               groupedItem.itemCount!.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -531,23 +530,26 @@ class ClosedOrderListTile extends StatelessWidget with ServiceHelper {
               children: [
                 Text(
                   groupedItem.name!,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 13),
                 ),
                 SizedBox(height: condimentStr.isNotEmpty ? 4 : 0),
                 condimentStr.isNotEmpty
                     ? StyledText(
                         text: condimentStr,
-                        style: TextStyle(color: Colors.black54, fontSize: 12),
+                        style: const TextStyle(
+                            color: Colors.black54, fontSize: 12),
                         tags: {
                           'b': StyledTextTag(
-                              style: TextStyle(fontWeight: FontWeight.bold)),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                         },
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
               ],
             ),
           ),
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Text(
             groupedItem.totalPrice.getPriceString,
             style: TextStyle(color: Colors.red[800], fontSize: 14),
@@ -559,49 +561,43 @@ class ClosedOrderListTile extends StatelessWidget with ServiceHelper {
 }
 
 List<Widget> buildFilteredItems(ClosedChecksController controller) {
-  if (controller.checks != null) {
-    List<ClosedCheckListItem> filteredList = controller.checks
-        .where((element) =>
-            element.checkId!
-                .toString()
-                .toUpperCase()
-                .contains(controller.searchCtrl.text.toUpperCase()) ||
-            element.checkName
-                .toString()
-                .toUpperCase()
-                .contains(controller.searchCtrl.text.toUpperCase()))
-        .toList();
+  List<ClosedCheckListItem> filteredList = controller.checks
+      .where((element) =>
+          element.checkId!
+              .toString()
+              .toUpperCase()
+              .contains(controller.searchCtrl.text.toUpperCase()) ||
+          element.checkName
+              .toString()
+              .toUpperCase()
+              .contains(controller.searchCtrl.text.toUpperCase()))
+      .toList();
 
-    if (filteredList.isNotEmpty) {
-      return List.generate(filteredList.length, (index) {
-        ClosedCheckListItem check = filteredList[index];
-        return ClosedCheckListTile(
-          check: check,
-          isSelected: controller.isAccountSelected(check),
-          callback: () => controller.selectCheckAccount(check),
-        );
-      });
-    } else {
-      return [];
-    }
+  if (filteredList.isNotEmpty) {
+    return List.generate(filteredList.length, (index) {
+      ClosedCheckListItem check = filteredList[index];
+      return ClosedCheckListTile(
+        check: check,
+        isSelected: controller.isAccountSelected(check),
+        callback: () => controller.selectCheckAccount(check),
+      );
+    });
+  } else {
+    return [];
   }
-  return [];
 }
 
 List<Widget> createTables(ClosedChecksController controller) {
-  if (controller.checks != null) {
-    if (controller.checks.isNotEmpty) {
-      return List.generate(controller.checks.length, (index) {
-        ClosedCheckListItem check = controller.checks[index];
-        return ClosedCheckListTile(
-          check: check,
-          isSelected: controller.isAccountSelected(check),
-          callback: () => controller.selectCheckAccount(check),
-        );
-      });
-    } else {
-      return [];
-    }
+  if (controller.checks.isNotEmpty) {
+    return List.generate(controller.checks.length, (index) {
+      ClosedCheckListItem check = controller.checks[index];
+      return ClosedCheckListTile(
+        check: check,
+        isSelected: controller.isAccountSelected(check),
+        callback: () => controller.selectCheckAccount(check),
+      );
+    });
+  } else {
+    return [];
   }
-  return [];
 }

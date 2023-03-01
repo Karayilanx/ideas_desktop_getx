@@ -154,6 +154,7 @@ class HomeController extends BaseController {
       await checkGetir();
       await getRequests();
       createAutoLockTimer();
+      lockScreen();
     });
   }
 

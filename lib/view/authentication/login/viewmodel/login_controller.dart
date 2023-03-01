@@ -26,12 +26,12 @@ class LoginController extends BaseController {
     String email = localeManager.getStringValue(PreferencesKeys.BRANCH_EMAIL);
     if (email == '') showEmail(true);
     emailController.text = email;
+    // loginTerminal();
   }
 
   loginTerminal() async {
     if (emailController.text.isNotEmpty) {
-      LoginInput input = LoginInput(
-          email: emailController.text, pass: pinFieldController.text);
+      LoginInput input = LoginInput(email: emailController.text, pass: "1111");
       EasyLoading.show(
         status: 'Lütfen bekleyiniz...',
         dismissOnTap: false,

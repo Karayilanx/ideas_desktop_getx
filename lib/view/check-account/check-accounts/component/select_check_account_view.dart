@@ -10,7 +10,7 @@ import 'check_account_list_tile.dart';
 import '../viewmodel/check_accounts_view_model.dart';
 
 class SelectCheckAccountPage extends StatelessWidget {
-  const SelectCheckAccountPage();
+  const SelectCheckAccountPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +40,10 @@ class SelectCheckAccountPage extends StatelessWidget {
 
   Container buildCheckAccountsGrid(SelectCheckAccountController controller) {
     return Container(
-      color: Color(0xFFEEEAE7),
+      color: const Color(0xFFEEEAE7),
       child: Obx(() {
         return GridView.count(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           crossAxisCount: 4,
           childAspectRatio: 2,
           mainAxisSpacing: 10,
@@ -55,22 +55,18 @@ class SelectCheckAccountPage extends StatelessWidget {
   }
 
   List<Widget> createTables(SelectCheckAccountController controller) {
-    if (controller.filteredCheckAccounts != null) {
-      if (controller.filteredCheckAccounts.isNotEmpty) {
-        return List.generate(controller.filteredCheckAccounts.length, (index) {
-          CheckAccountListItem checkAcc =
-              controller.filteredCheckAccounts[index];
-          return CheckAccountListTile(
-            checkAcc: checkAcc,
-            isSelected: controller.isAccountSelected(checkAcc),
-            callback: () => controller.selectCheckAccount(checkAcc),
-          );
-        });
-      } else {
-        return [];
-      }
+    if (controller.filteredCheckAccounts.isNotEmpty) {
+      return List.generate(controller.filteredCheckAccounts.length, (index) {
+        CheckAccountListItem checkAcc = controller.filteredCheckAccounts[index];
+        return CheckAccountListTile(
+          checkAcc: checkAcc,
+          isSelected: controller.isAccountSelected(checkAcc),
+          callback: () => controller.selectCheckAccount(checkAcc),
+        );
+      });
+    } else {
+      return [];
     }
-    return [];
   }
 }
 
@@ -79,13 +75,13 @@ Row buildTopRow(SelectCheckAccountController controller) {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       buildSearchInput(controller),
-      SizedBox(width: 10),
+      const SizedBox(width: 10),
       buildTypeDropdown(controller),
-      SizedBox(width: 10),
+      const SizedBox(width: 10),
       buildSaveButton(controller),
-      SizedBox(width: 10),
+      const SizedBox(width: 10),
       buildCloseButton(controller),
-      SizedBox(width: 10),
+      const SizedBox(width: 10),
     ],
   );
 }
@@ -100,7 +96,7 @@ Widget buildCloseButton(SelectCheckAccountController controller) {
         color: Colors.red[800],
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Align(
+      child: const Align(
         alignment: Alignment.center,
         child: Text(
           'Kapat',
@@ -123,7 +119,7 @@ Widget buildSaveButton(SelectCheckAccountController controller) {
         color: ideasTheme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Align(
+      child: const Align(
         alignment: Alignment.center,
         child: Text(
           'Hesabı Aktar',
@@ -137,14 +133,14 @@ Widget buildSaveButton(SelectCheckAccountController controller) {
 Expanded buildSearchInput(SelectCheckAccountController controller) {
   return Expanded(
     child: Container(
-      margin: EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.only(left: 10),
       child: TextFormField(
         controller: controller.searchCtrl,
         onTap: () async {
           if (controller.localeManager
               .getBoolValue(PreferencesKeys.SCREEN_KEYBOARD)) {
             var res = await Get.dialog(
-              ScreenKeyboard(),
+              const ScreenKeyboard(),
             );
             if (res != null) {
               controller.searchCtrl.text = res;
@@ -180,7 +176,7 @@ Container buildTypeDropdown(SelectCheckAccountController value) {
   return Container(
     width: 150,
     height: 50,
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.white,
     ),
     child: DropdownSearch<CheckAccountType>(

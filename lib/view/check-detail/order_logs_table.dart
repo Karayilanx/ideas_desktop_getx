@@ -6,7 +6,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 class OrderLogsTable extends StatelessWidget {
   final OrderLogsDataSource source;
   // final CustomColumnSizer _customColumnSizer = CustomColumnSizer();
-  const OrderLogsTable({required this.source});
+  const OrderLogsTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,11 @@ class OrderLogsTable extends StatelessWidget {
         GridColumn(
           columnName: 'orderNo',
           columnWidthMode: ColumnWidthMode.auto,
-          autoFitPadding: EdgeInsets.all(30),
+          autoFitPadding: const EdgeInsets.all(30),
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Sip. No',
               overflow: TextOverflow.ellipsis,
             ),
@@ -39,8 +39,8 @@ class OrderLogsTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Kullanıcı',
               overflow: TextOverflow.ellipsis,
             ),
@@ -51,8 +51,8 @@ class OrderLogsTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tarih',
               overflow: TextOverflow.ellipsis,
             ),
@@ -63,8 +63,8 @@ class OrderLogsTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Ürün',
               overflow: TextOverflow.ellipsis,
             ),
@@ -75,8 +75,8 @@ class OrderLogsTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Miktar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -87,8 +87,8 @@ class OrderLogsTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tutar',
               overflow: TextOverflow.ellipsis,
             ),
@@ -99,8 +99,8 @@ class OrderLogsTable extends StatelessWidget {
           columnWidthMode: ColumnWidthMode.auto,
           label: Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: const Text(
               'Tipi',
               overflow: TextOverflow.ellipsis,
             ),
@@ -152,7 +152,7 @@ class OrderLogsDataSource extends DataGridSource with ServiceHelper {
         cells: row.getCells().map<Widget>((dataGridCell) {
       if (dataGridCell.columnName == 'createDate') {
         return Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             alignment: Alignment.centerLeft,
             child: Text(
               getDateString(dataGridCell.value),
@@ -160,7 +160,7 @@ class OrderLogsDataSource extends DataGridSource with ServiceHelper {
             ));
       }
       return Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.centerLeft,
           child: Text(
             dataGridCell.value.toString(),

@@ -104,7 +104,6 @@ class CheckAccountsController extends BaseController {
               element.name!.toLowerCase().contains(text.toLowerCase()) &&
               element.checkAccountTypeId == selectedType.value)
           .toList());
-      print(filteredCheckAccounts.length);
     } else {
       filteredCheckAccounts(checkAccounts
           .where((element) =>
@@ -115,7 +114,7 @@ class CheckAccountsController extends BaseController {
 
   Future showCheckAccountDetailsDialog(int checkAccountId) async {
     int? res = await Get.dialog(
-      CheckAccountDetailPage(),
+      const CheckAccountDetailPage(),
       barrierDismissible: false,
       arguments: [
         type,
@@ -329,7 +328,7 @@ class CheckAccountsController extends BaseController {
   }
 
   Future transferCheckAccountToCheckAccount() async {
-    var res = await Get.dialog(SelectCheckAccountPage(),
+    var res = await Get.dialog(const SelectCheckAccountPage(),
         arguments: [selectedCheckAccount.value!.checkAccountId!, true, null]);
     if (res != null) {
       await getCheckAccounts();

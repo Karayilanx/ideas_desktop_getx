@@ -8,6 +8,7 @@ class ClosedCheckListTile extends StatelessWidget with ServiceHelper {
   final VoidCallback callback;
   final bool isSelected;
   ClosedCheckListTile({
+    super.key,
     required this.check,
     required this.callback,
     required this.isSelected,
@@ -20,14 +21,14 @@ class ClosedCheckListTile extends StatelessWidget with ServiceHelper {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: isSelected ? Color(0xffF1A159) : Colors.white),
+            color: isSelected ? const Color(0xffF1A159) : Colors.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
               child: AutoSizeText(
-                check.checkName! + ' Fiş No: ' + check.checkId.toString(),
+                '${check.checkName!} Fiş No: ${check.checkId}',
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
@@ -36,7 +37,7 @@ class ClosedCheckListTile extends StatelessWidget with ServiceHelper {
             ),
             Divider(color: Colors.grey[300]),
             Padding(
-              padding: EdgeInsets.fromLTRB(10, 4, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 4, 10, 0),
               child: Row(
                 children: [
                   Expanded(
@@ -63,7 +64,7 @@ class ClosedCheckListTile extends StatelessWidget with ServiceHelper {
             ),
             check.closeDate != null
                 ? Padding(
-                    padding: EdgeInsets.fromLTRB(10, 4, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(10, 4, 10, 0),
                     child: Row(
                       children: [
                         Expanded(
@@ -95,7 +96,7 @@ class ClosedCheckListTile extends StatelessWidget with ServiceHelper {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 4, 10, 10),
                   child: AutoSizeText(
-                    'Bakiye: ' + check.checkAmount!.toStringAsFixed(2) + ' TL',
+                    'Bakiye: ${check.checkAmount!.toStringAsFixed(2)} TL',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,

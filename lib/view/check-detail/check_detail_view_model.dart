@@ -8,8 +8,6 @@ import '../../model/check_model.dart';
 import '../../model/printer_model.dart';
 import '../../service/check/check_service.dart';
 import '../../service/printer/printer_service.dart';
-import '../_utility/service_helper.dart';
-import '../authentication/auth_store.dart';
 import '../order-detail/component/select_printer.dart';
 
 class CheckDetailController extends BaseController {

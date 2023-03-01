@@ -11,7 +11,7 @@ import 'check_detail_view_model.dart';
 import 'order_logs_table.dart';
 
 class CheckDetailPage extends StatelessWidget with ServiceHelper {
-  CheckDetailPage();
+  CheckDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
         color: ideasTheme.scaffoldBackgroundColor,
         child: controller.checkDetail.value != null
             ? buildNew(controller)
-            : LoadingPage(),
+            : const LoadingPage(),
       );
     }));
   }
@@ -38,14 +38,14 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
         if (controller.selectedTab.value != 2)
           Expanded(
             child: Container(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.grey[200],
               ),
               child: Column(
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Ürünler',
@@ -53,7 +53,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Divider(),
+                  const Divider(),
                   Expanded(
                     child: ListView.separated(
                         itemBuilder: (context, index) {
@@ -61,7 +61,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                           return ClosedOrderListTile(groupedItem: groupedItem);
                         },
                         separatorBuilder: (context, index) {
-                          return Divider();
+                          return const Divider();
                         },
                         itemCount: controller.groupedItems.length),
                   ),
@@ -71,7 +71,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
           ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.grey[200],
@@ -86,13 +86,13 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                         onTap: () => controller.changeSelectedTab(0),
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(10)),
                               color: controller.selectedTab.value == 0
                                   ? Colors.white
                                   : Colors.grey.withOpacity(0.6)),
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
                             'Hesap Bilgileri',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -106,12 +106,12 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                         onTap: () => controller.changeSelectedTab(1),
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(),
+                              borderRadius: const BorderRadius.only(),
                               color: controller.selectedTab.value == 1
                                   ? Colors.white
                                   : Colors.grey.withOpacity(0.5)),
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
                             'Hesap Logları',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -125,13 +125,13 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                         onTap: () => controller.changeSelectedTab(2),
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(10)),
                               color: controller.selectedTab.value == 2
                                   ? Colors.white
                                   : Colors.grey.withOpacity(0.5)),
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Text(
                             'Sipariş Logları',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -146,21 +146,21 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                   child: controller.selectedTab.value == 0
                       ? Column(
                           children: [
-                            Divider(),
+                            const Divider(),
                             Text(controller.checkDetail.value != null
                                 ? getCheckString(controller)
                                 : ''),
-                            Divider(),
+                            const Divider(),
                             Container(
                               height: 210,
                               color: Colors.grey[200],
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 4, vertical: 6),
                               child: Row(
                                 children: [
                                   Expanded(
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 4),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
@@ -184,7 +184,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                                   .payments!
                                                   .checkAmount!
                                                   .getPriceString),
-                                          Divider(),
+                                          const Divider(),
                                           ClosedCheckPaymentTextRow(
                                               text1: 'Nakit: ',
                                               text2: controller
@@ -193,7 +193,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                                   .payments!
                                                   .cashAmount!
                                                   .getPriceString),
-                                          Divider(),
+                                          const Divider(),
                                           ClosedCheckPaymentTextRow(
                                               text1: 'Kredi: ',
                                               text2: controller
@@ -202,7 +202,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                                   .payments!
                                                   .creditCardAmount!
                                                   .getPriceString),
-                                          Divider(),
+                                          const Divider(),
                                           ClosedCheckPaymentTextRow(
                                               text1: 'İskonto: ',
                                               text2: controller
@@ -211,7 +211,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                                   .payments!
                                                   .discountAmount!
                                                   .getPriceString),
-                                          Divider(),
+                                          const Divider(),
                                           ClosedCheckPaymentTextRow(
                                               text1: 'Ödenmez: ',
                                               text2: controller
@@ -220,7 +220,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                                   .payments!
                                                   .unpayableAmount!
                                                   .getPriceString),
-                                          Divider(),
+                                          const Divider(),
                                           ClosedCheckPaymentTextRow(
                                               text1: 'Kalan: ',
                                               text2: controller
@@ -236,7 +236,7 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Row(
                               children: [
                                 Expanded(
@@ -245,11 +245,11 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                         controller.checkId,
                                         controller.endOfDayId),
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 8, vertical: 8),
                                       decoration: BoxDecoration(
                                         color: Colors.blueGrey[300],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10)),
                                       ),
@@ -271,18 +271,18 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 1),
+                                const SizedBox(width: 1),
                                 Expanded(
                                   child: GestureDetector(
                                     onTap: () => controller.printSlip(
                                         controller.checkId,
                                         controller.endOfDayId),
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 8, vertical: 8),
                                       decoration: BoxDecoration(
                                         color: Colors.blueGrey[300],
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10)),
                                       ),
@@ -310,7 +310,8 @@ class CheckDetailPage extends StatelessWidget with ServiceHelper {
                         )
                       : controller.selectedTab.value == 1
                           ? ListView.separated(
-                              separatorBuilder: (context, index) => Divider(),
+                              separatorBuilder: (context, index) =>
+                                  const Divider(),
                               itemBuilder: (context, index) {
                                 CheckLogModel log = controller.checkLogs[index];
                                 return ListTile(

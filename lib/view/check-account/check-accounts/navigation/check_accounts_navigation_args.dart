@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import '../../../../model/check_model.dart';
 
 class CheckAccountsArguments {

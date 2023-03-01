@@ -94,7 +94,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/closed-checks',
-          page: () => ClosedChecksPage(),
+          page: () => const ClosedChecksPage(),
           binding: ClosedChecksBindings(),
           transitionDuration: Duration.zero,
         ),
