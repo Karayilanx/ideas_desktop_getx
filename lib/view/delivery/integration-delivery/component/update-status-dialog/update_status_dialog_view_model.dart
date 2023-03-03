@@ -13,10 +13,10 @@ import '../../../../../service/yemeksepeti/yemeksepeti_service.dart';
 import '../button/status_helper.dart';
 
 class UpdateStatusDialogController extends BaseController with StatusHelper {
-  final String? getirId = Get.arguments[0];
-  final String? yemeksepetiId = Get.arguments[1];
-  final int? fuudyId = Get.arguments[2];
-  final bool isVale = Get.arguments[3];
+  final String? getirId = Get.arguments != null ? Get.arguments[0] : null;
+  final String? yemeksepetiId = Get.arguments != null ? Get.arguments[1] : null;
+  final int? fuudyId = Get.arguments != null ? Get.arguments[2] : null;
+  final bool isVale = Get.arguments != null ? Get.arguments[3] : false;
   GetirService getirService = Get.find();
   PrinterService printerService = Get.find();
   YemeksepetiService yemeksepetiService = Get.find();
@@ -200,7 +200,7 @@ class UpdateStatusDialogController extends BaseController with StatusHelper {
   }
 
   Future openPrinterDialog(String? getirId, String? yemeksepetiId) async {
-    var res = await Get.dialog(const SelectMultiPrinter(), arguments: [[]]);
+    var res = await Get.dialog(const SelectMultiPrinter());
     if (res != null) {
       EasyLoading.show(
         status: 'Lütfen Bekleyiniz...',

@@ -5,8 +5,8 @@ import '../../model/printer_model.dart';
 import '../../service/printer/printer_service.dart';
 
 class SelectMultiPrinterController extends BaseController {
-  PrinterService printerService = Get.find();
-  List<String> printerIds = Get.arguments;
+  PrinterService printerService = Get.put(PrinterService());
+  List<String>? printerIds = Get.arguments;
   RxList<PrinterOutput> printers = RxList<PrinterOutput>([]);
   RxList<PrinterOutput> selectedPrinters = RxList([]);
 
@@ -20,9 +20,12 @@ class SelectMultiPrinterController extends BaseController {
   }
 
   void getPrinterIds() {
-    for (var element in printerIds) {
-      var id = int.parse(element);
-      selectPrinter(printers.where((element) => element.printerId == id).first);
+    if (printerIds != null) {
+      for (var element in printerIds!) {
+        var id = int.parse(element);
+        selectPrinter(
+            printers.where((element) => element.printerId == id).first);
+      }
     }
   }
 
@@ -47,6 +50,6 @@ class SelectMultiPrinterController extends BaseController {
     } else {
       selectedPrinters.remove(pr);
     }
-    selectedPrinters(selectedPrinters);
+    selectedPrinters.refresh();
   }
 }

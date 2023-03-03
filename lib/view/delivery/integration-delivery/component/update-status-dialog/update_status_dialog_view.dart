@@ -9,7 +9,8 @@ class UpdateStatusDialog extends StatelessWidget with ServiceHelper {
 
   @override
   Widget build(BuildContext context) {
-    UpdateStatusDialogController controller = Get.find();
+    UpdateStatusDialogController controller =
+        Get.put(UpdateStatusDialogController());
     return Obx(
       () => controller.getirCheck.value != null ||
               controller.yemeksepetiCheck.value != null
@@ -293,8 +294,7 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2)}',
+            'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -309,8 +309,7 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
       );
     } else {
       return Text(
-        'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2)}',
+        'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }
@@ -320,8 +319,7 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2)}',
+            'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -336,8 +334,7 @@ Widget buildTotalPriceText(UpdateStatusDialogController controller) {
       );
     } else {
       return Text(
-        'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2)}',
+        'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }

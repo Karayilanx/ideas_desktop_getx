@@ -19,6 +19,7 @@ import 'package:ideas_desktop_getx/view/check-account/check-account-detail/viewm
 import 'package:ideas_desktop_getx/view/check-account/check-account-transactions/viewmodel/check_account_transactions_view_model.dart';
 import 'package:ideas_desktop_getx/view/check-account/check-accounts/viewmodel/check_accounts_view_model.dart';
 import 'package:ideas_desktop_getx/view/closed-check/closed-checks/viewmodel/closed_checks_view_model.dart';
+import 'package:ideas_desktop_getx/view/delivery/integration-delivery/integration_delivery_view_model.dart';
 import 'package:ideas_desktop_getx/view/end-of-day/end_of_day_view_model.dart';
 import 'package:ideas_desktop_getx/view/fast-sell/viewmodel/fast_sell_view_model.dart';
 import 'package:ideas_desktop_getx/view/home/viewmodel/home_view_model.dart';
@@ -51,6 +52,8 @@ class HomeBindings implements Bindings {
     Get.lazyPut<YemeksepetiService>(() => YemeksepetiService());
     Get.lazyPut<EndOfDayService>(() => EndOfDayService());
     Get.lazyPut<StockService>(() => StockService());
+    Get.lazyPut<IntegrationDeliveryController>(
+        () => IntegrationDeliveryController());
     Get.lazyPut<CheckService>(() => CheckService());
     Get.lazyPut<ServerService>(() => ServerService());
   }
@@ -201,6 +204,19 @@ class EndOfDayBindings implements Bindings {
     Get.lazyPut<StockService>(() => StockService());
     Get.lazyPut<BranchService>(() => BranchService());
     Get.lazyPut<EftPosService>(() => EftPosService());
+    Get.lazyPut<PrinterService>(() => PrinterService());
+  }
+}
+
+class DeliveryBindings implements Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<IntegrationDeliveryController>(
+        () => IntegrationDeliveryController());
+    Get.lazyPut<DeliveryService>(() => DeliveryService());
+    Get.lazyPut<GetirService>(() => GetirService());
+    Get.lazyPut<YemeksepetiService>(() => YemeksepetiService());
+    Get.lazyPut<CheckService>(() => CheckService());
     Get.lazyPut<PrinterService>(() => PrinterService());
   }
 }

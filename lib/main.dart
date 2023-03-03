@@ -12,6 +12,7 @@ import 'package:ideas_desktop_getx/view/check-account/check-account-transactions
 import 'package:ideas_desktop_getx/view/check-account/check-accounts/view/check_accounts_view.dart';
 import 'package:ideas_desktop_getx/view/closed-check/closed-checks/view/closed_checks_view.dart';
 import 'package:ideas_desktop_getx/view/delivery/delivery_store.dart';
+import 'package:ideas_desktop_getx/view/delivery/integration-delivery/integration_delivery_view.dart';
 import 'package:ideas_desktop_getx/view/end-of-day/end_of_day_view.dart';
 import 'package:ideas_desktop_getx/view/fast-sell/view/fast_sell_view.dart';
 import 'package:ideas_desktop_getx/view/home/view/home_view.dart';
@@ -156,6 +157,12 @@ class MyApp extends StatelessWidget {
           name: '/end-of-day',
           page: () => EndOfDayPage(),
           binding: EndOfDayBindings(),
+          transitionDuration: Duration.zero,
+        ),
+        GetPage(
+          name: '/delivery',
+          page: () => const IntegrationDeliveryPage(),
+          binding: DeliveryBindings(),
           transitionDuration: Duration.zero,
         ),
       ],

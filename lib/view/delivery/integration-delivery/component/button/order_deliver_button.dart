@@ -11,7 +11,8 @@ class OrderDeliverButton extends StatelessWidget {
   final String? yemeksepetiId;
 
   final bool isVale;
-  const OrderDeliverButton({super.key, 
+  const OrderDeliverButton({
+    super.key,
     this.getirId,
     this.yemeksepetiId,
     this.checkId,
@@ -21,11 +22,13 @@ class OrderDeliverButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final IntegrationDeliveryController? value = Get.find();
-    final UpdateStatusDialogController? dialogValue = Get.find();
+    final IntegrationDeliveryController value = Get.find();
+    // final UpdateStatusDialogController dialogValue = Get.find();
     return StatusButton(
       callback: () {
-        if (dialogValue != null) {
+        bool test = Get.isRegistered<UpdateStatusDialogController>();
+        if (test) {
+          UpdateStatusDialogController dialogValue = Get.find();
           if (getirId != null && getirId != '') {
             dialogValue.deliverGetirOrder(getirId!);
           } else if (yemeksepetiId != null && yemeksepetiId != '') {
@@ -42,9 +45,9 @@ class OrderDeliverButton extends StatelessWidget {
               yemeksepetiId == null &&
               fuudyId == null &&
               checkId != null) {
-            value!.navigateToDeliveryOrderDetail(checkId!);
+            value.navigateToDeliveryOrderDetail(checkId!);
           } else {
-            value!.openUpdateStatusDialog(getirId, yemeksepetiId, fuudyId);
+            value.openUpdateStatusDialog(getirId, yemeksepetiId, fuudyId);
           }
         }
       },

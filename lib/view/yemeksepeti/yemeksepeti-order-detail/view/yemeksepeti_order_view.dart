@@ -9,7 +9,8 @@ class YemeksepetiOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    YemeksepetiOrderController controller = Get.find();
+    YemeksepetiOrderController controller =
+        Get.put(YemeksepetiOrderController());
     return SimpleDialog(
         contentPadding: EdgeInsets.zero,
         backgroundColor: const Color(0xffEDEAE6),
@@ -175,9 +176,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${controller
-                                    .yemeksepetiCheck.value!.customerAddress!}\n${controller.yemeksepetiCheck.value!
-                                    .customerAddressDefinition!}',
+                            '${controller.yemeksepetiCheck.value!.customerAddress!}\n${controller.yemeksepetiCheck.value!.customerAddressDefinition!}',
                             style: const TextStyle(fontSize: 16),
                           ),
                           Text('Ödeme Şekli: ${controller.getPaymentText()}',
@@ -221,8 +220,8 @@ class YemeksepetiOrderPage extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          Text('${item.itemCount!
-                                                  .toStringAsFixed(0)} ADET'),
+                                          Text(
+                                              '${item.itemCount!.toStringAsFixed(0)} ADET'),
                                           const SizedBox(
                                             width: 20,
                                           ),
@@ -279,8 +278,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2)}',
+            'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -295,8 +293,7 @@ class YemeksepetiOrderPage extends StatelessWidget {
       );
     } else {
       return Text(
-        'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2)}',
+        'Toplam Tutar:${controller.yemeksepetiCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }
@@ -375,7 +372,8 @@ class GetirConfirmButton extends StatelessWidget {
   final IconData? icon;
   final VoidCallback? callback;
 
-  const GetirConfirmButton({super.key, this.text, this.callback, required this.icon});
+  const GetirConfirmButton(
+      {super.key, this.text, this.callback, required this.icon});
 
   @override
   Widget build(BuildContext context) {

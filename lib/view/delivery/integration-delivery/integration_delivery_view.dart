@@ -57,9 +57,11 @@ class IntegrationDeliveryPage extends StatelessWidget {
                       color: const Color(0xFFF8F9FB)),
                   child: buildMiddleRow(controller),
                 ),
-                Expanded(
-                  child: IntegrationDeliveryOrderTable(
-                    source: controller.source.value!,
+                Obx(
+                  () => Expanded(
+                    child: IntegrationDeliveryOrderTable(
+                      source: controller.source.value!,
+                    ),
                   ),
                 )
               ],
@@ -153,7 +155,8 @@ class IntegrationDeliveryPage extends StatelessWidget {
                 child: Container(
                   height: 40,
                   width: 120,
-                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
@@ -356,7 +359,8 @@ class IntegrationDeliveryTopButton extends StatelessWidget {
   final Image image;
   final Color color;
   final bool isActive;
-  const IntegrationDeliveryTopButton({super.key, 
+  const IntegrationDeliveryTopButton({
+    super.key,
     required this.callback,
     required this.image,
     required this.color,

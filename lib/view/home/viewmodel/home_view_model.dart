@@ -152,7 +152,6 @@ class HomeController extends BaseController {
       await checkGetir();
       await getRequests();
       createAutoLockTimer();
-      lockScreen();
     });
   }
 
@@ -399,9 +398,7 @@ class HomeController extends BaseController {
 
   void navigateToDeliveryOrder() {
     cancelAutoLockTimer();
-    // navigation
-    //     .navigateToPage(path: NavigationConstants.DELIVERY_ORDERS_VIEW)
-    //     .then((value) => createAutoLockTimer());
+    Get.toNamed('delivery')!.then((value) => createAutoLockTimer());
   }
 
   void navigateToCheckAccounts() {

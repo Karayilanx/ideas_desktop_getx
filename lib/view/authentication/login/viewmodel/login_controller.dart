@@ -31,7 +31,8 @@ class LoginController extends BaseController {
 
   loginTerminal() async {
     if (emailController.text.isNotEmpty) {
-      LoginInput input = LoginInput(email: emailController.text, pass: "1111");
+      LoginInput input = LoginInput(
+          email: emailController.text, pass: pinFieldController.text);
       EasyLoading.show(
         status: 'Lütfen bekleyiniz...',
         dismissOnTap: false,

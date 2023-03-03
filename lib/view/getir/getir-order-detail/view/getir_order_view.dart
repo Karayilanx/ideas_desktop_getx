@@ -9,7 +9,7 @@ class GetirOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetirOrderController controller = Get.find();
+    GetirOrderController controller = Get.put(GetirOrderController());
     return Obx(
       () => controller.getirCheck.value != null
           ? buildBody(controller, context)
@@ -160,8 +160,7 @@ class GetirOrderPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          '${controller.getirCheck.value!.customerAddress!}\n${controller
-                                  .getirCheck.value!.customerAddressDefinition!}',
+                          '${controller.getirCheck.value!.customerAddress!}\n${controller.getirCheck.value!.customerAddressDefinition!}',
                           style: const TextStyle(fontSize: 16),
                         ),
                       ),
@@ -222,7 +221,8 @@ class GetirOrderPage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      Text('${item.itemCount!.toStringAsFixed(0)} ADET'),
+                                      Text(
+                                          '${item.itemCount!.toStringAsFixed(0)} ADET'),
                                       const SizedBox(
                                         width: 20,
                                       ),
@@ -271,8 +271,7 @@ class GetirOrderPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!
-                    .toStringAsFixed(2)}',
+            'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -289,8 +288,7 @@ class GetirOrderPage extends StatelessWidget {
       );
     } else {
       return Text(
-        'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!
-                .toStringAsFixed(2)}',
+        'Toplam Tutar:${controller.getirCheck.value!.payments!.checkAmount!.toStringAsFixed(2)}',
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       );
     }

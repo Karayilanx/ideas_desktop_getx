@@ -13,7 +13,8 @@ class SelectMultiPrinter extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    SelectMultiPrinterController controller = Get.find();
+    SelectMultiPrinterController controller =
+        Get.put(SelectMultiPrinterController());
     return SimpleDialog(
       contentPadding: const EdgeInsets.all(0),
       children: [
