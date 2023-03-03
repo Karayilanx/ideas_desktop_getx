@@ -18,7 +18,7 @@ class UpdateStatusDialogController extends BaseController with StatusHelper {
   final int? fuudyId = Get.arguments != null ? Get.arguments[2] : null;
   final bool isVale = Get.arguments != null ? Get.arguments[3] : false;
   GetirService getirService = Get.find();
-  PrinterService printerService = Get.find();
+  PrinterService printerService = Get.put(PrinterService());
   YemeksepetiService yemeksepetiService = Get.find();
   CheckService checkService = Get.find();
 

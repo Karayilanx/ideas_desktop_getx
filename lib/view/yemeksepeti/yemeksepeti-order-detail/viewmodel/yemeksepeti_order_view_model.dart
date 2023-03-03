@@ -21,7 +21,7 @@ class YemeksepetiOrderController extends BaseController {
   RxList<GroupedCheckItem?> groupedItems = RxList([]);
 
   YemeksepetiService yemeksepetiService = Get.find();
-  PrinterService printerService = Get.find();
+  PrinterService printerService = Get.put(PrinterService());
   CheckService checkService = Get.find();
 
   @override

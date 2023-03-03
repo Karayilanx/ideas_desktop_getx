@@ -25,7 +25,7 @@ class GetirOrderPage extends StatelessWidget {
         children: [
           SizedBox(
             height: context.height * 95 / 100,
-            width: context.width * 70 / 700,
+            width: context.width * 70 / 100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
