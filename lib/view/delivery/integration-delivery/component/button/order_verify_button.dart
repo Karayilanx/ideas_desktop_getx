@@ -30,7 +30,6 @@ class OrderVerifyButton extends StatelessWidget {
         if (test) {
           final UpdateStatusDialogController dialogValue = Get.find();
           if (getirId != null && getirId != '') {
-            print(getirStatus);
             if (getirStatus == 325) {
               dialogValue.verifyScheduledGetirOrder(getirId!);
             } else if (getirStatus == 400) {

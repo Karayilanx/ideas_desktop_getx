@@ -10,6 +10,7 @@ class BaseGetConnect extends GetConnect {
     httpClient.baseUrl =
         'http://${LocaleManager.instance.getStringValue(PreferencesKeys.IP_ADDRESS)}/api/';
 
+    httpClient.timeout = const Duration(minutes: 5);
     // It's will attach 'apikey' property on header from all requests
     // httpClient.addRequestModifier((request) {
     //   request.headers['apikey'] = '12345678';
