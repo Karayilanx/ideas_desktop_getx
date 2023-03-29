@@ -423,7 +423,7 @@ class IntegrationDeliveryController extends BaseController {
 
   void navigateToDeliveryOrder(int? checkId, bool isIntegration) async {
     if (isIntegration) {
-      await Get.dialog(const OrderDetailView(),
+      await Get.toNamed('/order-detail',
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
@@ -431,7 +431,7 @@ class IntegrationDeliveryController extends BaseController {
               isIntegration: true,
               alias: null));
     } else {
-      await Get.dialog(const OrderDetailView(),
+      await Get.toNamed('/order-detail',
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,

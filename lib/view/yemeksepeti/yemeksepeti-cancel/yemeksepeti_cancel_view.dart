@@ -11,7 +11,8 @@ class YemeksepetiCancelPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    YemeksepetiCancelController controller = Get.find();
+    YemeksepetiCancelController controller =
+        Get.put(YemeksepetiCancelController());
     return buildBody(controller);
   }
 

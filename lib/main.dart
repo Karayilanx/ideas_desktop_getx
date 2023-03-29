@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
     Get.put<RequestsStore>(RequestsStore(), permanent: true);
     return GetMaterialApp(
       scrollBehavior: MyCustomScrollBehavior(),
+      initialBinding: ApiBindings(),
       title: 'IDEAS',
       builder: EasyLoading.init(),
       theme: ideasTheme,

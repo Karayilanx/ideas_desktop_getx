@@ -9,7 +9,7 @@ class StoppedItemsController extends BaseController {
   RxList<GroupedCheckItem> selectedItems = RxList<GroupedCheckItem>([]);
   int checkId = Get.arguments[0];
   List<GroupedCheckItem> originalItems = Get.arguments[1];
-  PrinterService printerService = Get.put(PrinterService());
+  PrinterService printerService = Get.find();
 
   @override
   void onInit() {

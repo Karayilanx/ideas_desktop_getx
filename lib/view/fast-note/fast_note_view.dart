@@ -8,7 +8,7 @@ class FastNotePage extends StatelessWidget {
   const FastNotePage({super.key});
   @override
   Widget build(BuildContext context) {
-    final FastNoteController controller = Get.find();
+    final FastNoteController controller = Get.put(FastNoteController());
     return Scaffold(
       // resizeToAvoidBottomPadding: false,
       body: Obx(() {

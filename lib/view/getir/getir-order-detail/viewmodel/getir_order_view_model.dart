@@ -18,7 +18,7 @@ class GetirOrderController extends BaseController {
 
   GetirService getirService = Get.find();
   CheckService checkService = Get.find();
-  PrinterService printerService = Get.put(PrinterService());
+  PrinterService printerService = Get.find();
 
   @override
   void onInit() {

@@ -10,7 +10,7 @@ class GetirCancelPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GetirCancelController controller = Get.find();
+    GetirCancelController controller = Get.put(GetirCancelController());
     return buildBody(controller);
   }
 

@@ -5,7 +5,7 @@ import '../../model/printer_model.dart';
 import '../../service/printer/printer_service.dart';
 
 class SelectMultiPrinterController extends BaseController {
-  PrinterService printerService = Get.put(PrinterService());
+  PrinterService printerService = Get.find();
   List<String>? printerIds = Get.arguments;
   RxList<PrinterOutput> printers = RxList<PrinterOutput>([]);
   RxList<PrinterOutput> selectedPrinters = RxList([]);

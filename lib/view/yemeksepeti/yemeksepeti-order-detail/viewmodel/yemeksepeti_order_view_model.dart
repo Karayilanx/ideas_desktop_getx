@@ -21,7 +21,7 @@ class YemeksepetiOrderController extends BaseController {
   RxList<GroupedCheckItem?> groupedItems = RxList([]);
 
   YemeksepetiService yemeksepetiService = Get.find();
-  PrinterService printerService = Get.put(PrinterService());
+  PrinterService printerService = Get.find();
   CheckService checkService = Get.find();
 
   @override
@@ -62,14 +62,14 @@ class YemeksepetiOrderController extends BaseController {
 
   void navigateToDeliveryOrder(int? checkId, bool isIntegration) async {
     if (isIntegration) {
-      await Get.dialog(const OrderDetailView(),
+      await Get.toNamed('/order-detail',
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
               type: OrderDetailPageType.DELIVERY,
               isIntegration: true));
     } else {
-      await Get.dialog(const OrderDetailView(),
+      await Get.toNamed('/order-detail',
           arguments: TableDetailArguments(
               tableId: -1,
               checkId: checkId,
@@ -125,7 +125,7 @@ class YemeksepetiOrderController extends BaseController {
           margin: const EdgeInsets.symmetric(horizontal: 5),
           child: ElevatedButton(
             onPressed: () async {
-              await Get.dialog(const OrderDetailView(),
+              await Get.toNamed('/order-detail',
                   arguments: TableDetailArguments(
                       tableId: -1,
                       checkId: yemeksepetiCheck.value!.checkId,

@@ -9,7 +9,7 @@ class EftPosStatusPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final EftPosStatusController controller = Get.find();
+    final EftPosStatusController controller = Get.put(EftPosStatusController());
     return Dialog(
       child: Obx(
         () => Container(
