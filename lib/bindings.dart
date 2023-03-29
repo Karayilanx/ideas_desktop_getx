@@ -35,25 +35,26 @@ import 'package:ideas_desktop_getx/view/terminal-users/terminal_users_view_model
 class ApiBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<LoginService>(() => LoginService());
-    Get.lazyPut<ServerService>(() => ServerService());
-    Get.lazyPut<BranchService>(() => BranchService());
-    Get.lazyPut<HomeService>(() => HomeService());
-    Get.lazyPut<DeliveryService>(() => DeliveryService());
-    Get.lazyPut<GetirService>(() => GetirService());
-    Get.lazyPut<YemeksepetiService>(() => YemeksepetiService());
-    Get.lazyPut<EndOfDayService>(() => EndOfDayService());
-    Get.lazyPut<StockService>(() => StockService());
+    Get.lazyPut<LoginService>(() => LoginService(), fenix: true);
+    Get.lazyPut<ServerService>(() => ServerService(), fenix: true);
+    Get.lazyPut<BranchService>(() => BranchService(), fenix: true);
+    Get.lazyPut<HomeService>(() => HomeService(), fenix: true);
+    Get.lazyPut<DeliveryService>(() => DeliveryService(), fenix: true);
+    Get.lazyPut<GetirService>(() => GetirService(), fenix: true);
+    Get.lazyPut<YemeksepetiService>(() => YemeksepetiService(), fenix: true);
+    Get.lazyPut<EndOfDayService>(() => EndOfDayService(), fenix: true);
+    Get.lazyPut<StockService>(() => StockService(), fenix: true);
     Get.lazyPut<IntegrationDeliveryController>(
-        () => IntegrationDeliveryController());
-    Get.lazyPut<CheckService>(() => CheckService());
-    Get.lazyPut<CheckAccountService>(() => CheckAccountService());
+        () => IntegrationDeliveryController(),
+        fenix: true);
+    Get.lazyPut<CheckService>(() => CheckService(), fenix: true);
+    Get.lazyPut<CheckAccountService>(() => CheckAccountService(), fenix: true);
 
-    Get.lazyPut<EftPosService>(() => EftPosService());
-    Get.lazyPut<MenuService>(() => MenuService());
-    Get.lazyPut<PrinterService>(() => PrinterService());
-    Get.lazyPut<TableService>(() => TableService());
-    Get.lazyPut<PrinterService>(() => PrinterService());
+    Get.lazyPut<EftPosService>(() => EftPosService(), fenix: true);
+    Get.lazyPut<MenuService>(() => MenuService(), fenix: true);
+    Get.lazyPut<PrinterService>(() => PrinterService(), fenix: true);
+    Get.lazyPut<TableService>(() => TableService(), fenix: true);
+    Get.lazyPut<PrinterService>(() => PrinterService(), fenix: true);
   }
 }
 
