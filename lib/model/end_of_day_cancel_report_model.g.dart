@@ -21,6 +21,7 @@ EndOfDayCancelModel _$EndOfDayCancelModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['orderDate'] as String),
       quantity: (json['quantity'] as num?)?.toDouble(),
+      terminalUserName: json['terminalUserName'] as String?,
     );
 
 Map<String, dynamic> _$EndOfDayCancelModelToJson(
@@ -35,4 +36,5 @@ Map<String, dynamic> _$EndOfDayCancelModelToJson(
       'cancelDate': instance.cancelDate?.toIso8601String(),
       'cancelType': instance.cancelType,
       'cancelNote': instance.cancelNote,
+      'terminalUserName': instance.terminalUserName,
     };

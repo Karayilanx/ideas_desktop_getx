@@ -3,9 +3,9 @@ import '../../../model/end_of_day_cancel_report_model.dart';
 import '../../_utility/service_helper.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-class CancelReportTable extends StatelessWidget {
-  final CancelReportTableDataSource source;
-  const CancelReportTable({super.key, required this.source});
+class GiftReportTable extends StatelessWidget {
+  final GiftReportTableDataSource source;
+  const GiftReportTable({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -75,27 +75,7 @@ class CancelReportTable extends StatelessWidget {
           label: Container(
             alignment: Alignment.center,
             child: const Text(
-              'İptal Zamanı',
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ),
-        GridColumn(
-          columnName: 'cancelType',
-          label: Container(
-            alignment: Alignment.center,
-            child: const Text(
-              'İşlem Tipi',
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ),
-        GridColumn(
-          columnName: 'cancelNote',
-          label: Container(
-            alignment: Alignment.center,
-            child: const Text(
-              'Açıklama',
+              'İkram Zamanı',
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -115,10 +95,9 @@ class CancelReportTable extends StatelessWidget {
   }
 }
 
-class CancelReportTableDataSource extends DataGridSource with ServiceHelper {
-  CancelReportTableDataSource(
-      {required List<EndOfDayCancelModel> cancelReport}) {
-    dataGridRows = cancelReport
+class GiftReportTableDataSource extends DataGridSource with ServiceHelper {
+  GiftReportTableDataSource({required List<EndOfDayCancelModel> giftReport}) {
+    dataGridRows = giftReport
         .map<DataGridRow>(
           (dataGridRow) => DataGridRow(
             cells: [
@@ -138,16 +117,6 @@ class CancelReportTableDataSource extends DataGridSource with ServiceHelper {
               DataGridCell<String>(
                 columnName: 'cancelDate',
                 value: getDateString(dataGridRow.cancelDate!),
-              ),
-              DataGridCell<String>(
-                columnName: 'cancelType',
-                value: dataGridRow.cancelType!,
-              ),
-              DataGridCell<String>(
-                columnName: 'cancelNote',
-                value: dataGridRow.cancelNote == null
-                    ? ''
-                    : dataGridRow.cancelNote!,
               ),
               DataGridCell<String>(
                 columnName: 'Kullanıcı',

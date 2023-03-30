@@ -12,6 +12,7 @@ import 'package:ideas_desktop_getx/service/server/server_service.dart';
 import 'package:ideas_desktop_getx/service/stock/stock_service.dart';
 import 'package:ideas_desktop_getx/view/_utility/msg_dialog.dart';
 import 'package:ideas_desktop_getx/view/end-of-day/select-report/select_report_view.dart';
+import 'package:ideas_desktop_getx/view/end-of-day/tables/gift_report_table.dart';
 import 'package:ideas_desktop_getx/view/multi_select/multi_select_view.dart';
 import '../../model/end_of_day_cancel_report_model.dart';
 import '../../model/end_of_day_check_account_report_model.dart';
@@ -41,6 +42,7 @@ enum EndOfDayReportEnum {
   LOG,
   DETAIL,
   OKC_POS,
+  GIFT,
 }
 
 class EndOfDayController extends BaseController {
@@ -72,6 +74,8 @@ class EndOfDayController extends BaseController {
       Rx<CheckAccountReceivingReportDataSource?>(null);
   Rx<CancelReportTableDataSource?> cancelReportDataSource =
       Rx<CancelReportTableDataSource?>(null);
+  Rx<GiftReportTableDataSource?> giftReportDataSource =
+      Rx<GiftReportTableDataSource?>(null);
   Rx<EftPosModel?> selectedPoss = Rx<EftPosModel?>(null);
 
   RxList<EndOfDayHourlySaleModel> hourlySaleModel = RxList([]);
@@ -79,6 +83,7 @@ class EndOfDayController extends BaseController {
   RxList<EndOfDayLogModel> logReport = RxList([]);
   RxList<EndOfDaySaleReportModel> saleReport = RxList([]);
   RxList<EndOfDayCancelModel> cancelReport = RxList([]);
+  RxList<EndOfDayCancelModel> giftReport = RxList([]);
   RxList<String> categories = RxList([]);
   RxList<String> selectedCategories = RxList([]);
   RxList<DateTime> specialDates = RxList([]);
@@ -166,6 +171,19 @@ class EndOfDayController extends BaseController {
     checkReportDataSource(CheckReportDataSource(checks: checkReport));
   }
 
+  Future getGiftReport() async {
+    EasyLoading.show(
+      status: 'Lütfen Bekleyiniz...',
+      dismissOnTap: false,
+      maskType: EasyLoadingMaskType.black,
+    );
+    giftReport(
+        await endOfDayService.getEndOfDayGiftReport(authStore.user!.branchId!));
+    EasyLoading.dismiss();
+
+    giftReportDataSource(GiftReportTableDataSource(giftReport: giftReport));
+  }
+
   Future getEndOfDayPastCheckReport() async {
     EasyLoading.show(
       status: 'Lütfen Bekleyiniz...',
@@ -231,6 +249,19 @@ class EndOfDayController extends BaseController {
 
     cancelReportDataSource(
         CancelReportTableDataSource(cancelReport: cancelReport));
+  }
+
+  Future getEndOfDayPastGiftReport() async {
+    EasyLoading.show(
+      status: 'Lütfen Bekleyiniz...',
+      dismissOnTap: false,
+      maskType: EasyLoadingMaskType.black,
+    );
+    giftReport(await endOfDayService.getEndOfDayPastGiftReport(
+        authStore.user!.branchId!, dateCtrl.selectedDate!));
+    EasyLoading.dismiss();
+
+    giftReportDataSource(GiftReportTableDataSource(giftReport: giftReport));
   }
 
   Future getCheckAccountReport() async {
@@ -574,6 +605,9 @@ class EndOfDayController extends BaseController {
         case EndOfDayReportEnum.OKC_POS:
           await getPosAndOkcDept();
           break;
+        case EndOfDayReportEnum.GIFT:
+          await getGiftReport();
+          break;
       }
     } else {
       switch (rep) {
@@ -603,6 +637,9 @@ class EndOfDayController extends BaseController {
           break;
         case EndOfDayReportEnum.OKC_POS:
           await getPosAndOkcDept();
+          break;
+        case EndOfDayReportEnum.GIFT:
+          await getEndOfDayPastGiftReport();
           break;
       }
     }
@@ -636,6 +673,9 @@ class EndOfDayController extends BaseController {
         break;
       case EndOfDayReportEnum.OKC_POS:
         header("OKC Pos");
+        break;
+      case EndOfDayReportEnum.GIFT:
+        header("İkram");
         break;
     }
   }

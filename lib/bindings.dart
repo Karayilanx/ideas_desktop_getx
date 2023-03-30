@@ -44,9 +44,7 @@ class ApiBindings implements Bindings {
     Get.lazyPut<YemeksepetiService>(() => YemeksepetiService(), fenix: true);
     Get.lazyPut<EndOfDayService>(() => EndOfDayService(), fenix: true);
     Get.lazyPut<StockService>(() => StockService(), fenix: true);
-    Get.lazyPut<IntegrationDeliveryController>(
-        () => IntegrationDeliveryController(),
-        fenix: true);
+
     Get.lazyPut<CheckService>(() => CheckService(), fenix: true);
     Get.lazyPut<CheckAccountService>(() => CheckAccountService(), fenix: true);
 
@@ -160,7 +158,7 @@ class PriceChangeBindings implements Bindings {
 class RequestBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<RequestsController>(() => RequestsController());
+    Get.lazyPut<RequestsController>(() => RequestsController(), fenix: true);
   }
 }
 
@@ -182,6 +180,7 @@ class DeliveryBindings implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<IntegrationDeliveryController>(
-        () => IntegrationDeliveryController());
+        () => IntegrationDeliveryController(),
+        fenix: true);
   }
 }

@@ -12,7 +12,7 @@ class EndOfDayCancelModel {
   DateTime? cancelDate;
   String? cancelType;
   String? cancelNote;
-
+  String? terminalUserName;
   EndOfDayCancelModel({
     this.amount,
     this.cancelDate,
@@ -23,6 +23,7 @@ class EndOfDayCancelModel {
     this.checkName,
     this.orderDate,
     this.quantity,
+    this.terminalUserName,
   });
 
   factory EndOfDayCancelModel.fromJson(Map<String, dynamic> json) {

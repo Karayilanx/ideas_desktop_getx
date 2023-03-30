@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:ideas_desktop_getx/extension/string_extension.dart';
 import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
+import 'package:ideas_desktop_getx/view/end-of-day/tables/gift_report_table.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../_utility/loading/loading_screen.dart';
 import '../_utility/service_helper.dart';
@@ -146,7 +147,12 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
           ReportButton(
             onTap: () =>
                 controller.changeSelectedReport(EndOfDayReportEnum.UNPAYABLE),
-            title: "İkram ve Ödenmezler",
+            title: "Ödenmezler",
+          ),
+          ReportButton(
+            onTap: () =>
+                controller.changeSelectedReport(EndOfDayReportEnum.GIFT),
+            title: "İkramlar",
           ),
           ReportButton(
             onTap: () => controller
@@ -315,6 +321,8 @@ class EndOfDayPage extends StatelessWidget with ServiceHelper {
         } else {
           return Container();
         }
+      case EndOfDayReportEnum.GIFT:
+        return buildGiftReport(controller);
     }
   }
 
@@ -883,6 +891,14 @@ Widget buildCheckReport(EndOfDayController controller) {
   return Obx(() {
     return CheckReportTable(
       source: controller.checkReportDataSource.value!,
+    );
+  });
+}
+
+Widget buildGiftReport(EndOfDayController controller) {
+  return Obx(() {
+    return GiftReportTable(
+      source: controller.giftReportDataSource.value!,
     );
   });
 }

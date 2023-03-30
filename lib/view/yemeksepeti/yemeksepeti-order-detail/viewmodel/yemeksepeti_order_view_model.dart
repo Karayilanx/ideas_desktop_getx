@@ -11,7 +11,6 @@ import '../../../../service/check/check_service.dart';
 import '../../../../service/printer/printer_service.dart';
 import '../../../../service/yemeksepeti/yemeksepeti_service.dart';
 import '../../../order-detail/model/order_detail_model.dart';
-import '../../../order-detail/view/order_detail_view.dart';
 import '../../../select-multi-printer/select_multi_printer_view.dart';
 
 class YemeksepetiOrderController extends BaseController {

@@ -151,6 +151,23 @@ class EndOfDayService extends BaseGetConnect {
     }
   }
 
+  Future<List<EndOfDayCancelModel>?> getEndOfDayGiftReport(int branchId) async {
+    Response? response;
+    try {
+      response = await get('endOfDay/getEndOfDayGiftReport', query: {
+        'branchId': branchId.toString(),
+      });
+
+      return response.body
+          .map((data) => EndOfDayCancelModel.fromJson(data))
+          .cast<EndOfDayCancelModel>()
+          .toList() as List<EndOfDayCancelModel>;
+    } catch (e) {
+      handleError(response);
+      return null;
+    }
+  }
+
   Future<CheckDetailsModel?> getFirstCheckOfTheDay(
     int branchId,
   ) async {
@@ -425,6 +442,25 @@ class EndOfDayService extends BaseGetConnect {
     Response? response;
     try {
       response = await get('endOfDay/getEndOfDayPastCancelReport', query: {
+        'branchId': branchId.toString(),
+        'endOfDayDate': endOfDayDate.toString()
+      });
+
+      return response.body
+          .map((data) => EndOfDayCancelModel.fromJson(data))
+          .cast<EndOfDayCancelModel>()
+          .toList() as List<EndOfDayCancelModel>;
+    } catch (e) {
+      handleError(response);
+      return null;
+    }
+  }
+
+  Future<List<EndOfDayCancelModel>?> getEndOfDayPastGiftReport(
+      int branchId, DateTime endOfDayDate) async {
+    Response? response;
+    try {
+      response = await get('endOfDay/getEndOfDayPastGiftReport', query: {
         'branchId': branchId.toString(),
         'endOfDayDate': endOfDayDate.toString()
       });

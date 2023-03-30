@@ -16,7 +16,6 @@ import '../../../service/delivery/delivery_service.dart';
 import '../../../service/yemeksepeti/yemeksepeti_service.dart';
 import 'component/update-status-dialog/update_status_dialog_view.dart';
 import '../../order-detail/model/order_detail_model.dart';
-import '../../order-detail/view/order_detail_view.dart';
 import '../delivery_store.dart';
 
 class IntegrationDeliveryController extends BaseController {
