@@ -39,19 +39,19 @@ class SelectPrinterMapping extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              var printer = controller.printers[index];
-              return Obx(() {
-                return CheckboxListTile(
-                  value: controller.isPrinterSelected(printer),
-                  onChanged: (val) => controller.selectPrinter(printer),
-                  title: Text(printer.printerName!),
-                );
-              });
-            },
-            itemCount: controller.printers.length,
-          ),
+          child: Obx(() => ListView.builder(
+                itemBuilder: (context, index) {
+                  var printer = controller.printers[index];
+                  return Obx(() {
+                    return CheckboxListTile(
+                      value: controller.isPrinterSelected(printer),
+                      onChanged: (val) => controller.selectPrinter(printer),
+                      title: Text(printer.printerName!),
+                    );
+                  });
+                },
+                itemCount: controller.printers.length,
+              )),
         ),
         Container(
             height: 60,
