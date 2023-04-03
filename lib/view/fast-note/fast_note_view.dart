@@ -11,11 +11,9 @@ class FastNotePage extends StatelessWidget {
     final FastNoteController controller = Get.put(FastNoteController());
     return Scaffold(
       // resizeToAvoidBottomPadding: false,
-      body: Obx(() {
-        return SafeArea(
-          child: buildBody(controller),
-        );
-      }),
+      body: SafeArea(
+        child: buildBody(controller),
+      ),
     );
   }
 
