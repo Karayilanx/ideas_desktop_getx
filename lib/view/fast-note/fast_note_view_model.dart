@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
+
+import '../../base_controller.dart';
 import '../../model/cancel_note_model.dart';
 import '../../service/check/check_service.dart';
 

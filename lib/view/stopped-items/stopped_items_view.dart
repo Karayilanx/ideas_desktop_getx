@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/stopped-items/stopped_items_view_model.dart';
+import 'package:ideas_desktop/view/stopped-items/stopped_items_view_model.dart';
+
 import '../../model/check_model.dart';
 
 class StoppedItemsPage extends StatelessWidget {

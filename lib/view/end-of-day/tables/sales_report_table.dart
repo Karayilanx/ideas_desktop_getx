@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
 import '../../../model/end_of_day_sales_report.dart';
 import '../../_utility/service_helper.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class SalesReportTable extends StatelessWidget {
   final SaleReportDataSource source;

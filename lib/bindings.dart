@@ -1,36 +1,37 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/service/branch/branch_service.dart';
-import 'package:ideas_desktop_getx/service/check/check_service.dart';
-import 'package:ideas_desktop_getx/service/check_account/check_account_service.dart';
-import 'package:ideas_desktop_getx/service/delivery/delivery_service.dart';
-import 'package:ideas_desktop_getx/service/eft_pos/eft_pos_service.dart';
-import 'package:ideas_desktop_getx/service/end_of_day/end_of_day_service.dart';
-import 'package:ideas_desktop_getx/service/getir_service.dart';
-import 'package:ideas_desktop_getx/service/home/home_service.dart';
-import 'package:ideas_desktop_getx/service/menu/menu_service.dart';
-import 'package:ideas_desktop_getx/service/printer/printer_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
-import 'package:ideas_desktop_getx/service/stock/stock_service.dart';
-import 'package:ideas_desktop_getx/service/table/table_service.dart';
-import 'package:ideas_desktop_getx/service/yemeksepeti/yemeksepeti_service.dart';
-import 'package:ideas_desktop_getx/view/authentication/login/service/login_service.dart';
-import 'package:ideas_desktop_getx/view/authentication/login/viewmodel/login_controller.dart';
-import 'package:ideas_desktop_getx/view/check-account/check-account-transactions/viewmodel/check_account_transactions_view_model.dart';
-import 'package:ideas_desktop_getx/view/check-account/check-accounts/viewmodel/check_accounts_view_model.dart';
-import 'package:ideas_desktop_getx/view/check-detail/check_detail_view_model.dart';
-import 'package:ideas_desktop_getx/view/closed-check/closed-checks/viewmodel/closed_checks_view_model.dart';
-import 'package:ideas_desktop_getx/view/delivery/integration-delivery/integration_delivery_view_model.dart';
-import 'package:ideas_desktop_getx/view/end-of-day/end_of_day_view_model.dart';
-import 'package:ideas_desktop_getx/view/fast-sell/viewmodel/fast_sell_view_model.dart';
-import 'package:ideas_desktop_getx/view/home/viewmodel/home_view_model.dart';
-import 'package:ideas_desktop_getx/view/menu/condiment-groups/condiment_groups_view_model.dart';
-import 'package:ideas_desktop_getx/view/menu/condiments/condiments_view_model.dart';
-import 'package:ideas_desktop_getx/view/menu/menu_view_model.dart';
-import 'package:ideas_desktop_getx/view/order-detail/viewmodel/order_detail_view_model.dart';
-import 'package:ideas_desktop_getx/view/pos-integration/pos_integration_view_model.dart';
-import 'package:ideas_desktop_getx/view/price-change/price_change_view_model.dart';
-import 'package:ideas_desktop_getx/view/requests/requests_view_model.dart';
-import 'package:ideas_desktop_getx/view/terminal-users/terminal_users_view_model.dart';
+import 'service/branch/branch_service.dart';
+import 'service/check/check_service.dart';
+import 'service/check_account/check_account_service.dart';
+import 'service/delivery/delivery_service.dart';
+import 'service/eft_pos/eft_pos_service.dart';
+import 'service/end_of_day/end_of_day_service.dart';
+import 'service/getir_service.dart';
+import 'service/home/home_service.dart';
+import 'service/menu/menu_service.dart';
+import 'service/printer/printer_service.dart';
+import 'service/stock/stock_service.dart';
+import 'service/table/table_service.dart';
+import 'service/yemeksepeti/yemeksepeti_service.dart';
+import 'view/authentication/login/viewmodel/login_controller.dart';
+import 'view/check-account/check-account-transactions/viewmodel/check_account_transactions_view_model.dart';
+import 'view/check-account/check-accounts/viewmodel/check_accounts_view_model.dart';
+import 'view/check-detail/check_detail_view_model.dart';
+import 'view/closed-check/closed-checks/viewmodel/closed_checks_view_model.dart';
+import 'view/delivery/integration-delivery/integration_delivery_view_model.dart';
+import 'view/end-of-day/end_of_day_view_model.dart';
+import 'view/fast-sell/viewmodel/fast_sell_view_model.dart';
+import 'view/home/viewmodel/home_view_model.dart';
+import 'view/menu/condiment-groups/condiment_groups_view_model.dart';
+import 'view/menu/condiments/condiments_view_model.dart';
+import 'view/menu/menu_view_model.dart';
+import 'view/order-detail/viewmodel/order_detail_view_model.dart';
+import 'view/pos-integration/pos_integration_view_model.dart';
+import 'view/price-change/price_change_view_model.dart';
+import 'view/requests/requests_view_model.dart';
+import 'view/terminal-users/terminal_users_view_model.dart';
+
+import 'service/server/server_service.dart';
+import 'view/authentication/login/service/login_service.dart';
 
 class ApiBindings implements Bindings {
   @override
@@ -52,7 +53,6 @@ class ApiBindings implements Bindings {
     Get.lazyPut<MenuService>(() => MenuService(), fenix: true);
     Get.lazyPut<PrinterService>(() => PrinterService(), fenix: true);
     Get.lazyPut<TableService>(() => TableService(), fenix: true);
-    Get.lazyPut<PrinterService>(() => PrinterService(), fenix: true);
   }
 }
 

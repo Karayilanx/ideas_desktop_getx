@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/delivery_model.dart';
-import 'package:ideas_desktop_getx/service/delivery/delivery_service.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/delivery_model.dart';
+import 'package:ideas_desktop/service/delivery/delivery_service.dart';
 
 class CouirerController extends BaseController {
   DeliveryService deliveryService = Get.find();

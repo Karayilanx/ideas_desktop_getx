@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/service/getir_service.dart';
-import 'package:ideas_desktop_getx/view/delivery/table/integration_delivery_order_table.dart';
-import 'package:ideas_desktop_getx/view/getir/getir-cancel/getir_cancel_view.dart';
-import 'package:ideas_desktop_getx/view/getir/getir-order-detail/view/getir_order_view.dart';
-import 'package:ideas_desktop_getx/view/order-detail/navigation/table_detail_navigation_args.dart';
-import 'package:ideas_desktop_getx/view/yemeksepeti/yemeksepeti-cancel/yemeksepeti_cancel_view.dart';
-import 'package:ideas_desktop_getx/view/yemeksepeti/yemeksepeti-order-detail/view/yemeksepeti_order_view.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/service/getir_service.dart';
+import 'package:ideas_desktop/view/delivery/table/integration_delivery_order_table.dart';
+import 'package:ideas_desktop/view/getir/getir-cancel/getir_cancel_view.dart';
+import 'package:ideas_desktop/view/getir/getir-order-detail/view/getir_order_view.dart';
+import 'package:ideas_desktop/view/order-detail/navigation/table_detail_navigation_args.dart';
+import 'package:ideas_desktop/view/yemeksepeti/yemeksepeti-cancel/yemeksepeti_cancel_view.dart';
+import 'package:ideas_desktop/view/yemeksepeti/yemeksepeti-order-detail/view/yemeksepeti_order_view.dart';
+
 import '../../../locale_keys_enum.dart';
 import '../../../model/delivery_model.dart';
 import '../../../model/yemeksepeti_model.dart';
 import '../../../service/delivery/delivery_service.dart';
 import '../../../service/yemeksepeti/yemeksepeti_service.dart';
-import 'component/update-status-dialog/update_status_dialog_view.dart';
 import '../../order-detail/model/order_detail_model.dart';
 import '../delivery_store.dart';
+import 'component/update-status-dialog/update_status_dialog_view.dart';
 
 class IntegrationDeliveryController extends BaseController {
   DeliveryService deliveryService = Get.find();

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:ideas_desktop_getx/model/check_account_model.dart';
-import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
-import 'package:ideas_desktop_getx/service/check_account/check_account_service.dart';
-import 'package:ideas_desktop_getx/service/eft_pos/eft_pos_service.dart';
-import 'package:ideas_desktop_getx/view/pos-integration/poss_table.dart';
+import 'package:get/get.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/check_account_model.dart';
+import 'package:ideas_desktop/model/eft_pos_model.dart';
+import 'package:ideas_desktop/service/check_account/check_account_service.dart';
+import 'package:ideas_desktop/service/eft_pos/eft_pos_service.dart';
+import 'package:ideas_desktop/view/pos-integration/poss_table.dart';
 
 class PosIntegrationController extends BaseController {
   EftPosService posService = Get.find();

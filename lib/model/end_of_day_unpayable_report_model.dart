@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'end_of_day_unpayable_report_model.g.dart';
 
 @JsonSerializable()

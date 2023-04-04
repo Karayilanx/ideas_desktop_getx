@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../locale_keys_enum.dart';
 import '../_utility/screen_keyboard/screen_keyboard_view.dart';
 import 'fast_note_view_model.dart';

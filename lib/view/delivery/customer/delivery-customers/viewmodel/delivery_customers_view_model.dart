@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/delivery_model.dart';
-import 'package:ideas_desktop_getx/service/delivery/delivery_service.dart';
-import 'package:ideas_desktop_getx/view/delivery/customer/customer-detail/model/customer_detail_page_enum.dart';
-import 'package:ideas_desktop_getx/view/delivery/customer/customer-detail/view/customer_detail_view.dart';
-import 'package:ideas_desktop_getx/view/delivery/customer/delivery-customers/delivery_customers_table.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/delivery_model.dart';
+import 'package:ideas_desktop/service/delivery/delivery_service.dart';
+import 'package:ideas_desktop/view/delivery/customer/customer-detail/model/customer_detail_page_enum.dart';
+import 'package:ideas_desktop/view/delivery/customer/customer-detail/view/customer_detail_view.dart';
+import 'package:ideas_desktop/view/delivery/customer/delivery-customers/delivery_customers_table.dart';
 
 class DeliveryCustomersController extends BaseController {
   final bool showSelect = Get.arguments;

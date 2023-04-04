@@ -1,6 +1,7 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
+import 'package:ideas_desktop/base_controller.dart';
+
 import '../../model/check_model.dart';
 import '../../model/printer_model.dart';
 import '../../service/printer/printer_service.dart';

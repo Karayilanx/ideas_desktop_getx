@@ -1,7 +1,7 @@
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:ideas_desktop_getx/model/branch_model.dart';
-import 'package:ideas_desktop_getx/model/integer_model.dart';
-import 'package:ideas_desktop_getx/service/base_get_connect.dart';
+import 'package:ideas_desktop/model/branch_model.dart';
+import 'package:ideas_desktop/model/integer_model.dart';
+import 'package:ideas_desktop/service/base_get_connect.dart';
 
 class ServerService extends BaseGetConnect {
   Future<IntegerModel?> syncChanges(int branchId) async {

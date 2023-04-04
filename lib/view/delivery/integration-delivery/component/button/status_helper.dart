@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/fuudy_model.dart';
-import 'package:ideas_desktop_getx/view/delivery/integration-delivery/component/button/select_couirer.dart';
+import 'package:ideas_desktop/model/fuudy_model.dart';
+import 'package:ideas_desktop/view/delivery/integration-delivery/component/button/select_couirer.dart';
+
 import '../../../../../model/delivery_model.dart';
 import '../../../../../model/getir_model.dart';
 import '../../../../../model/yemeksepeti_model.dart';
+import '../update-status-dialog/update_status_dialog_view_model.dart';
+import 'cancel_order_button.dart';
 import 'order_deliver_button.dart';
 import 'order_make_payment_button.dart';
 import 'order_prepare_button.dart';
 import 'order_verify_button.dart';
 import 'waiting_for_courier_button.dart';
-import '../update-status-dialog/update_status_dialog_view_model.dart';
-
-import 'cancel_order_button.dart';
 
 abstract class StatusHelper {
   List<Widget> getStatusButtons({

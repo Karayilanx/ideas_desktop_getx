@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_group_view_model.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/view/menu/select-condiment-group/select_condiment_group_view_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class SelectCondimentTable extends StatelessWidget {
   final SelectCondimentDataSource source;

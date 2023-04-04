@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/view/price-change/price_change_view_model.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/view/price-change/price_change_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class PriceChangeTable extends StatelessWidget {

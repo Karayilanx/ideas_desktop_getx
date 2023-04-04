@@ -1,5 +1,7 @@
-import 'check_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'check_model.dart';
+
 part 'menu_model.g.dart';
 
 @JsonSerializable()

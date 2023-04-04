@@ -1,9 +1,9 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/menu/create-condiment-group/create_condiment_group_view_model.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/menu/create-condiment-group/create_condiment_group_view_model.dart';
 
 class CreateCondimentGroupPage extends StatelessWidget {
   const CreateCondimentGroupPage({super.key});
@@ -622,7 +622,8 @@ class CreateCondimentGroupPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 4),
               child: Text(
                 subcat.nameTr!,
-                style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                style:
+                    const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
               ),
             ),
           ),
@@ -728,7 +729,8 @@ class CreateCondimentGroupPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 4),
               child: Text(
                 subcat.nameTr!,
-                style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                style:
+                    const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
               ),
             ),
           ),

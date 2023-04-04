@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/integer_model.dart';
-import 'package:ideas_desktop_getx/service/base_get_connect.dart';
+import 'package:ideas_desktop/model/integer_model.dart';
+import 'package:ideas_desktop/service/base_get_connect.dart';
 
 import '../../model/delivery_model.dart';
 

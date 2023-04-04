@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/_utility/screen_keyboard/screen_keyboard_view.dart';
-import 'package:ideas_desktop_getx/view/price-change/price_change_table.dart';
-import 'package:ideas_desktop_getx/view/price-change/price_change_view_model.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/_utility/screen_keyboard/screen_keyboard_view.dart';
+import 'package:ideas_desktop/view/price-change/price_change_table.dart';
+import 'package:ideas_desktop/view/price-change/price_change_view_model.dart';
 
 import '../../locale_keys_enum.dart';
 
@@ -32,7 +32,8 @@ class PriceChangePage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 child: TextFormField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -65,7 +66,8 @@ class PriceChangePage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.savePriceChange(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -82,7 +84,8 @@ class PriceChangePage extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/_utility/screen_keyboard/screen_keyboard_view.dart';
-import 'package:ideas_desktop_getx/view/menu/condiments/condiments_table.dart';
-import 'package:ideas_desktop_getx/view/menu/condiments/condiments_view_model.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/_utility/screen_keyboard/screen_keyboard_view.dart';
+import 'package:ideas_desktop/view/menu/condiments/condiments_table.dart';
 
 import '../../../locale_keys_enum.dart';
+import 'condiments_view_model.dart';
 
 class CondimentsPage extends StatelessWidget {
   const CondimentsPage({super.key});
@@ -34,7 +34,8 @@ class CondimentsPage extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 child: TextFormField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -67,7 +68,8 @@ class CondimentsPage extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.openNewCondimentDialog(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 240,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -85,7 +87,8 @@ class CondimentsPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,

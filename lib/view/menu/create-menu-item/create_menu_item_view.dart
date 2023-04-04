@@ -1,8 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/menu/create-menu-item/create_menu_item_view_model.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/menu/create-menu-item/create_menu_item_view_model.dart';
 
 class CreateMenuItemPage extends StatelessWidget {
   const CreateMenuItemPage({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/locale_keys_enum.dart';
-import 'package:ideas_desktop_getx/view/notes/notes_page_view_model.dart';
+import 'package:ideas_desktop/view/notes/notes_page_view_model.dart';
 
+import '../../locale_keys_enum.dart';
 import '../_utility/screen_keyboard/screen_keyboard_view.dart';
 
 class NotesPages extends StatelessWidget {

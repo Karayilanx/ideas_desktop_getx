@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/delivery/delivery-detail-selection/delivery_detail_selection_view_model.dart';
 import 'package:intl/intl.dart';
 
 import '../../../model/delivery_model.dart';
 import '../../order-detail/component/menu_item_category_button.dart';
+import 'delivery_detail_selection_view_model.dart';
 
 class DeliveryDetailSelectionPage extends StatelessWidget {
   const DeliveryDetailSelectionPage({

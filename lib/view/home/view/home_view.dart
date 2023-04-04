@@ -1,7 +1,8 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/home/viewmodel/home_view_model.dart';
+import 'package:ideas_desktop/view/home/viewmodel/home_view_model.dart';
+
 import '../../../image/image_constatns.dart';
 import '../../../locale_keys_enum.dart';
 import '../../../model/home_model.dart';

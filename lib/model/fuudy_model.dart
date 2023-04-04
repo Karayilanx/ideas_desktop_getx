@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import 'check_model.dart';
+
 part 'fuudy_model.g.dart';
 
 @JsonSerializable()

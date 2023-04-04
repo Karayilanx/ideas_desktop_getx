@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
 
 const defaultColor = Color(0xFFF8F8FF);
 
@@ -9,7 +9,8 @@ class EndOfDayReportInformation extends StatelessWidget {
   final double rightText;
   final bool isSubInfo;
   const EndOfDayReportInformation(
-      {super.key, required this.leftText,
+      {super.key,
+      required this.leftText,
       required this.rightText,
       this.isSubInfo = false});
 
@@ -77,7 +78,8 @@ class EndOfDayTabButton extends StatelessWidget {
   final bool selected;
   final Color color;
   const EndOfDayTabButton(
-      {super.key, required this.callback,
+      {super.key,
+      required this.callback,
       required this.text,
       this.selected = false,
       this.color = defaultTabColor});
@@ -103,7 +105,8 @@ class EndOfDayLeftSideButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
   final Color color;
-  const EndOfDayLeftSideButton({super.key, 
+  const EndOfDayLeftSideButton({
+    super.key,
     required this.callback,
     required this.text,
     this.color = defaultColor,

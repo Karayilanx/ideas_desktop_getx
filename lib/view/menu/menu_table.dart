@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart' hide MenuController;
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/view/menu/menu_view_model.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/view/menu/menu_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 // ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/service/end_of_day/end_of_day_service.dart';
-import 'package:ideas_desktop_getx/view/end-of-day/component/end_of_day_stepper_view_model.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/service/end_of_day/end_of_day_service.dart';
+import 'package:ideas_desktop/view/end-of-day/component/end_of_day_stepper_view_model.dart';
 
 import '../../../locale_keys_enum.dart';
 

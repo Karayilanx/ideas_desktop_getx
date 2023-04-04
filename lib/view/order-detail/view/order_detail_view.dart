@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/order-detail/viewmodel/order_detail_view_model.dart';
+import 'package:ideas_desktop/view/order-detail/viewmodel/order_detail_view_model.dart';
 import 'package:intl/intl.dart';
 import '../../../locale_keys_enum.dart';
 import '../../../model/check_model.dart';

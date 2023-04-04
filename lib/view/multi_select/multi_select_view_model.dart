@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
+import 'package:ideas_desktop/base_controller.dart';
 
 import 'multi_select_view.dart';
 

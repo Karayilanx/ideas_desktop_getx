@@ -1,5 +1,7 @@
-import 'table_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'table_model.dart';
+
 part 'home_model.g.dart';
 
 @JsonSerializable()

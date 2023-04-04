@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/pos-integration/pos_integration_view_model.dart';
-import 'package:ideas_desktop_getx/view/pos-integration/poss_table.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/pos-integration/pos_integration_view_model.dart';
+import 'package:ideas_desktop/view/pos-integration/poss_table.dart';
 
 class PosIntegrationView extends StatelessWidget {
   const PosIntegrationView({super.key});
@@ -47,7 +47,8 @@ class PosIntegrationView extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.saveChanges(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -64,7 +65,8 @@ class PosIntegrationView extends StatelessWidget {
             GestureDetector(
               onTap: () => controller.addNewRow(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -81,7 +83,8 @@ class PosIntegrationView extends StatelessWidget {
             GestureDetector(
               onTap: () => Get.back(),
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 width: 120,
                 decoration: BoxDecoration(
                   color: Colors.red,

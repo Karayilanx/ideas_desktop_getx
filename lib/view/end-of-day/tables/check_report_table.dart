@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
 import '../../../model/end_of_day_check_report_model.dart';
 import '../../_utility/service_helper.dart';
 import '../../check-detail/check_detail_view.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class CheckReportTable extends StatelessWidget {
   final CheckReportDataSource source;

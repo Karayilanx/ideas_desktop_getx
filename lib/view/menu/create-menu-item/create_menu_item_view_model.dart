@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/model/printer_model.dart';
-import 'package:ideas_desktop_getx/service/menu/menu_service.dart';
-import 'package:ideas_desktop_getx/service/printer/printer_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
-import 'package:ideas_desktop_getx/view/menu/create-category/create_category_view.dart';
-import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_group_view.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/model/printer_model.dart';
+import 'package:ideas_desktop/service/menu/menu_service.dart';
+import 'package:ideas_desktop/service/printer/printer_service.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
+import 'package:ideas_desktop/view/menu/create-category/create_category_view.dart';
+import 'package:ideas_desktop/view/menu/select-condiment-group/select_condiment_group_view.dart';
 
 class CreateMenuItemController extends BaseController {
   final int? menuItemId = Get.arguments;

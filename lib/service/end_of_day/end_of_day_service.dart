@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/datetime_model.dart';
-import 'package:ideas_desktop_getx/model/integer_model.dart';
-import 'package:ideas_desktop_getx/model/stock_model.dart';
-import 'package:ideas_desktop_getx/service/base_get_connect.dart';
+import 'package:ideas_desktop/model/datetime_model.dart';
+import 'package:ideas_desktop/model/integer_model.dart';
+import 'package:ideas_desktop/model/stock_model.dart';
+import 'package:ideas_desktop/service/base_get_connect.dart';
 
 import '../../model/check_model.dart';
 import '../../model/end_of_day_cancel_report_model.dart';

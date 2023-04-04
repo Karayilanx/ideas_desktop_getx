@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/delivery_model.dart';
-import 'package:ideas_desktop_getx/view/delivery/customer/delivery-customers/viewmodel/delivery_customers_view_model.dart';
+import 'package:ideas_desktop/model/delivery_model.dart';
+import 'package:ideas_desktop/view/delivery/customer/delivery-customers/viewmodel/delivery_customers_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class DeliveryCustomersTable extends StatelessWidget {

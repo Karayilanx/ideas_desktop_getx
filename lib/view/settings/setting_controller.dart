@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
+import 'package:ideas_desktop/base_controller.dart';
 
 import '../../locale_keys_enum.dart';
 import '../../signalr/signalr_manager.dart';

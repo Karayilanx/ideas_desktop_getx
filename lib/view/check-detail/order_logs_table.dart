@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/model/check_model.dart';
-import 'package:ideas_desktop_getx/view/_utility/service_helper.dart';
+import 'package:ideas_desktop/model/check_model.dart';
+import 'package:ideas_desktop/view/_utility/service_helper.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class OrderLogsTable extends StatelessWidget {

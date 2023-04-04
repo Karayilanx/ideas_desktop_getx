@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../locale_keys_enum.dart';
 import '../../../locale_manager.dart';
 import '../../../theme/theme.dart';

@@ -2,7 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+
 import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../../theme/theme.dart';

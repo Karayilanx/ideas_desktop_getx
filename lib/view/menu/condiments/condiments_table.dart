@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class CondimentsTable extends StatelessWidget {
   final CondimentsTableDataSource source;

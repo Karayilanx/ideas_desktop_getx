@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/model/check_model.dart';
-import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
-import 'package:ideas_desktop_getx/service/eft_pos/eft_pos_service.dart';
-import 'package:ideas_desktop_getx/view/eft-pos-status/eft_pos_status_view.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+import 'package:ideas_desktop/model/check_model.dart';
+import 'package:ideas_desktop/model/eft_pos_model.dart';
+import 'package:ideas_desktop/service/eft_pos/eft_pos_service.dart';
+import 'package:ideas_desktop/view/eft-pos-status/eft_pos_status_view.dart';
 
 class EftPosStatusController extends BaseController {
   final int eftPosId = Get.arguments[0];

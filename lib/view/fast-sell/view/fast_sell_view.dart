@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/view/fast-sell/viewmodel/fast_sell_view_model.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
 import '../../../locale_keys_enum.dart';
 import '../../../model/check_model.dart';
 import '../../../model/menu_model.dart';
@@ -13,6 +12,7 @@ import '../../_utility/screen_keyboard/screen_keyboard_view.dart';
 import '../../order-detail/component/menu_item_category_button.dart';
 import '../../order-detail/component/menu_item_widget.dart';
 import '../../order-detail/component/order_list_tile.dart';
+import '../viewmodel/fast_sell_view_model.dart';
 
 class FastSellPage extends StatelessWidget {
   const FastSellPage({super.key});
@@ -199,7 +199,9 @@ class FastSellPage extends StatelessWidget {
                     : controller.basketItemClick(groupedItem),
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: index % 2 == 0 ? const Color(0xff2B393F) : const Color(0xff253139),
+                  color: index % 2 == 0
+                      ? const Color(0xff2B393F)
+                      : const Color(0xff253139),
                   child: OrderListTile(
                     groupedItem: groupedItem,
                   ),
@@ -694,7 +696,8 @@ class FastSellPage extends StatelessWidget {
 class PaymentTextContainer extends StatelessWidget {
   final String text1;
   final String text2;
-  const PaymentTextContainer({super.key, required this.text1, required this.text2});
+  const PaymentTextContainer(
+      {super.key, required this.text1, required this.text2});
 
   @override
   Widget build(BuildContext context) {
@@ -735,7 +738,10 @@ class PartialPaymentButton extends StatelessWidget {
   final Color color;
   final VoidCallback callback;
   const PartialPaymentButton(
-      {super.key, required this.text, this.color = Colors.orange, required this.callback});
+      {super.key,
+      required this.text,
+      this.color = Colors.orange,
+      required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -767,7 +773,8 @@ class PartialPaymentButton extends StatelessWidget {
 class FixedPriceButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
-  const FixedPriceButton({super.key, required this.text, required this.callback});
+  const FixedPriceButton(
+      {super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -799,7 +806,8 @@ class FastSellPaymentButton extends StatelessWidget {
   final VoidCallback callback;
   final String text;
   final bool selected;
-  const FastSellPaymentButton({super.key, 
+  const FastSellPaymentButton({
+    super.key,
     required this.callback,
     required this.text,
     this.selected = false,

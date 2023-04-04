@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 import '../../../image/image_constatns.dart';
 
 class LoadingPage extends StatelessWidget {

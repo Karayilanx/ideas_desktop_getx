@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/_utility/sync_dialog/sync_dialog_controller.dart';
+import 'package:ideas_desktop/view/_utility/sync_dialog/sync_dialog_controller.dart';
 
 import 'sync_state_enum.dart';
 

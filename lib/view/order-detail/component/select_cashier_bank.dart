@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/theme/theme.dart';
+import 'package:ideas_desktop/theme/theme.dart';
+
 import '../../../model/check_account_model.dart';
 
 class SelectCashierBank extends StatelessWidget {

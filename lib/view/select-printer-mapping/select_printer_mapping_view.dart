@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/select-printer-mapping/select_printer_mapping_view_model.dart';
+import 'package:ideas_desktop/view/select-printer-mapping/select_printer_mapping_view_model.dart';
+
 import '../../theme/theme.dart';
 
 class SelectPrinterMapping extends StatelessWidget {

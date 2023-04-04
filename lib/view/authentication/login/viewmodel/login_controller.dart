@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/service/branch/branch_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
-import 'package:ideas_desktop_getx/signalr/signalr_manager.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/service/branch/branch_service.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
+import 'package:ideas_desktop/signalr/signalr_manager.dart';
+
 import '../../../../locale_keys_enum.dart';
 import '../model/login_input.dart';
 import '../model/terminal_user.dart';

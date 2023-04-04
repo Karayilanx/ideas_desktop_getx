@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../_utility/service_helper.dart';
-import 'status_base_button.dart';
 import '../../integration_delivery_view_model.dart';
+import 'status_base_button.dart';
 
 class OrderMakePaymentButton extends StatelessWidget with ServiceHelper {
   final String? getirId;
   final String? yemeksepetiId;
   final int? checkId;
 
-  OrderMakePaymentButton({super.key, 
+  OrderMakePaymentButton({
+    super.key,
     this.getirId,
     this.yemeksepetiId,
     required this.checkId,

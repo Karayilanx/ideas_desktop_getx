@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
+import 'package:ideas_desktop/base_controller.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../../model/check_model.dart';
 import '../../../../model/printer_model.dart';
@@ -17,8 +17,10 @@ class CheckAccountTransactionsController extends BaseController {
   final int? checkAccountId = Get.arguments;
   PrinterService printerService = Get.find();
   CheckAccountService checkAccountService = Get.find();
-  Rx<GetCheckAccountTransactionsOutput?> checkAccount = Rx<GetCheckAccountTransactionsOutput?>(null);
-  Rx<CheckAccountTransactionsDataSource?> source = Rx<CheckAccountTransactionsDataSource?>(null);
+  Rx<GetCheckAccountTransactionsOutput?> checkAccount =
+      Rx<GetCheckAccountTransactionsOutput?>(null);
+  Rx<CheckAccountTransactionsDataSource?> source =
+      Rx<CheckAccountTransactionsDataSource?>(null);
 
   @override
   void onInit() {
@@ -30,8 +32,11 @@ class CheckAccountTransactionsController extends BaseController {
 
   void navigateToCheckDetail(int checkId) {
     Get.toNamed('order-detail',
-        arguments:
-            TableDetailArguments(tableId: -1, checkId: checkId, type: OrderDetailPageType.TABLE, isIntegration: false));
+        arguments: TableDetailArguments(
+            tableId: -1,
+            checkId: checkId,
+            type: OrderDetailPageType.TABLE,
+            isIntegration: false));
   }
 
   expandPanel(bool expand, int index) {
@@ -41,7 +46,8 @@ class CheckAccountTransactionsController extends BaseController {
 
   Future getCheckAccountTransactions() async {
     await checkAccountService.getCheckAccountSummary(checkAccountId);
-    checkAccount(await checkAccountService.getCheckAccountTransactions(checkAccountId));
+    checkAccount(
+        await checkAccountService.getCheckAccountTransactions(checkAccountId));
 
     if (checkAccount.value == null) {
       // navigation.navigateToPageClear(path: NavigationConstants.ERROR_VIEW);
@@ -58,16 +64,18 @@ class CheckAccountTransactionsController extends BaseController {
     return ret;
   }
 
-  Future transferCheckAccountTransaction(int checkAccountId, int? endOfDayId) async {
-    var res = await Get.dialog(const SelectCheckAccountPage(), arguments: [checkAccountId, false, endOfDayId]);
+  Future transferCheckAccountTransaction(
+      int checkAccountId, int? endOfDayId) async {
+    var res = await Get.dialog(const SelectCheckAccountPage(),
+        arguments: [checkAccountId, false, endOfDayId]);
     if (res != null && res) {
       getCheckAccountTransactions();
     }
   }
 
   Future removeCheckAccountTransaction(int checkAccountTransactionId) async {
-    var dialogResult =
-        await openYesNoDialog('İşlemi silmek istediğinizden emin misiniz? Bu işlemin geri dönüşü YOKTUR.');
+    var dialogResult = await openYesNoDialog(
+        'İşlemi silmek istediğinizden emin misiniz? Bu işlemin geri dönüşü YOKTUR.');
 
     if (dialogResult) {
       EasyLoading.show(
@@ -76,7 +84,8 @@ class CheckAccountTransactionsController extends BaseController {
         maskType: EasyLoadingMaskType.black,
       );
 
-      await checkAccountService.removeCheckAccountTransaction(checkAccountTransactionId);
+      await checkAccountService
+          .removeCheckAccountTransaction(checkAccountTransactionId);
 
       EasyLoading.dismiss();
 
@@ -91,7 +100,8 @@ class CheckAccountTransactionsController extends BaseController {
         dismissOnTap: false,
         maskType: EasyLoadingMaskType.black,
       );
-      List<PrinterOutput>? printers = await printerService.getPrinters(authStore.user!.branchId);
+      List<PrinterOutput>? printers =
+          await printerService.getPrinters(authStore.user!.branchId);
       EasyLoading.dismiss();
       printers = printers!.where((element) => element.isCashPrinter!).toList();
       if (printers.length > 1) {
@@ -103,9 +113,11 @@ class CheckAccountTransactionsController extends BaseController {
             maskType: EasyLoadingMaskType.black,
           );
           if (endOfDayId == null) {
-            await printerService.printClosedCheck(checkId, printer.printerName!, authStore.user!.branchId!);
+            await printerService.printClosedCheck(
+                checkId, printer.printerName!, authStore.user!.branchId!);
           } else {
-            await printerService.printPastCheck(checkId, printer.printerName!, authStore.user!.branchId!, endOfDayId);
+            await printerService.printPastCheck(checkId, printer.printerName!,
+                authStore.user!.branchId!, endOfDayId);
           }
           EasyLoading.dismiss();
         }
@@ -116,12 +128,20 @@ class CheckAccountTransactionsController extends BaseController {
           maskType: EasyLoadingMaskType.black,
         );
         if (endOfDayId == null) {
-          await printerService.printClosedCheck(checkId,
-              printers.where((element) => element.isCashPrinter!).first.printerName!, authStore.user!.branchId!);
+          await printerService.printClosedCheck(
+              checkId,
+              printers
+                  .where((element) => element.isCashPrinter!)
+                  .first
+                  .printerName!,
+              authStore.user!.branchId!);
         } else {
           await printerService.printPastCheck(
               checkId,
-              printers.where((element) => element.isCashPrinter!).first.printerName!,
+              printers
+                  .where((element) => element.isCashPrinter!)
+                  .first
+                  .printerName!,
               authStore.user!.branchId!,
               endOfDayId);
         }

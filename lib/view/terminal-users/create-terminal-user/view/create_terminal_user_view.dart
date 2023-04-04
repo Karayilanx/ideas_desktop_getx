@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/terminal-users/create-terminal-user/viewmodel/create_terminal_user_view_model.dart';
+
+import '../viewmodel/create_terminal_user_view_model.dart';
 
 class CreateTerminalUserPage extends StatelessWidget {
   const CreateTerminalUserPage({super.key});
@@ -41,7 +42,8 @@ class CreateTerminalUserPage extends StatelessWidget {
                   Expanded(
                     child: TextFormField(
                       controller: controller.nameCtrl,
-                      decoration: const InputDecoration(hintText: 'Kullanıcı Adı'),
+                      decoration:
+                          const InputDecoration(hintText: 'Kullanıcı Adı'),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -64,7 +66,8 @@ class CreateTerminalUserPage extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         controller: controller.pinCtrl,
-                        decoration: const InputDecoration(hintText: '4 Haneli Şifre'),
+                        decoration:
+                            const InputDecoration(hintText: '4 Haneli Şifre'),
                       ),
                     ),
                     const SizedBox(width: 8),

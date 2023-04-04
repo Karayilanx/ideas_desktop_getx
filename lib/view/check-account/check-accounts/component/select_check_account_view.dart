@@ -1,13 +1,14 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/check-account/check-accounts/component/select_check_account_view_model.dart';
+import 'package:ideas_desktop/view/check-account/check-accounts/component/select_check_account_view_model.dart';
+
 import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_account_model.dart';
 import '../../../../theme/theme.dart';
 import '../../../_utility/screen_keyboard/screen_keyboard_view.dart';
-import 'check_account_list_tile.dart';
 import '../viewmodel/check_accounts_view_model.dart';
+import 'check_account_list_tile.dart';
 
 class SelectCheckAccountPage extends StatelessWidget {
   const SelectCheckAccountPage({super.key});

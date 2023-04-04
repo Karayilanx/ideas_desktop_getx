@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/delivery/customer/customer-detail/viewmodel/customer_detail_view_model.dart';
+import 'package:ideas_desktop/view/delivery/customer/customer-detail/viewmodel/customer_detail_view_model.dart';
 import '../../../../../locale_keys_enum.dart';
 import '../../../../../locale_manager.dart';
 import '../../../../_utility/screen_keyboard/screen_keyboard_view.dart';

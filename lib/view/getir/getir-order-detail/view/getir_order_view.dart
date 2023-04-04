@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/getir/getir-order-detail/viewmodel/getir_order_view_model.dart';
+import 'package:ideas_desktop/view/getir/getir-order-detail/viewmodel/getir_order_view_model.dart';
+
 import '../../../../model/check_model.dart';
 import '../../../_utility/loading/loading_screen.dart';
 

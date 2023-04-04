@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/_utility/screen_keyboard/screen_keyboard_view.dart';
-import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_group_view_model.dart';
-import 'package:ideas_desktop_getx/view/menu/select-condiment-group/select_condiment_table.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/_utility/screen_keyboard/screen_keyboard_view.dart';
+import 'package:ideas_desktop/view/menu/select-condiment-group/select_condiment_group_view_model.dart';
+import 'package:ideas_desktop/view/menu/select-condiment-group/select_condiment_table.dart';
 
 import '../../../locale_keys_enum.dart';
 

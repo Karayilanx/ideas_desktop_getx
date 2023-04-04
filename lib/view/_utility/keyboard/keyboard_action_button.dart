@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+
 import 'button_type_enum.dart';
 
 class KeyboardActionButton extends StatelessWidget {

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/view/delivery/integration-delivery/integration_delivery_view_model.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+import 'package:ideas_desktop/view/delivery/integration-delivery/integration_delivery_view_model.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
 import '../../../model/delivery_model.dart';
 import '../../_utility/service_helper.dart';
 import '../integration-delivery/component/button/status_helper.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class IntegrationDeliveryOrderTable extends StatelessWidget {
   final IntegrationDeliveryOrderDataSource source;

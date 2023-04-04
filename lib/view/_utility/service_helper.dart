@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:ideas_desktop_getx/signalr/signalr_manager.dart';
+import 'package:ideas_desktop/signalr/signalr_manager.dart';
 import 'package:intl/intl.dart';
 import '../../locale_keys_enum.dart';
 import '../../locale_manager.dart';

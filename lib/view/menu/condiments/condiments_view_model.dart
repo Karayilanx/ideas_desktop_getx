@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/service/menu/menu_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
-import 'package:ideas_desktop_getx/view/menu/condiments/condiments_table.dart';
-import 'package:ideas_desktop_getx/view/menu/create-condiment/create_condiment_view.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/service/menu/menu_service.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
+import 'package:ideas_desktop/view/menu/condiments/condiments_table.dart';
+import 'package:ideas_desktop/view/menu/create-condiment/create_condiment_view.dart';
 
 class CondimentsController extends BaseController {
   late MenuService menuService = Get.find();

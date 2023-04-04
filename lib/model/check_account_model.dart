@@ -1,5 +1,6 @@
-import 'check_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'check_model.dart';
 
 part 'check_account_model.g.dart';
 

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/eft-pos-status/eft_pos_status_view_model.dart';
+import 'package:ideas_desktop/view/eft-pos-status/eft_pos_status_view_model.dart';
 
 class EftPosStatusPage extends StatelessWidget {
   const EftPosStatusPage({super.key});

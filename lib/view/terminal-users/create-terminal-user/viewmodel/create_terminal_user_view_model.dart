@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/branch_model.dart';
-import 'package:ideas_desktop_getx/service/branch/branch_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/branch_model.dart';
+import 'package:ideas_desktop/service/branch/branch_service.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
 
 import '../../../order-detail/component/discount_dialog.dart';
 

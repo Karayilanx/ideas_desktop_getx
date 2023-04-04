@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/end-of-day/component/end_of_day_stepper_view_model.dart';
+import 'package:ideas_desktop/view/end-of-day/component/end_of_day_stepper_view_model.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
 import '../../../theme/theme.dart';
 import '../../_utility/loading/loading_screen.dart';
 import '../../_utility/service_helper.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EndOfDayStepperPage extends StatelessWidget with ServiceHelper {
   EndOfDayStepperPage({super.key});

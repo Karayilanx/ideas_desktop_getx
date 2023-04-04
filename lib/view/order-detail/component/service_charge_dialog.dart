@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ideas_desktop_getx/locale_keys_enum.dart';
-import 'package:ideas_desktop_getx/theme/theme.dart';
+import 'package:ideas_desktop/locale_keys_enum.dart';
+
 import '../../../locale_manager.dart';
+import '../../../theme/theme.dart';
 import 'edit_item_actions_dialog.dart';
 
 class ServiceChargeDialog extends StatelessWidget {

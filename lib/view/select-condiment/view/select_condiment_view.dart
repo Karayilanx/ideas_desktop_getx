@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/select-condiment/viewmodel/select_condiment_view_model.dart';
+import 'package:ideas_desktop/view/select-condiment/viewmodel/select_condiment_view_model.dart';
+
 import '../../../locale_keys_enum.dart';
 import '../../../model/check_model.dart';
 import '../../../model/menu_model.dart';

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
-import 'package:ideas_desktop_getx/model/integer_model.dart';
-import 'package:ideas_desktop_getx/service/base_get_connect.dart';
+import 'package:ideas_desktop/model/eft_pos_model.dart';
+import 'package:ideas_desktop/model/integer_model.dart';
+import 'package:ideas_desktop/service/base_get_connect.dart';
 
 class EftPosService extends BaseGetConnect {
   Future<List<EftPosModel>?> getEftPoss(int branchId) async {

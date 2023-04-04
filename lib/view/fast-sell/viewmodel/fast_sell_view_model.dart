@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/view/notes/notes_page.dart';
-import 'package:ideas_desktop_getx/view/order-detail/component/select_cashier_bank.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+import 'package:ideas_desktop/view/notes/notes_page.dart';
+import 'package:ideas_desktop/view/order-detail/component/select_cashier_bank.dart';
+
 import '../../../locale_keys_enum.dart';
 import '../../../model/check_account_model.dart';
 import '../../../model/check_model.dart';

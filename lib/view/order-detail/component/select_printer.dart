@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/extension/context_extension.dart';
+import 'package:ideas_desktop/extension/context_extension.dart';
+
 import '../../../model/printer_model.dart';
 
 class SelectPrinter extends StatelessWidget {

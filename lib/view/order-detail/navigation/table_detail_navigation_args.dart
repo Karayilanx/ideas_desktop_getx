@@ -1,4 +1,4 @@
-import 'package:ideas_desktop_getx/model/delivery_model.dart';
+import 'package:ideas_desktop/model/delivery_model.dart';
 
 import '../model/order_detail_model.dart';
 

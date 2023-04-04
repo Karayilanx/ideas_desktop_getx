@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/view/closed-check/closed-checks/viewmodel/closed_checks_view_model.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+import 'package:ideas_desktop/view/closed-check/closed-checks/viewmodel/closed_checks_view_model.dart';
 import 'package:styled_text/styled_text.dart';
+
 import '../../../../locale_keys_enum.dart';
 import '../../../../model/check_model.dart';
 import '../../../_utility/screen_keyboard/screen_keyboard_view.dart';

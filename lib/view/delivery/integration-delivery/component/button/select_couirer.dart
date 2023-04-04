@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/delivery/couirer/couirer_page.dart';
+import 'package:ideas_desktop/view/delivery/couirer/couirer_page.dart';
+
 import '../../../../../model/delivery_model.dart';
-import 'status_base_button.dart';
 import '../../integration_delivery_view_model.dart';
+import 'status_base_button.dart';
 
 class SelectCouirerButton extends StatelessWidget {
   final int checkId;

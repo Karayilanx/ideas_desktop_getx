@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../locale_keys_enum.dart';
 import '../../theme/theme.dart';
 import '../_utility/loading/loading_screen.dart';

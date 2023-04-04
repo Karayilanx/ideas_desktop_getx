@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/delivery/integration-delivery/integration_delivery_view_model.dart';
+import 'package:ideas_desktop/view/delivery/integration-delivery/integration_delivery_view_model.dart';
 import '../../../image/image_constatns.dart';
 import '../../../locale_keys_enum.dart';
 import '../../_utility/loading/loading_screen.dart';

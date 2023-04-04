@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../theme/theme.dart';
 import '../_utility/loading/loading_screen.dart';
 import 'requests_view_model.dart';
@@ -41,7 +42,8 @@ class RequestsPage extends StatelessWidget {
                   onTap: () => Get.back(),
                   child: Container(
                     width: 130,
-                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                     decoration: BoxDecoration(
                       color: const Color(0xFFE1E5E6),
                       borderRadius: BorderRadius.circular(10),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'multi_select_view_model.dart';
 
 class MultiSelectDialog<T> extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/delivery/couirer/couirer_view_model.dart';
+import 'package:ideas_desktop/view/delivery/couirer/couirer_view_model.dart';
 
 class CouirerPage extends StatelessWidget {
   const CouirerPage({super.key});

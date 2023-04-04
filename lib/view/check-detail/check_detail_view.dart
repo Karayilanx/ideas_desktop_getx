@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
 import 'package:intl/intl.dart';
+
 import '../../model/check_model.dart';
 import '../../theme/theme.dart';
 import '../_utility/loading/loading_screen.dart';

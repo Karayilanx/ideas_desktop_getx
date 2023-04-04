@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/model/integer_model.dart';
-import 'package:ideas_desktop_getx/view/check-account/check-accounts/navigation/check_accounts_navigation_args.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+import 'package:ideas_desktop/model/integer_model.dart';
+import 'package:ideas_desktop/view/check-account/check-accounts/navigation/check_accounts_navigation_args.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 import '../../../../model/check_account_model.dart';
 import '../../../../service/check_account/check_account_service.dart';
 

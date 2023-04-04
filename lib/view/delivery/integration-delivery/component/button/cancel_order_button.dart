@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'status_base_button.dart';
+
 import '../../integration_delivery_view_model.dart';
+import 'status_base_button.dart';
 
 class OrderCancelButton extends StatelessWidget {
   final String? getirId;
   final String? yemeksepetiId;
   final int? fuudyId;
 
-  const OrderCancelButton({super.key, 
+  const OrderCancelButton({
+    super.key,
     this.getirId,
     this.yemeksepetiId,
     this.fuudyId,

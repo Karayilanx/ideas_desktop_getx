@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../authentication/login/model/terminal_user.dart';
 
 class ChangeWaiter extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/service/base_get_connect.dart';
+import 'package:ideas_desktop/service/base_get_connect.dart';
 
 import '../../model/home_model.dart';
 

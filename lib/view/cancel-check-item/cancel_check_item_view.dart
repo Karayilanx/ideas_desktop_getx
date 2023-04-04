@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../locale_keys_enum.dart';
 import '../../locale_manager.dart';
 import '../_utility/screen_keyboard/screen_keyboard_view.dart';
-import 'cancel_check_item_view_model.dart';
 import '../order-detail/component/edit_action_button.dart';
+import 'cancel_check_item_view_model.dart';
 
 class CancelCheckItemPage extends StatelessWidget {
   const CancelCheckItemPage({super.key});

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+
 import '../../../model/check_model.dart';
 
 class CondimentButton extends StatelessWidget {
@@ -7,7 +8,8 @@ class CondimentButton extends StatelessWidget {
   final VoidCallback callback;
   final bool isSelected;
   const CondimentButton(
-      {super.key, required this.condiment,
+      {super.key,
+      required this.condiment,
       required this.callback,
       required this.isSelected});
   @override

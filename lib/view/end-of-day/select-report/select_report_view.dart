@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/end-of-day/select-report/select_report_view_model.dart';
+import 'package:ideas_desktop/view/end-of-day/select-report/select_report_view_model.dart';
 
 class SelectReportPage extends StatelessWidget {
   const SelectReportPage({super.key});

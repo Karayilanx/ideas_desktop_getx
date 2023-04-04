@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/view/notes/create-note/create_note_page_view_model.dart';
+import 'package:ideas_desktop/view/notes/create-note/create_note_page_view_model.dart';
 
 import '../../../locale_keys_enum.dart';
 import '../../_utility/screen_keyboard/screen_keyboard_view.dart';

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
-import 'package:ideas_desktop_getx/view/pos-integration/pos_integration_view_model.dart';
+import 'package:ideas_desktop/model/eft_pos_model.dart';
+import 'package:ideas_desktop/view/pos-integration/pos_integration_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class PossTable extends StatelessWidget {

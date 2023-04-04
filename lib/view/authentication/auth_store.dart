@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_final_fields
 
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/settings_model.dart';
+import 'package:ideas_desktop/model/settings_model.dart';
 
 import 'login/model/terminal_user.dart';
 

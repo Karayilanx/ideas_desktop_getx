@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/extension/context_extension.dart';
+import 'package:ideas_desktop/extension/context_extension.dart';
+
 import '../../../model/check_model.dart';
 import '../../../model/menu_model.dart';
 import '../../_utility/keyboard/button_type_enum.dart';

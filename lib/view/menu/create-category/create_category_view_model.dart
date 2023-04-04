@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/service/menu/menu_service.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/service/menu/menu_service.dart';
 
 class CreateCategoryController extends BaseController {
   MenuService menuService = Get.find();

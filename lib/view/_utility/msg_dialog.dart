@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ideas_desktop_getx/model/branch_model.dart';
+import 'package:ideas_desktop/model/branch_model.dart';
 
 class MsgDialog extends StatelessWidget {
   final ServerChangeMsgModel msg;

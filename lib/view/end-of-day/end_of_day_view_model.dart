@@ -3,17 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/extension/string_extension.dart';
-import 'package:ideas_desktop_getx/model/eft_pos_model.dart';
-import 'package:ideas_desktop_getx/service/branch/branch_service.dart';
-import 'package:ideas_desktop_getx/service/eft_pos/eft_pos_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
-import 'package:ideas_desktop_getx/service/stock/stock_service.dart';
-import 'package:ideas_desktop_getx/view/_utility/msg_dialog.dart';
-import 'package:ideas_desktop_getx/view/end-of-day/select-report/select_report_view.dart';
-import 'package:ideas_desktop_getx/view/end-of-day/tables/gift_report_table.dart';
-import 'package:ideas_desktop_getx/view/multi_select/multi_select_view.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/extension/string_extension.dart';
+import 'package:ideas_desktop/model/eft_pos_model.dart';
+import 'package:ideas_desktop/service/branch/branch_service.dart';
+import 'package:ideas_desktop/service/eft_pos/eft_pos_service.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
+import 'package:ideas_desktop/service/stock/stock_service.dart';
+import 'package:ideas_desktop/view/end-of-day/select-report/select_report_view.dart';
+import 'package:ideas_desktop/view/end-of-day/tables/gift_report_table.dart';
+import 'package:ideas_desktop/view/multi_select/multi_select_view.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
 import '../../model/end_of_day_cancel_report_model.dart';
 import '../../model/end_of_day_check_account_report_model.dart';
 import '../../model/end_of_day_check_report_model.dart';
@@ -21,6 +22,7 @@ import '../../model/end_of_day_sales_report.dart';
 import '../../model/end_of_day_summary_model.dart';
 import '../../model/end_of_day_unpayable_report_model.dart';
 import '../../service/end_of_day/end_of_day_service.dart';
+import '../_utility/msg_dialog.dart';
 import '../_utility/sync_dialog/sync_dialog_view.dart';
 import 'component/end_of_day_stepper_view.dart';
 import 'tables/cancel_report_table.dart';
@@ -30,7 +32,6 @@ import 'tables/check_report_table.dart';
 import 'tables/sales_report_table.dart';
 import 'tables/unpayable_check_report.dart';
 import 'tables/unpayable_product_report.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 enum EndOfDayReportEnum {
   SUMMARY,

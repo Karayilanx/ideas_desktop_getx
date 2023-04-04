@@ -1,9 +1,9 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/view/_utility/loading/loading_screen.dart';
-import 'package:ideas_desktop_getx/view/menu/create-condiment/create_condiment_view_model.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/view/_utility/loading/loading_screen.dart';
+import 'package:ideas_desktop/view/menu/create-condiment/create_condiment_view_model.dart';
 
 class CreateCondimentPage extends StatelessWidget {
   const CreateCondimentPage({super.key});

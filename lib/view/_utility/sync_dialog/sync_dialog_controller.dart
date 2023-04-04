@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
 
 import 'sync_state_enum.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../model/end_of_day_summary_model.dart';
 import '../component/end_of_day_table_widgets.dart';
 
@@ -213,7 +214,8 @@ class SummaryReport extends StatelessWidget {
     for (var item in report.sellDistribution!.categorySales) {
       ret.add(
         EndOfDayReportInformation(
-          leftText: "${item.categoryName} (${item.quantity.toStringAsFixed(0)} Adet)",
+          leftText:
+              "${item.categoryName} (${item.quantity.toStringAsFixed(0)} Adet)",
           rightText: item.amount,
         ),
       );

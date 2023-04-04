@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
-import 'package:ideas_desktop_getx/model/menu_model.dart';
-import 'package:ideas_desktop_getx/service/menu/menu_service.dart';
-import 'package:ideas_desktop_getx/service/server/server_service.dart';
-import 'package:ideas_desktop_getx/view/_utility/sync_dialog/sync_dialog_view.dart';
-import 'package:ideas_desktop_getx/view/menu/menu_table.dart';
-import 'package:ideas_desktop_getx/view/select-printer-mapping/select_printer_mapping_view.dart';
+import 'package:ideas_desktop/base_controller.dart';
+import 'package:ideas_desktop/model/menu_model.dart';
+import 'package:ideas_desktop/service/menu/menu_service.dart';
+import 'package:ideas_desktop/service/server/server_service.dart';
+import 'package:ideas_desktop/view/_utility/sync_dialog/sync_dialog_view.dart';
+import 'package:ideas_desktop/view/menu/menu_table.dart';
+import 'package:ideas_desktop/view/select-printer-mapping/select_printer_mapping_view.dart';
 
 class MenuController extends BaseController {
   MenuService menuService = Get.find();

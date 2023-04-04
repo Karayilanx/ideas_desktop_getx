@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/model/branch_model.dart';
-import 'package:ideas_desktop_getx/view/terminal-users/terminal_users_view_model.dart';
+import 'package:ideas_desktop/model/branch_model.dart';
+import 'package:ideas_desktop/view/terminal-users/terminal_users_view_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class TerminalUsersTable extends StatelessWidget {

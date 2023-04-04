@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ideas_desktop_getx/base_controller.dart';
+import 'package:ideas_desktop/base_controller.dart';
+
 import '../../../model/yemeksepeti_model.dart';
 import '../../../service/yemeksepeti/yemeksepeti_service.dart';
 
